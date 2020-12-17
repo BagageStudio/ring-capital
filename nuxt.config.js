@@ -50,12 +50,20 @@ export default {
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
         // https://go.nuxtjs.dev/eslint
-        '@nuxtjs/eslint-module'
+        '@nuxtjs/eslint-module',
+        '@nuxtjs/robots'
     ],
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: ['@nuxtjs/style-resources'],
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
-    build: {}
+    build: {},
+
+    // Robots config
+    robots: () => {
+        return netlifyEnv === 'production'
+            ? { UserAgent: '*', Disallow: ['/404'], Sitemap: `${websiteUrl}/sitemap.xml` }
+            : { UserAgent: '*', Disallow: '/' };
+    }
 };

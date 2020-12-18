@@ -1,3 +1,9 @@
+import { defaultLocale, locales } from './config/i18n';
+import { layoutQuery } from './api/dato/index';
+import { excludedDynamicRoutes } from './app/crawler/routes';
+
+import enTranslation from './locales/en.json';
+
 /*
  ** NOTE:
  ** The NODE_ENV will always be equal to 'production' when we generate
@@ -10,6 +16,7 @@
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
 const netlifyEnv = process.env.NETLIFY_ENV;
+const isProdEnv = netlifyEnv === 'production';
 const websiteUrl = process.env.URL || `http://${host}:${port}`;
 
 export default {
@@ -30,6 +37,47 @@ export default {
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: ['~assets/scss/main.scss'],
 
+    // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+    plugins: ['~/plugins/axios'],
+
+    // Auto import components (https://go.nuxtjs.dev/config-components)
+    components: [
+        '~/components',
+        { path: '~/components/Templates/', prefix: 'template' },
+        { path: '~/components/Resources/', prefix: 'resources' }
+    ],
+
+    // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
+    buildModules: [
+        // https://go.nuxtjs.dev/eslint
+        '@nuxtjs/eslint-module',
+        '@nuxtjs/robots',
+        ['nuxt-i18n'],
+        '@nuxtjs/axios',
+        '@nuxtjs/style-resources',
+        '~/modules/slugToModelApiKey',
+        '~/modules/initLayoutData',
+        '~/modules/mediasToNetlify'
+    ],
+
+    // Modules (https://go.nuxtjs.dev/config-modules)
+    modules: ['@nuxtjs/style-resources'],
+
+    // i18n config
+    i18n: {
+        locales,
+        strategy: 'prefix_except_default',
+        defaultLocale,
+        routesNameSeparator: '-',
+        vueI18n: {
+            fallbackLocale: defaultLocale,
+            messages: {
+                en: enTranslation || {}
+            }
+        },
+        vuex: { syncLocale: true }
+    },
+
     // Style Resources module configuration
     styleResources: {
         scss: [
@@ -41,29 +89,50 @@ export default {
         ]
     },
 
-    // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-    plugins: [],
-
-    // Auto import components (https://go.nuxtjs.dev/config-components)
-    components: true,
-
-    // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-    buildModules: [
-        // https://go.nuxtjs.dev/eslint
-        '@nuxtjs/eslint-module',
-        '@nuxtjs/robots'
-    ],
-
-    // Modules (https://go.nuxtjs.dev/config-modules)
-    modules: ['@nuxtjs/style-resources'],
-
-    // Build Configuration (https://go.nuxtjs.dev/config-build)
-    build: {},
-
     // Robots config
     robots: () => {
-        return netlifyEnv === 'production'
+        return isProdEnv
             ? { UserAgent: '*', Disallow: ['/404'], Sitemap: `${websiteUrl}/sitemap.xml` }
             : { UserAgent: '*', Disallow: '/' };
+    },
+
+    /*
+     ** Runtime configuration
+     ** See https://fr.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config
+     */
+    publicRuntimeConfig: {
+        isDevEnv: process.env.NETLIFY_ENV === 'development',
+        // On met le token qui si on est en local (pour pas qu'il soit injecté dans le JS en prod)
+        datoApiToken: process.env.DATOCMS_API_TOKEN,
+        datoApiUrl: process.env.GRAPHQL_ENDPOINT
+    },
+    /*
+     ** Build configuration
+     ** See https://nuxtjs.org/api/configuration-build/
+     */
+    build: {
+        /*
+         ** Transpiling es6 packages
+         */
+        transpile: [/@stereorepo/]
+    },
+    /*
+     ** Generate configuration
+     ** See https://fr.nuxtjs.org/api/configuration-generate/
+     */
+    generate: {
+        crawler: false,
+        fallback: false,
+        exclude: excludedDynamicRoutes(isProdEnv)
+    },
+    layoutData: {
+        layoutQuery
+    },
+    vue: {
+        config: {
+            // Giving access to performances in the inspector
+            devtools: process.env.NETLIFY_ENV === 'development',
+            performance: process.env.NETLIFY_ENV === 'development'
+        }
     }
 };

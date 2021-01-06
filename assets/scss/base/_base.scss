@@ -27,38 +27,77 @@ body {
 
 .wysiwyg h1,
 .h1 {
-    font-size: 5rem;
+    font-size: 4.4rem;
+    font-weight: 300;
     margin: 0.67em 0;
 }
 
 .wysiwyg h2,
 .h2 {
-    font-size: 3rem;
+    font-size: 3.4rem;
+    font-weight: 300;
     margin: 0.83em 0;
 }
 
 .wysiwyg h3,
 .h3 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     margin: 1em 0;
 }
 
 .wysiwyg h4,
 .h4 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin: 1.33em 0;
 }
 
 .wysiwyg h5,
 .h5 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
     margin: 1.67em 0;
 }
 
 .wysiwyg h6,
 .h6 {
-    font-size: 1.8rem;
-    margin: 2.33em 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 1.67em 0;
+}
+
+.wysiwyg ul {
+    padding: 0;
+    li {
+        position: relative;
+        margin: 5px 0;
+        padding: 0 0 0 15px;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0.65em;
+            left: 0;
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: $titan;
+        }
+    }
+}
+
+.wysiwyg ol {
+    padding: 0;
+    li {
+        position: relative;
+        margin: 5px 0;
+        padding: 0 0 0 25px;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: $titan;
+        }
+    }
 }
 
 p {
@@ -66,7 +105,11 @@ p {
 }
 
 blockquote {
-    margin: 1em 40px;
+    margin: 40px 0;
+    padding: 0 0 0 20px;
+    font-style: italic;
+    border-left: 1px solid currentColor;
+    color: $neptune;
 }
 
 ol,
@@ -141,11 +184,30 @@ pre {
 
 // COMBAK: Remove if not used
 hr {
-    height: 1px;
-    max-width: 250px;
+    position: relative;
+    width: 5px;
+    height: 5px;
     border: 0;
-    margin: 3em auto 5em;
-    background: $black;
+    margin: 100px auto;
+    border-radius: 50%;
+    background: $neptune;
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $neptune;
+    }
+    &::before {
+        left: -20px;
+    }
+    &::after {
+        right: -20px;
+    }
 }
 
 /******* LIENS / BOUTONS *******/

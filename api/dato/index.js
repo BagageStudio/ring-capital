@@ -13,8 +13,18 @@ export const layoutQuery = `
             }
         }
         footer(locale: $lang) {
-            social {
+            links {
                 ...link
+            }
+            smallText
+            smallLinks {
+                ...link
+            }
+            newsletter {
+                title
+            }
+            social {
+                name
             }
         }
     }

@@ -54,8 +54,11 @@ export const layoutQuery = `
             }
         }
         footer(locale: $lang) {
-            links {
-                ...link
+            linksColumn {
+                links {
+                    label
+                    title
+                }
             }
             smallText
             smallLinks {

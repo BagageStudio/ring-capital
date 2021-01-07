@@ -7,6 +7,11 @@
             </div>
             <div class="wrapper-menu-legal">
                 <Logo />
+                <div class="wrapper-cols-footer">
+                    <div v-for="(column, index) in data.linksColumn" :key="index" class="col-footer">
+                        {{ column.links }}
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

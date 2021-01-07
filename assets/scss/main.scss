@@ -4,6 +4,8 @@
 
 @import 'base/reset', 'base/fonts', 'base/base';
 
-@import 'layout/grid';
+@import 'components/buttons';
+
+@import 'layout/grid', 'layout/forms';
 
 @import 'base/print';

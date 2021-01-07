@@ -44,7 +44,7 @@ export default {
     components: [
         '~/components',
         { path: '~/components/Templates/', prefix: 'template' },
-        { path: '~/components/Resources/', prefix: 'resources' }
+        { path: '~/components/Layout/', prefix: 'layout' }
     ],
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
@@ -59,9 +59,6 @@ export default {
         '~/modules/initLayoutData',
         '~/modules/mediasToNetlify'
     ],
-
-    // Modules (https://go.nuxtjs.dev/config-modules)
-    modules: ['@nuxtjs/style-resources'],
 
     // i18n config
     i18n: {

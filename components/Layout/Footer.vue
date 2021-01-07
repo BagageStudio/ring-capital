@@ -1,6 +1,12 @@
 <template>
-    <footer>
-        <h1>Footer</h1>
+    <footer class="footer">
+        <div class="container">
+            <div class="wrapper-newsletter-social">
+                <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
+                <Social :content="data.social" />
+            </div>
+            <div class="wrapper-menu-legal"></div>
+        </div>
     </footer>
 </template>
 
@@ -21,4 +27,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.footer {
+    position: relative;
+    margin-top: 100px;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top: 1px solid $neptune;
+    }
+}
+.wrapper-newsletter-social {
+    padding: 50px 0 30px;
+}
+.wrapper-menu-legal {
+    padding: 50px 0 40px;
+}
+</style>

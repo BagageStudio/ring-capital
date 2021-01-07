@@ -9,7 +9,7 @@
                 <Logo />
                 <div class="wrapper-cols-footer">
                     <div v-for="(column, index) in data.linksColumn" :key="index" class="col-footer">
-                        {{ column.links }}
+                        <LinkTo v-for="(singleLink, linkIndex) in column.links" :key="linkIndex" :link="singleLink" />
                     </div>
                 </div>
             </div>

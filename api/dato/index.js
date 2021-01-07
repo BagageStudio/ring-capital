@@ -58,6 +58,7 @@ export const layoutQuery = `
                 links {
                     label
                     title
+                    ...link
                 }
             }
             smallText

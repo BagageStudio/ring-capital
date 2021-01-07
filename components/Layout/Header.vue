@@ -5,14 +5,14 @@
 </template>
 
 <script>
-// import layoutData from '~/cms/data/layout-data.json';
+import layoutData from '~/cms/data/layout-data.json';
 
 export default {
     data: () => ({}),
     computed: {
-        // data() {
-        //     return layoutData[this.$store.state.i18n.locale].footer;
-        // }
+        data() {
+            return layoutData[this.$store.state.i18n.locale].header;
+        }
     },
     watch: {},
     mounted() {},

@@ -8,6 +8,47 @@ export const layoutQuery = `
     ${linkFragment}
     query Layout($lang: SiteLocale) {
         header(locale: $lang) {
+            navigation {
+                ... on MegaRecord {
+                    megaMenu {
+                        title
+                        links {
+                            ...link
+                        }
+                        social {
+                            socialLinks {
+                            title
+                            iconName
+                            link
+                            }
+                        }
+                        newsTitle
+                        news {
+                            title
+                            cover {
+                                ${img}
+                            }
+                            readingTime
+                            date
+                            linkUrl
+                        }
+                    }
+                }
+                ... on SingleLinkRecord {
+                    link {
+                        ...link
+                    }
+                }
+                ... on SubmenuGroupRecord {
+                    title
+                    submenus {
+                        title
+                        links {
+                            ...link
+                        }
+                    }
+                }
+            }
             contact {
                 ...link
             }

@@ -32,8 +32,6 @@ export default {
         // Ici ton _modelApiKey
         finalData.template = slugToModelApiKey[lang][slug];
 
-        console.log($dato);
-
         try {
             const { data } = await $dato
                 .post('/', { query: getQuery(finalData.template), variables: { lang, slug } })

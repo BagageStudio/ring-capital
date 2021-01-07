@@ -24,7 +24,11 @@ export const layoutQuery = `
                 title
             }
             social {
-                name
+                socialLinks {
+                    title
+                    iconName
+                    link
+                }
             }
         }
     }

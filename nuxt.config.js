@@ -41,11 +41,7 @@ export default {
     plugins: ['~/plugins/axios'],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
-    components: [
-        '~/components',
-        { path: '~/components/Templates/', prefix: 'template' },
-        { path: '~/components/Layout/', prefix: 'layout' }
-    ],
+    components: ['~/components'],
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [

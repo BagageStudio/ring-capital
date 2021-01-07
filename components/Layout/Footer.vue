@@ -3,6 +3,15 @@
         <div class="container">
             <div class="wrapper-newsletter-social">
                 <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
+                <form class="newsletter-form">
+                    <div class="wrapper-field">
+                        <input class="newsletter-email" type="email" name="newsletter" required />
+                        <label class="label" for="newsletter-email">Enter your email address</label>
+                    </div>
+                    <button ref="submit" type="submit" class="btn-block">
+                        <span>Submit</span>
+                    </button>
+                </form>
                 <Social :content="data.social" />
             </div>
             <div class="wrapper-menu-legal">
@@ -66,8 +75,26 @@ export default {
 .wrapper-newsletter-social {
     padding: 50px 0 30px;
 }
+.newsletter-form {
+    margin-top: 50px;
+    .btn-block {
+        width: 100%;
+    }
+}
 .wrapper-menu-legal {
+    position: relative;
     padding: 50px 0 40px;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -$gutter;
+        bottom: 0;
+        left: -$gutter;
+        background: $orbit;
+        z-index: -1;
+    }
 }
 .logo-footer {
     margin-bottom: 50px;

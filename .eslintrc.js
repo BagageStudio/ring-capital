@@ -12,6 +12,7 @@ module.exports = {
     // add your custom rules here
     rules: {
         'no-console': 'off',
+        'vue/no-v-html': 'off',
         'no-unused-vars': 'warn',
         'no-useless-escape': 'off',
         quotes: ['error', 'single'],

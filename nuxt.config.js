@@ -41,11 +41,7 @@ export default {
     plugins: ['~/plugins/axios'],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
-    components: [
-        '~/components',
-        { path: '~/components/Templates/', prefix: 'template' },
-        { path: '~/components/Resources/', prefix: 'resources' }
-    ],
+    components: ['~/components'],
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
@@ -59,9 +55,6 @@ export default {
         '~/modules/initLayoutData',
         '~/modules/mediasToNetlify'
     ],
-
-    // Modules (https://go.nuxtjs.dev/config-modules)
-    modules: ['@nuxtjs/style-resources'],
 
     // i18n config
     i18n: {

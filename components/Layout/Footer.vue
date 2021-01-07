@@ -5,7 +5,9 @@
                 <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
                 <Social :content="data.social" />
             </div>
-            <div class="wrapper-menu-legal"></div>
+            <div class="wrapper-menu-legal">
+                <Logo />
+            </div>
         </div>
     </footer>
 </template>

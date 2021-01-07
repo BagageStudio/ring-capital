@@ -5,7 +5,14 @@
                 <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
                 <form class="newsletter-form">
                     <div class="wrapper-field">
-                        <input class="newsletter-email" type="email" name="newsletter" required />
+                        <input
+                            v-model="emailInput"
+                            class="newsletter-email"
+                            type="email"
+                            name="newsletter"
+                            :class="{ on: emailInput !== '' }"
+                            required
+                        />
                         <label class="label" for="newsletter-email">Enter your email address</label>
                     </div>
                     <button ref="submit" type="submit" class="btn-block">
@@ -46,7 +53,11 @@
 import layoutData from '~/cms/data/layout-data.json';
 
 export default {
-    data: () => ({}),
+    data() {
+        return {
+            emailInput: ''
+        };
+    },
     computed: {
         data() {
             return layoutData[this.$store.state.i18n.locale].footer;

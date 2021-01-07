@@ -36,6 +36,7 @@ input {
     padding-bottom: 15px;
     border: 0;
     border-bottom: 1px solid $neptune;
+    color: $white;
     // hide the symbols of input search
     &[type='search'] {
         &::-webkit-search-cancel-button,

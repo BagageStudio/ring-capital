@@ -13,10 +13,10 @@
                             :class="{ on: emailInput !== '' }"
                             required
                         />
-                        <label class="label" for="newsletter-email">Enter your email address</label>
+                        <label class="label" for="newsletter-email">{{ $t('newsletter.label') }}</label>
                     </div>
                     <button ref="submit" type="submit" class="btn-block">
-                        <span>Submit</span>
+                        <span>{{ $t('newsletter.sendButton') }}</span>
                     </button>
                 </form>
                 <Social :content="data.social" />

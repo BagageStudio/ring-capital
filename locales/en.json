@@ -1,3 +1,6 @@
 {
-    
+    "newsletter": {
+        "label": "Enter your email address",
+        "sendButton": "Submit"
+    }
 }

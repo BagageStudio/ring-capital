@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="container">
             <div class="wrapper-newsletter-social">
-                <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
+                <h3 v-if="data.newsletter.title" class="basic-h3">{{ data.newsletter.title }}</h3>
                 <form class="newsletter-form">
                     <div class="wrapper-field">
                         <input
@@ -84,7 +84,7 @@ export default {
     }
 }
 .wrapper-newsletter-social {
-    padding: 50px 0 30px;
+    padding: 50px $gutter 30px;
 }
 .newsletter-form {
     margin-top: 50px;
@@ -94,7 +94,7 @@ export default {
 }
 .wrapper-menu-legal {
     position: relative;
-    padding: 50px 0 40px;
+    padding: 50px $gutter 40px;
     z-index: 1;
     &::before {
         content: '';
@@ -136,5 +136,29 @@ export default {
 }
 .footer-small-link {
     text-decoration: none;
+}
+
+@media (min-width: $tablet) {
+    .footer {
+        .container {
+            display: flex;
+            align-items: flex-start;
+            > * {
+                flex: 0 0 auto;
+            }
+        }
+    }
+    .wrapper-menu-legal {
+        order: 1;
+        width: 50%;
+        &::before {
+            right: 0;
+            left: 0;
+        }
+    }
+    .wrapper-newsletter-social {
+        order: 2;
+        width: 50%;
+    }
 }
 </style>

@@ -5,7 +5,12 @@
 }
 
 .container {
-    max-width: $desktop-xxl;
-    padding: 0 $gutter;
+    max-width: $desktop-large;
+    padding: 0 $grid-gutter-s;
     margin: 0 auto;
+}
+
+.content-pad {
+    padding-left: $gutter;
+    padding-right: $gutter;
 }

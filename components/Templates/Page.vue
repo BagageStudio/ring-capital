@@ -1,8 +1,10 @@
 <template>
     <div v-if="data" class="wrapper-page">
-        <div class="container wysiwyg">
-            <h1>{{ data.title }}</h1>
-            <div v-if="data.content" v-html="data.content" />
+        <div class="container">
+            <div class="wysiwyg content-pad">
+                <h1>{{ data.title }}</h1>
+                <div v-if="data.content" v-html="data.content" />
+            </div>
         </div>
     </div>
 </template>

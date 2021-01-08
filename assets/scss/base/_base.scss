@@ -295,3 +295,25 @@ a {
         font-size: 1.8rem;
     }
 }
+
+@media (min-width: $desktop-small) {
+    .wysiwyg img {
+        width: percentage(8/6);
+        max-width: none;
+        margin-left: -#{percentage(1/6)};
+    }
+}
+
+@media (min-width: $desktop) {
+    .wysiwyg img {
+        width: percentage(10/8);
+        margin-left: -#{percentage(1/8)};
+    }
+}
+
+@media (min-width: $desktop-large) {
+    .wysiwyg img {
+        width: percentage(8/6);
+        margin-left: -#{percentage(1/6)};
+    }
+}

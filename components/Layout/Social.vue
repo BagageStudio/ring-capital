@@ -29,7 +29,7 @@ export default {
     padding: 0;
     > li {
         flex: 0 0 auto;
-        margin: 10px 40px 10px 0;
+        margin: 10px 40px 0 0;
     }
 }
 .social-link {

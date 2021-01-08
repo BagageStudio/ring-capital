@@ -112,7 +112,6 @@ export default {
 
 .row {
     margin: $line-height - 1px 0 0;
-    // outline-bottom: 1px solid blue;
 }
 
 // ↔️ Horizontal breakpoint

@@ -13,6 +13,13 @@
 export default {
     props: {
         data: { type: Object, required: true }
+    },
+    head() {
+        return {
+            htmlAttrs: {
+                class: this.data.whiteBackground ? 'lightmode' : ''
+            }
+        };
     }
 };
 </script>

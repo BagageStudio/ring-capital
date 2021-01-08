@@ -18,7 +18,7 @@ export default {
             m: 8,
             xl: 12
         },
-        isActive: true,
+        isActive: false,
         columnsNumber: 0
     }),
     computed: {

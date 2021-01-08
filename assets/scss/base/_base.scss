@@ -13,7 +13,7 @@
 
 html {
     font-size: 62.5%; /* sets the base font to 10px for easier math */
-    background: $black;
+    background: var(--bg);
 }
 
 body {
@@ -23,6 +23,13 @@ body {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.wysiwyg {
+    color: var(--secondary);
+    h1 {
+        color: var(--primary);
+    }
 }
 
 .wysiwyg h1,

@@ -84,6 +84,7 @@ export default {
 .footer {
     position: relative;
     margin-top: 100px;
+    background: $black;
     &::after {
         content: '';
         position: absolute;

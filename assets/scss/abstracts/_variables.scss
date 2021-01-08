@@ -10,6 +10,17 @@ $neptune: #657da2;
 $orbit: #1f2c3c;
 $saturn: #f4f928;
 
+:root {
+    --primary: #f4f928;
+    --secondary: #fff;
+    --bg: #19232f;
+}
+.lightmode {
+    --primary: #1f2c3c;
+    --secondary: #1f2c3c;
+    --bg: #fff;
+}
+
 // Fonts ✍
 // $telegraf: 'Telegraf', sans-serif;
 // $graphik: 'Graphik', $telegraf;

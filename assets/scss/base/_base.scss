@@ -13,7 +13,7 @@
 
 html {
     font-size: 62.5%; /* sets the base font to 10px for easier math */
-    background: $black;
+    background: var(--bg);
     &.no-scroll {
         position: fixed;
         left: 0;
@@ -28,6 +28,13 @@ body {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.wysiwyg {
+    color: var(--secondary);
+    h1 {
+        color: var(--primary);
+    }
 }
 
 .wysiwyg h1,
@@ -291,5 +298,27 @@ a {
     .wysiwyg h6,
     .h6 {
         font-size: 1.8rem;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .wysiwyg img {
+        width: percentage(8/6);
+        max-width: none;
+        margin-left: -#{percentage(1/6)};
+    }
+}
+
+@media (min-width: $desktop) {
+    .wysiwyg img {
+        width: percentage(10/8);
+        margin-left: -#{percentage(1/8)};
+    }
+}
+
+@media (min-width: $desktop-large) {
+    .wysiwyg img {
+        width: percentage(8/6);
+        margin-left: -#{percentage(1/6)};
     }
 }

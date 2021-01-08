@@ -2,7 +2,23 @@
     <footer class="footer">
         <div class="container">
             <div class="wrapper-newsletter-social">
-                <h3 v-if="data.newsletter.title">{{ data.newsletter.title }}</h3>
+                <h3 v-if="data.newsletter.title" class="basic-h3">{{ data.newsletter.title }}</h3>
+                <form class="newsletter-form">
+                    <div class="wrapper-field">
+                        <input
+                            v-model="emailInput"
+                            class="newsletter-email"
+                            type="email"
+                            name="newsletter"
+                            :class="{ on: emailInput !== '' }"
+                            required
+                        />
+                        <label class="label" for="newsletter-email">{{ $t('newsletter.label') }}</label>
+                    </div>
+                    <button ref="submit" type="submit" class="btn-block">
+                        <span>{{ $t('newsletter.sendButton') }}</span>
+                    </button>
+                </form>
                 <Social :content="data.social" />
             </div>
             <div class="wrapper-menu-legal">
@@ -37,7 +53,11 @@
 import layoutData from '~/cms/data/layout-data.json';
 
 export default {
-    data: () => ({}),
+    data() {
+        return {
+            emailInput: ''
+        };
+    },
     computed: {
         data() {
             return layoutData[this.$store.state.i18n.locale].footer;
@@ -64,10 +84,28 @@ export default {
     }
 }
 .wrapper-newsletter-social {
-    padding: 50px 0 30px;
+    padding: 50px $gutter 30px;
+}
+.newsletter-form {
+    margin-top: 50px;
+    .btn-block {
+        width: 100%;
+    }
 }
 .wrapper-menu-legal {
-    padding: 50px 0 40px;
+    position: relative;
+    padding: 50px $gutter 40px;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -$gutter;
+        bottom: 0;
+        left: -$gutter;
+        background: $orbit;
+        z-index: -1;
+    }
 }
 .logo-footer {
     margin-bottom: 50px;
@@ -98,5 +136,29 @@ export default {
 }
 .footer-small-link {
     text-decoration: none;
+}
+
+@media (min-width: $tablet) {
+    .footer {
+        .container {
+            display: flex;
+            align-items: flex-start;
+            > * {
+                flex: 0 0 auto;
+            }
+        }
+    }
+    .wrapper-menu-legal {
+        order: 1;
+        width: 50%;
+        &::before {
+            right: 0;
+            left: 0;
+        }
+    }
+    .wrapper-newsletter-social {
+        order: 2;
+        width: 50%;
+    }
 }
 </style>

@@ -31,6 +31,12 @@ textarea {
 }
 
 input {
+    display: block;
+    position: relative;
+    padding-bottom: 15px;
+    border: 0;
+    border-bottom: 1px solid $neptune;
+    color: $white;
     // hide the symbols of input search
     &[type='search'] {
         &::-webkit-search-cancel-button,
@@ -49,4 +55,28 @@ select {
 
 button {
     border: 0;
+}
+
+.wrapper-field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    color: $neptune;
+    .label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        user-select: none;
+        pointer-events: none;
+    }
+    input,
+    textarea {
+        width: 100%;
+        &:focus,
+        &.on {
+            + .label {
+                opacity: 0;
+            }
+        }
+    }
 }

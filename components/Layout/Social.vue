@@ -12,7 +12,7 @@
 export default {
     props: {
         content: {
-            type: Array,
+            type: Object,
             required: true
         }
     }

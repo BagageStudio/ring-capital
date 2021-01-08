@@ -10,6 +10,8 @@ export const layoutQuery = `
         header(locale: $lang) {
             navigation {
                 ... on MegaRecord {
+                    _modelApiKey
+                    id
                     megaMenu {
                         title
                         links {
@@ -35,13 +37,18 @@ export const layoutQuery = `
                     }
                 }
                 ... on SingleLinkRecord {
+                    _modelApiKey
+                    id
                     link {
                         ...link
                     }
                 }
                 ... on SubmenuGroupRecord {
+                    _modelApiKey
+                    id
                     title
                     submenus {
+                        id
                         title
                         links {
                             ...link

@@ -11,21 +11,23 @@
                     <span></span>
                 </button>
             </div>
-            <div v-show="showMenuMobile" class="menu">
-                <div class="menu-inner">
-                    <div class="menu-items">
-                        <component
-                            :is="menuItemMapping[menuItem._modelApiKey]"
-                            v-for="menuItem in data.navigation"
-                            :key="menuItem.id"
-                            :data="menuItem"
-                        />
-                    </div>
-                    <div class="contact-link">
-                        <LinkTo class="btn-block" :link="data.contact" />
+            <transition name="menu" :duration="2000">
+                <div v-show="showMenuMobile" class="menu">
+                    <div class="menu-inner">
+                        <div class="menu-items">
+                            <component
+                                :is="menuItemMapping[menuItem._modelApiKey]"
+                                v-for="menuItem in data.navigation"
+                                :key="menuItem.id"
+                                :data="menuItem"
+                            />
+                        </div>
+                        <div class="contact-link">
+                            <LinkTo class="btn-block" :link="data.contact" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
     </header>
 </template>
@@ -156,6 +158,38 @@ export default {
     padding: 40px 20px 0;
     a {
         display: block;
+    }
+}
+
+.menu-enter,
+.menu-leave-to {
+    transform: translateY(-100%);
+    .menu-items,
+    .contact-link {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+//Open anim
+.menu-enter-active {
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    .menu-items {
+        transition: opacity 0.3s ease-in-out 0.4s, transform 0.3s ease-in-out 0.4s;
+    }
+    .contact-link {
+        transition: opacity 0.3s ease-in-out 0.6s, transform 0.3s ease-in-out 0.6s;
+    }
+}
+
+//Close anim
+.menu-leave-active {
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1) 0.15s;
+    .menu-items {
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    .contact-link {
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 }
 </style>

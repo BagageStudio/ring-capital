@@ -29,11 +29,13 @@ body {
     color: var(--secondary);
     h1 {
         color: var(--primary);
+        box-shadow: inset 0 -0.175em var(--bg), inset 0 -0.2em $neptune;
     }
 }
 
 .wysiwyg h1,
 .h1 {
+    display: inline;
     font-size: 4.4rem;
     font-weight: 300;
     margin: 0.67em 0;

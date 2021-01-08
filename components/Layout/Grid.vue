@@ -93,19 +93,13 @@ export default {
 .column-block {
     flex: 1 0 auto;
     padding: 0 $gutter;
-    border-left: 1px solid blue;
-    &:last-child {
-        border-right: 1px solid blue;
-    }
+    outline: 1px solid blue;
 }
 
 .column-text {
     width: 100%;
     height: 100%;
-    border-left: 1px solid blue;
-    &:last-child {
-        border-right: 1px solid blue;
-    }
+    outline: 1px solid blue;
 }
 
 .rows {
@@ -118,7 +112,7 @@ export default {
 
 .row {
     margin: $line-height - 1px 0 0;
-    border-bottom: 1px solid blue;
+    // outline-bottom: 1px solid blue;
 }
 
 // ↔️ Horizontal breakpoint

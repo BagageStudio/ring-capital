@@ -99,6 +99,7 @@ export const homeQuery = `
         home(locale: $lang) {
             ${seo}
             title
+            introTitle
         }
     }
 `;

@@ -100,6 +100,58 @@ export const homeQuery = `
             ${seo}
             title
             introTitle
+            introText
+            introAnchorLabel
+            funds {
+                name
+            }
+            section1Title
+            section1Subtitle
+            section1Content
+            section1Link {
+                ...link
+            }
+            section1TopLeftImage {
+                ${img}
+            }
+            section1TopLeftLink {
+                ...link
+            }
+            section1TopRightImage {
+                ${img}
+            }
+            section1TopRightLink {
+                ...link
+            }
+            section1BottomLeftImage {
+                ${img}
+            }
+            section1BottomLeftLink {
+                ...link
+            }
+            section1BottomRightImage {
+                ${img}
+            }
+            section1BottomRightLink {
+                ...link
+            }
+            section2LeftTitle
+            section2LeftSubtitle
+            section2RightTitle
+            section2RightSubtitle
+            centeredLink {
+                ...link
+            }
+            newsTitle
+            news {
+                title
+                cover {
+                    ${img}
+                }
+                date
+                readingTime
+                linkUrl
+            }
         }
     }
 `;

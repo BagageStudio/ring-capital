@@ -25,6 +25,7 @@ export const layoutQuery = `
                             }
                         }
                         newsTitle
+                        socialTitle
                         news {
                             title
                             cover {

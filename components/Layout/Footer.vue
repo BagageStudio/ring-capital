@@ -125,6 +125,7 @@ export default {
     padding: 0 $gutter;
 }
 .logo-footer {
+    width: 163px;
     margin-bottom: 50px;
 }
 .wrapper-cols-footer {

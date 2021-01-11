@@ -2,7 +2,9 @@
     <header class="header">
         <div class="header-inner container">
             <div class="wrapper-logo content-pad">
-                <Logo />
+                <nuxt-link to="/">
+                    <Logo class="header-logo" />
+                </nuxt-link>
             </div>
             <div class="wrapper-burger content-pad">
                 <button class="burger" aria-label="Menu" :class="{ cross: showMenuMobile }" @click="toggleMenuMobile">
@@ -101,6 +103,10 @@ export default {
 .wrapper-logo {
     position: relative;
     z-index: 1;
+}
+
+.header-logo {
+    width: 159px;
 }
 .header-inner {
     display: flex;

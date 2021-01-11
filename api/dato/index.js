@@ -104,6 +104,11 @@ export const homeQuery = `
             introAnchorLabel
             funds {
                 name
+                description
+                logo
+                color
+                slug
+                ${seo}
             }
             section1Title
             section1Subtitle

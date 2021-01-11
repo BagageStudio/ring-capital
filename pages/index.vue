@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <h1>Home</h1>
+        <h1 class="basic-h1" v-html="data.title"></h1>
+        <FundCards :content="data.funds" />
     </div>
 </template>
 

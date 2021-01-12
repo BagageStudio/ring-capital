@@ -6,6 +6,8 @@
     text-align: center;
     border: 1px solid $neptune;
     color: $white;
+    text-decoration: none;
+    font-family: $space;
     &::before {
         content: '';
         position: absolute;

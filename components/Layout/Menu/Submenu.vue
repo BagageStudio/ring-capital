@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-item">
+    <div class="menu-item notransi">
         <button class="label" :class="{ active: open }" @click="toggleSubmenu">{{ data.title }}</button>
         <div ref="submenuWrapper" class="menu-item-content-wrapper">
             <div ref="submenu" class="menu-item-content">
@@ -38,6 +38,14 @@ export default {
     data: () => ({
         open: false
     }),
+    computed: {
+        isMobile() {
+            return this.ww <= this.$breakpoints.list.l;
+        },
+        ww() {
+            return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
+        }
+    },
     methods: {
         toggleSubmenu() {
             this.open = !this.open;
@@ -71,4 +79,20 @@ export default {
     }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (min-width: $desktop-small) {
+    .our-funds-portfolio {
+        .menu-item-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .menu-submenu {
+            flex: 1 0 auto;
+        }
+        .submenu-link,
+        .submenu-title {
+            white-space: nowrap;
+        }
+    }
+}
+</style>

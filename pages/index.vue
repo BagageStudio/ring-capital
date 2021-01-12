@@ -1,6 +1,39 @@
 <template>
-    <div class="container">
-        <h1>Home</h1>
+    <div>
+        <div class="container">
+            <h1 class="basic-h1" v-html="data.title"></h1>
+
+            <FundCards :content="data.funds" />
+
+            <div class="intro">
+                <h4 v-if="data.introTitle" class="basic-h4">{{ data.introTitle }}</h4>
+                <div v-if="data.introText" v-html="data.introText"></div>
+                <nuxt-link v-if="data.introAnchorLabel" :to="{ path: '/', hash: '#' }">{{
+                    data.introAnchorLabel
+                }}</nuxt-link>
+            </div>
+
+            <LogosList :content="data.companies" />
+        </div>
+
+        <div class="wrapper-section-1">
+            <div class="container">
+                <h2 v-if="data.section1Title" class="basic-h2">{{ data.section1Title }}</h2>
+                <p v-if="data.section1Subtitle" class="basic-subtitle">{{ data.section1Subtitle }}</p>
+                <div v-if="data.section1Content" class="basic-txt" v-html="data.section1Content"></div>
+                <LinkTo v-if="data.section1Link" class="section-btn btn-block secondary" :link="data.section1Link" />
+            </div>
+        </div>
+
+        <div class="container">
+            <h3 v-if="data.section2LeftTitle" class="basic-h3">{{ data.section2LeftTitle }}</h3>
+            <p v-if="data.section2LeftSubtitle" class="basic-subtitle">{{ data.section2LeftSubtitle }}</p>
+            <h3 v-if="data.section2RightTitle" class="basic-h3">{{ data.section2RightTitle }}</h3>
+            <p v-if="data.section2RightSubtitle" class="basic-subtitle">{{ data.section2RightSubtitle }}</p>
+            <LinkTo v-if="data.centeredLink" class="btn-block" :link="data.centeredLink" />
+
+            <News :title="data.newsTitle" :content="data.news" />
+        </div>
     </div>
 </template>
 
@@ -56,4 +89,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.intro {
+    margin-top: 55px;
+    padding: 0 $gutter;
+}
+
+.wrapper-section-1 {
+    padding: 60px $gutter;
+    color: $orbit;
+    background: $white;
+}
+.section-btn {
+    margin-top: 10px;
+}
+</style>

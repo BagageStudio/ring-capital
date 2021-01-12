@@ -45,7 +45,7 @@ export default {
     css: ['~assets/scss/main.scss'],
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-    plugins: ['~/plugins/axios', '~/plugins/breakpoints', '~/plugins/stereorepo'],
+    plugins: ['~/plugins/globals.js', '~/plugins/axios', '~/plugins/breakpoints', '~/plugins/stereorepo'],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
     components: ['~/components'],

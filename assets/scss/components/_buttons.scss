@@ -1,10 +1,12 @@
 /* Buttons */
 
 .btn-block {
+    display: inline-flex;
     position: relative;
     padding: 15px 21px;
     text-align: center;
     border: 1px solid $neptune;
+    text-decoration: none;
     color: $white;
     text-decoration: none;
     font-family: $space;
@@ -17,5 +19,11 @@
         height: 9px;
         border-left: 2px solid $white;
         border-bottom: 2px solid $white;
+    }
+    &.secondary {
+        color: $orbit;
+        &::before {
+            border-color: $orbit;
+        }
     }
 }

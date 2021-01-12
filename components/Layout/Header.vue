@@ -311,4 +311,17 @@ export default {
         padding: 0;
     }
 }
+@media (min-width: $desktop-large) {
+    .menu {
+        width: percentage(9/12);
+        padding: 0;
+    }
+    .menu-items {
+        width: percentage(6/9);
+        padding: 0 10px;
+    }
+    .contact-link {
+        margin-right: 10px;
+    }
+}
 </style>

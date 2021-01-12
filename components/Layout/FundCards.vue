@@ -1,6 +1,6 @@
 <template>
     <ul v-if="content" class="funds">
-        <li v-for="fundCard in content" :key="fundCard.slug">
+        <li v-for="fundCard in content" :key="fundCard.id">
             <nuxt-link
                 :to="fundCard.slug"
                 :aria-label="fundCard.name"

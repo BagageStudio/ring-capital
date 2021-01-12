@@ -104,12 +104,21 @@ export const homeQuery = `
             introText
             introAnchorLabel
             funds {
+                id
                 name
                 description
                 logo
                 color
                 slug
                 ${seo}
+            }
+            companies {
+                id
+                name
+                logo {
+                    ${img}
+                }
+                slug
             }
             section1Title
             section1Subtitle

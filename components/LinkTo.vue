@@ -1,6 +1,6 @@
 <template>
     <nuxt-link v-if="data && data.internalLink" :to="data.url" :aria-label="data.title" @click.native="$emit('click')">
-        <span class="text">
+        <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
         <slot />
@@ -13,7 +13,7 @@
         rel="noopener noreferrer"
         @click="$emit('click')"
     >
-        <span class="text">
+        <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
         <slot />
@@ -28,6 +28,10 @@ export default {
         link: {
             type: Object,
             required: true
+        },
+        hideLabel: {
+            type: Boolean,
+            default: false
         }
     },
     data() {

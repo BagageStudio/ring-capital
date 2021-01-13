@@ -126,6 +126,9 @@ export const homeQuery = `
             section1Link {
                 ...link
             }
+            section1MobileImage {
+                ${img}
+            }
             section1TopLeftImage {
                 ${img}
             }

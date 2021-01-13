@@ -18,10 +18,88 @@
 
         <div class="wrapper-section-1">
             <div class="container">
-                <h2 v-if="data.section1Title" class="basic-h2">{{ data.section1Title }}</h2>
-                <p v-if="data.section1Subtitle" class="basic-subtitle">{{ data.section1Subtitle }}</p>
-                <div v-if="data.section1Content" class="basic-txt" v-html="data.section1Content"></div>
-                <LinkTo v-if="data.section1Link" class="section-btn btn-block secondary" :link="data.section1Link" />
+                <div class="wrapper-section-txt">
+                    <img
+                        v-if="data.section1MobileImage && !isXL"
+                        :src="data.section1MobileImage.url"
+                        :alt="data.section1MobileImage.alt"
+                        class="section-mobile-image"
+                    />
+                    <h2 v-if="data.section1Title" class="basic-h2">{{ data.section1Title }}</h2>
+                    <p v-if="data.section1Subtitle" class="basic-subtitle">{{ data.section1Subtitle }}</p>
+                    <div v-if="data.section1Content" class="basic-txt" v-html="data.section1Content"></div>
+                    <LinkTo
+                        v-if="data.section1Link"
+                        class="section-btn btn-block secondary"
+                        :link="data.section1Link"
+                    />
+                </div>
+                <div class="wrapper-section-links">
+                    <LinkTo
+                        v-if="data.section1TopLeftLink"
+                        class="section-link"
+                        :link="data.section1TopLeftLink"
+                        hide-label
+                    >
+                        <img
+                            v-if="data.section1TopLeftImage && isXL"
+                            :src="data.section1TopLeftImage.url"
+                            :alt="data.section1TopLeftImage.alt"
+                        />
+                        <span class="section-link-txt">
+                            <span class="section-link-label">{{ data.section1TopLeftLink.label }}</span>
+                            <span class="section-link-arrow"></span>
+                        </span>
+                    </LinkTo>
+                    <LinkTo
+                        v-if="data.section1TopRightLink"
+                        class="section-link"
+                        :link="data.section1TopRightLink"
+                        hide-label
+                    >
+                        <img
+                            v-if="data.section1TopRightImage && isXL"
+                            :src="data.section1TopRightImage.url"
+                            :alt="data.section1TopRightImage.alt"
+                        />
+                        <span class="section-link-txt">
+                            <span class="section-link-label">{{ data.section1TopRightLink.label }}</span>
+                            <span class="section-link-arrow"></span>
+                        </span>
+                    </LinkTo>
+                    <LinkTo
+                        v-if="data.section1BottomLeftLink"
+                        class="section-link"
+                        :link="data.section1BottomLeftLink"
+                        hide-label
+                    >
+                        <img
+                            v-if="data.section1BottomLeftImage && isXL"
+                            :src="data.section1BottomLeftImage.url"
+                            :alt="data.section1BottomLeftImage.alt"
+                        />
+                        <span class="section-link-txt">
+                            <span class="section-link-label">{{ data.section1BottomLeftLink.label }}</span>
+                            <span class="section-link-arrow"></span>
+                        </span>
+                    </LinkTo>
+                    <LinkTo
+                        v-if="data.section1BottomRightLink"
+                        class="section-link"
+                        :link="data.section1BottomRightLink"
+                        hide-label
+                    >
+                        <img
+                            v-if="data.section1BottomRightImage && isXL"
+                            :src="data.section1BottomRightImage.url"
+                            :alt="data.section1BottomRightImage.alt"
+                        />
+                        <span class="section-link-txt">
+                            <span class="section-link-label">{{ data.section1BottomRightLink.label }}</span>
+                            <span class="section-link-arrow"></span>
+                        </span>
+                    </LinkTo>
+                </div>
             </div>
         </div>
 
@@ -73,7 +151,12 @@ export default {
             seo: {}
         };
     },
-    computed: {},
+    computed: {
+        isXL() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width > this.$breakpoints.list.xl;
+        }
+    },
     watch: {},
     beforeCreate() {},
     mounted() {},
@@ -96,11 +179,110 @@ export default {
 }
 
 .wrapper-section-1 {
-    padding: 60px $gutter;
+    padding: 60px 0;
     color: $orbit;
     background: $white;
 }
+.wrapper-section-txt {
+    padding: 0 $gutter;
+}
+.section-mobile-image {
+    margin-bottom: 30px;
+}
 .section-btn {
     margin-top: 10px;
+}
+.wrapper-section-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 0 $gutter;
+}
+.section-link {
+    position: relative;
+    text-decoration: none;
+    margin-bottom: 4px;
+    color: $white;
+    background: $orbit;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $neptune;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:hover,
+    &:focus {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+.section-link-txt {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.section-link-label {
+    padding: 25px 0 25px 30px;
+}
+.section-link-arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    width: 74px;
+    padding: 25px 30px;
+    background: $orbit;
+    &::before {
+        content: '';
+        display: block;
+        width: 7px;
+        height: 7px;
+        border-top: 1px solid $white;
+        border-right: 1px solid $white;
+        transform: rotate(45deg);
+    }
+}
+
+@media (min-width: $phone) {
+    .wrapper-section-links {
+        width: percentage(3/4);
+    }
+}
+@media (min-width: $desktop-small) {
+    .wrapper-section-1 {
+        .container {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .wrapper-section-txt {
+        width: percentage(4/8);
+    }
+    .wrapper-section-links {
+        width: percentage(4/8);
+        margin: 0;
+    }
+}
+@media (min-width: $desktop) {
+    .wrapper-section-txt {
+        width: percentage(6/12);
+        padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+    }
+    .wrapper-section-links {
+        width: percentage(6/12);
+    }
+}
+@media (min-width: $desktop-xxl) {
+    .wrapper-section-txt {
+        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+    }
 }
 </style>

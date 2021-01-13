@@ -48,7 +48,7 @@ export default {
     plugins: ['~/plugins/globals.js', '~/plugins/axios', '~/plugins/breakpoints', '~/plugins/stereorepo'],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
-    components: ['~/components'],
+    components: ['~/components', { path: '~/components/Home/', prefix: 'Home' }],
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [

@@ -41,11 +41,13 @@
                         :link="data.section1TopLeftLink"
                         hide-label
                     >
-                        <img
-                            v-if="data.section1TopLeftImage && isXL"
-                            :src="data.section1TopLeftImage.url"
-                            :alt="data.section1TopLeftImage.alt"
-                        />
+                        <span class="section-link-img">
+                            <img
+                                v-if="data.section1TopLeftImage && isXL"
+                                :src="data.section1TopLeftImage.url"
+                                :alt="data.section1TopLeftImage.alt"
+                            />
+                        </span>
                         <span class="section-link-txt">
                             <span class="section-link-label">{{ data.section1TopLeftLink.label }}</span>
                             <span class="section-link-arrow"></span>
@@ -57,11 +59,13 @@
                         :link="data.section1TopRightLink"
                         hide-label
                     >
-                        <img
-                            v-if="data.section1TopRightImage && isXL"
-                            :src="data.section1TopRightImage.url"
-                            :alt="data.section1TopRightImage.alt"
-                        />
+                        <span class="section-link-img">
+                            <img
+                                v-if="data.section1TopRightImage && isXL"
+                                :src="data.section1TopRightImage.url"
+                                :alt="data.section1TopRightImage.alt"
+                            />
+                        </span>
                         <span class="section-link-txt">
                             <span class="section-link-label">{{ data.section1TopRightLink.label }}</span>
                             <span class="section-link-arrow"></span>
@@ -73,11 +77,13 @@
                         :link="data.section1BottomLeftLink"
                         hide-label
                     >
-                        <img
-                            v-if="data.section1BottomLeftImage && isXL"
-                            :src="data.section1BottomLeftImage.url"
-                            :alt="data.section1BottomLeftImage.alt"
-                        />
+                        <span class="section-link-img">
+                            <img
+                                v-if="data.section1BottomLeftImage && isXL"
+                                :src="data.section1BottomLeftImage.url"
+                                :alt="data.section1BottomLeftImage.alt"
+                            />
+                        </span>
                         <span class="section-link-txt">
                             <span class="section-link-label">{{ data.section1BottomLeftLink.label }}</span>
                             <span class="section-link-arrow"></span>
@@ -89,11 +95,13 @@
                         :link="data.section1BottomRightLink"
                         hide-label
                     >
-                        <img
-                            v-if="data.section1BottomRightImage && isXL"
-                            :src="data.section1BottomRightImage.url"
-                            :alt="data.section1BottomRightImage.alt"
-                        />
+                        <span class="section-link-img">
+                            <img
+                                v-if="data.section1BottomRightImage && isXL"
+                                :src="data.section1BottomRightImage.url"
+                                :alt="data.section1BottomRightImage.alt"
+                            />
+                        </span>
                         <span class="section-link-txt">
                             <span class="section-link-label">{{ data.section1BottomRightLink.label }}</span>
                             <span class="section-link-arrow"></span>
@@ -272,12 +280,92 @@ export default {
     }
 }
 @media (min-width: $desktop) {
+    .wrapper-section-1 {
+        padding: 200px 0 0;
+    }
+    .wrapper-section-txt,
+    .wrapper-section-links {
+        flex: 0 0 auto;
+    }
     .wrapper-section-txt {
         width: percentage(6/12);
         padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
     }
     .wrapper-section-links {
         width: percentage(6/12);
+        display: grid;
+        grid-template-columns: #{percentage(1/6)} #{percentage(3/6)} calc(#{percentage(2/6)} + #{$grid-gutter-l});
+        grid-template-rows: 125px 265px 250px 310px 110px;
+        padding: 0;
+    }
+    .section-link {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        &::before {
+            content: none;
+        }
+        &:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 4;
+            background: $dark;
+        }
+        &:nth-child(2) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            margin-right: 0;
+            color: $orbit;
+            background: $saturn;
+        }
+        &:nth-child(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+            color: $orbit;
+            background: $white;
+        }
+        &:nth-child(4) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 3;
+            grid-row-end: 6;
+            margin-right: 0;
+            background: $neptune;
+        }
+        &:hover,
+        &:focus {
+            .section-link-arrow {
+                background-color: $orbit;
+                &::before {
+                    border-color: $white;
+                }
+            }
+        }
+    }
+    .section-link-arrow {
+        background: none;
+        transition: background-color 0.2s ease-out;
+        &::before {
+            border-color: currentColor;
+            transition: border-color 0.2s ease-out;
+        }
+    }
+    .section-link-img {
+        flex: 1 1 auto;
+        min-height: 0;
+        > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .section-link-txt {
+        flex: 0 0 auto;
     }
 }
 @media (min-width: $desktop-xxl) {

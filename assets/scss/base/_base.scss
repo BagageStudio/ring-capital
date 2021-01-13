@@ -293,6 +293,10 @@ a {
 
 .no-transition {
     transition: none !important;
+    &::after,
+    &::before {
+        transition: none !important;
+    }
 }
 
 @media (min-width: $phone) {

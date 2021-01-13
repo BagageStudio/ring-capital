@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-item">
+    <div class="menu-item notransi">
         <span class="label">{{ data.label }}</span>
     </div>
 </template>

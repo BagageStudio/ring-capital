@@ -8,6 +8,8 @@
     border: 1px solid $neptune;
     text-decoration: none;
     color: $white;
+    text-decoration: none;
+    font-family: $space;
     &::before {
         content: '';
         position: absolute;

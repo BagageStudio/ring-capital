@@ -1,28 +1,34 @@
 <template>
-    <header class="header">
+    <header id="header" class="header">
         <div class="header-inner container">
             <div class="wrapper-logo content-pad">
-                <Logo />
+                <nuxt-link to="/">
+                    <Logo class="header-logo" />
+                </nuxt-link>
             </div>
-            <div class="wrapper-burger content-pad">
+            <div v-show="isMobile" class="wrapper-burger content-pad">
                 <button class="burger" aria-label="Menu" :class="{ cross: showMenuMobile }" @click="toggleMenuMobile">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
-            <transition name="menu" :duration="{ enter: 900, leave: 600 }">
-                <div v-show="showMenuMobile" class="menu">
+            <transition
+                name="menu"
+                :duration="{ enter: shouldIAnimateMenu ? 900 : 0, leave: shouldIAnimateMenu ? 600 : 0 }"
+            >
+                <div v-show="showMenuMobile || ww > $breakpoints.list.l" ref="menu" class="menu notransi">
                     <div class="menu-inner">
                         <div class="menu-items">
                             <component
                                 :is="menuItemMapping[menuItem._modelApiKey]"
-                                v-for="menuItem in data.navigation"
+                                v-for="(menuItem, index) in data.navigation"
                                 :key="menuItem.id"
                                 :data="menuItem"
+                                :class="menuCSSClasses[index]"
                             />
                         </div>
-                        <div class="contact-link">
+                        <div class="contact-link notransi">
                             <LinkTo class="btn-block" :link="data.contact" />
                         </div>
                     </div>
@@ -56,11 +62,21 @@ export default {
             submenu_group: 'Submenu',
             mega: 'MegaMenu',
             single_link: 'SingleMenuItem'
-        }
+        },
+        menuCSSClasses: ['our-funds-portfolio', 'about-us', 'news-ressources']
     }),
     computed: {
+        isMobile() {
+            return this.ww <= this.$breakpoints.list.l;
+        },
+        shouldIAnimateMenu() {
+            return this.$store.state.superWindow ? this.isMobile && !this.$store.state.superWindow.resizing : true;
+        },
         data() {
             return layoutData[this.$store.state.i18n.locale].header;
+        },
+        ww() {
+            return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
         }
     },
     watch: {},
@@ -101,6 +117,10 @@ export default {
 .wrapper-logo {
     position: relative;
     z-index: 1;
+}
+
+.header-logo {
+    width: 159px;
 }
 .header-inner {
     display: flex;
@@ -198,66 +218,110 @@ export default {
     }
 }
 
-.menu-enter,
-.menu-leave-to {
-    &::after {
-        transform: scaleY(0);
+@media (max-width: $desktop-small) {
+    .menu-enter,
+    .menu-leave-to {
+        &::after {
+            transform: scaleY(0);
+        }
+        .menu-item,
+        .contact-link {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        .menu-inner::after {
+            opacity: 0;
+        }
     }
-    .menu-item,
-    .contact-link {
-        opacity: 0;
-        transform: translateY(-10px);
+
+    //Open anim
+    .menu-enter-active {
+        &::after {
+            transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        .menu-inner::after {
+            transition: opacity 0.2s ease-in-out 0.4s;
+        }
+        .menu-item {
+            &:nth-child(1) {
+                transition: opacity 0.3s ease-in-out 0.4s, transform 0.3s ease-in-out 0.4s;
+            }
+            &:nth-child(2) {
+                transition: opacity 0.3s ease-in-out 0.45s, transform 0.3s ease-in-out 0.45s;
+            }
+            &:nth-child(3) {
+                transition: opacity 0.3s ease-in-out 0.5s, transform 0.3s ease-in-out 0.5s;
+            }
+        }
+        .contact-link {
+            transition: opacity 0.3s ease-in-out 0.6s, transform 0.3s ease-in-out 0.6s;
+        }
     }
-    .menu-inner::after {
-        opacity: 0;
+
+    //Close anim
+    .menu-leave-active {
+        &::after {
+            transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        .menu-inner::after {
+            transition: opacity 0.2s ease-in-out 0.2s;
+        }
+        .menu-item {
+            &:nth-child(1) {
+                transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
+            }
+            &:nth-child(2) {
+                transition: opacity 0.2s ease-in-out 0.15s, transform 0.2s ease-in-out 0.15s;
+            }
+            &:nth-child(3) {
+                transition: opacity 0.2s ease-in-out 0.1s, transform 0.2s ease-in-out 0.1s;
+            }
+        }
+        .contact-link {
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
     }
 }
 
-//Open anim
-.menu-enter-active {
-    &::after {
-        transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+@media (min-width: $desktop-small) {
+    .menu {
+        position: static;
+        width: 80%;
+        padding-top: 0;
+        z-index: 0;
+        padding: 0 10px;
     }
-    .menu-inner::after {
-        transition: opacity 0.2s ease-in-out 0.4s;
+    .menu-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 0;
+        overflow-y: visible;
+        &::after {
+            content: none;
+        }
     }
-    .menu-item {
-        &:nth-child(1) {
-            transition: opacity 0.3s ease-in-out 0.4s, transform 0.3s ease-in-out 0.4s;
-        }
-        &:nth-child(2) {
-            transition: opacity 0.3s ease-in-out 0.45s, transform 0.3s ease-in-out 0.45s;
-        }
-        &:nth-child(3) {
-            transition: opacity 0.3s ease-in-out 0.5s, transform 0.3s ease-in-out 0.5s;
-        }
+    .menu-items {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 78%;
     }
     .contact-link {
-        transition: opacity 0.3s ease-in-out 0.6s, transform 0.3s ease-in-out 0.6s;
+        padding: 0;
     }
 }
-
-//Close anim
-.menu-leave-active {
-    &::after {
-        transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+@media (min-width: $desktop-large) {
+    .menu {
+        width: percentage(9/12);
+        padding: 0;
     }
-    .menu-inner::after {
-        transition: opacity 0.2s ease-in-out 0.2s;
-    }
-    .menu-item {
-        &:nth-child(1) {
-            transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
-        }
-        &:nth-child(2) {
-            transition: opacity 0.2s ease-in-out 0.15s, transform 0.2s ease-in-out 0.15s;
-        }
-        &:nth-child(3) {
-            transition: opacity 0.2s ease-in-out 0.1s, transform 0.2s ease-in-out 0.1s;
-        }
+    .menu-items {
+        width: percentage(6/9);
+        padding: 0 10px;
     }
     .contact-link {
-        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        margin-right: 10px;
     }
 }
 </style>

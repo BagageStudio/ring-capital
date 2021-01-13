@@ -1,33 +1,46 @@
 <template>
-    <div class="menu-item">
-        <button class="label" :class="{ active: open }" @click="toggleSubmenu">{{ data.megaMenu.title }}</button>
+    <div class="menu-item notransi" @mouseover="showPopover" @mouseleave="hidePopover">
+        <button class="label" :class="{ active: open }" @click="toggleMobileSubmenu">
+            {{ data.megaMenu.title }}
+        </button>
         <div ref="submenuWrapper" class="menu-item-content-wrapper">
             <div ref="submenu" class="menu-item-content">
-                <div class="submenu-links">
-                    <LinkTo v-for="link in data.megaMenu.links" :key="link.label" class="submenu-link" :link="link" />
+                <div class="menu-ressource">
+                    <div class="submenu-links">
+                        <LinkTo
+                            v-for="link in data.megaMenu.links"
+                            :key="link.label"
+                            class="submenu-link"
+                            :link="link"
+                        />
+                    </div>
+                    <span class="submenu-title">{{ data.megaMenu.socialTitle }}</span>
+                    <ul v-if="data.megaMenu.social" class="socials">
+                        <li v-for="link in data.megaMenu.social.socialLinks" :key="link.title" class="social">
+                            <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
+                                ><Icon :name="link.iconName"
+                            /></a>
+                        </li>
+                    </ul>
                 </div>
-                <span class="submenu-title">{{ data.megaMenu.socialTitle }}</span>
-                <ul v-if="data.megaMenu.social" class="socials">
-                    <li v-for="link in data.megaMenu.social.socialLinks" :key="link.title" class="social">
-                        <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
-                            ><Icon :name="link.iconName"
-                        /></a>
-                    </li>
-                </ul>
                 <div class="menu-news">
                     <span v-if="data.megaMenu.newsTitle" class="submenu-title">{{ data.megaMenu.newsTitle }}</span>
                     <a :href="data.megaMenu.news.linkUrl" class="news-link">
-                        <img :src="data.megaMenu.news.cover.url" :alt="data.megaMenu.news.cover.alt" />
-                        <div class="news-info">
-                            <span class="news-date">{{
-                                new Intl.DateTimeFormat('en-US', {
-                                    month: 'short',
-                                    day: '2-digit'
-                                }).format(new Date(data.megaMenu.news.date))
-                            }}</span>
-                            <span>{{ data.megaMenu.news.readingTime }} min read</span>
+                        <div class="news-img">
+                            <img :src="data.megaMenu.news.cover.url" :alt="data.megaMenu.news.cover.alt" />
                         </div>
-                        <p class="news-title">{{ data.megaMenu.news.title }}</p>
+                        <div class="news-text">
+                            <div class="news-info">
+                                <span class="news-date">{{
+                                    new Intl.DateTimeFormat('en-US', {
+                                        month: 'short',
+                                        day: '2-digit'
+                                    }).format(new Date(data.megaMenu.news.date))
+                                }}</span>
+                                <span>{{ data.megaMenu.news.readingTime }} min read</span>
+                            </div>
+                            <p class="news-title">{{ data.megaMenu.news.title }}</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -49,7 +62,8 @@ export default {
         open: false
     }),
     methods: {
-        toggleSubmenu() {
+        toggleMobileSubmenu() {
+            if (!this.isMobile) return;
             this.open = !this.open;
             this.toggleAccordion();
         },
@@ -74,7 +88,46 @@ export default {
                 opacity: Number(this.open),
                 ease: 'power4.inOut',
                 onComplete: () => {
-                    if (this.open) gsap.to(submenuWrapper, { duration: 0, maxHeight: 'none' });
+                    if (this.open) {
+                        gsap.to(submenuWrapper, { duration: 0, maxHeight: 'none' });
+                    } else {
+                        gsap.set(submenuWrapper, { clearProps: 'maxHeight,opacity' });
+                    }
+                }
+            });
+        },
+        showPopover() {
+            this.open = true;
+            const submenuWrapper = this.$refs.submenuWrapper;
+            if (!submenuWrapper) return;
+
+            gsap.set(submenuWrapper, {
+                visibility: 'visible',
+                pointerEvents: 'all'
+            });
+
+            gsap.to(submenuWrapper, {
+                duration: 0.4,
+                opacity: 1,
+                y: 0,
+                ease: 'power4.inOut'
+            });
+        },
+        hidePopover() {
+            this.open = false;
+            const submenuWrapper = this.$refs.submenuWrapper;
+            if (!submenuWrapper) return;
+
+            gsap.to(submenuWrapper, {
+                duration: 0.4,
+                opacity: 0,
+                y: -10,
+                ease: 'power4.inOut',
+                onComplete: () => {
+                    gsap.set(submenuWrapper, {
+                        visibility: 'hidden',
+                        pointerEvents: 'none'
+                    });
                 }
             });
         }
@@ -132,6 +185,8 @@ export default {
 }
 
 .news-link {
+    display: block;
+    max-width: 380px;
     text-decoration: none;
 }
 
@@ -156,5 +211,66 @@ export default {
 }
 .news-title {
     margin: 15px 0 0;
+}
+
+@media (min-width: $desktop-small) {
+    .menu-item-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .menu-ressource {
+        position: relative;
+        padding: 30px 35px 30px 50px;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: $saturn;
+        }
+    }
+    .socials {
+        margin-bottom: 0;
+        flex-wrap: nowrap;
+        > li {
+            margin-right: 15px;
+        }
+    }
+    .menu-news {
+        padding: 20px 30px 25px 30px;
+        background-color: $white;
+        color: $orbit;
+        margin-bottom: 0;
+        .submenu-title {
+            color: $neptune;
+            padding-bottom: 10px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+    }
+    .news-link {
+        display: flex;
+        align-items: center;
+        max-width: none;
+    }
+    .news-img,
+    .news-text {
+        flex: 1 0 auto;
+    }
+    .news-img {
+        width: 240px;
+        margin-right: 15px;
+    }
+    .news-text {
+        width: 150px;
+    }
+    .news-info {
+        margin-top: 0;
+    }
+    .news-title {
+        margin-top: 10px;
+    }
 }
 </style>

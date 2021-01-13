@@ -1,6 +1,8 @@
 <template>
-    <div class="menu-item notransi">
-        <button class="label" :class="{ active: open }" @click="toggleSubmenu">{{ data.megaMenu.title }}</button>
+    <div class="menu-item notransi" @mouseover="showPopover" @mouseleave="hidePopover">
+        <button class="label" :class="{ active: open }" @click="toggleMobileSubmenu">
+            {{ data.megaMenu.title }}
+        </button>
         <div ref="submenuWrapper" class="menu-item-content-wrapper">
             <div ref="submenu" class="menu-item-content">
                 <div class="menu-ressource">
@@ -60,7 +62,8 @@ export default {
         open: false
     }),
     methods: {
-        toggleSubmenu() {
+        toggleMobileSubmenu() {
+            if (!this.isMobile) return;
             this.open = !this.open;
             this.toggleAccordion();
         },
@@ -85,7 +88,46 @@ export default {
                 opacity: Number(this.open),
                 ease: 'power4.inOut',
                 onComplete: () => {
-                    if (this.open) gsap.to(submenuWrapper, { duration: 0, maxHeight: 'none' });
+                    if (this.open) {
+                        gsap.to(submenuWrapper, { duration: 0, maxHeight: 'none' });
+                    } else {
+                        gsap.set(submenuWrapper, { clearProps: 'maxHeight,opacity' });
+                    }
+                }
+            });
+        },
+        showPopover() {
+            this.open = true;
+            const submenuWrapper = this.$refs.submenuWrapper;
+            if (!submenuWrapper) return;
+
+            gsap.set(submenuWrapper, {
+                visibility: 'visible',
+                pointerEvents: 'all'
+            });
+
+            gsap.to(submenuWrapper, {
+                duration: 0.4,
+                opacity: 1,
+                y: 0,
+                ease: 'power4.inOut'
+            });
+        },
+        hidePopover() {
+            this.open = false;
+            const submenuWrapper = this.$refs.submenuWrapper;
+            if (!submenuWrapper) return;
+
+            gsap.to(submenuWrapper, {
+                duration: 0.4,
+                opacity: 0,
+                y: -10,
+                ease: 'power4.inOut',
+                onComplete: () => {
+                    gsap.set(submenuWrapper, {
+                        visibility: 'hidden',
+                        pointerEvents: 'none'
+                    });
                 }
             });
         }

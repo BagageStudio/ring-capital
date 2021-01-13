@@ -160,6 +160,9 @@ export const homeQuery = `
             centeredLink {
                 ...link
             }
+            ellipse {
+                ${img}
+            }
             newsTitle
             news {
                 title

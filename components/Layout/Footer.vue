@@ -242,7 +242,7 @@ export default {
     .footer {
         &::before,
         &::after {
-            width: calc(50vw - #{$desktop-xxl/2} + #{$grid-gutter-l});
+            width: calc(50vw - #{$desktop-large/2} + #{$grid-gutter-l});
         }
     }
     .wrapper-menu-legal,
@@ -278,6 +278,14 @@ export default {
     }
     .newsletter-form {
         margin-top: 50px;
+    }
+}
+@media (min-width: $desktop-xxl) {
+    .footer {
+        &::before,
+        &::after {
+            width: calc(50vw - #{$desktop-xxl/2} + #{$grid-gutter-l});
+        }
     }
 }
 </style>

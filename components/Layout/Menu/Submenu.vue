@@ -84,6 +84,7 @@ export default {
             });
         },
         showPopover() {
+            if (this.isMobile) return;
             this.open = true;
             const submenuWrapper = this.$refs.submenuWrapper;
             if (!submenuWrapper) return;
@@ -102,6 +103,7 @@ export default {
             });
         },
         hidePopover() {
+            if (this.isMobile) return;
             this.open = false;
             const submenuWrapper = this.$refs.submenuWrapper;
             if (!submenuWrapper) return;

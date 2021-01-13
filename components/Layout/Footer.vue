@@ -83,7 +83,6 @@ export default {
 <style lang="scss" scoped>
 .footer {
     position: relative;
-    margin-top: 100px;
     background: $black;
     &::after {
         content: '';

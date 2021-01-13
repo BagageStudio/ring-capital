@@ -128,8 +128,10 @@
             </div>
         </div>
 
-        <div class="container">
-            <News :title="data.newsTitle" :content="data.news" />
+        <div class="wrapper-news-list">
+            <div class="container">
+                <News :title="data.newsTitle" :content="data.news" />
+            </div>
         </div>
     </div>
 </template>
@@ -279,6 +281,12 @@ export default {
 }
 .section-2-btn {
     margin-top: 20px;
+}
+
+.wrapper-news-list {
+    padding: 60px 0 50px;
+    color: $orbit;
+    background: $white;
 }
 
 @media (min-width: $phone) {

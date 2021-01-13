@@ -22,6 +22,10 @@
                 </a>
             </li>
         </ul>
+        <div class="wrapper-buttons">
+            <button class="btn-prev" type="button"></button>
+            <button class="btn-next" type="button"></button>
+        </div>
     </div>
 </template>
 <script>
@@ -65,6 +69,37 @@ export default {
 }
 .news-title {
     margin: 15px 0 0;
+}
+.wrapper-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 40px;
+        border: 1px solid $neptune;
+        &::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-top: 1px solid $orbit;
+            border-right: 1px solid $orbit;
+        }
+        &.btn-prev {
+            margin-right: 10px;
+            &::before {
+                transform: rotate(225deg);
+            }
+        }
+        &.btn-next {
+            &::before {
+                transform: rotate(45deg);
+            }
+        }
+    }
 }
 
 @media (min-width: $desktop-small) {

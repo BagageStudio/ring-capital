@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="wrapper-section-txt">
                     <img
-                        v-if="data.section1MobileImage && !isXL"
+                        v-if="data.section1MobileImage && !isL"
                         :src="data.section1MobileImage.url"
                         :alt="data.section1MobileImage.alt"
                         class="section-mobile-image"
@@ -43,7 +43,7 @@
                     >
                         <span class="section-link-img">
                             <img
-                                v-if="data.section1TopLeftImage && isXL"
+                                v-if="data.section1TopLeftImage && isL"
                                 :src="data.section1TopLeftImage.url"
                                 :alt="data.section1TopLeftImage.alt"
                             />
@@ -61,7 +61,7 @@
                     >
                         <span class="section-link-img">
                             <img
-                                v-if="data.section1TopRightImage && isXL"
+                                v-if="data.section1TopRightImage && isL"
                                 :src="data.section1TopRightImage.url"
                                 :alt="data.section1TopRightImage.alt"
                             />
@@ -79,7 +79,7 @@
                     >
                         <span class="section-link-img">
                             <img
-                                v-if="data.section1BottomLeftImage && isXL"
+                                v-if="data.section1BottomLeftImage && isL"
                                 :src="data.section1BottomLeftImage.url"
                                 :alt="data.section1BottomLeftImage.alt"
                             />
@@ -97,7 +97,7 @@
                     >
                         <span class="section-link-img">
                             <img
-                                v-if="data.section1BottomRightImage && isXL"
+                                v-if="data.section1BottomRightImage && isL"
                                 :src="data.section1BottomRightImage.url"
                                 :alt="data.section1BottomRightImage.alt"
                             />
@@ -160,9 +160,9 @@ export default {
         };
     },
     computed: {
-        isXL() {
+        isL() {
             if (!this.$store.state.superWindow) return true;
-            return this.$store.state.superWindow.width > this.$breakpoints.list.xl;
+            return this.$store.state.superWindow.width > this.$breakpoints.list.l;
         }
     },
     watch: {},
@@ -271,31 +271,20 @@ export default {
             align-items: center;
         }
     }
-    .wrapper-section-txt {
-        width: percentage(4/8);
-    }
-    .wrapper-section-links {
-        width: percentage(4/8);
-        margin: 0;
-    }
-}
-@media (min-width: $desktop) {
-    .wrapper-section-1 {
-        padding: 200px 0 0;
-    }
+
     .wrapper-section-txt,
     .wrapper-section-links {
         flex: 0 0 auto;
     }
     .wrapper-section-txt {
-        width: percentage(6/12);
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+        width: percentage(3/8);
     }
     .wrapper-section-links {
-        width: percentage(6/12);
+        width: percentage(5/8);
         display: grid;
-        grid-template-columns: #{percentage(1/6)} #{percentage(3/6)} calc(#{percentage(2/6)} + #{$grid-gutter-l});
+        grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} calc(#{percentage(2/5)} + #{$grid-gutter-s});
         grid-template-rows: 125px 265px 250px 310px 110px;
+        margin: 0;
         padding: 0;
     }
     .section-link {
@@ -366,6 +355,19 @@ export default {
     }
     .section-link-txt {
         flex: 0 0 auto;
+    }
+}
+@media (min-width: $desktop) {
+    .wrapper-section-1 {
+        padding: 200px 0 0;
+    }
+    .wrapper-section-txt {
+        width: percentage(6/12);
+        padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+    }
+    .wrapper-section-links {
+        width: percentage(6/12);
+        grid-template-columns: #{percentage(1/6)} #{percentage(3/6)} calc(#{percentage(2/6)} + #{$grid-gutter-l});
     }
 }
 @media (min-width: $desktop-xxl) {

@@ -114,11 +114,7 @@
             </div>
         </div>
 
-        <div class="wrapper-news-list">
-            <div class="container">
-                <News :title="data.newsTitle" :content="data.news" />
-            </div>
-        </div>
+        <News :title="data.newsTitle" :content="data.news" />
     </div>
 </template>
 
@@ -238,6 +234,8 @@ export default {
     justify-content: space-between;
 }
 .section-link-label {
+    font-family: $space;
+    font-size: 1.6rem;
     padding: 25px 0 25px 30px;
 }
 .section-link-arrow {
@@ -267,12 +265,6 @@ export default {
 }
 .section-2-btn {
     margin-top: 20px;
-}
-
-.wrapper-news-list {
-    padding: 60px 0 50px;
-    color: $orbit;
-    background: $white;
 }
 
 @media (min-width: $phone) {
@@ -328,7 +320,7 @@ export default {
         width: percentage(5/8);
         display: grid;
         grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} calc(#{percentage(2/5)} + #{$grid-gutter-s});
-        grid-template-rows: 125px 265px 250px 310px 110px;
+        grid-template-rows: 94px 199px 188px 233px 83px;
         margin: 0;
         padding: 0;
     }
@@ -422,7 +414,7 @@ export default {
 }
 @media (min-width: $desktop) {
     .wrapper-section-1 {
-        padding: 200px 0 0;
+        padding: 80px 0;
     }
     .wrapper-section-txt {
         width: percentage(6/12);
@@ -434,15 +426,30 @@ export default {
     }
 }
 @media (min-width: $desktop-xxl) {
+    .wrapper-section-1 {
+        padding: 200px 0 0;
+    }
+    .wrapper-section-txt,
+    .wrapper-section-links {
+        margin-bottom: -220px;
+    }
     .wrapper-section-txt {
         padding: 0 calc(#{percentage(1/12)} + #{$gutter});
     }
+    .wrapper-section-links {
+        grid-template-rows: 125px 265px 250px 310px 110px;
+    }
 
+    .wrapper-section-2 {
+        padding-top: 275px;
+        padding-bottom: 260px;
+    }
     .wrapper-col-section {
         &.left {
             padding-left: calc(#{percentage(1/12)} + #{$gutter});
         }
         &.right {
+            margin-top: 90px;
             padding-right: calc(#{percentage(1/12)} + #{$gutter});
         }
     }

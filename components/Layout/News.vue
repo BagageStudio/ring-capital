@@ -1,30 +1,32 @@
 <template>
-    <div>
-        <h4 v-if="title" class="basic-h4">{{ title }}</h4>
-        <ul v-if="content" class="logos-list">
-            <li v-for="news in content" :key="news.id">
-                <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">
-                    <div class="news-img">
-                        <img :src="news.cover.url" :alt="news.cover.alt" />
-                    </div>
-                    <div class="news-text">
-                        <div class="news-info">
-                            <span class="news-date">{{
-                                new Intl.DateTimeFormat('en-US', {
-                                    month: 'short',
-                                    day: '2-digit'
-                                }).format(new Date(news.date))
-                            }}</span>
-                            <span>{{ news.readingTime }} min read</span>
-                        </div>
-                        <p class="news-title">{{ news.title }}</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-        <div class="wrapper-buttons">
-            <button class="btn-prev" type="button"></button>
-            <button class="btn-next" type="button"></button>
+    <div class="wrapper-news-list">
+        <div class="container">
+            <h4 v-if="title" class="basic-h4 news-list-title">{{ title }}</h4>
+            <ul v-if="content" class="news-list">
+                <li v-for="news in content" :key="news.id">
+                    <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">
+                        <span class="news-img">
+                            <img :src="news.cover.url" :alt="news.cover.alt" />
+                        </span>
+                        <span class="news-text">
+                            <span class="news-info">
+                                <span class="news-date">{{
+                                    new Intl.DateTimeFormat('en-US', {
+                                        month: 'short',
+                                        day: '2-digit'
+                                    }).format(new Date(news.date))
+                                }}</span>
+                                <span>{{ news.readingTime }} min read</span>
+                            </span>
+                            <p class="news-title">{{ news.title }}</p>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <div class="wrapper-buttons">
+                <button class="btn-prev" type="button"></button>
+                <button class="btn-next" type="button"></button>
+            </div>
         </div>
     </div>
 </template>
@@ -45,8 +47,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper-news-list {
+    padding: 60px 0 50px;
+    color: $orbit;
+    background: $white;
+    overflow: hidden;
+}
+.news-list-title {
+    padding: 0 $gutter;
+}
+.news-list {
+    display: flex;
+    justify-content: flex-start;
+    > li {
+        flex: 0 0 auto;
+        width: percentage(3/4);
+        padding: 0 $gutter;
+    }
+}
 .news-link {
+    display: block;
     text-decoration: none;
+}
+.news-img {
+    position: relative;
+    display: block;
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 57%;
+    }
+    > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.news-text {
+    display: block;
 }
 .news-info {
     display: flex;
@@ -74,6 +115,7 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 30px;
+    padding: 0 $gutter;
     button {
         display: flex;
         align-items: center;
@@ -102,6 +144,13 @@ export default {
     }
 }
 
+@media (min-width: $tablet) {
+    .news-list {
+        > li {
+            width: percentage(5/8);
+        }
+    }
+}
 @media (min-width: $desktop-small) {
     .news-link {
         display: flex;
@@ -110,20 +159,23 @@ export default {
     }
     .news-img,
     .news-text {
-        flex: 1 0 auto;
+        width: 50%;
     }
     .news-img {
-        width: 240px;
-        margin-right: 15px;
-    }
-    .news-text {
-        width: 150px;
+        margin-right: 20px;
     }
     .news-info {
         margin-top: 0;
     }
-    .news-title {
-        margin-top: 10px;
+}
+@media (min-width: $desktop) {
+    .news-list {
+        > li {
+            width: percentage(5/12);
+        }
+    }
+    .news-text {
+        padding-right: 20px;
     }
 }
 </style>

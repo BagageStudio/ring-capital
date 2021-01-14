@@ -138,6 +138,7 @@ export default {
     }
 }
 .fund-name {
+    font-family: $space;
     font-size: 2rem;
 }
 .fund-desc {
@@ -152,12 +153,15 @@ export default {
         padding: 0;
         > li {
             width: percentage(1/3);
+            margin: 0;
             padding: 0 $gutter;
         }
     }
     .fund-card {
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
+        height: 100%;
         padding: 10px 15px;
     }
     .wrapper-fund-logo {

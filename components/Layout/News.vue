@@ -59,6 +59,7 @@ export default {
 .news-list {
     display: flex;
     justify-content: flex-start;
+    margin: 40px 0 0;
     > li {
         flex: 0 0 auto;
         width: percentage(3/4);
@@ -152,6 +153,11 @@ export default {
     }
 }
 @media (min-width: $desktop-small) {
+    .wrapper-news-list {
+        .container {
+            position: relative;
+        }
+    }
     .news-link {
         display: flex;
         align-items: center;
@@ -166,6 +172,13 @@ export default {
     }
     .news-info {
         margin-top: 0;
+    }
+    .wrapper-buttons {
+        position: absolute;
+        top: 0;
+        right: #{$gutter + $grid-gutter-l};
+        margin: 0;
+        padding: 0;
     }
 }
 @media (min-width: $desktop) {

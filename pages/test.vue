@@ -164,9 +164,8 @@ export default {
                 this.tweens[id] = star;
             });
         },
-        slowMo(id, index) {
-            // const newArray = [...this.planets];
-
+        slowMo(id) {
+            const index = this.planets.findIndex(p => p.id === id);
             const p = this.planets.splice(index, 1)[0];
             this.planets.push(p);
 

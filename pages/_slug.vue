@@ -14,10 +14,21 @@ import handleSeo from '~/assets/js/seo';
 import { routeByApiModels } from '~/app/crawler/routes';
 
 import Page from '~/components/Templates/Page';
+import Contact from '~/components/Templates/Contact';
 
 export default {
     components: {
-        Page
+        Page,
+        Contact
+    },
+    layout(context) {
+        const layoutLang = getIso.call(context);
+        const layoutSlug = getSlug.call(context);
+        const layoutTemplate = slugToModelApiKey[layoutLang][layoutSlug];
+
+        if (layoutTemplate === 'contact') {
+            return 'minimal';
+        }
     },
     async asyncData(context) {
         const { $dato, error, route } = context;

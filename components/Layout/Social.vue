@@ -25,11 +25,16 @@ export default {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin: 30px 0 0;
+    margin: 0;
     padding: 0;
     > li {
         flex: 0 0 auto;
-        margin: 10px 40px 0 0;
+        margin: 7px 40px 0 0;
+    }
+    &.white {
+        .social-link {
+            fill: $white;
+        }
     }
 }
 .social-link {

@@ -63,6 +63,9 @@
 import layoutData from '~/cms/data/layout-data.json';
 
 export default {
+    props: {
+        minimal: { type: Boolean, default: false }
+    },
     data() {
         return {
             emailInput: ''
@@ -91,6 +94,9 @@ export default {
         left: 0;
         right: 0;
         border-top: 1px solid $neptune;
+    }
+    .social-footer {
+        margin: 30px 0 0;
     }
 }
 .wrapper-newsletter-social {

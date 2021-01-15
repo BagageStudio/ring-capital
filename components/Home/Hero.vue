@@ -1,19 +1,20 @@
 <template>
     <div class="container">
-        <home-schema class="schema" :links="data.funds" />
+        <home-schema :links="data.funds" :selected="selected" />
         <h1 class="basic-h1 content-pad" v-html="data.title"></h1>
+        <div class="hero-content">
+            <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
 
-        <FundCards :content="data.funds" />
-
-        <div class="intro content-pad">
-            <h4 v-if="data.introTitle" class="basic-h4">{{ data.introTitle }}</h4>
-            <div v-if="data.introText" class="intro-text" v-html="data.introText"></div>
-            <nuxt-link
-                v-if="data.introAnchorLabel"
-                class="enter-orbit"
-                :to="{ path: '/', hash: '#collective-intelligence' }"
-                >{{ data.introAnchorLabel }}</nuxt-link
-            >
+            <div class="intro content-pad">
+                <h4 v-if="data.introTitle" class="basic-h4">{{ data.introTitle }}</h4>
+                <div v-if="data.introText" class="intro-text" v-html="data.introText"></div>
+                <nuxt-link
+                    v-if="data.introAnchorLabel"
+                    class="enter-orbit"
+                    :to="{ path: '/', hash: '#collective-intelligence' }"
+                    >{{ data.introAnchorLabel }}</nuxt-link
+                >
+            </div>
         </div>
 
         <LogosList :content="data.companies" />
@@ -27,21 +28,53 @@ export default {
             type: Object,
             required: true
         }
+    },
+    data: () => ({
+        selected: ''
+    }),
+    methods: {
+        setSelected(selected) {
+            this.selected = selected;
+        }
     }
 };
 </script>
 <style lang="scss" scoped>
 .container {
     position: relative;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 .basic-h1 {
-    background-color: $dark;
+    position: relative;
+    margin-bottom: 40px;
+    font-weight: 300;
+    line-height: 50px;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: -50px;
+        height: 50px;
+        background-color: $dark;
+    }
+    /deep/ p {
+        display: inline;
+        background-color: $dark;
+        box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
+        padding: 7px 0px;
+    }
+    /deep/ strong {
+        color: $saturn;
+        font-weight: 300;
+    }
 }
 .schema {
     position: absolute;
-    top: -35px;
-    left: 0;
+    width: 100%;
+    min-width: 450px;
+    top: -4vw;
+    right: 0;
     z-index: -1;
 }
 .intro {
@@ -66,6 +99,53 @@ export default {
         width: 85px;
         background-color: $saturn;
         margin-right: 20px;
+    }
+}
+@media (min-width: 450px) {
+    .container {
+        padding-top: 100px;
+    }
+}
+@media (min-width: $tablet) {
+    .basic-h1 {
+        width: percentage(6/8);
+        &::after {
+            content: none;
+        }
+    }
+    .container {
+        padding-top: 130px;
+    }
+}
+@media (min-width: $desktop-small) {
+    .basic-h1 {
+        font-size: 6.8rem;
+        line-height: 70px;
+        width: percentage(8/12);
+    }
+}
+
+@media (min-width: $desktop) {
+    .hero-content {
+        display: flex;
+        justify-content: space-between;
+    }
+    .schema {
+        padding: 0 50px;
+        top: -3vw;
+    }
+    .basic-h1 {
+        margin-bottom: 90px;
+    }
+    .intro {
+        margin-top: 0;
+        width: percentage(4/12);
+    }
+}
+
+@media (min-width: $desktop-xxl) {
+    .schema {
+        top: -45px;
     }
 }
 </style>

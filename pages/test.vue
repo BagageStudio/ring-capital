@@ -189,7 +189,7 @@ export default {
                 delay: 0.2
             });
         },
-        resetSpeed(id, index) {
+        resetSpeed(id) {
             const planet = this.tweens[id];
 
             gsap.killTweensOf([planet, `#border_${id}`, `#circle_${id}`]);

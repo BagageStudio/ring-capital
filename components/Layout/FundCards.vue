@@ -6,6 +6,9 @@
                 :aria-label="fundCard.name"
                 class="fund-card"
                 :class="'theme-' + fundCard.color"
+                :style="{ '--fundColor': fundCard.color.hex }"
+                @mouseover.native="$emit('slowMo', fundCard.id)"
+                @mouseleave.native="$emit('resetSpeed', fundCard.id)"
             >
                 <span class="wrapper-fund-logo">
                     <Icon class="fund-icon" :name="fundCard.logo" />
@@ -58,6 +61,7 @@ export default {
         right: 0;
         border-top-width: 1px;
         border-top-style: solid;
+        border-color: var(--fundColor);
     }
     &::after {
         content: '';
@@ -72,49 +76,15 @@ export default {
         opacity: 0;
         z-index: -1;
     }
-    &.theme-saturn {
-        &::before {
-            border-color: $saturn;
-        }
-        &:hover,
-        &:focus {
-            .wrapper-fund-logo {
-                .icon {
-                    fill: $saturn;
-                }
-            }
-        }
-    }
-    &.theme-titan {
-        &::before {
-            border-color: $titan;
-        }
-        &:hover,
-        &:focus {
-            .wrapper-fund-logo {
-                .icon {
-                    fill: $titan;
-                }
-            }
-        }
-    }
-    &.theme-white {
-        &::before {
-            border-color: $white;
-        }
-        &:hover,
-        &:focus {
-            .wrapper-fund-logo {
-                .icon {
-                    fill: $white;
-                }
-            }
-        }
-    }
     &:hover,
     &:focus {
         &::after {
             opacity: 1;
+        }
+        .wrapper-fund-logo {
+            .icon {
+                fill: var(--fundColor);
+            }
         }
     }
 }
@@ -176,13 +146,24 @@ export default {
 }
 @media (min-width: $tablet) {
     .fund-card {
-        padding: 30px 20px;
+        padding: 30px 18px;
     }
     .wrapper-fund-logo {
         margin: 0 0 23px;
     }
     .fund-desc {
         font-size: 1.4rem;
+    }
+}
+@media (min-width: $desktop) {
+    .funds {
+        width: percentage(7/12);
+        align-self: flex-start;
+    }
+}
+@media (min-width: $desktop-large) {
+    .funds {
+        width: percentage(6/12);
     }
 }
 </style>

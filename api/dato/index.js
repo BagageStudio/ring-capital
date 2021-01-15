@@ -88,9 +88,14 @@ export const layoutQuery = `
 `;
 
 export const errorQuery = `
+    ${linkFragment}
     query Error($lang: SiteLocale) {
         error(locale: $lang) {
             title
+            text
+            link {
+                ...link
+            }
         }
     }`;
 

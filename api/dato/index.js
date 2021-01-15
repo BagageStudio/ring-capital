@@ -108,7 +108,7 @@ export const homeQuery = `
                 name
                 description
                 logo
-                color{
+                color {
                     hex
                 }
                 slug
@@ -190,11 +190,37 @@ export const pageQuery = `
         }
     }`;
 
+export const contactQuery = `
+    query Contact($lang: SiteLocale) {
+        contact(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            mailTitle
+            mail
+            socialTitle
+            social {
+                socialLinks {
+                title
+                iconName
+                link
+                }
+            }
+            locationTitle
+            location
+            locationLink
+            image {
+                ${img}
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
     const mapping = {
-        page: pageQuery
+        page: pageQuery,
+        contact: contactQuery
     };
     return mapping[_modelApiKey];
 };

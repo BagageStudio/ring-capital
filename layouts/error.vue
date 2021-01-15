@@ -19,8 +19,7 @@ export default {
     props: {
         error: {
             type: Object,
-            required: false,
-            default: () => ({})
+            required: true
         }
     },
     async fetch() {

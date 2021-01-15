@@ -1,7 +1,7 @@
 <template>
     <footer class="footer-minimal">
         <div class="container">
-            <div class="content-footer-minimal">
+            <div class="content-footer-minimal" :class="{ 'small-padding': smallPadding }">
                 <span v-if="data.smallText" class="footer-small-txt">{{ data.smallText }}</span>
                 <div v-if="data.smallLinks" class="wrapper-small-links">
                     <LinkTo
@@ -21,7 +21,8 @@ import layoutData from '~/cms/data/layout-data.json';
 
 export default {
     props: {
-        minimal: { type: Boolean, default: false }
+        minimal: { type: Boolean, default: false },
+        smallPadding: { type: Boolean, default: false }
     },
     data() {
         return {
@@ -79,6 +80,15 @@ export default {
 @media (min-width: $desktop) {
     .content-footer-minimal {
         padding: 0 0 0 #{percentage(5/12)};
+        &.small-padding {
+            padding: 0 #{percentage(3/12)};
+            .footer-small-txt {
+                width: percentage(4/6);
+            }
+            .wrapper-small-links {
+                width: percentage(2/6);
+            }
+        }
     }
     .footer-small-txt {
         width: percentage(4/7);
@@ -88,6 +98,16 @@ export default {
     }
 }
 @media (min-width: $desktop-large) {
+    content-footer-minimal {
+        &.small-padding {
+            .footer-small-txt {
+                width: percentage(3/6);
+            }
+            .wrapper-small-links {
+                width: percentage(3/6);
+            }
+        }
+    }
     .footer-small-txt {
         width: percentage(3/7);
     }

@@ -142,4 +142,10 @@ export default {
         width: percentage(4/12);
     }
 }
+
+@media (min-width: $desktop-xxl) {
+    .schema {
+        top: -45px;
+    }
+}
 </style>

@@ -24,6 +24,7 @@ export default {
     flex-wrap: wrap;
     width: calc(100% + 3px);
     padding: 0 $gutter;
+    margin: 55px 0;
     > li {
         width: calc(#{percentage(1/2)} - 3px);
         margin: 0 3px 3px 0;

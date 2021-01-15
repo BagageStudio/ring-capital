@@ -2,7 +2,7 @@
     <div>
         <home-hero :data="data" />
 
-        <div class="wrapper-section-1">
+        <div id="collective-intelligence" class="wrapper-section-1">
             <div class="container">
                 <div class="wrapper-section-txt">
                     <img

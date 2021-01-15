@@ -108,7 +108,9 @@ export const homeQuery = `
                 name
                 description
                 logo
-                color
+                color{
+                    hex
+                }
                 slug
                 ${seo}
             }

@@ -224,15 +224,8 @@ export default {
     align-items: center;
     justify-content: center;
     button {
-        // color: $titan;
         margin: 0 50px;
         font-size: 3rem;
-        //     &:nth-child(2) {
-        //         color: $saturn;
-        //     }
-        //     &:nth-child(3) {
-        //         color: white;
-        //     }
     }
 }
 </style>

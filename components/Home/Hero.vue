@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <home-schema :links="data.funds" :selected="selected" />
-        <h1 class="basic-h1 content-pad" v-html="data.title"></h1>
+        <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
         <div class="hero-content">
             <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
 
@@ -12,7 +12,7 @@
                     v-if="data.introAnchorLabel"
                     class="enter-orbit"
                     :to="{ path: '/', hash: '#collective-intelligence' }"
-                    >{{ data.introAnchorLabel }}</nuxt-link
+                    ><span class="deco"></span>{{ data.introAnchorLabel }}</nuxt-link
                 >
             </div>
         </div>
@@ -46,6 +46,9 @@ export default {
 }
 .basic-h1 {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 40px;
     font-weight: 300;
     line-height: 50px;
@@ -59,10 +62,31 @@ export default {
         background-color: $dark;
     }
     /deep/ p {
+        position: relative;
         display: inline;
-        background-color: $dark;
+        margin: 0;
+        &:nth-child(1) {
+            z-index: 2;
+        }
+        &:nth-child(2) {
+            z-index: 1;
+        }
+    }
+    /deep/ span {
+        position: relative;
+        padding: 2px 0 6px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
-        padding: 7px 0px;
+        background-color: $dark;
+        &::before {
+            // content: '';
+            position: absolute;
+            top: -7px;
+            left: -20px;
+            right: -10px;
+            bottom: -10px;
+            background-color: $dark;
+            z-index: -1;
+        }
     }
     /deep/ strong {
         color: $saturn;
@@ -93,12 +117,46 @@ export default {
     font-family: $space;
     color: $saturn;
     text-decoration: none;
-    &::before {
-        content: '';
-        height: 1px;
+    transition: opacity 0.3s ease-in-out;
+
+    .deco {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 15px;
         width: 85px;
-        background-color: $saturn;
         margin-right: 20px;
+        overflow: hidden;
+        &::before {
+            content: '';
+            height: 1px;
+            width: 85px;
+            background-color: currentColor;
+            transform-origin: 100% 50%;
+            transition: 0.2s ease-in;
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            left: -15px;
+            height: 15px;
+            width: 15px;
+            background-color: $dark;
+            border-radius: 50%;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        opacity: 0.8;
+        .deco::before {
+            transform: scaleX(0.8);
+            transition: transform 0.4s ease-in-out;
+        }
+        .deco::after {
+            transform: translateX(100px);
+            transition: transform 0.6s ease-out 0.1s;
+        }
     }
 }
 @media (min-width: 450px) {
@@ -136,6 +194,12 @@ export default {
     }
     .basic-h1 {
         margin-bottom: 90px;
+        /deep/ span {
+            box-shadow: 10px 0 0 $dark, -10px 0 0 $dark;
+            &::before {
+                left: -10px;
+            }
+        }
     }
     .intro {
         margin-top: 0;

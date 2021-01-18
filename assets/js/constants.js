@@ -11,7 +11,7 @@ export const BREAKPOINTS = {
     l: 960,
     xl: 1100,
     xxl: 1280,
-    threexl: 1400
+    threexl: 1440
 };
 
 // 💫 Animations

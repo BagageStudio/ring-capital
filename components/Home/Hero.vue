@@ -12,7 +12,7 @@
                     v-if="data.introAnchorLabel"
                     class="enter-orbit"
                     :to="{ path: '/', hash: '#collective-intelligence' }"
-                    >{{ data.introAnchorLabel }}</nuxt-link
+                    ><span class="deco"></span>{{ data.introAnchorLabel }}</nuxt-link
                 >
             </div>
         </div>
@@ -117,12 +117,46 @@ export default {
     font-family: $space;
     color: $saturn;
     text-decoration: none;
-    &::before {
-        content: '';
-        height: 1px;
+    transition: opacity 0.3s ease-in-out;
+
+    .deco {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 15px;
         width: 85px;
-        background-color: $saturn;
         margin-right: 20px;
+        overflow: hidden;
+        &::before {
+            content: '';
+            height: 1px;
+            width: 85px;
+            background-color: currentColor;
+            transform-origin: 100% 50%;
+            transition: 0.2s ease-in;
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            left: -15px;
+            height: 15px;
+            width: 15px;
+            background-color: $dark;
+            border-radius: 50%;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        opacity: 0.8;
+        .deco::before {
+            transform: scaleX(0.8);
+            transition: transform 0.4s ease-in-out;
+        }
+        .deco::after {
+            transform: translateX(100px);
+            transition: transform 0.6s ease-out 0.1s;
+        }
     }
 }
 @media (min-width: 450px) {

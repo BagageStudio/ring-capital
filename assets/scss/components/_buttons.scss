@@ -10,9 +10,23 @@
     color: $white;
     text-decoration: none;
     font-family: $space;
-    &::before {
+    z-index: 1;
+    &::before,
+    &::after {
         content: '';
         position: absolute;
+        z-index: -1;
+        transition: opacity 0.2s ease-out;
+    }
+    &::before {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $neptune;
+        opacity: 0;
+    }
+    &::after {
         bottom: -2px;
         left: -2px;
         width: 7px;
@@ -22,8 +36,20 @@
     }
     &.secondary {
         color: $orbit;
-        &::before {
+        &::after {
             border-color: $orbit;
+        }
+    }
+    &:hover,
+    &:focus {
+        &::before {
+            opacity: 1;
+        }
+        &::after {
+            opacity: 0;
+        }
+        &.secondary {
+            color: $white;
         }
     }
 }

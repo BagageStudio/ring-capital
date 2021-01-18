@@ -5,10 +5,10 @@
                 <rect width="1280" height="680" fill="#657DA2" />
                 <path
                     id="model"
-                    opacity="0.4"
-                    d="M1207.38 161.842C1236.84 255.57 1006.68 411.4 693.3 509.898C379.924 608.397 102 612.264 72.5404 518.536C43.0805 424.809 273.24 268.979 586.616 170.48C899.992 71.9817 1177.92 68.1143 1207.38 161.842Z"
-                    stroke="transparent"
-                    stroke-width="1.5"
+                    ref="model"
+                    d="M72.5403 518.536C43.0804 424.808 273.24 268.978 586.62 170.48C899.996 71.9814 1177.92 68.1145 1207.38 161.842C1236.84 255.569 1006.68 411.399 693.304 509.898C379.928 608.397 102 612.264 72.5403 518.536Z"
+                    stroke="#19232F"
+                    stroke-width="3"
                 />
                 <path
                     v-for="planet in planets"
@@ -25,11 +25,11 @@
                     fill="#19232F"
                 />
                 <g v-for="planet in planets" :id="`circle_wrapper_${planet.id}`" :key="`circle_wrapper_${planet.id}`">
-                    <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="11" :fill="planet.color.hex" />
+                    <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="7.5" :fill="planet.color.hex" />
                 </g>
 
                 <g v-for="planet in planets" :id="`circle_proxy_${planet.id}`" :key="`circle_proxy_${planet.id}`">
-                    <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="11" fill="transparent" />
+                    <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="7.5" fill="transparent" />
                 </g>
 
                 <g v-for="planet in planets" :id="`border_wrapper_${planet.id}`" :key="`border_wrapper_${planet.id}`">
@@ -78,7 +78,9 @@ export default {
     },
     data: () => ({
         tweens: [],
-        planets: []
+        planets: [],
+        loaded: false,
+        pathLength: 0
     }),
     watch: {
         selected(value, oldValue) {
@@ -92,10 +94,61 @@ export default {
     mounted() {
         this.planets = [...this.links];
         this.$nextTick(() => {
+            this.setAppearInitialStyles();
             this.initPlanets();
+            this.appearAnimation();
         });
     },
     methods: {
+        appearAnimation() {
+            gsap.to(this.$refs.model, {
+                duration: 1.5,
+                strokeDashoffset: -this.pathLength,
+                ease: 'power3.inOut'
+            });
+            this.planets.reverse().forEach((planet, index) => {
+                const id = planet.id;
+
+                gsap.to(`#circle_${id}`, {
+                    duration: 1.2,
+                    opacity: 1,
+                    scale: 1,
+                    delay: 1.3,
+                    transformOrigin: '50% 50%'
+                });
+                gsap.to(this.tweens[id], {
+                    duration: 1.2,
+                    timeScale: 1,
+                    delay: 1.3
+                });
+                gsap.to(`#trail_${id}`, {
+                    duration: 1.2,
+                    opacity: 1,
+                    delay: 2.3,
+                    ease: 'power3.out'
+                });
+            });
+        },
+        setAppearInitialStyles() {
+            // hide the path
+            const path = this.$refs.model;
+            this.pathLength = path.getTotalLength();
+            path.style.strokeDasharray = this.pathLength;
+            path.style.strokeDashoffset = 0;
+
+            // hide the planets and trails
+            this.planets.forEach((planet, index) => {
+                const id = planet.id;
+                gsap.set(`#circle_${id}`, {
+                    opacity: 1,
+                    scale: 0,
+                    transformOrigin: '50% 50%'
+                });
+                gsap.set(`#trail_${id}`, {
+                    opacity: 0
+                });
+            });
+        },
         initPlanets() {
             this.planets.forEach((planet, index) => {
                 const star = [];
@@ -104,53 +157,59 @@ export default {
                     scale: 0.25,
                     opacity: 0
                 });
-                star[0] = gsap.to(`#circle_proxy_${id}`, {
-                    motionPath: {
-                        path: '#model',
-                        align: '#model',
-                        alignOrigin: [0.5, 0.5],
-                        autoRotate: true,
-                        start: 0 + 0.3 * index,
-                        end: 1 + 0.3 * index
-                    },
-                    duration: 8,
-                    repeat: -1,
-                    ease: 'none',
-                    onUpdate() {
-                        const x = gsap.getProperty(this.targets()[0], 'x');
-                        const y = gsap.getProperty(this.targets()[0], 'y');
-                        gsap.set(`#circle_wrapper_${id}`, {
-                            x,
-                            y
-                        });
-                    }
-                });
-                star[1] = gsap.to(`#trail_${id}`, {
-                    motionPath: {
-                        path: '#model',
-                        align: '#model',
-                        alignOrigin: [1, 0.5],
-                        autoRotate: true,
-                        start: 0 + 0.3 * index,
-                        end: 1 + 0.3 * index
-                    },
-                    duration: 8,
-                    repeat: -1,
-                    ease: 'none'
-                });
-                star[2] = gsap.to(`#border_wrapper_${id}`, {
-                    motionPath: {
-                        path: '#model',
-                        align: '#model',
-                        alignOrigin: [0.5, 0.5],
-                        autoRotate: true,
-                        start: 0 + 0.3 * index,
-                        end: 1 + 0.3 * index
-                    },
-                    duration: 8,
-                    repeat: -1,
-                    ease: 'none'
-                });
+                star[0] = gsap
+                    .to(`#circle_proxy_${id}`, {
+                        motionPath: {
+                            path: '#model',
+                            align: '#model',
+                            alignOrigin: [0.5, 0.5],
+                            autoRotate: true,
+                            start: 0 + 0.3 * index,
+                            end: 1 + 0.3 * index
+                        },
+                        duration: 8,
+                        repeat: -1,
+                        ease: 'none',
+                        onUpdate() {
+                            const x = gsap.getProperty(this.targets()[0], 'x');
+                            const y = gsap.getProperty(this.targets()[0], 'y');
+                            gsap.set(`#circle_wrapper_${id}`, {
+                                x,
+                                y
+                            });
+                        }
+                    })
+                    .timeScale(0.35);
+                star[1] = gsap
+                    .to(`#trail_${id}`, {
+                        motionPath: {
+                            path: '#model',
+                            align: '#model',
+                            alignOrigin: [1, 0.5],
+                            autoRotate: true,
+                            start: 0 + 0.3 * index,
+                            end: 1 + 0.3 * index
+                        },
+                        duration: 8,
+                        repeat: -1,
+                        ease: 'none'
+                    })
+                    .timeScale(0.35);
+                star[2] = gsap
+                    .to(`#border_wrapper_${id}`, {
+                        motionPath: {
+                            path: '#model',
+                            align: '#model',
+                            alignOrigin: [0.5, 0.5],
+                            autoRotate: true,
+                            start: 0 + 0.3 * index,
+                            end: 1 + 0.3 * index
+                        },
+                        duration: 8,
+                        repeat: -1,
+                        ease: 'none'
+                    })
+                    .timeScale(0.35);
                 this.tweens[id] = star;
             });
         },
@@ -168,7 +227,7 @@ export default {
             });
             gsap.to(`#circle_${id}`, {
                 duration: 0.8,
-                scale: 1.8,
+                scale: 2.6,
                 transformOrigin: '50% 50%'
             });
             gsap.to(`#border_${id}`, {
@@ -202,3 +261,4 @@ export default {
     }
 };
 </script>
+<style lang="scss" scoped></style>

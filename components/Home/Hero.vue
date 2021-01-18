@@ -50,8 +50,6 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 40px;
-    font-weight: 300;
-    line-height: 50px;
     &::after {
         content: '';
         position: absolute;
@@ -103,9 +101,6 @@ export default {
 }
 .intro {
     margin-top: 56px;
-    .basic-h4 {
-        margin-bottom: 35px;
-    }
 }
 .intro-text {
     color: $neptune;
@@ -177,8 +172,6 @@ export default {
 }
 @media (min-width: $desktop-small) {
     .basic-h1 {
-        font-size: 6.8rem;
-        line-height: 70px;
         width: percentage(8/12);
     }
 }

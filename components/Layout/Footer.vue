@@ -157,6 +157,7 @@ export default {
     margin-top: 10px;
     padding: 0 $gutter;
     font-size: 1.3rem;
+    line-height: 22px;
     color: $neptune;
 }
 .wrapper-small-links {

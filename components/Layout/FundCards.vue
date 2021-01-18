@@ -115,6 +115,7 @@ export default {
 }
 .fund-desc {
     font-size: 1.6rem;
+    line-height: 24px;
     color: $neptune;
 }
 @media (min-width: $phone) {

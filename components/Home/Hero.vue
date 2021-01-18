@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <home-schema :links="data.funds" :selected="selected" />
-        <h1 class="basic-h1 content-pad" v-html="data.title"></h1>
+        <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
         <div class="hero-content">
             <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
 
@@ -46,6 +46,9 @@ export default {
 }
 .basic-h1 {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 40px;
     font-weight: 300;
     line-height: 50px;
@@ -59,10 +62,31 @@ export default {
         background-color: $dark;
     }
     /deep/ p {
+        position: relative;
         display: inline;
-        background-color: $dark;
+        margin: 0;
+        &:nth-child(1) {
+            z-index: 2;
+        }
+        &:nth-child(2) {
+            z-index: 1;
+        }
+    }
+    /deep/ span {
+        position: relative;
+        padding: 2px 0 6px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
-        padding: 7px 0px;
+        background-color: $dark;
+        &::before {
+            // content: '';
+            position: absolute;
+            top: -7px;
+            left: -20px;
+            right: -10px;
+            bottom: -10px;
+            background-color: $dark;
+            z-index: -1;
+        }
     }
     /deep/ strong {
         color: $saturn;
@@ -136,6 +160,12 @@ export default {
     }
     .basic-h1 {
         margin-bottom: 90px;
+        /deep/ span {
+            box-shadow: 10px 0 0 $dark, -10px 0 0 $dark;
+            &::before {
+                left: -10px;
+            }
+        }
     }
     .intro {
         margin-top: 0;

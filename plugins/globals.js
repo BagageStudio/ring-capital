@@ -11,3 +11,17 @@ Vue.filter('formatDate', (date, i18n) => {
         day: 'numeric'
     });
 });
+
+Vue.filter('noPAround', function (value) {
+    if (value.substring(0, 3) === '<p>') {
+        let text = value.substring(3);
+        text = text.slice(0, -4);
+        return text;
+    } else {
+        return value;
+    }
+});
+
+Vue.filter('nestedTitle', function (value) {
+    return value.split('<p>').join('<p><span>').split('</p>').join('</span></p>');
+});

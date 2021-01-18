@@ -51,6 +51,10 @@ export default {
 }
 .e404-title {
     font-size: 6rem;
+    line-height: 50px;
+    font-weight: 300;
+    margin: 0 0 30px;
+    color: $saturn;
 }
 .e404-btn {
     margin-top: 30px;
@@ -58,6 +62,7 @@ export default {
 @media (min-width: $tablet) {
     .e404-title {
         font-size: 11rem;
+        line-height: 70px;
     }
     .e404-btn {
         margin-top: 70px;
@@ -65,7 +70,7 @@ export default {
 }
 @media (min-width: $desktop) {
     .e404-content {
-        padding: 50px calc(#{percentage(3/12)} + #{$gutter});
+        padding: 70px calc(#{percentage(3/12)} + #{$gutter});
     }
 }
 </style>

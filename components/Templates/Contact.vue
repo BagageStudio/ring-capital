@@ -97,12 +97,14 @@ export default {
 }
 .contact-link-single {
     font-size: 2.6rem;
+    line-height: 30px;
     text-decoration: none;
     color: $white;
 }
 .contact-social {
     position: relative;
     top: 3px;
+    margin-top: -10px;
 }
 
 @media (min-width: $tablet) {
@@ -158,7 +160,7 @@ export default {
     }
     .wrapper-image {
         position: absolute;
-        top: 0;
+        top: 75px;
         right: 0;
         bottom: 0;
         left: 0;

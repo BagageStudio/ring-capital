@@ -37,7 +37,7 @@
                                         day: '2-digit'
                                     }).format(new Date(data.megaMenu.news.date))
                                 }}</span>
-                                <span>{{ data.megaMenu.news.readingTime }} min read</span>
+                                <span>{{ data.megaMenu.news.readingTime }} {{ $t('news.readingTime') }}</span>
                             </div>
                             <p class="news-title">{{ data.megaMenu.news.title }}</p>
                         </div>

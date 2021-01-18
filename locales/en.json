@@ -2,5 +2,8 @@
     "newsletter": {
         "label": "Enter your email address",
         "sendButton": "Submit"
+    },
+    "news": {
+        "readingTime": "min read"
     }
 }

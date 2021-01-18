@@ -24,4 +24,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper-page {
+    padding: 10px 0 60px;
+}
+
+@media (min-width: $desktop-small) {
+    .wrapper-page {
+        padding: 70px 0 110px;
+    }
+}
+</style>

@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    font: 1.6em / 1.5 sans-serif;
+    font: 1.6em / 1.63 $helvetica-neue;
     color: $white;
     font-kerning: normal;
     font-weight: 400;
@@ -34,49 +34,95 @@ body {
     color: var(--secondary);
     h1 {
         color: var(--primary);
-        box-shadow: inset 0 -0.175em var(--bg), inset 0 -0.2em $neptune;
+        // box-shadow: inset 0 -0.175em var(--bg), inset 0 -0.2em $neptune;
     }
 }
 
 .wysiwyg h1,
 .h1 {
-    display: inline;
     font-size: 4.4rem;
+    line-height: 50px;
     font-weight: 300;
-    margin: 0.67em 0;
+    margin: 0 0 40px;
 }
 
 .wysiwyg h2,
 .h2 {
     font-size: 3.4rem;
+    line-height: 30px;
     font-weight: 300;
-    margin: 0.83em 0;
+    margin: 100px 0 40px;
 }
 
 .wysiwyg h3,
 .h3 {
     font-size: 2.2rem;
-    margin: 1em 0;
+    line-height: 28px;
+    font-weight: 400;
+    margin: 40px 0 20px;
 }
 
 .wysiwyg h4,
 .h4 {
     font-size: 1.8rem;
-    margin: 1.33em 0;
+    line-height: 26px;
+    font-weight: 400;
+    margin: 20px 0 10px;
 }
 
 .wysiwyg h5,
-.h5 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 1.67em 0;
-}
-
+.h5,
 .wysiwyg h6,
 .h6 {
     font-size: 1.5rem;
+    line-height: 21px;
     font-weight: 500;
-    margin: 1.67em 0;
+    margin: 20px 0 10px;
+}
+
+.wysiwyg ul {
+    margin: 40px 0;
+    padding: 0;
+    li {
+        position: relative;
+        margin: 5px 0;
+        padding: 0 0 0 15px;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0.65em;
+            left: 0;
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: $titan;
+        }
+    }
+}
+
+.wysiwyg ol {
+    margin: 40px 0;
+    padding: 0;
+    li {
+        position: relative;
+        margin: 5px 0;
+        padding: 0 0 0 25px;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: $titan;
+        }
+    }
+}
+
+.wysiwyg img {
+    margin: 40px auto;
+}
+
+.wysiwyg a {
+    font-weight: 500;
 }
 
 .basic-h1 {
@@ -108,48 +154,17 @@ body {
     color: $neptune;
 }
 
-.wysiwyg ul {
-    padding: 0;
-    li {
-        position: relative;
-        margin: 5px 0;
-        padding: 0 0 0 15px;
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0.65em;
-            left: 0;
-            display: block;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: $titan;
-        }
-    }
-}
-
-.wysiwyg ol {
-    padding: 0;
-    li {
-        position: relative;
-        margin: 5px 0;
-        padding: 0 0 0 25px;
-        &::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: $titan;
-        }
-    }
-}
-
 p {
     margin: 10px 0;
+    line-height: 26px;
 }
 
 blockquote {
     margin: 40px 0;
     padding: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 2.2rem;
+    line-height: 28px;
     font-style: italic;
     border-left: 1px solid currentColor;
     color: $neptune;

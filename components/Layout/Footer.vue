@@ -106,6 +106,9 @@ export default {
     margin-top: 35px;
     .btn-block {
         width: 100%;
+        /deep/ span {
+            width: 100%;
+        }
     }
 }
 .content-newsletter-form {

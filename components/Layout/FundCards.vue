@@ -75,6 +75,7 @@ export default {
             0px 6.6501px 5.32008px rgba(19, 27, 37, 0.173674), 0px 2.76726px 2.21381px rgba(19, 27, 37, 0.120893);
         opacity: 0;
         z-index: -1;
+        transition: opacity 0.3s ease-out;
     }
     &:hover,
     &:focus {
@@ -100,6 +101,7 @@ export default {
         max-width: 100%;
         max-height: 100%;
         fill: $neptune;
+        transition: fill 0.3s ease-out;
     }
 }
 .wrapper-fund-txt {

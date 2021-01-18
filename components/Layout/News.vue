@@ -2,7 +2,7 @@
     <div class="wrapper-news-list">
         <div class="container">
             <h4 v-if="title" class="basic-h4 news-list-title">{{ title }}</h4>
-            <ul v-if="content" class="news-list">
+            <ul v-if="content" ref="news" class="news-list">
                 <li v-for="news in content" :key="news.id">
                     <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">
                         <span class="news-img">
@@ -16,7 +16,7 @@
                                         day: '2-digit'
                                     }).format(new Date(news.date))
                                 }}</span>
-                                <span>{{ news.readingTime }} min read</span>
+                                <span>{{ news.readingTime }} {{ $t('news.readingTime') }}</span>
                             </span>
                             <p class="news-title">{{ news.title }}</p>
                         </span>
@@ -24,13 +24,15 @@
                 </li>
             </ul>
             <div class="wrapper-buttons">
-                <button class="btn-prev" type="button"></button>
-                <button class="btn-next" type="button"></button>
+                <button class="btn-prev" type="button" @click="prevNews"></button>
+                <button class="btn-next" type="button" @click="nextNews"></button>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { gsap } from 'gsap';
+
 export default {
     props: {
         title: {
@@ -41,6 +43,68 @@ export default {
         content: {
             type: Array,
             required: true
+        }
+    },
+    data: () => ({
+        currentNews: 1,
+        nbNews: 0,
+        nbNewsFullyVisible: 1,
+        widthPercentage: 75,
+        sign: '-'
+    }),
+    computed: {
+        ww() {
+            if (!this.$store.state.superWindow) return false;
+            return this.$store.state.superWindow.width;
+        }
+    },
+    watch: {
+        ww() {
+            this.initNews();
+        }
+    },
+    mounted() {
+        this.nbNews = this.content.length;
+        this.$nextTick(() => {
+            this.initNews();
+        });
+    },
+    methods: {
+        initNews() {
+            this.currentNews = 1;
+            gsap.set(this.$refs.news, { x: 0 });
+            if (this.ww >= this.$breakpoints.list.xl) {
+                this.widthPercentage = 41.6667;
+                this.nbNewsFullyVisible = 2;
+            } else if (this.ww >= this.$breakpoints.list.m) {
+                this.widthPercentage = 62.5;
+                this.nbNewsFullyVisible = 1;
+            } else {
+                this.widthPercentage = 75;
+                this.nbNewsFullyVisible = 1;
+            }
+        },
+        moveNews(toNext) {
+            if (!gsap.isTweening(this.$refs.news)) {
+                if (toNext && this.currentNews + this.nbNewsFullyVisible <= this.nbNews) {
+                    this.currentNews++;
+                    this.sign = '-';
+                    this.animNews();
+                } else if (!toNext && this.currentNews - 1 >= 1) {
+                    this.currentNews--;
+                    this.sign = '+';
+                    this.animNews();
+                }
+            }
+        },
+        animNews() {
+            gsap.to(this.$refs.news, { x: this.sign + '=' + this.widthPercentage + '%', duration: 0.3 });
+        },
+        nextNews() {
+            this.moveNews(true);
+        },
+        prevNews() {
+            this.moveNews(false);
         }
     }
 };
@@ -124,12 +188,20 @@ export default {
         width: 50px;
         height: 40px;
         border: 1px solid $neptune;
+        transition: background-color 0.2s ease-out;
         &::before {
             content: '';
             width: 7px;
             height: 7px;
             border-top: 1px solid $orbit;
             border-right: 1px solid $orbit;
+            transition: border-color 0.2s ease-out;
+        }
+        &:hover {
+            background: $neptune;
+            &::before {
+                border-color: $white;
+            }
         }
         &.btn-prev {
             margin-right: 10px;

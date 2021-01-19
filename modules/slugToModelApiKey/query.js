@@ -14,5 +14,12 @@ export default `
                 value
             }
         }
+        team{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

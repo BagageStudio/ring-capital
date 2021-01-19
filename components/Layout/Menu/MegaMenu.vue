@@ -194,10 +194,11 @@ export default {
 
 .news-info {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-top: 20px;
     color: $neptune;
     font-size: 1.4rem;
+    line-height: 17px;
 }
 .news-date {
     display: flex;
@@ -206,13 +207,15 @@ export default {
         content: '';
         width: 3px;
         height: 3px;
-        margin: 0 10px;
+        margin: -6px 10px 0;
         border-radius: 50%;
         background-color: currentColor;
     }
 }
 .news-title {
     margin: 15px 0 0;
+    font-size: 1.4rem;
+    line-height: 20px;
 }
 
 @media (min-width: $desktop-small) {

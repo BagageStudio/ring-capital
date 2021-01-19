@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <home-schema :links="data.funds" :selected="selected" />
+        <HomeSchemaHero :links="data.funds" :selected="selected" />
         <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
         <div class="hero-content">
             <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />

@@ -229,11 +229,15 @@ export const teamQuery = `
             title
             subtitle
             members {
+                id
                 name
                 description
                 tags
-                linkedin
-                photo {
+                hasLinkedin
+                link {
+                    ...link
+                }
+                image {
                     ${img}
                 }
             }

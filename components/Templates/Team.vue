@@ -1,6 +1,9 @@
 <template>
     <div v-if="data">
-        <h1>Team</h1>
+        <div class="container">
+            <h1 class="basic-h1" v-html="data.title"></h1>
+            <DetailList :content="data.members" />
+        </div>
     </div>
 </template>
 

@@ -97,20 +97,34 @@ export default {
     .detail-list {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 0;
+        padding: 0 0 75px;
         > li {
+            position: relative;
             width: percentage(2/4);
             padding: 0 $gutter;
             &:last-child {
                 margin-bottom: 70px;
+            }
+            &:nth-child(2n + 2) {
+                top: 75px;
             }
         }
     }
 }
 @media (min-width: $desktop-small) {
     .detail-list {
+        padding-bottom: 165px;
         > li {
             width: percentage(1/3);
+            &:nth-child(2n + 2) {
+                top: 0;
+            }
+            &:nth-child(3n + 2) {
+                top: 165px;
+            }
+            &:nth-child(3n + 3) {
+                top: 75px;
+            }
         }
     }
 }

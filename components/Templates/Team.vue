@@ -1,7 +1,9 @@
 <template>
     <div v-if="data">
         <div class="container">
-            <h1 class="basic-h1" v-html="data.title"></h1>
+            <div class="hero-team">
+                <h1 class="basic-h1" v-html="data.title"></h1>
+            </div>
             <DetailList :content="data.members" />
         </div>
     </div>
@@ -16,4 +18,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.hero-team {
+    text-align: center;
+    padding: 20px $gutter 40px;
+}
+
+@media (min-width: $desktop-small) {
+    .hero-team {
+        padding: 110px $gutter 50px;
+    }
+}
+</style>

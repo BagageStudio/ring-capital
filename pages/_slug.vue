@@ -15,11 +15,13 @@ import { routeByApiModels } from '~/app/crawler/routes';
 
 import Page from '~/components/Templates/Page';
 import Contact from '~/components/Templates/Contact';
+import Team from '~/components/Templates/Team';
 
 export default {
     components: {
         Page,
-        Contact
+        Contact,
+        Team
     },
     layout(context) {
         const layoutLang = getIso.call(context);

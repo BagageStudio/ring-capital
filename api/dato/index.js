@@ -220,12 +220,54 @@ export const contactQuery = `
         }
     }`;
 
+export const teamQuery = `
+    ${linkFragment}
+    query Team($lang: SiteLocale) {
+        team(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            members {
+                name
+                description
+                tags
+                linkedin
+                photo {
+                    ${img}
+                }
+            }
+            investorsTitle
+            investorsSubtitle
+            investorsLink {
+                ...link
+            }
+            mosaic {
+                title
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
     const mapping = {
         page: pageQuery,
-        contact: contactQuery
+        contact: contactQuery,
+        team: teamQuery
     };
     return mapping[_modelApiKey];
 };

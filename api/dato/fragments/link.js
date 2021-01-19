@@ -1,5 +1,6 @@
 export default `
     fragment link on LinkRecord {
+        id
         label
         title
         externalLink

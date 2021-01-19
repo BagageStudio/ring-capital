@@ -1,5 +1,5 @@
 <template>
-    <div class="schema">
+    <div ref="schema" class="schema">
         <svg viewBox="0 0 1442 1074" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="collectiveintelligence">
                 <rect width="1440" height="1073" transform="translate(1 1)" fill="white" />
@@ -175,7 +175,8 @@ export default {
         }
     },
     data: () => ({
-        tweens: []
+        tweens: {},
+        watcher: null
     }),
     watch: {
         selected(value, oldValue) {
@@ -188,12 +189,36 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
+            this.watcher = this.$stereorepo.superScroll
+                .watch({
+                    element: this.$refs.schema
+                })
+                .on('enter-view', () => {
+                    this.play();
+                })
+                .on('leave-view', () => {
+                    this.pause();
+                });
             // this.setAppearInitialStyles();
             this.initPlanets();
             // this.appearAnimation();
         });
     },
     methods: {
+        pause() {
+            Object.values(this.tweens).forEach(tws => {
+                tws.forEach(t => {
+                    t.pause();
+                });
+            });
+        },
+        play() {
+            Object.values(this.tweens).forEach(tws => {
+                tws.forEach(t => {
+                    t.play();
+                });
+            });
+        },
         initPlanets() {
             this.links.forEach((planet, index) => {
                 const star = [];
@@ -213,7 +238,8 @@ export default {
                     },
                     duration: 5,
                     repeat: -1,
-                    ease: 'none'
+                    ease: 'none',
+                    paused: true
                 });
 
                 star[1] = gsap.to(`#trail_${id}`, {
@@ -227,7 +253,8 @@ export default {
                     },
                     duration: 5,
                     repeat: -1,
-                    ease: 'none'
+                    ease: 'none',
+                    paused: true
                 });
 
                 star[2] = gsap.to(`#border_wrapper_${id}`, {
@@ -241,7 +268,8 @@ export default {
                     },
                     duration: 5,
                     repeat: -1,
-                    ease: 'none'
+                    ease: 'none',
+                    paused: true
                 });
 
                 this.tweens[id] = star;

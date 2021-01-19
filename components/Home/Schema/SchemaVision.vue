@@ -1,5 +1,5 @@
 <template>
-    <div class="schema">
+    <div ref="schema" class="schema">
         <svg width="2140" height="1028" viewBox="0 0 2140 1028" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="sustaperf">
                 <rect width="2046" height="941" transform="translate(41 40)" fill="#657DA2" />
@@ -66,20 +66,42 @@ export default {
                 id: 2,
                 color: '#F4F928'
             }
-        ]
+        ],
+        tweens: [],
+        watcher: null
     }),
     mounted() {
         this.$nextTick(() => {
             // this.setAppearInitialStyles();
+            this.watcher = this.$stereorepo.superScroll
+                .watch({
+                    element: this.$refs.schema
+                })
+                .on('enter-view', () => {
+                    this.play();
+                })
+                .on('leave-view', () => {
+                    this.pause();
+                });
             this.initPlanets();
             // this.appearAnimation();
         });
     },
     methods: {
+        pause() {
+            this.tweens.forEach(t => {
+                t.pause();
+            });
+        },
+        play() {
+            this.tweens.forEach(t => {
+                t.play();
+            });
+        },
         initPlanets() {
             this.planets.forEach((planet, index) => {
                 const id = planet.id;
-                gsap.to(`#circle_wrapper_${id}`, {
+                const circleTween = gsap.to(`#circle_wrapper_${id}`, {
                     motionPath: {
                         path: `#model_${id}`,
                         align: `#model_${id}`,
@@ -90,9 +112,10 @@ export default {
                     },
                     duration: 5,
                     repeat: -1,
-                    ease: 'none'
+                    ease: 'none',
+                    paused: true
                 });
-                gsap.to(`#trail_${id}`, {
+                const trailTween = gsap.to(`#trail_${id}`, {
                     motionPath: {
                         path: `#model_${id}`,
                         align: `#model_${id}`,
@@ -103,8 +126,10 @@ export default {
                     },
                     duration: 5,
                     repeat: -1,
-                    ease: 'none'
+                    ease: 'none',
+                    paused: true
                 });
+                this.tweens.push(circleTween, trailTween);
             });
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="schema">
+    <div ref="schema" class="schema">
         <svg viewBox="0 0 1280 680" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="test">
                 <rect width="1280" height="680" fill="#657DA2" />
@@ -77,7 +77,8 @@ export default {
         }
     },
     data: () => ({
-        tweens: [],
+        watcher: null,
+        tweens: {},
         planets: [],
         loaded: false,
         pathLength: 0
@@ -94,12 +95,36 @@ export default {
     mounted() {
         this.planets = [...this.links];
         this.$nextTick(() => {
+            this.watcher = this.$stereorepo.superScroll
+                .watch({
+                    element: this.$refs.schema
+                })
+                .on('enter-view', () => {
+                    this.play();
+                })
+                .on('leave-view', () => {
+                    this.pause();
+                });
             this.setAppearInitialStyles();
             this.initPlanets();
             this.appearAnimation();
         });
     },
     methods: {
+        pause() {
+            Object.values(this.tweens).forEach(tws => {
+                tws.forEach(t => {
+                    t.pause();
+                });
+            });
+        },
+        play() {
+            Object.values(this.tweens).forEach(tws => {
+                tws.forEach(t => {
+                    t.play();
+                });
+            });
+        },
         appearAnimation() {
             gsap.to(this.$refs.model, {
                 duration: 1.5,

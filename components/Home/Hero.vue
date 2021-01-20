@@ -154,6 +154,10 @@ export default {
         }
     }
 }
+
+.logos-list {
+    margin: 55px 0;
+}
 @media (min-width: 450px) {
     .container {
         padding-top: 100px;

@@ -6,6 +6,7 @@
             </div>
             <DetailList :content="data.members" />
         </div>
+        <InvestorsMod :content="data" />
     </div>
 </template>
 

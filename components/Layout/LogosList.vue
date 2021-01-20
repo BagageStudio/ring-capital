@@ -1,5 +1,5 @@
 <template>
-    <ul v-if="content" class="logos-list">
+    <ul v-if="content" class="logos-list" :class="size">
         <li v-for="logo in content" :key="logo.id">
             <a
                 v-if="logo.link"
@@ -23,6 +23,11 @@ export default {
         content: {
             type: Array,
             required: true
+        },
+        size: {
+            type: String,
+            required: false,
+            default: 'small'
         }
     }
 };
@@ -43,8 +48,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
-    padding: 20px 15px;
+    height: 72px;
+    padding: 15px;
     background: $orbit;
     &:hover,
     &:focus {
@@ -74,8 +79,15 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .logos-list {
-        > li {
-            width: calc(#{percentage(1/6)} - 3px);
+        &.small {
+            > li {
+                width: calc(#{percentage(1/6)} - 3px);
+            }
+        }
+        &.medium {
+            > li {
+                width: calc(#{percentage(1/3)} - 3px);
+            }
         }
     }
 }

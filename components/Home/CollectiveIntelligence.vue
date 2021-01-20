@@ -1,6 +1,7 @@
 <template>
     <div id="collective-intelligence" class="wrapper-section-1">
         <HomeSchemaCollectiveIntelligence
+            v-if="isL"
             :links="[data.section1BottomRightLink, data.section1TopRightLink, data.section1TopLeftLink]"
             :selected="selected"
         />
@@ -121,15 +122,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.schema {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    // z-index: -1;
-    overflow: hidden;
-}
 .container {
     position: relative;
     z-index: 1;
@@ -217,6 +209,16 @@ export default {
 }
 
 @media (min-width: $desktop-small) {
+    .schema {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 1800px;
+        // z-index: -1;
+        overflow: hidden;
+    }
     .wrapper-section-1 {
         .container {
             display: flex;

@@ -189,16 +189,16 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            // this.watcher = this.$stereorepo.superScroll
-            //     .watch({
-            //         element: this.$refs.schema
-            //     })
-            //     .on('enter-view', () => {
-            //         this.play();
-            //     })
-            //     .on('leave-view', () => {
-            //         this.pause();
-            //     });
+            this.watcher = this.$stereorepo.superScroll
+                .watch({
+                    element: this.$refs.schema
+                })
+                .on('enter-view', () => {
+                    this.play();
+                })
+                .on('leave-view', () => {
+                    this.pause();
+                });
             this.initPlanets();
         });
     },

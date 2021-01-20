@@ -1,7 +1,17 @@
 <template>
     <ul v-if="content" class="logos-list">
         <li v-for="logo in content" :key="logo.id">
-            <nuxt-link :to="logo.slug" :aria-label="logo.name" class="logo-link">
+            <a
+                v-if="logo.link"
+                :href="logo.link"
+                :aria-label="logo.name"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="logo-link"
+            >
+                <img :src="logo.logo.url" :alt="logo.logo.alt" />
+            </a>
+            <nuxt-link v-else :to="logo.slug" :aria-label="logo.name" class="logo-link">
                 <img :src="logo.logo.url" :alt="logo.logo.alt" />
             </nuxt-link>
         </li>
@@ -24,7 +34,6 @@ export default {
     flex-wrap: wrap;
     width: calc(100% + 3px);
     padding: 0 $gutter;
-    margin: 55px 0;
     > li {
         width: calc(#{percentage(1/2)} - 3px);
         margin: 0 3px 3px 0;

@@ -246,6 +246,14 @@ export const teamQuery = `
             investorsLink {
                 ...link
             }
+            investors {
+                id
+                name
+                logo {
+                    ${img}
+                }
+                link
+            }
             mosaic {
                 title
                 text

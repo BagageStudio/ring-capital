@@ -15,7 +15,7 @@
                 />
             </div>
             <div class="wrapper-list">
-                <LogosList :content="content.investors" />
+                <LogosList :content="content.investors" :size="'medium'" />
             </div>
         </div>
     </div>
@@ -55,11 +55,10 @@ export default {
         }
     }
     .wrapper-txt {
-        width: percentage(4/8);
-        padding-right: calc(#{percentage(1/8)} + #{$gutter});
+        width: percentage(3/8);
     }
     .wrapper-list {
-        width: percentage(4/8);
+        width: percentage(5/8);
         margin: 0;
     }
 }

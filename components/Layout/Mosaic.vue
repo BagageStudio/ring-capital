@@ -1,0 +1,100 @@
+<template>
+    <div v-if="content" class="wrapper-mosaic">
+        <div class="container">
+            <div class="wrapper-img">
+                <div v-if="content.topLeftImage && isL">
+                    <img :src="content.topLeftImage.url" :alt="content.topLeftImage.alt" />
+                </div>
+                <div v-if="content.bottomLeftImage && isL">
+                    <img :src="content.bottomLeftImage.url" :alt="content.bottomLeftImage.alt" />
+                </div>
+                <div v-if="content.rightMobileImage">
+                    <img :src="content.rightMobileImage.url" :alt="content.rightMobileImage.alt" />
+                </div>
+            </div>
+            <div class="wrapper-txt">
+                <h3 class="basic-h3" v-html="content.title"></h3>
+                <div v-if="content.text" class="mosaic-text" v-html="content.text"></div>
+                <LinkTo v-if="content.link" class="btn-block mosaic-btn" :link="content.link" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        content: { type: Object, required: true }
+    },
+    computed: {
+        isL() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
+        }
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+.wrapper-mosaic {
+    padding: 60px 0;
+}
+.wrapper-img {
+    margin: 0 0 30px;
+    padding: 0 $gutter;
+}
+.wrapper-txt {
+    padding: 0 $gutter;
+}
+.mosaic-btn {
+    margin-top: 20px;
+}
+
+@media (min-width: $desktop-small) {
+    .wrapper-mosaic {
+        .container {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .wrapper-img {
+        width: percentage(5/8);
+        display: grid;
+        grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} #{percentage(2/5)};
+        grid-template-rows: 105px 190px 190px 110px;
+        > div {
+            &:nth-child(1) {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 3;
+                padding-bottom: $gutter;
+                padding-right: $gutter;
+            }
+            &:nth-child(2) {
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 3;
+                grid-row-end: 5;
+                padding-top: $gutter;
+                padding-right: $gutter;
+            }
+            &:nth-child(3) {
+                grid-column-start: 3;
+                grid-column-end: 4;
+                grid-row-start: 2;
+                grid-row-end: 4;
+                padding-left: $gutter;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .wrapper-txt {
+        width: percentage(3/8);
+    }
+}
+</style>

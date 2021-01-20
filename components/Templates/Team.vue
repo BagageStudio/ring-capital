@@ -7,6 +7,7 @@
             <DetailList :content="data.members" />
         </div>
         <InvestorsMod :content="data" />
+        <Mosaic :content="data.mosaic" />
     </div>
 </template>
 

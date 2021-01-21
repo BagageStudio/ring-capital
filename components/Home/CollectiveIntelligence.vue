@@ -212,11 +212,14 @@ export default {
         position: absolute;
         top: 0;
         right: 0;
-        width: 100%;
+        width: calc(100% + 650px);
         height: 100%;
-        max-width: 1800px;
+        max-width: 2200px;
         // z-index: -1;
         overflow: hidden;
+        /deep/ svg {
+            margin-top: -70px;
+        }
     }
     .wrapper-section-1 {
         .container {
@@ -230,6 +233,7 @@ export default {
         flex: 0 0 auto;
     }
     .wrapper-section-txt {
+        margin-top: 140px;
         width: percentage(3/8);
     }
     .wrapper-section-links {
@@ -324,6 +328,9 @@ export default {
     }
 }
 @media (min-width: $desktop-xxl) {
+    .schema /deep/ svg {
+        margin-top: 0;
+    }
     .wrapper-section-1 {
         padding: 200px 0 0;
     }
@@ -332,6 +339,7 @@ export default {
         margin-bottom: -220px;
     }
     .wrapper-section-txt {
+        margin-top: 0;
         padding: 0 calc(#{percentage(1/12)} + #{$gutter});
     }
     .wrapper-section-links {

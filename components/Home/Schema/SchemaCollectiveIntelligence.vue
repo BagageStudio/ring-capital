@@ -28,7 +28,7 @@
                             stroke-width="2"
                         />
                         <path
-                            id="trail_3"
+                            id="trailCI_3"
                             d="M1706.35 -20.9998L1989.95 153.527L1786.6 483.969L1503 309.442L1706.35 -20.9998Z"
                             fill="url(#paintCI0_radial)"
                         />
@@ -59,7 +59,7 @@
                             stroke-width="2"
                         />
                         <path
-                            id="trail_2"
+                            id="trailCI_2"
                             d="M1077.1 303.671L778.865 155.537L951.465 -191.958L1249.7 -43.8253L1077.1 303.671Z"
                             fill="url(#paintCI1_radial)"
                         />
@@ -90,7 +90,7 @@
                             stroke-width="2"
                         />
                         <path
-                            id="trail_1"
+                            id="trailCI_1"
                             d="M1189.51 207.819L1477.89 374.319L1283.89 710.337L995.506 543.837L1189.51 207.819Z"
                             fill="url(#paintCI2_radial)"
                         />

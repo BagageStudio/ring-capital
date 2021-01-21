@@ -61,6 +61,14 @@ export default {
     data: () => ({
         open: false
     }),
+    computed: {
+        isMobile() {
+            return this.ww <= this.$breakpoints.list.l;
+        },
+        ww() {
+            return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
+        }
+    },
     methods: {
         toggleMobileSubmenu() {
             if (!this.isMobile) return;

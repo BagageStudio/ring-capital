@@ -52,6 +52,7 @@ export default {
 
 @media (min-width: $desktop-small) {
     .wrapper-mosaic {
+        padding: 120px 0 130px;
         .container {
             display: flex;
             align-items: center;
@@ -62,6 +63,7 @@ export default {
         display: grid;
         grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} #{percentage(2/5)};
         grid-template-rows: 105px 190px 190px 110px;
+        margin: 0;
         > div {
             &:nth-child(1) {
                 grid-column-start: 1;
@@ -95,6 +97,20 @@ export default {
     }
     .wrapper-txt {
         width: percentage(3/8);
+    }
+}
+@media (min-width: $desktop) {
+    .wrapper-img {
+        width: percentage(7/12);
+        grid-template-columns: #{percentage(1/7)} #{percentage(3/7)} #{percentage(3/7)};
+    }
+    .wrapper-txt {
+        width: percentage(5/12);
+    }
+}
+@media (min-width: $desktop-xxl) {
+    .wrapper-txt {
+        padding-left: calc(#{percentage(1/12)} + #{$gutter});
     }
 }
 </style>

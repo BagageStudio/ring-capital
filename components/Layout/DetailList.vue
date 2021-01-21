@@ -9,8 +9,10 @@
                     </span>
                 </span>
                 <span class="detail-txt">
-                    <span class="basic-h4 detail-title">{{ detail.name }}</span>
-                    <span v-if="detail.description">{{ detail.description }}</span>
+                    <span>
+                        <span class="basic-h4 detail-title">{{ detail.name }}</span>
+                        <span v-if="detail.description">{{ detail.description }}</span>
+                    </span>
                     <Tags :content="detail.tags" />
                 </span>
             </component>
@@ -34,6 +36,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+span {
+    display: block;
+}
 .detail-list {
     display: flex;
     flex-direction: column;
@@ -49,9 +54,6 @@ export default {
 }
 .detail {
     text-decoration: none;
-    span {
-        display: block;
-    }
     .linkedin-pin {
         display: flex;
         align-items: center;
@@ -109,6 +111,20 @@ export default {
                 top: 75px;
             }
         }
+    }
+    .detail {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .detail-img {
+        flex: 0 0 auto;
+    }
+    .detail-txt {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 }
 @media (min-width: $desktop-small) {

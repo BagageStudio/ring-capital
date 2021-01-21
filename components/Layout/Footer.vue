@@ -18,7 +18,7 @@
                                 <label class="label" for="newsletter-email">{{ $t('newsletter.label') }}</label>
                             </div>
                             <div class="wrapper-btn-newsletter">
-                                <button ref="submit" type="submit" class="btn-block">
+                                <button ref="submit" type="submit" class="btn-block primary">
                                     <span>{{ $t('newsletter.sendButton') }}</span>
                                 </button>
                             </div>

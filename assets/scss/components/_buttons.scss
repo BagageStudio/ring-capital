@@ -7,7 +7,8 @@
     text-align: center;
     border: 1px solid $neptune;
     text-decoration: none;
-    color: $white;
+    // color: $white;
+    color: var(--secondary);
     text-decoration: none;
     font-family: $space;
     z-index: 1;
@@ -31,8 +32,14 @@
         left: -2px;
         width: 7px;
         height: 9px;
-        border-left: 2px solid $white;
-        border-bottom: 2px solid $white;
+        border-left: 2px solid var(--secondary);
+        border-bottom: 2px solid var(--secondary);
+    }
+    &.primary {
+        color: $white;
+        &::after {
+            border-color: $white;
+        }
     }
     &.secondary {
         color: $orbit;
@@ -42,6 +49,7 @@
     }
     &:hover,
     &:focus {
+        color: $white;
         &::before {
             opacity: 1;
         }

@@ -10,7 +10,7 @@
                 <p v-if="content.investorsSubtitle" class="basic-subtitle">{{ content.investorsSubtitle }}</p>
                 <LinkTo
                     v-if="content.investorsLink"
-                    class="btn-block mod-investors-btn"
+                    class="btn-block primary mod-investors-btn"
                     :link="content.investorsLink"
                 />
             </div>

@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class="content-contact">
-                <h1 class="basic-h1 contact-title" v-html="data.title"></h1>
+                <h1 class="basic-h1 contact-title underlined" v-html="data.title"></h1>
                 <div class="contact-group">
                     <div v-if="data.mailTitle && data.mail" class="contact-single">
                         <div class="single-title">

@@ -13,7 +13,9 @@
                     :alt="data.section1MobileImage.alt"
                     class="section-mobile-image"
                 />
-                <h2 v-if="data.section1Title" class="basic-h2">{{ data.section1Title }}</h2>
+                <h2 v-if="data.section1Title" class="basic-h2 underlined">
+                    <span>{{ data.section1Title }}</span>
+                </h2>
                 <p v-if="data.section1Subtitle" class="basic-subtitle">{{ data.section1Subtitle }}</p>
                 <div v-if="data.section1Content" class="basic-txt" v-html="data.section1Content"></div>
                 <LinkTo v-if="data.section1Link" class="section-btn btn-block secondary" :link="data.section1Link" />

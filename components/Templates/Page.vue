@@ -2,7 +2,9 @@
     <div v-if="data" class="wrapper-page">
         <div class="container">
             <div class="container-small wysiwyg content-pad">
-                <h1>{{ data.title }}</h1>
+                <h1 class="underlined">
+                    <span>{{ data.title }}</span>
+                </h1>
                 <div v-if="data.content" v-html="data.content" />
             </div>
         </div>

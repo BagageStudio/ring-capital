@@ -3,7 +3,7 @@
         <div class="container">
             <div class="hero-team">
                 <div class="wrapper-title">
-                    <h1 class="basic-h1 team-title" v-html="data.title"></h1>
+                    <h1 class="basic-h1 team-title underlined-center" v-html="data.title"></h1>
                     <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>

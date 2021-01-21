@@ -4,7 +4,7 @@
             <div class="wrapper-txt">
                 <h2
                     v-if="content.investorsTitle"
-                    class="basic-h2 mod-investors-title"
+                    class="basic-h2 mod-investors-title underlined"
                     v-html="content.investorsTitle"
                 ></h2>
                 <p v-if="content.investorsSubtitle" class="basic-subtitle">{{ content.investorsSubtitle }}</p>

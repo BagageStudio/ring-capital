@@ -1,7 +1,9 @@
 <template>
     <div class="wrapper-news-list">
         <div class="container">
-            <h4 v-if="title" class="basic-h4 news-list-title">{{ title }}</h4>
+            <h4 v-if="title" class="basic-h4 news-list-title underlined">
+                <span>{{ title }}</span>
+            </h4>
             <ul v-if="content" ref="news" class="news-list">
                 <li v-for="news in content" :key="news.id">
                     <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">

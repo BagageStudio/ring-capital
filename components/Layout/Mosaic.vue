@@ -15,7 +15,7 @@
             <div class="wrapper-txt">
                 <h3 class="basic-h3" v-html="content.title"></h3>
                 <div v-if="content.text" class="mosaic-text" v-html="content.text"></div>
-                <LinkTo v-if="content.link" class="btn-block mosaic-btn" :link="content.link" />
+                <LinkTo v-if="content.link" class="btn-block mosaic-btn secondary" :link="content.link" />
             </div>
         </div>
     </div>
@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-mosaic {
     padding: 60px 0;
+    background: $white;
 }
 .wrapper-img {
     margin: 0 0 30px;
@@ -45,6 +46,9 @@ export default {
 }
 .wrapper-txt {
     padding: 0 $gutter;
+}
+.mosaic-text {
+    color: $neptune;
 }
 .mosaic-btn {
     margin-top: 20px;

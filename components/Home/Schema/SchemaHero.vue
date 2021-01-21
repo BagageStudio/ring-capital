@@ -192,7 +192,7 @@ export default {
                             start: 0 + 0.3 * index,
                             end: 1 + 0.3 * index
                         },
-                        duration: 8,
+                        duration: 16,
                         repeat: -1,
                         ease: 'none',
                         onUpdate() {
@@ -215,7 +215,7 @@ export default {
                             start: 0 + 0.3 * index,
                             end: 1 + 0.3 * index
                         },
-                        duration: 8,
+                        duration: 16,
                         repeat: -1,
                         ease: 'none'
                     })
@@ -230,7 +230,7 @@ export default {
                             start: 0 + 0.3 * index,
                             end: 1 + 0.3 * index
                         },
-                        duration: 8,
+                        duration: 16,
                         repeat: -1,
                         ease: 'none'
                     })
@@ -248,7 +248,7 @@ export default {
             gsap.killTweensOf([planet, `#border_${id}`, `#circle_${id}`]);
             gsap.to(planet, {
                 duration: 1,
-                timeScale: 0.2
+                timeScale: 0.4
             });
             gsap.to(`#circle_${id}`, {
                 duration: 0.8,

@@ -30,7 +30,7 @@
             <div class="wrapper-menu-legal">
                 <div class="content-sub">
                     <div class="wrapper-logo-footer">
-                        <Logo class="logo-footer" />
+                        <Logo class="logo-footer primary" />
                     </div>
                     <div class="wrapper-cols-footer">
                         <div v-for="(column, index) in data.linksColumn" :key="index" class="col-footer">

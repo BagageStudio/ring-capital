@@ -72,7 +72,7 @@ export default {
     }
     /deep/ span {
         position: relative;
-        padding: 2px 0 6px;
+        padding: 2px 0 0px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
         background-color: $dark;
         &::before {

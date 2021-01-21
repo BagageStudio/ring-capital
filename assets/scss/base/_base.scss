@@ -148,6 +148,9 @@ body {
     line-height: 40px;
     margin: 0 0 30px;
     color: $saturn;
+    p {
+        line-height: 1;
+    }
 }
 
 .basic-h4 {

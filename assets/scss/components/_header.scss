@@ -15,8 +15,8 @@
         &:after {
             content: '';
             right: 20px;
-            border-right: 1px solid $white;
-            border-bottom: 1px solid $white;
+            border-right: 1px solid var(--secondary);
+            border-bottom: 1px solid var(--secondary);
             width: 7px;
             height: 7px;
             transform: rotate(45deg);
@@ -56,6 +56,7 @@
     .submenu-link {
         text-decoration: none;
         margin-bottom: 15px;
+        color: var(--secondary);
         &.see-all-link {
             display: flex;
             align-items: center;
@@ -131,6 +132,9 @@
                 background-color: $saturn;
             }
         }
+        .submenu-link {
+            color: white;
+        }
         .submenu-title {
             color: $saturn;
         }
@@ -150,6 +154,10 @@
             }
             .submenu-link {
                 width: 100%;
+                color: $orbit;
+                &.see-all-link {
+                    color: $neptune;
+                }
             }
         }
     }

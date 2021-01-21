@@ -139,7 +139,7 @@ export default {
         display: inline-block;
         width: 30px;
         height: 1px;
-        background-color: $white;
+        background-color: var(--secondary);
         transform-origin: 100% 50%;
         transition: 0.6s cubic-bezier(0.76, 0, 0.24, 1);
         &:nth-child(2) {
@@ -182,7 +182,7 @@ export default {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: $dark;
+        background-color: var(--bg);
         z-index: -1;
         transform-origin: 50% 0%;
     }

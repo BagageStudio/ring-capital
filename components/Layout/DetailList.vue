@@ -36,11 +36,16 @@ export default {
             default: false
         }
     },
-    data: () => ({
-        detailList: []
-    }),
+    data() {
+        return {
+            detailList: this.content
+        };
+    },
     created() {
-        this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content;
+        if (process.client)
+            this.$nextTick(
+                () => (this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content)
+            );
     }
 };
 </script>

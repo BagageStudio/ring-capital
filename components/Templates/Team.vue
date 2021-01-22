@@ -7,7 +7,7 @@
                     <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>
-            <DetailList :content="data.members" />
+            <DetailList :content="data.members" random />
         </div>
         <InvestorsMod :content="data" />
         <Mosaic :content="data.mosaic" />

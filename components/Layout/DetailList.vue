@@ -1,6 +1,6 @@
 <template>
     <ul v-if="content" class="detail-list">
-        <li v-for="detail in content" :key="detail.id">
+        <li v-for="detail in detailList" :key="detail.id">
             <component :is="detail.link ? 'LinkTo' : 'div'" :link="detail.link" :hide-label="true" class="detail">
                 <span class="detail-img">
                     <img :src="detail.image.url" :alt="detail.image.alt" />
@@ -30,7 +30,17 @@ export default {
         content: {
             type: Array,
             required: true
+        },
+        random: {
+            type: Boolean,
+            default: false
         }
+    },
+    data: () => ({
+        detailList: []
+    }),
+    mounted() {
+        this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content;
     }
 };
 </script>

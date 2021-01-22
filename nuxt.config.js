@@ -121,6 +121,7 @@ export default {
      ** See https://fr.nuxtjs.org/api/configuration-generate/
      */
     generate: {
+        routes: ['/team'],
         crawler: false,
         fallback: false,
         exclude: excludedDynamicRoutes(isProdEnv)

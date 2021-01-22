@@ -72,10 +72,21 @@ gsap.registerPlugin(MotionPathPlugin);
 export default {
     data: () => ({
         tweens: [],
-        watcher: null
+        watcher: null,
+        playing: true
     }),
     mounted() {
         this.$nextTick(() => {
+            this.watcher = this.$stereorepo.superScroll
+                .watch({
+                    element: this.$refs.schema
+                })
+                .on('enter-view', () => {
+                    this.play();
+                })
+                .on('leave-view', () => {
+                    this.pause();
+                });
             this.initPlanets();
         });
     },
@@ -84,9 +95,19 @@ export default {
     },
     methods: {
         pause() {
+            if (!this.playing) return;
+
             this.tweens.forEach(t => {
                 t.pause();
             });
+            this.playing = false;
+        },
+        play() {
+            if (this.playing) return;
+            this.tweens.forEach(t => {
+                t.play();
+            });
+            this.playing = true;
         },
         initPlanets() {
             const circle2 = gsap.to('#circle_wrapper_2', {

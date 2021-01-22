@@ -144,6 +144,7 @@ span {
         padding-bottom: 165px;
         > li {
             width: percentage(1/3);
+            margin-bottom: 150px;
             &:nth-child(2n + 2) {
                 top: 0;
             }

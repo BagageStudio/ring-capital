@@ -72,19 +72,10 @@ export default {
     }
     /deep/ span {
         position: relative;
-        padding: 2px 0 0px;
+        padding-top: 2px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
         background-color: $dark;
-        &::before {
-            // content: '';
-            position: absolute;
-            top: -7px;
-            left: -20px;
-            right: -10px;
-            bottom: -10px;
-            background-color: $dark;
-            z-index: -1;
-        }
+        background-position: 0% calc(71% + 0.7px);
     }
     /deep/ strong {
         color: $saturn;
@@ -98,6 +89,8 @@ export default {
     top: -4vw;
     right: 0;
     z-index: -1;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 .intro {
     margin-top: 56px;
@@ -181,6 +174,9 @@ export default {
 }
 
 @media (min-width: $desktop) {
+    .container {
+        padding-top: 170px;
+    }
     .hero-content {
         display: flex;
         justify-content: space-between;

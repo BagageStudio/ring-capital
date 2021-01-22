@@ -23,5 +23,5 @@ Vue.filter('noPAround', function (value) {
 });
 
 Vue.filter('nestedTitle', function (value) {
-    return value.split('<p>').join('<p><span>').split('</p>').join('</span></p>');
+    return value.split('<p>').join('<p class="underlined"><span>').split('</p>').join('</span></p>');
 });

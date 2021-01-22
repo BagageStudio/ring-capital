@@ -36,6 +36,8 @@ export default {
 .funds {
     margin: 0;
     padding: 0 $gutter;
+    backface-visibility: hidden;
+    transform: translateZ(0);
     > li {
         margin: 0 0 10px;
         padding: 0;

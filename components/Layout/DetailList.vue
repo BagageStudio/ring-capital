@@ -39,7 +39,7 @@ export default {
     data: () => ({
         detailList: []
     }),
-    mounted() {
+    created() {
         this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content;
     }
 };

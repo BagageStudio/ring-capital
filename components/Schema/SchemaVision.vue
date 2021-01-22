@@ -133,6 +133,9 @@ export default {
             this.initPlanets();
         });
     },
+    beforeDestroy() {
+        this.pause();
+    },
     methods: {
         pause() {
             this.tweens.forEach(t => {

@@ -95,6 +95,8 @@ export default {
     mounted() {
         this.planets = [...this.links];
         this.$nextTick(() => {
+            console.log(MotionPathPlugin.getRawPath('#model'));
+
             this.watcher = this.$stereorepo.superScroll
                 .watch({
                     element: this.$refs.schema
@@ -109,6 +111,9 @@ export default {
             this.initPlanets();
             this.appearAnimation();
         });
+    },
+    beforeDestroy() {
+        this.pause();
     },
     methods: {
         pause() {

@@ -1,6 +1,6 @@
 <template>
     <div id="collective-intelligence" class="wrapper-section-1">
-        <HomeSchemaCollectiveIntelligence
+        <SchemaCollectiveIntelligence
             v-if="isL"
             :links="[data.section1BottomRightLink, data.section1TopRightLink, data.section1TopLeftLink]"
             :selected="selected"

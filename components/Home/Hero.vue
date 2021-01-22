@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <HomeSchemaHero :links="data.funds" :selected="selected" />
+        <SchemaHero :links="data.funds" :selected="selected" />
         <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
         <div class="hero-content">
             <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
@@ -72,10 +72,10 @@ export default {
     }
     /deep/ span {
         position: relative;
-        padding-top: 2px;
+        padding-top: 8px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
         background-color: $dark;
-        background-position: 0% calc(71% + 0.7px);
+        background-position: 0% calc(74% + 0.7px);
     }
     /deep/ strong {
         color: $saturn;

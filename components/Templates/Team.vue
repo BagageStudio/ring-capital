@@ -1,9 +1,10 @@
 <template>
     <div v-if="data" class="wrapper-team">
         <div class="container">
+            <SchemaTeam v-if="isL" />
             <div class="hero-team">
                 <div class="wrapper-title">
-                    <h1 class="basic-h1 team-title underlined-center" v-html="data.title"></h1>
+                    <h1 class="basic-h1 team-title" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
                     <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>
@@ -18,6 +19,12 @@
 export default {
     props: {
         data: { type: Object, required: true }
+    },
+    computed: {
+        isL() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
+        }
     },
     head() {
         return {
@@ -41,7 +48,37 @@ export default {
     margin-bottom: 25px;
 }
 
+.basic-h1 {
+    /deep/ p {
+        position: relative;
+        display: inline;
+        margin: 0;
+    }
+    /deep/ span {
+        position: relative;
+        padding-top: 8px;
+        box-shadow: 10px 0 0 $white, -10px 0 0 $white;
+        background-color: $white;
+        background-position: 0% calc(74% + 0.7px);
+    }
+    /deep/ strong {
+        color: $neptune;
+        font-weight: 300;
+    }
+}
+
 @media (min-width: $desktop-small) {
+    .wrapper-team {
+        position: relative;
+    }
+    .schema {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1050px;
+        z-index: -1;
+    }
     .hero-team {
         padding: 110px $gutter 50px;
     }

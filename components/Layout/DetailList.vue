@@ -39,7 +39,7 @@ export default {
     data: () => ({
         detailList: []
     }),
-    mounted() {
+    created() {
         this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content;
     }
 };
@@ -110,10 +110,12 @@ span {
         flex-direction: row;
         flex-wrap: wrap;
         padding: 0 0 75px;
+        width: calc(100% + #{2 * $gutter});
+        margin-left: -$gutter;
         > li {
             position: relative;
             width: percentage(2/4);
-            padding: 0 $gutter;
+            padding: 0 #{2 * $gutter};
             &:last-child {
                 margin-bottom: 70px;
             }

@@ -8,7 +8,7 @@
                     </h3>
                     <p v-if="data.section2LeftSubtitle" class="basic-subtitle">{{ data.section2LeftSubtitle }}</p>
                 </div>
-                <HomeSchemaVision />
+                <SchemaVision />
                 <div class="wrapper-col-section right">
                     <h3 v-if="data.section2RightTitle" class="basic-h3 underlined">
                         <span>{{ data.section2RightTitle }}</span>

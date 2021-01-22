@@ -22,6 +22,10 @@ Vue.filter('noPAround', function (value) {
     }
 });
 
-Vue.filter('nestedTitle', function (value) {
-    return value.split('<p>').join('<p class="underlined"><span>').split('</p>').join('</span></p>');
+Vue.filter('nestedTitle', function (value, centered = false) {
+    return value
+        .split('<p>')
+        .join(`<p class="${centered ? 'underlined-center' : 'underlined'}"><span>`)
+        .split('</p>')
+        .join('</span></p>');
 });

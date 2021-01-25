@@ -109,15 +109,19 @@ export default {
             });
             this.playing = true;
         },
+        killAnim() {
+            gsap.killTweensOf(['#circle_wrapper_2', '#trailTeam_2', '#circle_wrapper_1', '#trailTeam_1']);
+        },
         initPlanets() {
+            console.log(MotionPathPlugin.getRawPath('#modelTeam'));
             const circle2 = gsap.to('#circle_wrapper_2', {
                 motionPath: {
                     path: '#modelTeam',
                     align: '#modelTeam',
                     alignOrigin: [0.5, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1,
-                    end: 1 + 0.5 * 1
+                    start: 0.5001,
+                    end: 1.5
                 },
                 duration: 5,
                 repeat: -1,
@@ -129,8 +133,8 @@ export default {
                     align: '#modelTeam',
                     alignOrigin: [1, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1,
-                    end: 1 + 0.5 * 1
+                    start: 0.5001,
+                    end: 1.5
                 },
                 duration: 5,
                 repeat: -1,
@@ -141,9 +145,7 @@ export default {
                     path: '#modelTeam',
                     align: '#modelTeam',
                     alignOrigin: [0.5, 0.5],
-                    autoRotate: true,
-                    start: 0 + 0.5 * 0,
-                    end: 1 + 0.5 * 0
+                    autoRotate: true
                 },
                 duration: 5,
                 repeat: -1,
@@ -154,9 +156,7 @@ export default {
                     path: '#modelTeam',
                     align: '#modelTeam',
                     alignOrigin: [1, 0.5],
-                    autoRotate: true,
-                    start: 0 + 0.5 * 0,
-                    end: 1 + 0.5 * 0
+                    autoRotate: true
                 },
                 duration: 5,
                 repeat: -1,

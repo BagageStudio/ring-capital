@@ -154,7 +154,7 @@ export default {
                     align: '#model_2',
                     alignOrigin: [0.5, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1,
+                    start: 0 + 0.5 * 1 + 0.001,
                     end: 1 + 0.5 * 1
                 },
                 duration: 5,
@@ -167,7 +167,7 @@ export default {
                     align: '#model_2',
                     alignOrigin: [1, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1,
+                    start: 0 + 0.5 * 1 + 0.001,
                     end: 1 + 0.5 * 1
                 },
                 duration: 5,
@@ -179,9 +179,7 @@ export default {
                     path: '#model_1',
                     align: '#model_1',
                     alignOrigin: [0.5, 0.5],
-                    autoRotate: true,
-                    start: 0 + 0.5 * 0,
-                    end: 1 + 0.5 * 0
+                    autoRotate: true
                 },
                 duration: 5,
                 repeat: -1,
@@ -192,9 +190,7 @@ export default {
                     path: '#model_1',
                     align: '#model_1',
                     alignOrigin: [1, 0.5],
-                    autoRotate: true,
-                    start: 0 + 0.5 * 0,
-                    end: 1 + 0.5 * 0
+                    autoRotate: true
                 },
                 duration: 5,
                 repeat: -1,

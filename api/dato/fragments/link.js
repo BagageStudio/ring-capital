@@ -12,6 +12,14 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on TeamRecord {
+                _modelApiKey
+                slug
+            }
+            ... on PortfolioRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

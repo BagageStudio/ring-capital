@@ -42,6 +42,7 @@ export default {
     methods: {
         getInternalUrlDatas() {
             const { internalLink, hash } = this.link;
+            console.log(internalLink._modelApiKey);
             const { routerFormat } = routeByApiModels[internalLink._modelApiKey];
             const params = internalLink.slug ? { [routerFormat.split('-').pop()]: internalLink.slug } : {};
 

@@ -2,7 +2,7 @@
     <ul v-if="content" class="logos-list" :class="size">
         <li v-for="logo in content" :key="logo.id">
             <a
-                v-if="logo.link"
+                v-if="hasLink && logo.link"
                 :href="logo.link"
                 :aria-label="logo.name"
                 target="_blank"
@@ -11,9 +11,12 @@
             >
                 <img :src="logo.logo.url" :alt="logo.logo.alt" />
             </a>
-            <nuxt-link v-else :to="logo.slug" :aria-label="logo.name" class="logo-link">
+            <nuxt-link v-else-if="hasLink" :to="logo.slug" :aria-label="logo.name" class="logo-link">
                 <img :src="logo.logo.url" :alt="logo.logo.alt" />
             </nuxt-link>
+            <div v-else class="logo-link">
+                <img :src="logo.logo.url" :alt="logo.logo.alt" />
+            </div>
         </li>
     </ul>
 </template>
@@ -28,6 +31,11 @@ export default {
             type: String,
             required: false,
             default: 'small'
+        },
+        hasLink: {
+            type: Boolean,
+            required: false,
+            default: true
         }
     }
 };
@@ -43,6 +51,14 @@ export default {
         width: calc(#{percentage(1/2)} - 3px);
         margin: 0 3px 3px 0;
     }
+    a {
+        &:hover,
+        &:focus {
+            > img {
+                opacity: 0.7;
+            }
+        }
+    }
 }
 .logo-link {
     display: flex;
@@ -51,12 +67,6 @@ export default {
     height: 72px;
     padding: 15px;
     background: $orbit;
-    &:hover,
-    &:focus {
-        > img {
-            opacity: 0.7;
-        }
-    }
     > img {
         max-width: 100%;
         max-height: 100%;

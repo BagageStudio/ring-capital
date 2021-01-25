@@ -43,13 +43,25 @@ export default {
 }
 .section-2-btn {
     margin-top: 20px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 .ellipse {
     display: none;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 .vision-wrapper {
     overflow: hidden;
     position: relative;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 .left .basic-h3 {
     color: $saturn;
@@ -69,6 +81,10 @@ export default {
 .schema {
     width: calc(100vw + 200px);
     margin-left: -140px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 @media (min-width: $tablet) {
     .schema {
@@ -83,6 +99,10 @@ export default {
     .wrapper-col-section {
         width: percentage(4/8);
         padding: 0 $gutter;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        will-change: transform;
+        transform-style: preserve-3d;
         &.left {
             margin-left: auto;
             .basic-subtitle {
@@ -91,6 +111,10 @@ export default {
         }
     }
     .wrapper-btn-section {
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        will-change: transform;
+        transform-style: preserve-3d;
         padding: 0 $gutter;
     }
 }

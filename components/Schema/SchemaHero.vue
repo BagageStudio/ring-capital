@@ -114,6 +114,9 @@ export default {
         this.pause();
     },
     methods: {
+        killAnim() {
+            gsap.killTweensOf(['#circle_wrapper_2', '#trailTeam_2', '#circle_wrapper_1', '#trailTeam_1']);
+        },
         pause() {
             Object.values(this.tweens).forEach(tws => {
                 tws.forEach(t => {
@@ -199,6 +202,7 @@ export default {
                         repeat: -1,
                         ease: 'none',
                         onUpdate() {
+                            console.log('bjr');
                             const x = gsap.getProperty(this.targets()[0], 'x');
                             const y = gsap.getProperty(this.targets()[0], 'y');
                             gsap.set(`#circle_wrapper_${id}`, {

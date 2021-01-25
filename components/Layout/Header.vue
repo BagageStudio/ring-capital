@@ -346,6 +346,7 @@ export default {
                 box-shadow: 0px 33px 80px rgba(54, 54, 54, 0.09), 0px 13.7866px 33.4221px rgba(54, 54, 54, 0.0646969),
                     0px 0.913195px 2.21381px rgba(54, 54, 54, 0.0253031);
                 animation: scrollUpShadow 0.4s ease-out;
+                z-index: -1;
             }
             &.before-back {
                 animation: scrollDownMenu 0.2s ease-out;

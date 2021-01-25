@@ -113,7 +113,6 @@ export default {
             gsap.killTweensOf(['#circle_wrapper_2', '#trailTeam_2', '#circle_wrapper_1', '#trailTeam_1']);
         },
         initPlanets() {
-            console.log(MotionPathPlugin.getRawPath('#modelTeam'));
             const circle2 = gsap.to('#circle_wrapper_2', {
                 motionPath: {
                     path: '#modelTeam',

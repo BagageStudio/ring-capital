@@ -3,9 +3,11 @@
         <div class="container">
             <div class="wrapper-newsletter-social">
                 <div class="content-sub">
-                    <h3 v-if="data.newsletter.title" class="footer-title basic-h3 underlined">
-                        <span>{{ data.newsletter.title }}</span>
-                    </h3>
+                    <h3
+                        v-if="data.newsletter.title"
+                        class="footer-title basic-h3 underlined saturn strong-white"
+                        v-html="data.newsletter.title"
+                    ></h3>
                     <form class="newsletter-form">
                         <div class="content-newsletter-form">
                             <div class="wrapper-field">

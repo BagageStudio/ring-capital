@@ -51,6 +51,9 @@ export default {
     overflow: hidden;
     position: relative;
 }
+.left .basic-h3 {
+    color: $saturn;
+}
 .right .basic-h3 {
     color: $titan;
 }

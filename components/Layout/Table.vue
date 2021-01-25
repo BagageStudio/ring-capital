@@ -24,6 +24,9 @@
                     </span>
                 </li>
             </ul>
+            <div class="wrapper-btn">
+                <button type="button" class="btn-line"><span class="deco"></span>See more</button>
+            </div>
         </div>
     </div>
 </template>
@@ -104,6 +107,12 @@ export default {
 .table-content {
     text-align: right;
     padding-left: $gutter;
+}
+.wrapper-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 0 $gutter;
 }
 
 @media (min-width: $tablet) {

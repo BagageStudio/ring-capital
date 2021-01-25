@@ -2,7 +2,7 @@
     <div class="e404">
         <div class="container">
             <div v-if="errorData" class="e404-content">
-                <h1 v-if="errorData.title" class="e404-title">{{ errorData.title }}</h1>
+                <h1 v-if="errorData.title" class="e404-title saturn">{{ errorData.title }}</h1>
                 <h2 v-if="errorData.text" class="h1">{{ errorData.text }}</h2>
                 <div class="e404-btn">
                     <LinkTo v-if="errorData.link" class="btn-block" :link="errorData.link" />

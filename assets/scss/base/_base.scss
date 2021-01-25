@@ -147,9 +147,11 @@ body {
     font-weight: 300;
     line-height: 40px;
     margin: 0 0 30px;
-    color: $saturn;
     p {
         line-height: 1;
+    }
+    strong {
+        font-weight: 300;
     }
 }
 
@@ -169,6 +171,22 @@ body {
 
 .basic-txt {
     color: $neptune;
+}
+
+.saturn {
+    color: $saturn;
+}
+
+.strong-neptune {
+    strong {
+        color: $neptune;
+    }
+}
+
+.strong-white {
+    strong {
+        color: $white;
+    }
 }
 
 p {

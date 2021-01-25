@@ -4,7 +4,7 @@
             <div class="wrapper-txt">
                 <h2
                     v-if="content.investorsTitle"
-                    class="basic-h2 mod-investors-title underlined"
+                    class="basic-h2 mod-investors-title underlined saturn"
                     v-html="content.investorsTitle"
                 ></h2>
                 <p v-if="content.investorsSubtitle" class="basic-subtitle">{{ content.investorsSubtitle }}</p>
@@ -15,7 +15,7 @@
                 />
             </div>
             <div class="wrapper-list">
-                <LogosList :content="content.investors" :size="'medium'" />
+                <LogosList :content="content.investors" :size="'medium'" :has-link="false" />
             </div>
         </div>
     </div>

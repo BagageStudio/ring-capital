@@ -21,5 +21,12 @@ export default `
                 value
             }
         }
+        portfolio{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

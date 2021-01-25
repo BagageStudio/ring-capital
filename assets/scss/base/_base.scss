@@ -140,6 +140,9 @@ body {
     font-weight: 300;
     line-height: 40px;
     margin: 0 0 30px;
+    strong {
+        font-weight: 300;
+    }
 }
 
 .basic-h3 {
@@ -180,6 +183,12 @@ body {
 .strong-neptune {
     strong {
         color: $neptune;
+    }
+}
+
+.strong-saturn {
+    strong {
+        color: $saturn;
     }
 }
 

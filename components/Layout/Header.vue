@@ -1,5 +1,13 @@
 <template>
-    <header id="header" class="header">
+    <header
+        id="header"
+        class="header"
+        :class="{
+            fixed: scrolledUp,
+            'before-back': transitionQuitScrolledUp,
+            'on-top-before-back': transitionQuitScrolledUpOnTop
+        }"
+    >
         <div class="header-inner container">
             <div class="wrapper-logo content-pad">
                 <nuxt-link to="/">
@@ -41,6 +49,7 @@
 <script>
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+import { requestTimeout, clearRequestTimeout } from '@stereorepo/sac';
 
 import layoutData from '~/cms/data/layout-data.json';
 
@@ -63,9 +72,19 @@ export default {
             mega: 'MegaMenu',
             single_link: 'SingleMenuItem'
         },
+        scrolledUp: false,
+        transitionQuitScrolledUp: false,
+        transitionQuitScrolledUpOnTop: false,
+        timeoutScrolledUp: null,
         menuCSSClasses: ['our-funds-portfolio', 'about-us', 'news-ressources']
     }),
     computed: {
+        scrollDirection() {
+            return this.$store.state.scroll.scrollDirection;
+        },
+        scrollTop() {
+            return this.$store.state.scroll.scrollTop;
+        },
         isMobile() {
             return this.ww <= this.$breakpoints.list.l;
         },
@@ -79,7 +98,33 @@ export default {
             return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
         }
     },
-    watch: {},
+    watch: {
+        scrollTop(st) {
+            if (st === 0 && this.scrollDirection === -1) {
+                this.transitionQuitScrolledUpOnTop = true;
+                this.timeoutScrolledUp = requestTimeout(() => {
+                    this.scrolledUp = false;
+                    this.transitionQuitScrolledUpOnTop = false;
+                }, 200);
+            }
+        },
+        scrollDirection(dir, oldDir) {
+            if (this.isMobile || dir + oldDir !== 0) return;
+            this.transitionQuitScrolledUp = false;
+            this.transitionQuitScrolledUpOnTop = false;
+            if (this.timeoutScrolledUp) clearRequestTimeout(this.timeoutScrolledUp);
+
+            if (dir === -1) {
+                this.scrolledUp = true;
+            } else {
+                this.transitionQuitScrolledUp = true;
+                this.timeoutScrolledUp = requestTimeout(() => {
+                    this.scrolledUp = false;
+                    this.transitionQuitScrolledUp = false;
+                }, 200);
+            }
+        }
+    },
     mounted() {},
     beforeDestroy() {},
     methods: {
@@ -98,7 +143,10 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 120px;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -284,6 +332,66 @@ export default {
 }
 
 @media (min-width: $desktop-small) {
+    .header {
+        &.fixed {
+            position: fixed;
+            animation: scrollUpMenu 0.4s ease-out;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                box-shadow: 0px 33px 80px rgba(54, 54, 54, 0.09), 0px 13.7866px 33.4221px rgba(54, 54, 54, 0.0646969),
+                    0px 0.913195px 2.21381px rgba(54, 54, 54, 0.0253031);
+                animation: scrollUpShadow 0.4s ease-out;
+            }
+            &.before-back {
+                animation: scrollDownMenu 0.2s ease-out;
+                &::after {
+                    animation: scrollDownShadow 0.2s ease-out;
+                }
+            }
+            &.on-top-before-back {
+                &::after {
+                    animation: scrollDownShadow 0.2s ease-out;
+                }
+            }
+        }
+    }
+    @keyframes scrollUpMenu {
+        0% {
+            transform: translateY(-120px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    @keyframes scrollUpShadow {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes scrollDownMenu {
+        0% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(-120px);
+        }
+    }
+    @keyframes scrollDownShadow {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
     .menu {
         position: static;
         width: 80%;

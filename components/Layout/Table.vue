@@ -8,24 +8,26 @@
                 <span class="title">{{ content.col4Title }}</span>
             </div>
             <ul v-if="content.tableEntries" class="table-entries">
-                <li v-for="tableEntry in content.tableEntries" :key="tableEntry.id" class="table-entry">
-                    <span class="company-name basic-h4">{{ tableEntry.companyName }}</span>
+                <li v-for="tableEntryNb in currentCompaniesVisible" :key="tableEntryNb" class="table-entry">
+                    <span class="company-name basic-h4">{{ content.tableEntries[tableEntryNb - 1].companyName }}</span>
                     <span class="table-line">
                         <span v-if="!isM" class="table-title">{{ content.col2Title }}</span>
-                        <span class="table-content">{{ tableEntry.industrySector }}</span>
+                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].industrySector }}</span>
                     </span>
                     <span class="table-line">
                         <span v-if="!isM" class="table-title">{{ content.col3Title }}</span>
-                        <span class="table-content">{{ tableEntry.soldTo }}</span>
+                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldTo }}</span>
                     </span>
                     <span class="table-line">
                         <span v-if="!isM" class="table-title">{{ content.col4Title }}</span>
-                        <span class="table-content">{{ tableEntry.soldYear }}</span>
+                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldYear }}</span>
                     </span>
                 </li>
             </ul>
-            <div class="wrapper-btn">
-                <button type="button" class="btn-line"><span class="deco"></span>See more</button>
+            <div v-if="currentCompaniesVisible < nbCompanies" class="wrapper-btn">
+                <button type="button" class="btn-line" @click="nextCompanies">
+                    <span class="deco"></span>See more
+                </button>
             </div>
         </div>
     </div>
@@ -36,10 +38,27 @@ export default {
     props: {
         content: { type: Object, required: true }
     },
+    data: () => ({
+        currentCompaniesVisible: 5,
+        nbCompanies: 0
+    }),
     computed: {
         isM() {
             if (!this.$store.state.superWindow) return true;
             return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
+        }
+    },
+    mounted() {
+        this.nbCompanies = this.content.tableEntries.length;
+    },
+    methods: {
+        nextCompanies() {
+            if (this.currentCompaniesVisible < this.nbCompanies) {
+                this.currentCompaniesVisible =
+                    this.currentCompaniesVisible + 5 <= this.nbCompanies
+                        ? this.currentCompaniesVisible + 5
+                        : this.nbCompanies;
+            }
         }
     }
 };

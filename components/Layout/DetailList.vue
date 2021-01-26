@@ -2,10 +2,15 @@
     <ul v-if="content" class="detail-list">
         <li v-for="detail in detailList" :key="detail.id">
             <component :is="detail.link ? 'LinkTo' : 'div'" :link="detail.link" :hide-label="true" class="detail">
-                <span class="detail-img">
-                    <img :src="detail.image.url" :alt="detail.image.alt" />
+                <span class="detail-img" :class="{ overlay }">
+                    <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
                     <span v-if="detail.hasLinkedin" class="linkedin-pin">
                         <Icon name="linkedin" />
+                    </span>
+                    <span v-if="detail.logo" class="detail-logo">
+                        <span class="wrapper-img">
+                            <img :src="detail.logo.url" :alt="detail.logo.alt" />
+                        </span>
                     </span>
                 </span>
                 <span class="detail-txt">
@@ -13,7 +18,7 @@
                         <span class="basic-h4 detail-title">{{ detail.name }}</span>
                         <span v-if="detail.description">{{ detail.description }}</span>
                     </span>
-                    <Tags :content="detail.tags" />
+                    <Tags v-if="detail.tags" :content="detail.tags" />
                 </span>
             </component>
         </li>
@@ -32,6 +37,10 @@ export default {
             required: true
         },
         random: {
+            type: Boolean,
+            default: false
+        },
+        overlay: {
             type: Boolean,
             default: false
         }
@@ -80,6 +89,7 @@ span {
         height: 46px;
         background: #eceff4;
         fill: $orbit;
+        z-index: 1;
         .icon {
             width: 16px;
             height: 16px;
@@ -93,13 +103,43 @@ span {
         display: block;
         padding-bottom: 107.5%;
     }
-    img {
+    .bg-img {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+    &.overlay {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba($orbit, 0.85);
+        }
+    }
+}
+.detail-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    .wrapper-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 263px;
+        max-width: 80%;
+        height: 130px;
     }
 }
 .detail-txt {
@@ -114,7 +154,7 @@ span {
     .detail-list {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 0 0 75px;
+        padding: 0;
         width: calc(100% + #{2 * $gutter});
         margin-left: -$gutter;
         > li {
@@ -124,8 +164,21 @@ span {
             &:last-child {
                 margin-bottom: 70px;
             }
-            &:nth-child(2n + 2) {
-                top: 75px;
+        }
+        &.shape-one {
+            padding-bottom: 75px;
+            > li {
+                &:nth-child(2n + 2) {
+                    top: 75px;
+                }
+            }
+        }
+        &.shape-two {
+            padding-bottom: 65px;
+            > li {
+                &:nth-child(2n + 2) {
+                    top: 65px;
+                }
             }
         }
     }
@@ -146,18 +199,38 @@ span {
 }
 @media (min-width: $desktop-small) {
     .detail-list {
-        padding-bottom: 165px;
         > li {
             width: percentage(1/3);
             margin-bottom: 150px;
-            &:nth-child(2n + 2) {
-                top: 0;
+            &:last-child {
+                margin-bottom: 150px;
             }
-            &:nth-child(3n + 2) {
-                top: 165px;
+        }
+        &.shape-one {
+            padding-bottom: 165px;
+            > li {
+                &:nth-child(2n + 2) {
+                    top: 0;
+                }
+                &:nth-child(3n + 2) {
+                    top: 165px;
+                }
+                &:nth-child(3n + 3) {
+                    top: 75px;
+                }
             }
-            &:nth-child(3n + 3) {
-                top: 75px;
+        }
+        &.shape-two {
+            > li {
+                &:nth-child(2n + 2) {
+                    top: 0;
+                }
+                &:nth-child(3n + 2) {
+                    top: 65px;
+                }
+                &:nth-child(3n + 3) {
+                    top: -260px;
+                }
             }
         }
     }

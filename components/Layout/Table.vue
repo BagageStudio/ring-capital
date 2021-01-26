@@ -67,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-table {
     padding: 70px 0 60px;
+    color: $white;
     background: $dark;
 }
 .basic-h2 {

@@ -284,7 +284,11 @@ export const portfolioQuery = `
             companies {
                 id
                 name
+                tags
                 logo {
+                    ${img}
+                }
+                image {
                     ${img}
                 }
                 slug

@@ -154,9 +154,10 @@ export default {
                     align: '#model_2',
                     alignOrigin: [0.5, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1 + 0.001,
-                    end: 1 + 0.5 * 1
+                    start: 0.5001,
+                    end: 1.5
                 },
+                paused: true,
                 duration: 5,
                 repeat: -1,
                 ease: 'none'
@@ -167,9 +168,10 @@ export default {
                     align: '#model_2',
                     alignOrigin: [1, 0.5],
                     autoRotate: true,
-                    start: 0 + 0.5 * 1 + 0.001,
-                    end: 1 + 0.5 * 1
+                    start: 0.5001,
+                    end: 1.5
                 },
+                paused: true,
                 duration: 5,
                 repeat: -1,
                 ease: 'none'
@@ -181,6 +183,7 @@ export default {
                     alignOrigin: [0.5, 0.5],
                     autoRotate: true
                 },
+                paused: true,
                 duration: 5,
                 repeat: -1,
                 ease: 'none'
@@ -192,6 +195,7 @@ export default {
                     alignOrigin: [1, 0.5],
                     autoRotate: true
                 },
+                paused: true,
                 duration: 5,
                 repeat: -1,
                 ease: 'none'
@@ -201,3 +205,11 @@ export default {
     }
 };
 </script>
+<style lang="scss" scoped>
+path {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+</style>

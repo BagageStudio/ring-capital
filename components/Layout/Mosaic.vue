@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-mosaic {
     padding: 60px 0;
+    color: $orbit;
     background: $white;
 }
 .wrapper-img {

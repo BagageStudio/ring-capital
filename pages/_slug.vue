@@ -17,13 +17,15 @@ import Page from '~/components/Templates/Page';
 import Contact from '~/components/Templates/Contact';
 import Team from '~/components/Templates/Team';
 import Portfolio from '~/components/Templates/Portfolio';
+import InvestorsPage from '~/components/Templates/InvestorsPage';
 
 export default {
     components: {
         Page,
         Contact,
         Team,
-        Portfolio
+        Portfolio,
+        InvestorsPage
     },
     layout(context) {
         const layoutLang = getIso.call(context);

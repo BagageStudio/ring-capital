@@ -28,5 +28,12 @@ export default `
                 value
             }
         }
+        investorsPage{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

@@ -324,6 +324,24 @@ export const portfolioQuery = `
         }
     }`;
 
+export const investorsPageQuery = `
+    query InvestorsPage($lang: SiteLocale) {
+        investorsPage(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            investors {
+                id
+                name
+                logo {
+                    ${img}
+                }
+                link
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -331,7 +349,8 @@ export const getQuery = _modelApiKey => {
         page: pageQuery,
         contact: contactQuery,
         team: teamQuery,
-        portfolio: portfolioQuery
+        portfolio: portfolioQuery,
+        investors_page: investorsPageQuery
     };
     return mapping[_modelApiKey];
 };

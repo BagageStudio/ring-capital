@@ -5,5 +5,8 @@
     },
     "news": {
         "readingTime": "min read"
+    },
+    "logo": {
+        "hoverLabel": "Visit website"
     }
 }

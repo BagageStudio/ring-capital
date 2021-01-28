@@ -8,7 +8,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="logo-link"
+                :class="{ 'show-label': showLabel }"
             >
+                <span v-if="showLabel" class="label">
+                    <span>{{ $t('logo.hoverLabel') }}</span>
+                </span>
                 <img :src="logo.logo.url" :alt="logo.logo.alt" />
             </a>
             <nuxt-link v-else-if="hasLink" :to="logo.slug" :aria-label="logo.name" class="logo-link">
@@ -31,6 +35,11 @@ export default {
             type: Boolean,
             required: false,
             default: true
+        },
+        showLabel: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     }
 };
@@ -48,10 +57,33 @@ export default {
         margin: 2px;
     }
     a {
-        &:hover,
-        &:focus {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-top: 1px solid $white;
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+        &:hover {
+            &::before {
+                opacity: 1;
+            }
             > img {
                 opacity: 0.7;
+            }
+        }
+        &.show-label {
+            &:hover {
+                .label {
+                    opacity: 1;
+                }
+                > img {
+                    opacity: 0;
+                }
             }
         }
     }
@@ -81,6 +113,21 @@ export default {
         max-height: 100%;
         transition: opacity 0.2s ease-out;
     }
+}
+.label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $space;
+    font-size: 1.6rem;
+    line-height: 24px;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
 }
 
 @media (min-width: $tablet) {

@@ -338,6 +338,7 @@ export const investorsPageQuery = `
                     ${img}
                 }
                 link
+                smallText
             }
             moduleText {
                 title

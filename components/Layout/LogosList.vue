@@ -13,13 +13,20 @@
                 <span v-if="showLabel" class="label">
                     <span>{{ $t('logo.hoverLabel') }}</span>
                 </span>
-                <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                <span class="content">
+                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                    <span v-if="logo.smallText" class="small-txt">{{ logo.smallText }}</span>
+                </span>
             </a>
             <nuxt-link v-else-if="hasLink" :to="logo.slug" :aria-label="logo.name" class="logo-link">
-                <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                <span class="content">
+                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                </span>
             </nuxt-link>
             <div v-else class="logo-link">
-                <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                <span class="content">
+                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                </span>
             </div>
         </li>
     </ul>
@@ -58,6 +65,7 @@ export default {
     }
     a {
         position: relative;
+        text-decoration: none;
         &::before {
             content: '';
             position: absolute;
@@ -72,7 +80,7 @@ export default {
             &::before {
                 opacity: 1;
             }
-            > img {
+            .content {
                 opacity: 0.7;
             }
         }
@@ -81,7 +89,7 @@ export default {
                 .label {
                     opacity: 1;
                 }
-                > img {
+                .content {
                     opacity: 0;
                 }
             }
@@ -108,10 +116,18 @@ export default {
     height: 72px;
     padding: 15px;
     background: $orbit;
-    > img {
+    img {
         max-width: 100%;
         max-height: 100%;
-        transition: opacity 0.2s ease-out;
+    }
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.2s ease-out;
+    img {
+        flex: 0 1 auto;
     }
 }
 .label {
@@ -128,6 +144,16 @@ export default {
     line-height: 24px;
     opacity: 0;
     transition: opacity 0.2s ease-out;
+}
+.small-txt {
+    display: block;
+    margin-top: 13px;
+    font-family: $helvetica-neue;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    color: $neptune;
 }
 
 @media (min-width: $tablet) {

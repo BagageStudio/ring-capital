@@ -9,6 +9,7 @@
             </div>
             <LogosList :content="data.investors" :size="'medium'" :has-link="false" />
         </div>
+        <CenteredText :content="data.moduleText" />
     </div>
 </template>
 

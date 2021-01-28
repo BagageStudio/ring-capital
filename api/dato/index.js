@@ -339,6 +339,10 @@ export const investorsPageQuery = `
                 }
                 link
             }
+            moduleText {
+                title
+                text
+            }
         }
     }`;
 

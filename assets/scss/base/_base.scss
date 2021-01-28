@@ -182,23 +182,22 @@ body {
 .saturn {
     color: $saturn;
 }
-
 .neptune {
     color: $neptune;
 }
-
+.orbit {
+    color: $orbit;
+}
 .strong-neptune {
     strong {
         color: $neptune;
     }
 }
-
 .strong-saturn {
     strong {
         color: $saturn;
     }
 }
-
 .strong-white {
     strong {
         color: $white;
@@ -208,6 +207,10 @@ body {
 p {
     margin: 10px 0;
     line-height: 26px;
+}
+
+strong {
+    font-weight: 700;
 }
 
 blockquote {

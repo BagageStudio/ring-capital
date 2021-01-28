@@ -15,7 +15,7 @@
                 />
             </div>
             <div class="wrapper-list">
-                <LogosList :content="content.investors" :size="'medium'" :has-link="false" />
+                <LogosList :content="content.investors" class="large-grid" :has-link="false" />
             </div>
         </div>
     </div>

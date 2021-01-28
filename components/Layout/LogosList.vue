@@ -1,5 +1,5 @@
 <template>
-    <ul v-if="content" class="logos-list" :class="size">
+    <ul v-if="content" class="logos-list">
         <li v-for="logo in content" :key="logo.id">
             <a
                 v-if="hasLink && logo.link"
@@ -27,11 +27,6 @@ export default {
             type: Array,
             required: true
         },
-        size: {
-            type: String,
-            required: false,
-            default: 'small'
-        },
         hasLink: {
             type: Boolean,
             required: false,
@@ -45,11 +40,12 @@ export default {
 .logos-list {
     display: flex;
     flex-wrap: wrap;
-    width: calc(100% + 3px);
+    width: calc(100% + 4px);
+    margin: 0 0 0 -2px;
     padding: 0 $gutter;
     > li {
-        width: calc(#{percentage(1/2)} - 3px);
-        margin: 0 3px 3px 0;
+        width: calc(#{percentage(1/2)} - 4px);
+        margin: 2px;
     }
     a {
         &:hover,
@@ -57,6 +53,19 @@ export default {
             > img {
                 opacity: 0.7;
             }
+        }
+    }
+    &.medium-grid {
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        > li {
+            width: calc(100% - 20px);
+            margin: 10px;
+        }
+    }
+    &.big-height {
+        .logo-link {
+            height: 147px;
         }
     }
 }
@@ -77,7 +86,12 @@ export default {
 @media (min-width: $tablet) {
     .logos-list {
         > li {
-            width: calc(#{percentage(1/3)} - 3px);
+            width: calc(#{percentage(1/3)} - 4px);
+        }
+        &.medium-grid {
+            > li {
+                width: calc(50% - 20px);
+            }
         }
     }
 }
@@ -86,17 +100,27 @@ export default {
         height: 100px;
         padding: 35px 25px;
     }
+    .logos-list {
+        &.big-height {
+            .logo-link {
+                height: 147px;
+            }
+        }
+    }
 }
 @media (min-width: $desktop-large) {
     .logos-list {
-        &.small {
+        > li {
+            width: calc(#{percentage(1/6)} - 4px);
+        }
+        &.medium-grid {
             > li {
-                width: calc(#{percentage(1/6)} - 3px);
+                width: calc(#{percentage(1/4)} - 20px);
             }
         }
-        &.medium {
+        &.large-grid {
             > li {
-                width: calc(#{percentage(1/3)} - 3px);
+                width: calc(#{percentage(1/3)} - 4px);
             }
         }
     }

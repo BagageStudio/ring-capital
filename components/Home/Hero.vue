@@ -16,8 +16,9 @@
                 >
             </div>
         </div>
-
-        <LogosList :content="data.companies" />
+        <div class="wrapper-logos">
+            <LogosList :content="data.companies" />
+        </div>
     </div>
 </template>
 
@@ -148,8 +149,8 @@ export default {
     }
 }
 
-.logos-list {
-    margin: 55px 0;
+.wrapper-logos {
+    padding: 55px 0;
 }
 @media (min-width: 450px) {
     .container {
@@ -170,6 +171,9 @@ export default {
 @media (min-width: $desktop-small) {
     .basic-h1 {
         width: percentage(8/12);
+    }
+    .wrapper-logos {
+        padding: 100px 0;
     }
 }
 

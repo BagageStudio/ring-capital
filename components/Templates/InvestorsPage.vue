@@ -1,13 +1,15 @@
 <template>
     <div v-if="data" class="wrapper-investors">
         <div class="container">
-            <div class="hero-portfolio">
+            <div class="hero-investors">
                 <h1 class="basic-h1 underlined saturn">
                     <span>{{ data.title }}</span>
                 </h1>
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
             </div>
-            <LogosList :content="data.investors" :size="'medium'" :has-link="false" />
+            <div class="wrapper-logos">
+                <LogosList :content="data.investors" class="medium-grid big-height" />
+            </div>
         </div>
         <CenteredText :content="data.moduleText" />
     </div>
@@ -23,7 +25,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hero-portfolio {
-    padding: 0 $gutter;
+.hero-investors {
+    padding: 20px $gutter;
+}
+
+.wrapper-logos {
+    padding: 0 0 70px;
+}
+
+@media (min-width: $desktop-small) {
+    .hero-investors {
+        padding: 90px $gutter 30px;
+    }
+    .wrapper-logos {
+        padding: 0 0 120px;
+    }
 }
 </style>

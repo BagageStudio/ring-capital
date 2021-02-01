@@ -348,6 +348,44 @@ export const investorsPageQuery = `
         }
     }`;
 
+export const companyQuery = `
+    query Company($lang: SiteLocale, $slug: String) {
+        company(locale: $lang, filter: { slug: { eq: $slug } }) {
+            ${seo}
+            ${locales}
+            name
+            description
+            tags
+            logo {
+                ${img}
+            }
+            image {
+                ${img}
+            }
+            founders
+            largeDescription
+            quote
+            keyFigures {
+                title
+                number
+            }
+            recruitmentPageLink
+            locations {
+                city
+                address
+                mapLink
+            }
+            social {
+                socialLinks {
+                title
+                iconName
+                link
+                }
+            }
+            websiteLink
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {

@@ -1,5 +1,5 @@
-// 🚦Routing constants
 export const routes = {
+    // 🚦Routing constants
     home: {
         i18nFormat: 'index',
         routerFormat: 'index'

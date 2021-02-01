@@ -166,3 +166,10 @@ export default {
     }
 };
 </script>
+<style lang="scss" scoped>
+path {
+    backface-visibility: hidden;
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+</style>

@@ -8,9 +8,9 @@
                 </nuxt-link>
             </div>
             <div class="wrapper-company-content">
-                <div class="company-col">
-                    <div class="wrapper-company-img">
-                        <img v-if="data.image" class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                <div class="company-col col-left">
+                    <div v-if="data.image && !isM" class="wrapper-company-img">
+                        <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
                     </div>
                     <h1 class="company-title h1">{{ data.name }}</h1>
                     <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
@@ -39,7 +39,10 @@
                         {{ $t('portfolio.hireLabel') }}
                     </a>
                 </div>
-                <div class="company-col">
+                <div class="company-col col-right">
+                    <div v-if="data.image && isM" class="wrapper-company-img">
+                        <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                    </div>
                     <div v-if="data.locations" class="wrapper-company-locations">
                         <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
                         <div class="company-locations">
@@ -56,18 +59,20 @@
                             </a>
                         </div>
                     </div>
-                    <Social :content="data.social" class="company-social" />
-                    <a
-                        v-if="data.websiteLink && data.websiteLinkLabel"
-                        :href="data.websiteLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="company-website h4"
-                    >
-                        <span v-if="data.websiteLinkLabel" class="text">
-                            <span class="btn-label">{{ data.websiteLinkLabel }}</span>
-                        </span>
-                    </a>
+                    <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
+                        <Social :content="data.social" class="company-social" />
+                        <a
+                            v-if="data.websiteLink && data.websiteLinkLabel"
+                            :href="data.websiteLink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="company-website h4"
+                        >
+                            <span v-if="data.websiteLinkLabel" class="text">
+                                <span class="btn-label">{{ data.websiteLinkLabel }}</span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,6 +117,12 @@ export default {
             data: {},
             seo: {}
         };
+    },
+    computed: {
+        isM() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
+        }
     },
     head() {
         if (!this.seo.title) this.seo.title = 'Ring - ' + this.data.title;
@@ -305,5 +316,61 @@ export default {
     margin: 20px 0 0;
     text-decoration: none;
     color: $neptune;
+}
+
+@media (min-width: $tablet) {
+    .wrapper-company-content {
+        display: flex;
+        align-items: flex-start;
+    }
+    .wrapper-back {
+        margin-bottom: 50px;
+    }
+    .company-col {
+        width: percentage(4/8);
+    }
+    .company-title {
+        margin-top: 0;
+    }
+    .wrapper-company-locations {
+        margin-top: 0;
+        padding-top: 30px;
+        border-top: none;
+    }
+}
+@media (min-width: $desktop) {
+    .company-col {
+        width: percentage(6/12);
+    }
+    .col-right {
+        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+    }
+    .wrapper-social-website {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding-top: 10px;
+    }
+    .company-social {
+        margin: 0;
+    }
+    .company-website {
+        margin: 10px 0;
+    }
+}
+@media (min-width: $desktop-large) {
+    .wrapper-back {
+        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+    }
+    .col-left {
+        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+    }
+    .col-right {
+        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+    }
+    .key-figures {
+        width: calc(#{percentage(4/5)} + #{2 * $gutter});
+    }
 }
 </style>

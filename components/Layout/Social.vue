@@ -52,6 +52,10 @@ export default {
         width: 27px;
         height: 27px;
     }
+    &.facebook {
+        width: 27px;
+        height: 27px;
+    }
     &.medium {
         width: 32px;
         height: 18px;

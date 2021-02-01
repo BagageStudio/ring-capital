@@ -165,10 +165,24 @@ export default {
         width: percentage(7/12);
         align-self: flex-start;
     }
+    .fund-card {
+        padding: 30px 15px;
+    }
+    .fund-name {
+        font-size: 1.4rem;
+    }
 }
 @media (min-width: $desktop-large) {
     .funds {
         width: percentage(6/12);
+    }
+    .fund-card {
+        padding: 30px 18px;
+    }
+}
+@media (min-width: $desktop-xxl) {
+    .fund-name {
+        font-size: 1.6rem;
     }
 }
 </style>

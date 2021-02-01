@@ -208,7 +208,6 @@ export default {
 <style lang="scss" scoped>
 path {
     backface-visibility: hidden;
-    transform: translateZ(0);
     will-change: transform;
     transform-style: preserve-3d;
 }

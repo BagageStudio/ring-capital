@@ -72,26 +72,17 @@ gsap.registerPlugin(MotionPathPlugin);
 export default {
     data: () => ({
         tweens: [],
+        progressProxy: 0,
         watcher: null,
-        playing: true
+        playing: false
     }),
     mounted() {
         this.$nextTick(() => {
-            this.watcher = this.$stereorepo.superScroll
-                .watch({
-                    element: this.$refs.schema
-                })
-                .on('enter-view', () => {
-                    this.play();
-                })
-                .on('leave-view', () => {
-                    this.pause();
-                });
             this.initPlanets();
         });
     },
     beforeDestroy() {
-        this.pause();
+        this.killAnim();
     },
     methods: {
         pause() {
@@ -104,8 +95,15 @@ export default {
         },
         play() {
             if (this.playing) return;
-            this.tweens.forEach(t => {
-                t.play();
+            gsap.to(this, {
+                duration: 7,
+                progressProxy: 0.95,
+                ease: 'power2.inOut',
+                onUpdate: () => {
+                    gsap.set(this.tweens, {
+                        progress: this.progressProxy % 1
+                    });
+                }
             });
             this.playing = true;
         },
@@ -118,12 +116,12 @@ export default {
                     path: '#modelTeam',
                     align: '#modelTeam',
                     alignOrigin: [0.5, 0.5],
-                    autoRotate: true,
                     start: 0.5001,
                     end: 1.5
                 },
                 duration: 5,
-                repeat: -1,
+                immediateRender: true,
+                paused: true,
                 ease: 'none'
             });
             const trail2 = gsap.to('#trailTeam_2', {
@@ -136,18 +134,19 @@ export default {
                     end: 1.5
                 },
                 duration: 5,
-                repeat: -1,
+                immediateRender: true,
+                paused: true,
                 ease: 'none'
             });
             const circle1 = gsap.to('#circle_wrapper_1', {
                 motionPath: {
                     path: '#modelTeam',
                     align: '#modelTeam',
-                    alignOrigin: [0.5, 0.5],
-                    autoRotate: true
+                    alignOrigin: [0.5, 0.5]
                 },
                 duration: 5,
-                repeat: -1,
+                immediateRender: true,
+                paused: true,
                 ease: 'none'
             });
             const trail1 = gsap.to('#trailTeam_1', {
@@ -158,10 +157,12 @@ export default {
                     autoRotate: true
                 },
                 duration: 5,
-                repeat: -1,
+                paused: true,
+                immediateRender: true,
                 ease: 'none'
             });
             this.tweens.push(circle1, circle2, trail1, trail2);
+            this.play();
         }
     }
 };

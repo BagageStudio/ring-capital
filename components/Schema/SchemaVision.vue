@@ -142,7 +142,6 @@ export default {
             });
         },
         play() {
-            console.log('goooo');
             gsap.to(this, {
                 duration: 7,
                 progressProxy: 1.333,

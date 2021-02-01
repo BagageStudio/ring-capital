@@ -282,6 +282,7 @@ export const portfolioQuery = `
             title
             subtitle
             companies {
+                _modelApiKey
                 id
                 name
                 description

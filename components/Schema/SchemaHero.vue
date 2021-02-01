@@ -202,7 +202,6 @@ export default {
                         repeat: -1,
                         ease: 'none',
                         onUpdate() {
-                            console.log('bjr');
                             const x = gsap.getProperty(this.targets()[0], 'x');
                             const y = gsap.getProperty(this.targets()[0], 'y');
                             gsap.set(`#circle_wrapper_${id}`, {

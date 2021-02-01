@@ -1,38 +1,29 @@
 <template>
-    <ul v-if="content" class="detail-list">
-        <li v-for="detail in detailList" :key="detail.id">
-            <component
-                :is="getTagName(detail)"
-                :link="detail.link"
-                :to="detail.slug ? portfolioLink(detail) : ''"
-                :hide-label="true"
-                class="detail"
-            >
-                <span class="detail-img" :class="{ overlay }">
-                    <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
-                    <span v-if="detail.hasLinkedin" class="linkedin-pin">
-                        <Icon name="linkedin" />
-                    </span>
-                    <span v-if="detail.logo" class="detail-logo">
-                        <span class="wrapper-img">
-                            <img :src="detail.logo.url" :alt="detail.logo.alt" />
-                        </span>
+    <li v-for="detail in detailList" :key="detail.id">
+        <component :is="detail.link ? 'LinkTo' : 'div'" :link="detail.link" :hide-label="true" class="detail">
+            <span class="detail-img" :class="{ overlay }">
+                <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
+                <span v-if="detail.hasLinkedin" class="linkedin-pin">
+                    <Icon name="linkedin" />
+                </span>
+                <span v-if="detail.logo" class="detail-logo">
+                    <span class="wrapper-img">
+                        <img :src="detail.logo.url" :alt="detail.logo.alt" />
                     </span>
                 </span>
-                <span class="detail-txt">
-                    <span>
-                        <span class="basic-h4 detail-title">{{ detail.name }}</span>
-                        <span v-if="detail.description">{{ detail.description }}</span>
-                    </span>
-                    <Tags v-if="detail.tags" :content="detail.tags" />
+            </span>
+            <span class="detail-txt">
+                <span>
+                    <span class="basic-h4 detail-title">{{ detail.name }}</span>
+                    <span v-if="detail.description">{{ detail.description }}</span>
                 </span>
-            </component>
-        </li>
-    </ul>
+                <Tags v-if="detail.tags" :content="detail.tags" />
+            </span>
+        </component>
+    </li>
 </template>
 <script>
 import LinkTo from '~/components/LinkTo';
-import { routeByApiModels } from '~/app/crawler/routes';
 
 export default {
     components: {
@@ -62,24 +53,6 @@ export default {
             this.$nextTick(
                 () => (this.detailList = this.random ? this.content.sort(() => Math.random() - 0.5) : this.content)
             );
-    },
-    methods: {
-        getTagName(detail) {
-            if (detail.link) {
-                return 'LinkTo';
-            } else if (detail.slug) {
-                return 'nuxt-link';
-            } else {
-                return 'div';
-            }
-        },
-        portfolioLink(detail) {
-            if (!detail.slug) return '';
-            return this.localePath({
-                name: routeByApiModels[detail._modelApiKey].routerFormat,
-                params: { slug: detail.slug }
-            });
-        }
     }
 };
 </script>

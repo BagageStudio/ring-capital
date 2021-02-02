@@ -24,7 +24,7 @@
                         <span class="basic-h4 detail-title">{{ detail.name }}</span>
                         <span v-if="detail.description">{{ detail.description }}</span>
                     </span>
-                    <Tags v-if="detail.tags" :content="detail.tags" />
+                    <Tags v-if="detail.tags && !hideTags" :content="detail.tags" />
                 </span>
             </component>
         </li>
@@ -48,6 +48,10 @@ export default {
             default: false
         },
         overlay: {
+            type: Boolean,
+            default: false
+        },
+        hideTags: {
             type: Boolean,
             default: false
         }
@@ -98,6 +102,22 @@ span {
         padding: 0;
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+    &.no-margin-large {
+        > li {
+            margin: 0 0 50px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &.fixed-height {
+        .detail-img {
+            height: 220px;
+            &::before {
+                content: none;
+            }
         }
     }
 }
@@ -182,6 +202,20 @@ span {
         padding: 0;
         width: calc(100% + #{2 * $gutter});
         margin-left: -$gutter;
+        &.no-margin-large {
+            > li {
+                &:last-child {
+                    margin-bottom: 50px;
+                }
+            }
+        }
+        &.grid-gutter {
+            width: 100%;
+            margin-left: 0;
+            > li {
+                padding: 0 #{$gutter};
+            }
+        }
         > li {
             position: relative;
             width: percentage(2/4);
@@ -229,6 +263,14 @@ span {
             margin-bottom: 150px;
             &:last-child {
                 margin-bottom: 150px;
+            }
+        }
+        &.no-margin-large {
+            > li {
+                margin: 0;
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
         &.shape-one {

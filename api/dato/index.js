@@ -366,11 +366,13 @@ export const companyQuery = `
             largeDescription
             quote
             keyFigures {
+                id
                 title
                 number
             }
             recruitmentPageLink
             locations {
+                id
                 city
                 address
                 mapLink
@@ -383,6 +385,21 @@ export const companyQuery = `
                 }
             }
             websiteLink
+            websiteLinkLabel
+            otherCompanies {
+                _modelApiKey
+                id
+                name
+                description
+                tags
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                slug
+            }
         }
     }`;
 

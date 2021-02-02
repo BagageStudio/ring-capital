@@ -8,5 +8,13 @@
     },
     "logo": {
         "hoverLabel": "Visit website"
+    },
+    "portfolio": {
+        "backLabel": "Back to portfolio",
+        "hireLabel": "They hiring !",
+        "locationLabel": "Location",
+        "foundersTitle": "Founders",
+        "otherRefsTitle": "Other portfolio companies",
+        "seeAllLabel": "See all"
     }
 }

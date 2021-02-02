@@ -29,6 +29,13 @@ export default {
     flex-wrap: wrap;
     margin: 10px 0 0;
     padding: 0;
+    &.inverted {
+        .tag {
+            border: 1px solid rgba($neptune, 0.4);
+            color: $white;
+            background: transparent;
+        }
+    }
 }
 .tag {
     font-family: $space;

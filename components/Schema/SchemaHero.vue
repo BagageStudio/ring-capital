@@ -111,6 +111,7 @@ export default {
         });
     },
     beforeDestroy() {
+        if (this.watcher) this.watcher.forget();
         this.pause();
     },
     methods: {

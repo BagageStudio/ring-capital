@@ -77,12 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-other-companies">
-            <div class="container">
-                <h2 class="other-refs-title h2">{{ $t('portfolio.otherRefsTitle') }}</h2>
-                <DetailList class="no-margin-large fixed-height" :content="data.otherCompanies" hide-tags overlay />
-            </div>
-        </div>
+        <LinkedCompanies :companies="data.otherCompanies" :title="$t('portfolio.otherRefsTitle')" />
     </div>
 </template>
 
@@ -297,16 +292,6 @@ export default {
     color: $neptune;
 }
 
-.wrapper-other-companies {
-    padding: 60px 0;
-    color: $orbit;
-    background: $white;
-}
-.other-refs-title {
-    margin: 0 0 55px;
-    padding: 0 $gutter;
-}
-
 @media (min-width: $tablet) {
     .wrapper-company {
         padding: 40px 0 100px;
@@ -328,12 +313,6 @@ export default {
         margin-top: 0;
         padding-top: 30px;
         border-top: none;
-    }
-}
-
-@media (min-width: $desktop-small) {
-    .wrapper-other-companies {
-        padding: 130px 0 120px;
     }
 }
 
@@ -365,10 +344,6 @@ export default {
     }
     .founders-title {
         margin-right: 20px;
-    }
-
-    .wrapper-other-companies {
-        padding: 100px 0;
     }
 }
 @media (min-width: $desktop-large) {

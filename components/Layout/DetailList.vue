@@ -209,6 +209,13 @@ span {
                 }
             }
         }
+        &.grid-gutter {
+            width: 100%;
+            margin-left: 0;
+            > li {
+                padding: 0 #{$gutter};
+            }
+        }
         > li {
             position: relative;
             width: percentage(2/4);

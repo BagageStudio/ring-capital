@@ -1,74 +1,86 @@
 <template>
-    <div v-if="data" class="wrapper-company">
-        <div class="container">
-            <div class="wrapper-back">
-                <nuxt-link class="btn-line" to="/">
-                    <span class="deco"></span>
-                    {{ $t('portfolio.backLabel') }}
-                </nuxt-link>
-            </div>
-            <div class="wrapper-company-content">
-                <div class="company-col col-left">
-                    <div v-if="data.image && !isM" class="wrapper-company-img">
-                        <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
-                    </div>
-                    <h1 class="company-title h1">{{ data.name }}</h1>
-                    <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
-                    <div v-if="data.founders" class="wrapper-company-founders">
-                        <span class="founders-title">
-                            {{ $t('portfolio.foundersTitle') }}
-                        </span>
-                        <span clas="founders">{{ data.founders }}</span>
-                    </div>
-                    <div v-if="data.largeDescription" class="company-description" v-html="data.largeDescription"></div>
-                    <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
-                    <KeyFigures :content="data.keyFigures" class="company-key-figures" />
-                    <a
-                        v-if="data.recruitmentPageLink"
-                        :href="data.recruitmentPageLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="company-hiring btn-line"
-                    >
+    <div v-if="data">
+        <div class="wrapper-company">
+            <div class="container">
+                <div class="wrapper-back">
+                    <nuxt-link class="btn-line" to="/">
                         <span class="deco"></span>
-                        {{ $t('portfolio.hireLabel') }}
-                    </a>
+                        {{ $t('portfolio.backLabel') }}
+                    </nuxt-link>
                 </div>
-                <div class="company-col col-right">
-                    <div v-if="data.image && isM" class="wrapper-company-img">
-                        <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                <div class="wrapper-company-content">
+                    <div class="company-col col-left">
+                        <div v-if="data.image && !isM" class="wrapper-company-img">
+                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                        </div>
+                        <h1 class="company-title h1">{{ data.name }}</h1>
+                        <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
+                        <div v-if="data.founders" class="wrapper-company-founders">
+                            <span class="founders-title">
+                                {{ $t('portfolio.foundersTitle') }}
+                            </span>
+                            <span clas="founders">{{ data.founders }}</span>
+                        </div>
+                        <div
+                            v-if="data.largeDescription"
+                            class="company-description"
+                            v-html="data.largeDescription"
+                        ></div>
+                        <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
+                        <KeyFigures :content="data.keyFigures" class="company-key-figures" />
+                        <a
+                            v-if="data.recruitmentPageLink"
+                            :href="data.recruitmentPageLink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="company-hiring btn-line"
+                        >
+                            <span class="deco"></span>
+                            {{ $t('portfolio.hireLabel') }}
+                        </a>
                     </div>
-                    <div v-if="data.locations" class="wrapper-company-locations">
-                        <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
-                        <div class="company-locations">
+                    <div class="company-col col-right">
+                        <div v-if="data.image && isM" class="wrapper-company-img">
+                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                        </div>
+                        <div v-if="data.locations" class="wrapper-company-locations">
+                            <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
+                            <div class="company-locations">
+                                <a
+                                    v-for="location in data.locations"
+                                    :key="location.id"
+                                    :href="location.mapLink"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="location-link"
+                                >
+                                    <span class="location-city">{{ location.city }}</span>
+                                    <span class="location-address">{{ location.address }}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
+                            <Social :content="data.social" class="company-social" />
                             <a
-                                v-for="location in data.locations"
-                                :key="location.id"
-                                :href="location.mapLink"
+                                v-if="data.websiteLink && data.websiteLinkLabel"
+                                :href="data.websiteLink"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="location-link"
+                                class="company-website h4"
                             >
-                                <span class="location-city">{{ location.city }}</span>
-                                <span class="location-address">{{ location.address }}</span>
+                                <span v-if="data.websiteLinkLabel" class="text">
+                                    <span class="btn-label">{{ data.websiteLinkLabel }}</span>
+                                </span>
                             </a>
                         </div>
                     </div>
-                    <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
-                        <Social :content="data.social" class="company-social" />
-                        <a
-                            v-if="data.websiteLink && data.websiteLinkLabel"
-                            :href="data.websiteLink"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="company-website h4"
-                        >
-                            <span v-if="data.websiteLinkLabel" class="text">
-                                <span class="btn-label">{{ data.websiteLinkLabel }}</span>
-                            </span>
-                        </a>
-                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="wrapper-other-companies">
+            <div class="container">
+                <h2 class="other-refs-title h2">{{ $t('portfolio.otherRefsTitle') }}</h2>
+                <DetailList class="no-margin-large fixed-height" :content="data.otherCompanies" hide-tags overlay />
             </div>
         </div>
     </div>
@@ -285,13 +297,26 @@ export default {
     color: $neptune;
 }
 
+.wrapper-other-companies {
+    padding: 60px 0;
+    color: $orbit;
+    background: $white;
+}
+.other-refs-title {
+    margin: 0 0 55px;
+    padding: 0 $gutter;
+}
+
 @media (min-width: $tablet) {
+    .wrapper-company {
+        padding: 40px 0 100px;
+    }
     .wrapper-company-content {
         display: flex;
         align-items: flex-start;
     }
     .wrapper-back {
-        margin-bottom: 50px;
+        margin-bottom: 55px;
     }
     .company-col {
         width: percentage(4/8);
@@ -305,6 +330,13 @@ export default {
         border-top: none;
     }
 }
+
+@media (min-width: $desktop-small) {
+    .wrapper-other-companies {
+        padding: 130px 0 120px;
+    }
+}
+
 @media (min-width: $desktop) {
     .company-col {
         width: percentage(6/12);
@@ -333,6 +365,10 @@ export default {
     }
     .founders-title {
         margin-right: 20px;
+    }
+
+    .wrapper-other-companies {
+        padding: 100px 0;
     }
 }
 @media (min-width: $desktop-large) {

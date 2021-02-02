@@ -22,12 +22,7 @@
                     </div>
                     <div v-if="data.largeDescription" class="company-description" v-html="data.largeDescription"></div>
                     <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
-                    <div v-if="data.keyFigures" class="key-figures">
-                        <div v-for="keyFigure in data.keyFigures" :key="keyFigure.id" class="key-figure">
-                            <span class="key-figure-title">{{ keyFigure.title }}</span>
-                            <span class="key-figure-number">{{ keyFigure.number }}</span>
-                        </div>
-                    </div>
+                    <KeyFigures :content="data.keyFigures" class="company-key-figures" />
                     <a
                         v-if="data.recruitmentPageLink"
                         :href="data.recruitmentPageLink"
@@ -237,34 +232,6 @@ export default {
     }
 }
 
-.key-figures {
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-    width: calc(100% + #{2 * $gutter});
-    margin-left: -$gutter;
-}
-.key-figure {
-    width: calc(50% - #{2 * $gutter});
-    margin: 0 $gutter;
-    padding: 30px 20px 10px;
-    border-top: 1px solid $neptune;
-    background: $orbit;
-    > span {
-        display: block;
-    }
-}
-.key-figure-title {
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 17px;
-    color: $neptune;
-}
-.key-figure-number {
-    font-size: 3rem;
-    line-height: 50px;
-}
-
 .company-hiring {
     margin-top: 40px;
     color: $saturn;
@@ -358,6 +325,15 @@ export default {
     .company-website {
         margin: 10px 0;
     }
+    .wrapper-company-founders {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+    .founders-title {
+        margin-right: 20px;
+    }
 }
 @media (min-width: $desktop-large) {
     .wrapper-back {
@@ -368,9 +344,6 @@ export default {
     }
     .col-right {
         padding: 0 calc(#{percentage(1/12)} + #{$gutter});
-    }
-    .key-figures {
-        width: calc(#{percentage(4/5)} + #{2 * $gutter});
     }
 }
 </style>

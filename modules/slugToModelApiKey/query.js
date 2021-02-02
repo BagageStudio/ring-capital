@@ -35,5 +35,12 @@ export default `
                 value
             }
         }
+        allFunds{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

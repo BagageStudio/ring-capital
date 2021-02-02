@@ -82,6 +82,7 @@ export default {
         });
     },
     beforeDestroy() {
+        if (this.watcher) this.watcher.forget();
         this.killAnim();
     },
     methods: {

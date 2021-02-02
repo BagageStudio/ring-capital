@@ -1,5 +1,6 @@
 <template>
     <div v-if="content" class="wrapper-centered-text">
+        <SchemaCommunity />
         <div class="container">
             <h1 class="basic-h3 underlined orbit content-title">
                 <span>{{ content.title }}</span>
@@ -19,9 +20,19 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper-centered-text {
+    position: relative;
     padding: 160px 0;
     text-align: center;
     background: $white;
+}
+
+.schema {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
 }
 .content-title {
     margin: 0 0 30px;

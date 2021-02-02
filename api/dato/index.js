@@ -403,6 +403,58 @@ export const companyQuery = `
         }
     }`;
 
+export const fundQuery = `
+    ${linkFragment}
+    query Fund($lang: SiteLocale, $slug: String) {
+        fund(locale: $lang, filter: { slug: { eq: $slug } }) {
+            ${seo}
+            ${locales}
+            name
+            title
+            fullDescription
+            logo
+            color {
+                hex
+            }
+            keyFigures {
+                id
+                title
+                number
+            }
+            targetsTitle
+            targetsDescription
+            targetsFirstColumnTitle
+            targetsFirstColumnItems {
+                text
+            }
+            targetsSecondColumnTitle
+            targetsSecondColumnItems {
+                text
+            }
+            companiesTitle
+            companies {
+                id
+            }
+            mosaic {
+                title
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -411,7 +463,8 @@ export const getQuery = _modelApiKey => {
         contact: contactQuery,
         team: teamQuery,
         portfolio: portfolioQuery,
-        investors_page: investorsPageQuery
+        investors_page: investorsPageQuery,
+        fund: fundQuery
     };
     return mapping[_modelApiKey];
 };

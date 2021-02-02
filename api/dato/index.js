@@ -386,6 +386,20 @@ export const companyQuery = `
             }
             websiteLink
             websiteLinkLabel
+            otherCompanies {
+                _modelApiKey
+                id
+                name
+                description
+                tags
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                slug
+            }
         }
     }`;
 

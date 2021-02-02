@@ -13,6 +13,8 @@
         "backLabel": "Back to portfolio",
         "hireLabel": "They hiring !",
         "locationLabel": "Location",
-        "foundersTitle": "Founders"
+        "foundersTitle": "Founders",
+        "otherRefsTitle": "Other portfolio companies",
+        "seeAllLabel": "See all"
     }
 }

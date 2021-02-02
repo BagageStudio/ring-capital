@@ -32,6 +32,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
+    overflow: hidden;
 }
 .content-title {
     margin: 0 0 30px;

@@ -18,6 +18,7 @@ import Contact from '~/components/Templates/Contact';
 import Team from '~/components/Templates/Team';
 import Portfolio from '~/components/Templates/Portfolio';
 import InvestorsPage from '~/components/Templates/InvestorsPage';
+import Fund from '~/components/Templates/Fund';
 
 export default {
     components: {
@@ -25,7 +26,8 @@ export default {
         Contact,
         Team,
         Portfolio,
-        InvestorsPage
+        InvestorsPage,
+        Fund
     },
     layout(context) {
         const layoutLang = getIso.call(context);

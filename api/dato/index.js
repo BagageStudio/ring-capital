@@ -425,15 +425,28 @@ export const fundQuery = `
             targetsDescription
             targetsFirstColumnTitle
             targetsFirstColumnItems {
+                id
                 text
             }
             targetsSecondColumnTitle
             targetsSecondColumnItems {
+                id
                 text
             }
             companiesTitle
             companies {
+                _modelApiKey
                 id
+                name
+                description
+                tags
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                slug
             }
             mosaic {
                 title

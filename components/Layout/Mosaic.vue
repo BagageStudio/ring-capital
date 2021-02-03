@@ -3,13 +3,13 @@
         <div class="container">
             <div class="wrapper-img">
                 <div v-if="content.topLeftImage && isL">
-                    <img :src="content.topLeftImage.url" :alt="content.topLeftImage.alt" />
+                    <FastImage class="img" :image="content.topLeftImage" cover />
                 </div>
                 <div v-if="content.bottomLeftImage && isL">
-                    <img :src="content.bottomLeftImage.url" :alt="content.bottomLeftImage.alt" />
+                    <FastImage class="img" :image="content.bottomLeftImage" cover />
                 </div>
                 <div v-if="content.rightMobileImage">
-                    <img :src="content.rightMobileImage.url" :alt="content.rightMobileImage.alt" />
+                    <FastImage class="img" :image="content.rightMobileImage" cover />
                 </div>
             </div>
             <div class="wrapper-txt">
@@ -93,10 +93,9 @@ export default {
                 grid-row-end: 4;
                 padding-left: $gutter;
             }
-            img {
+            .img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
             }
         }
     }

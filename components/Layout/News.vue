@@ -8,7 +8,7 @@
                 <li v-for="news in content" :key="news.id">
                     <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">
                         <span class="news-img">
-                            <img :src="news.cover.url" :alt="news.cover.alt" />
+                            <FastImage class="img" :image="news.cover" cover />
                         </span>
                         <span class="news-text">
                             <span class="news-info">
@@ -144,13 +144,12 @@ export default {
         display: block;
         padding-bottom: 57%;
     }
-    > img {
+    .img {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
     }
 }
 .news-text {

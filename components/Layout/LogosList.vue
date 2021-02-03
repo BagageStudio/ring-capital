@@ -18,7 +18,7 @@
                     <span v-if="logo.smallText" class="small-txt">{{ logo.smallText }}</span>
                 </span>
             </a>
-            <nuxt-link v-else-if="hasLink" :to="logo.slug" :aria-label="logo.name" class="logo-link">
+            <nuxt-link v-else-if="hasLink" :to="getFullLink(logo)" :aria-label="logo.name" class="logo-link">
                 <span class="content">
                     <img :src="logo.logo.url" :alt="logo.logo.alt" />
                 </span>
@@ -31,7 +31,10 @@
         </li>
     </ul>
 </template>
+
 <script>
+import { routeByApiModels } from '~/app/crawler/routes';
+
 export default {
     props: {
         content: {
@@ -47,6 +50,15 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        }
+    },
+    methods: {
+        getFullLink(logo) {
+            if (!logo.slug) return '';
+            return this.localePath({
+                name: routeByApiModels[logo._modelApiKey].routerFormat,
+                params: { slug: logo.slug }
+            });
         }
     }
 };

@@ -1,6 +1,6 @@
 <template>
     <div v-if="data">
-        <div class="wrapper-company">
+        <div class="wrapper-company" itemscope itemtype="http://schema.org/Organization">
             <div class="container">
                 <div class="wrapper-back">
                     <nuxt-link class="btn-line" to="/">
@@ -11,19 +11,20 @@
                 <div class="wrapper-company-content">
                     <div class="company-col col-left">
                         <div v-if="data.image && !isM" class="wrapper-company-img">
-                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                            <FastImage class="company-img" :image="data.image" cover />
                         </div>
-                        <h1 class="company-title h1">{{ data.name }}</h1>
+                        <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
                         <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
                         <div v-if="data.founders" class="wrapper-company-founders">
                             <span class="founders-title">
                                 {{ $t('portfolio.foundersTitle') }}
                             </span>
-                            <span clas="founders">{{ data.founders }}</span>
+                            <span clas="founders" itemprop="founders">{{ data.founders }}</span>
                         </div>
                         <div
                             v-if="data.largeDescription"
                             class="company-description"
+                            itemprop="description"
                             v-html="data.largeDescription"
                         ></div>
                         <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
@@ -41,11 +42,11 @@
                     </div>
                     <div class="company-col col-right">
                         <div v-if="data.image && isM" class="wrapper-company-img">
-                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                            <FastImage class="company-img" :image="data.image" cover />
                         </div>
                         <div v-if="data.locations" class="wrapper-company-locations">
                             <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
-                            <div class="company-locations">
+                            <div class="company-locations" itemprop="contactPoints">
                                 <a
                                     v-for="location in data.locations"
                                     :key="location.id"
@@ -53,9 +54,14 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="location-link"
+                                    itemprop="address"
+                                    itemscope
+                                    itemtype="http://schema.org/PostalAddress"
                                 >
-                                    <span class="location-city">{{ location.city }}</span>
-                                    <span class="location-address">{{ location.address }}</span>
+                                    <span class="location-city" itemprop="addressLocality">{{ location.city }}</span>
+                                    <span class="location-address" itemprop="streetAddress">
+                                        {{ location.address }}
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -67,6 +73,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="company-website h4"
+                                itemprop="url"
                             >
                                 <span v-if="data.websiteLinkLabel" class="text">
                                     <span class="btn-label">{{ data.websiteLinkLabel }}</span>
@@ -160,7 +167,6 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
     }
 }
 .company-title {

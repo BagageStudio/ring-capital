@@ -9,7 +9,7 @@
                 class="detail"
             >
                 <span class="detail-img" :class="{ overlay }">
-                    <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
+                    <FastImage v-if="detail.image" class="bg-img" :image="detail.image" cover />
                     <span v-if="detail.hasLinkedin" class="linkedin-pin">
                         <Icon name="linkedin" />
                     </span>
@@ -179,8 +179,6 @@ a {
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        transition: transform 0.2s ease-out;
     }
     &.overlay {
         &::after {

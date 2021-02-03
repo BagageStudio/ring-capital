@@ -1,5 +1,5 @@
 <template>
-    <div v-if="content" class="key-figures">
+    <div v-if="content" class="key-figures" :style="{ '--borderColor': color }">
         <div v-for="keyFigure in content" :key="keyFigure.id" class="key-figure">
             <span class="key-figure-title">{{ keyFigure.title }}</span>
             <span class="key-figure-number">{{ keyFigure.number }}</span>
@@ -12,6 +12,11 @@ export default {
         content: {
             type: Array,
             required: true
+        },
+        color: {
+            type: String,
+            required: false,
+            default: '#657da2'
         }
     }
 };
@@ -29,7 +34,7 @@ export default {
     width: calc(50% - #{2 * $gutter});
     margin: 0 $gutter;
     padding: 30px 20px 10px;
-    border-top: 1px solid $neptune;
+    border-top: 1px solid var(--borderColor);
     background: $orbit;
     > span {
         display: block;

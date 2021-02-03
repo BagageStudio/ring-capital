@@ -375,7 +375,7 @@ a {
     > span,
     > p {
         display: inline;
-        background-image: linear-gradient(#a1b9df, #a1b9df);
+        background-image: linear-gradient($neptune, $neptune);
         // Vertical position of the line, magic number working for helvetica 26px to 68px
         background-position: 0% calc(70% + 0.7px);
         background-repeat: no-repeat;

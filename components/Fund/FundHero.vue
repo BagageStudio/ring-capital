@@ -1,9 +1,13 @@
 <template>
     <div class="fund-hero" :style="{ '--fundColor': data.color.hex }">
         <div class="container">
-            <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
-            <p>{{ data.fullDescription }}</p>
-            <KeyFigures :content="data.keyFigures" />
+            <div class="hero-text content-pad">
+                <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title)"></h1>
+                <p class="basic-subtitle">{{ data.fullDescription }}</p>
+            </div>
+            <div class="hero-keyfigures content-pad">
+                <KeyFigures :content="data.keyFigures" :color="data.color.hex" />
+            </div>
         </div>
     </div>
 </template>
@@ -23,5 +27,11 @@ export default {
     /deep/ strong {
         color: var(--fundColor);
     }
+}
+.basic-subtitle {
+    margin-bottom: 40px;
+}
+.hero-keyfigures {
+    margin-bottom: 70px;
 }
 </style>

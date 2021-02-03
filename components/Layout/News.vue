@@ -135,10 +135,18 @@ export default {
 .news-link {
     display: block;
     text-decoration: none;
+    &:hover {
+        .news-img {
+            .img {
+                transform: scale(1.05);
+            }
+        }
+    }
 }
 .news-img {
     position: relative;
     display: block;
+    overflow: hidden;
     &::before {
         content: '';
         display: block;
@@ -150,6 +158,7 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
+        transition: transform 0.2s ease-out;
     }
 }
 .news-text {

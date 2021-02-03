@@ -121,6 +121,18 @@ span {
         }
     }
 }
+a {
+    &.detail {
+        &:hover {
+            .detail-img .bg-img {
+                transform: scale(1.05);
+            }
+            .linkedin-pin::before {
+                opacity: 1;
+            }
+        }
+    }
+}
 .detail {
     text-decoration: none;
     .linkedin-pin {
@@ -132,10 +144,22 @@ span {
         left: 20px;
         width: 46px;
         height: 46px;
-        background: #eceff4;
+        background-color: #eceff4;
         fill: $orbit;
         z-index: 1;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: $white;
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
         .icon {
+            position: relative;
             width: 16px;
             height: 16px;
         }
@@ -143,6 +167,7 @@ span {
 }
 .detail-img {
     position: relative;
+    overflow: hidden;
     &::before {
         content: '';
         display: block;
@@ -155,6 +180,7 @@ span {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.2s ease-out;
     }
     &.overlay {
         &::after {
@@ -165,6 +191,7 @@ span {
             bottom: 0;
             left: 0;
             background: rgba($orbit, 0.85);
+            transform: translate3d(0, 0, 0);
         }
     }
 }

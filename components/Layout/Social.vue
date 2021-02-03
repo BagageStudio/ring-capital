@@ -43,27 +43,43 @@ export default {
     &.linkedin {
         width: 24px;
         height: 27px;
+        &:hover {
+            fill: #0077b5;
+        }
     }
     &.twitter {
         width: 28px;
         height: 24px;
+        &:hover {
+            fill: #55acee;
+        }
     }
     &.instagram {
         width: 27px;
         height: 27px;
+        &:hover {
+            fill: #e4405f;
+        }
     }
     &.facebook {
         width: 27px;
         height: 27px;
+        &:hover {
+            fill: #3b5999;
+        }
     }
     &.medium {
         width: 32px;
         height: 18px;
+        &:hover {
+            fill: #ffffff;
+        }
     }
     > svg {
         display: block;
         width: 100%;
         height: 100%;
+        transition: fill 0.2s ease-out;
     }
 }
 </style>

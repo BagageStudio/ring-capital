@@ -7,11 +7,10 @@
         />
         <div class="container">
             <div class="wrapper-section-txt">
-                <img
+                <FastImage
                     v-if="data.section1MobileImage && !isL"
-                    :src="data.section1MobileImage.url"
-                    :alt="data.section1MobileImage.alt"
                     class="section-mobile-image"
+                    :image="data.section1MobileImage"
                 />
                 <h2 v-if="data.section1Title" class="basic-h2 underlined">
                     <span>{{ data.section1Title }}</span>
@@ -30,10 +29,11 @@
                     @mouseleave.native="selected = ''"
                 >
                     <span class="section-link-img">
-                        <img
+                        <FastImage
                             v-if="data.section1TopLeftImage && isL"
-                            :src="data.section1TopLeftImage.url"
-                            :alt="data.section1TopLeftImage.alt"
+                            class="section-img"
+                            :image="data.section1TopLeftImage"
+                            cover
                         />
                     </span>
                     <span class="section-link-txt">
@@ -50,10 +50,11 @@
                     @mouseleave.native="selected = ''"
                 >
                     <span class="section-link-img">
-                        <img
+                        <FastImage
                             v-if="data.section1TopRightImage && isL"
-                            :src="data.section1TopRightImage.url"
-                            :alt="data.section1TopRightImage.alt"
+                            class="section-img"
+                            :image="data.section1TopRightImage"
+                            cover
                         />
                     </span>
                     <span class="section-link-txt">
@@ -68,10 +69,11 @@
                     hide-label
                 >
                     <span class="section-link-img">
-                        <img
+                        <FastImage
                             v-if="data.section1BottomLeftImage && isL"
-                            :src="data.section1BottomLeftImage.url"
-                            :alt="data.section1BottomLeftImage.alt"
+                            class="section-img"
+                            :image="data.section1BottomLeftImage"
+                            cover
                         />
                     </span>
                     <span class="section-link-txt">
@@ -88,10 +90,11 @@
                     @mouseleave.native="selected = ''"
                 >
                     <span class="section-link-img">
-                        <img
+                        <FastImage
                             v-if="data.section1BottomRightImage && isL"
-                            :src="data.section1BottomRightImage.url"
-                            :alt="data.section1BottomRightImage.alt"
+                            class="section-img"
+                            :image="data.section1BottomRightImage"
+                            cover
                         />
                     </span>
                     <span class="section-link-txt">
@@ -307,10 +310,9 @@ export default {
     .section-link-img {
         flex: 1 1 auto;
         min-height: 0;
-        > img {
+        .section-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
     }
     .section-link-txt {

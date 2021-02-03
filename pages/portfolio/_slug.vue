@@ -11,7 +11,7 @@
                 <div class="wrapper-company-content">
                     <div class="company-col col-left">
                         <div v-if="data.image && !isM" class="wrapper-company-img">
-                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                            <FastImage class="company-img" :image="data.image" cover />
                         </div>
                         <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
                         <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
@@ -42,7 +42,7 @@
                     </div>
                     <div class="company-col col-right">
                         <div v-if="data.image && isM" class="wrapper-company-img">
-                            <img class="company-img" :src="data.image.url" :alt="data.image.alt" />
+                            <FastImage class="company-img" :image="data.image" cover />
                         </div>
                         <div v-if="data.locations" class="wrapper-company-locations">
                             <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
@@ -167,7 +167,6 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
     }
 }
 .company-title {

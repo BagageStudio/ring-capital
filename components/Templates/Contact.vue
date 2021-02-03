@@ -3,7 +3,7 @@
         <div v-if="data.image && isXL" class="wrapper-image">
             <div class="container">
                 <div class="content-image">
-                    <img :src="data.image.url" :alt="data.image.alt" />
+                    <FastImage class="img" :image="data.image" cover />
                 </div>
             </div>
         </div>
@@ -172,11 +172,10 @@ export default {
         width: calc(#{percentage(4/12)} + #{$grid-gutter-l - $gutter});
         height: 100%;
         margin-left: -#{$grid-gutter-l};
-        > img {
+        .img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
     }
 }

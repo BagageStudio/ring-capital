@@ -1,5 +1,5 @@
 <template>
-    <div v-if="companies" class="wrapper-other-companies">
+    <div v-if="companies" class="wrapper-other-companies" :class="{ dark }">
         <div class="container">
             <div class="wrapper-title-btn">
                 <h2 v-if="title" class="other-refs-title h2">{{ title }}</h2>
@@ -29,6 +29,11 @@ export default {
             type: String,
             required: false,
             default: ''
+        },
+        dark: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     computed: {
@@ -42,9 +47,15 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper-other-companies {
+    --color: $orbit;
+    --backgroundColor: $white;
+    &.dark {
+        --color: $white;
+        --backgroundColor: $orbit;
+    }
     padding: 60px 0;
-    color: $orbit;
-    background: $white;
+    color: var(--color);
+    background: var(--backgroundColor);
 }
 .wrapper-title-btn {
     display: flex;

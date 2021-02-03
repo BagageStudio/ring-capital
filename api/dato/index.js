@@ -120,6 +120,7 @@ export const homeQuery = `
                 ${seo}
             }
             companies {
+                _modelApiKey
                 id
                 name
                 logo {

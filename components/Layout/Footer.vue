@@ -38,12 +38,13 @@
                     </div>
                     <div class="wrapper-cols-footer">
                         <div v-for="(column, index) in data.linksColumn" :key="index" class="col-footer">
-                            <LinkTo
+                            <div
                                 v-for="(singleLink, linkIndex) in column.links"
                                 :key="linkIndex"
-                                class="footer-link"
-                                :link="singleLink"
-                            />
+                                class="content-col-footer"
+                            >
+                                <LinkTo class="footer-link" :link="singleLink" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,8 +155,13 @@ export default {
     padding: 0 $gutter;
 }
 .footer-link {
+    display: inline-block;
     text-decoration: none;
     margin-bottom: 10px;
+    transition: color 0.2s ease-out;
+    &:hover {
+        color: $saturn;
+    }
 }
 .footer-bottom {
     margin-top: 10px;
@@ -173,6 +179,10 @@ export default {
 .footer-small-link {
     margin-right: 10px;
     text-decoration: none;
+    transition: color 0.2s ease-out;
+    &:hover {
+        color: $white;
+    }
 }
 
 @media (min-width: $tablet) {

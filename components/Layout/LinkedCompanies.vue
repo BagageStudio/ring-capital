@@ -47,11 +47,11 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper-other-companies {
-    --color: $orbit;
-    --backgroundColor: $white;
+    --color: #{$orbit};
+    --backgroundColor: #{$white};
     &.dark {
-        --color: $white;
-        --backgroundColor: $orbit;
+        --color: #{$white};
+        --backgroundColor: #{$dark};
     }
     padding: 60px 0;
     color: var(--color);

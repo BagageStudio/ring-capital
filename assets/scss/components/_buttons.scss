@@ -7,54 +7,81 @@
     text-align: center;
     border: 1px solid $neptune;
     text-decoration: none;
-    // color: $white;
     color: var(--secondary);
     text-decoration: none;
+    transition: color 0.2s ease-in-out 0.2s;
     font-family: $space;
     z-index: 1;
-    &::before,
-    &::after {
-        content: '';
+
+    .bg {
         position: absolute;
-        z-index: -1;
-        transition: opacity 0.2s ease-out;
-    }
-    &::before {
         top: 0;
-        right: 0;
         bottom: 0;
         left: 0;
-        background: $neptune;
-        opacity: 0;
+        right: 0;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: $neptune;
+            clip-path: ellipse(50% 0% at 50% 100%);
+            transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+        }
     }
-    &::after {
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
         bottom: -2px;
         left: -2px;
-        width: 7px;
+        z-index: -1;
+        transition: 0.2s ease-out;
+        background-color: var(--secondary);
+    }
+    &::before {
+        width: 2px;
         height: 9px;
-        border-left: 2px solid var(--secondary);
-        border-bottom: 2px solid var(--secondary);
+        transform-origin: 50% 100%;
+    }
+    &::after {
+        width: 7px;
+        height: 2px;
+        transform-origin: 0% 50%;
+        transition-delay: 0.05s;
     }
     &.primary {
         color: $white;
-        &::after {
-            border-color: $white;
+        &::after,
+        &::before {
+            background-color: $white;
         }
     }
     &.secondary {
         color: $orbit;
-        &::after {
-            border-color: $orbit;
+        &::after,
+        &::before {
+            background-color: $orbit;
         }
     }
     &:hover,
     &:focus {
+        transition: color 0.2s ease-in-out 0.1s;
         color: $white;
+        .bg::before {
+            clip-path: ellipse(80% 130% at 50% 100%);
+        }
         &::before {
-            opacity: 1;
+            opacity: 0;
+            transform: scale(0);
         }
         &::after {
             opacity: 0;
+            transform: scale(0);
         }
         &.secondary {
             color: $white;

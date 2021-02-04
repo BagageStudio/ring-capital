@@ -3,6 +3,7 @@
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
+        <div class="bg"></div>
         <slot />
     </nuxt-link>
     <a
@@ -16,6 +17,7 @@
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
+        <div class="bg"></div>
         <slot />
     </a>
 </template>

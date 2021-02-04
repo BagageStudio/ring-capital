@@ -1,6 +1,9 @@
 <template>
     <div class="fund-hero" :style="{ '--fundColor': data.color.hex }">
         <div class="container">
+            <div class="content-pad">
+                <FundSchema :color="data.color.hex" :logo="data.logo" />
+            </div>
             <div class="hero-text content-pad">
                 <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title)"></h1>
                 <p class="basic-subtitle">{{ data.fullDescription }}</p>
@@ -33,5 +36,17 @@ export default {
 }
 .hero-keyfigures {
     margin-bottom: 70px;
+}
+.fund-schema {
+    position: relative;
+    margin-left: -20px;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 10px;
+}
+@media (min-width: $tablet) {
+    .hero-keyfigures {
+        width: percentage(6/8);
+    }
 }
 </style>

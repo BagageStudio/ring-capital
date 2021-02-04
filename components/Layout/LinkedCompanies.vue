@@ -3,14 +3,14 @@
         <div class="container">
             <div class="wrapper-title-btn">
                 <h2 v-if="title" class="other-refs-title h2">{{ title }}</h2>
-                <nuxt-link v-if="isL" class="btn-line on-white" to="/">
+                <nuxt-link v-if="isL" class="btn-line on-white" :to="portfolioListLink">
                     <span class="deco"></span>
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
             </div>
             <DetailList class="no-margin-large grid-gutter fixed-height" :content="companies" hide-tags overlay />
             <div v-if="!isL" class="wrapper-see-all">
-                <nuxt-link class="btn-line on-white" to="/">
+                <nuxt-link class="btn-line on-white" :to="portfolioListLink">
                     <span class="deco"></span>
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
@@ -18,7 +18,10 @@
         </div>
     </div>
 </template>
+
 <script>
+import { routeByApiModels } from '~/app/crawler/routes';
+
 export default {
     props: {
         companies: {
@@ -35,6 +38,13 @@ export default {
             required: false,
             default: false
         }
+    },
+    data() {
+        return {
+            portfolioListLink: this.localePath({
+                name: routeByApiModels.portfolio.routerFormat
+            })
+        };
     },
     computed: {
         isL() {

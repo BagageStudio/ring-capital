@@ -1,4 +1,4 @@
-import { defaultLocale, locales } from './config/i18n';
+import { defaultLocale, locales, getPagesList } from './config/i18n';
 import { layoutQuery } from './api/dato/index';
 import { excludedDynamicRoutes } from './app/crawler/routes';
 
@@ -52,6 +52,8 @@ export default {
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
+        // Custom crawler to be sure that all urls are referenced
+        '~/modules/crawler',
         // https://go.nuxtjs.dev/eslint
         '@nuxtjs/eslint-module',
         '@nuxtjs/robots',
@@ -66,9 +68,9 @@ export default {
     // i18n config
     i18n: {
         locales,
-        strategy: 'prefix_except_default',
         defaultLocale,
-        routesNameSeparator: '-',
+        parsePages: false,
+        pages: getPagesList(),
         vueI18n: {
             fallbackLocale: defaultLocale,
             messages: {
@@ -121,7 +123,6 @@ export default {
      ** See https://fr.nuxtjs.org/api/configuration-generate/
      */
     generate: {
-        routes: ['/team', '/contact', '/page-type', '/portfolio', '/portfolio/castalie'],
         crawler: false,
         fallback: false,
         exclude: excludedDynamicRoutes(isProdEnv)

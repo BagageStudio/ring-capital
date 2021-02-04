@@ -23,6 +23,10 @@ export const routes = {
     fund: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
+    },
+    investorsPage: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
     }
 };
 
@@ -32,7 +36,8 @@ export const routeByApiModels = {
     team: routes.team,
     portfolio: routes.portfolio,
     company: routes.portfolioSingle,
-    fund: routes.fund
+    fund: routes.fund,
+    investors_page: routes.investorsPage
 };
 
 // You can pass an array of regular expressions to exclude dynamic routes.

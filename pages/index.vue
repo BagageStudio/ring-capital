@@ -35,8 +35,6 @@ export default {
             return error({ statusCode: 404, message: e });
         }
 
-        console.log('finalData : ' + finalData);
-
         return finalData;
     },
     data() {

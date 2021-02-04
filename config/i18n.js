@@ -12,5 +12,20 @@ export const getPagesList = () => ({
     },
     [routes.page.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.team.i18nFormat]: {
+        en: '/:slug?'
+    },
+    [routes.fund.i18nFormat]: {
+        en: '/:slug?'
+    },
+    [routes.investorsPage.i18nFormat]: {
+        en: '/:slug?'
+    },
+    [routes.portfolio.i18nFormat]: {
+        en: '/portfolio'
+    },
+    [routes.portfolioSingle.i18nFormat]: {
+        en: '/portfolio/:slug?'
     }
 });

@@ -4,5 +4,29 @@ export default `
             slug
             _modelApiKey
         }
+        contact(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        team(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        portfolio(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        investorsPage(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        allFunds(locale: $lang, filter: {slug: {neq: null}}) {
+            slug
+            _modelApiKey
+        }
+        allCompanies(locale: $lang, filter: {slug: {neq: null}}) {
+            slug
+            _modelApiKey
+        }
     }
 `;

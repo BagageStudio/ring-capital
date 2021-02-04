@@ -174,7 +174,15 @@ async function routeGeneration({ routes }) {
                         headers: { Authorization: `Bearer ${datoApiToken}` }
                     }
                 )
-                .then(result => result.data.data);
+                .then(({ data }) => {
+                    if (data.errors) {
+                        data.errors.forEach(error => {
+                            logger.fatal(new Error(error.message));
+                        });
+                    } else {
+                        return data.data;
+                    }
+                });
 
             requests.push(requestResults);
         }

@@ -3,7 +3,7 @@
         <div class="wrapper-company" itemscope itemtype="http://schema.org/Organization">
             <div class="container">
                 <div class="wrapper-back">
-                    <nuxt-link class="btn-line" to="/">
+                    <nuxt-link class="btn-line" :to="portfolioListLink">
                         <span class="deco"></span>
                         {{ $t('portfolio.backLabel') }}
                     </nuxt-link>
@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { routeByApiModels } from '~/app/crawler/routes';
 import { getIso, getSlug, setRouteParams } from '~/api/dato/helpers';
 import { companyQuery } from '~/api/dato';
 import handleSeo from '~/assets/js/seo';
@@ -124,7 +125,10 @@ export default {
     data() {
         return {
             data: {},
-            seo: {}
+            seo: {},
+            portfolioListLink: this.localePath({
+                name: routeByApiModels.portfolio.routerFormat
+            })
         };
     },
     computed: {

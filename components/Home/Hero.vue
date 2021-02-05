@@ -60,7 +60,7 @@ export default {
         height: 50px;
         background-color: $dark;
     }
-    /deep/ p {
+    ::v-deep p {
         position: relative;
         display: inline;
         margin: 0;
@@ -71,14 +71,14 @@ export default {
             z-index: 1;
         }
     }
-    /deep/ span {
+    ::v-deep span {
         position: relative;
         padding-top: 8px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
         background-color: $dark;
         background-position: 0% calc(74% + 0.7px);
     }
-    /deep/ strong {
+    ::v-deep strong {
         color: $saturn;
         font-weight: 300;
     }
@@ -191,7 +191,7 @@ export default {
     }
     .basic-h1 {
         margin-bottom: 90px;
-        /deep/ span {
+        ::v-deep span {
             box-shadow: 10px 0 0 $dark, -10px 0 0 $dark;
             &::before {
                 left: -10px;

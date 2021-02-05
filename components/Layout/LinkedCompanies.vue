@@ -3,14 +3,14 @@
         <div class="container">
             <div class="wrapper-title-btn">
                 <h2 v-if="title" class="other-refs-title h2">{{ title }}</h2>
-                <nuxt-link v-if="isL" class="btn-line on-white" :to="portfolioListLink">
+                <nuxt-link v-if="isL" class="btn-line" :class="{ 'on-white': !dark }" :to="portfolioListLink">
                     <span class="deco"></span>
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
             </div>
             <DetailList class="no-margin-large grid-gutter fixed-height" :content="companies" hide-tags overlay />
             <div v-if="!isL" class="wrapper-see-all">
-                <nuxt-link class="btn-line on-white" :to="portfolioListLink">
+                <nuxt-link class="btn-line" :class="{ 'on-white': !dark }" :to="portfolioListLink">
                     <span class="deco"></span>
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>

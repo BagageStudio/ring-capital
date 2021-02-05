@@ -24,6 +24,7 @@
                             <div class="wrapper-btn-newsletter">
                                 <button ref="submit" type="submit" class="btn-block primary">
                                     <span>{{ $t('newsletter.sendButton') }}</span>
+                                    <span class="bg"></span>
                                 </button>
                             </div>
                         </div>
@@ -111,7 +112,7 @@ export default {
     margin-top: 35px;
     .btn-block {
         width: 100%;
-        /deep/ span {
+        ::v-deep span {
             width: 100%;
         }
     }

@@ -49,19 +49,19 @@ export default {
 }
 
 .basic-h1 {
-    /deep/ p {
+    ::v-deep p {
         position: relative;
         display: inline;
         margin: 0;
     }
-    /deep/ span {
+    ::v-deep span {
         position: relative;
         padding-top: 8px;
         box-shadow: 10px 0 0 $white, -10px 0 0 $white;
         background-color: $white;
         background-position: 0% calc(74% + 0.7px);
     }
-    /deep/ strong {
+    ::v-deep strong {
         color: $neptune;
         font-weight: 300;
     }

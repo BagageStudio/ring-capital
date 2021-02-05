@@ -1,8 +1,9 @@
 <template>
     <div class="fund-hero" :style="{ '--fundColor': data.color.hex }">
         <div class="container">
+            <FundSchemaDesktop v-if="isDesktop" :color="data.color.hex" :logo="data.logo" />
             <div class="content-pad">
-                <FundSchema :color="data.color.hex" :logo="data.logo" />
+                <FundSchemaMobile v-if="!isDesktop" :color="data.color.hex" :logo="data.logo" />
             </div>
             <div class="hero-text content-pad">
                 <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title)"></h1>
@@ -22,12 +23,18 @@ export default {
             type: Object,
             required: true
         }
+    },
+    computed: {
+        isDesktop() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.xl;
+        }
     }
 };
 </script>
 <style lang="scss" scoped>
 .basic-h1 {
-    /deep/ strong {
+    ::v-deep strong {
         color: var(--fundColor);
     }
 }
@@ -47,6 +54,31 @@ export default {
 @media (min-width: $tablet) {
     .hero-keyfigures {
         width: percentage(6/8);
+    }
+}
+@media (min-width: $desktop) {
+    .fund-hero {
+        position: relative;
+        padding-top: 90px;
+    }
+    .hero-text {
+        width: percentage(6/12);
+    }
+    .hero-keyfigures {
+        width: percentage(4/12);
+        margin-bottom: 160px;
+        padding-left: 0;
+        padding-right: 0;
+        .key-figures {
+            width: 100%;
+        }
+    }
+    .fund-schema-desktop {
+        position: absolute;
+        top: -95px;
+        right: -25px;
+        width: 60%;
+        max-width: 900px;
     }
 }
 </style>

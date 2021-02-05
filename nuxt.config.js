@@ -1,8 +1,13 @@
+import Sass from 'sass';
 import { defaultLocale, locales, getPagesList } from './config/i18n';
 import { layoutQuery } from './api/dato/index';
 import { excludedDynamicRoutes } from './app/crawler/routes';
 
 import enTranslation from './locales/en.json';
+
+const customSass = {
+    implementation: Sass
+};
 
 /*
  ** NOTE:
@@ -139,7 +144,10 @@ export default {
         /*
          ** Transpiling es6 packages
          */
-        transpile: [/@stereorepo/, 'gsap']
+        transpile: [/@stereorepo/, 'gsap'],
+        loaders: {
+            scss: customSass
+        }
     },
     /*
      ** Generate configuration

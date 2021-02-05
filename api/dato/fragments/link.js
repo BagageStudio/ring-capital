@@ -24,6 +24,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on ContactRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

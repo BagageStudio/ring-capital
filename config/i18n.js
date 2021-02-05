@@ -27,5 +27,8 @@ export const getPagesList = () => ({
     },
     [routes.portfolioSingle.i18nFormat]: {
         en: '/portfolio/:slug?'
+    },
+    [routes.contact.i18nFormat]: {
+        en: '/:slug?'
     }
 });

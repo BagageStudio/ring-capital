@@ -1,9 +1,25 @@
 <template>
     <div class="wrapper-news-list">
         <div class="container">
-            <h4 v-if="title" class="basic-h4 news-list-title underlined">
-                <span>{{ title }}</span>
-            </h4>
+            <div class="wrapper-title-buttons">
+                <h4 v-if="title" class="basic-h4 news-list-title underlined">
+                    <span>{{ title }}</span>
+                </h4>
+                <div v-if="isL" class="wrapper-buttons">
+                    <button class="btn-prev" type="button" @click="prevNews"></button>
+                    <button class="btn-next" type="button" @click="nextNews"></button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="container"
+            @mousedown="lock"
+            @touchstart="lock"
+            @mouseup="move"
+            @touchend="move"
+            @mousemove="moving"
+            @touchmove="moving"
+        >
             <ul v-if="content" ref="news" class="news-list">
                 <li v-for="news in content" :key="news.id">
                     <a class="news-link" :href="news.linkUrl" target="_blank" rel="noopener noreferrer">
@@ -25,7 +41,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="wrapper-buttons">
+            <div v-if="!isL" class="wrapper-buttons">
                 <button class="btn-prev" type="button" @click="prevNews"></button>
                 <button class="btn-next" type="button" @click="nextNews"></button>
             </div>
@@ -52,12 +68,17 @@ export default {
         nbNews: 0,
         nbNewsFullyVisible: 1,
         widthPercentage: 75,
-        sign: '-'
+        sign: '-',
+        x0: null
     }),
     computed: {
         ww() {
             if (!this.$store.state.superWindow) return false;
             return this.$store.state.superWindow.width;
+        },
+        isL() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
         }
     },
     watch: {
@@ -107,6 +128,33 @@ export default {
         },
         prevNews() {
             this.moveNews(false);
+        },
+        unify(e) {
+            return e.changedTouches ? e.changedTouches[0] : e;
+        },
+        lock(e) {
+            console.log('lock');
+            this.x0 = this.unify(e).clientX;
+        },
+        move(e) {
+            console.log('move');
+            if (this.x0 || this.x0 === 0) {
+                const dx = this.unify(e).clientX - this.x0;
+                const s = Math.sign(dx);
+
+                console.log(s);
+                if (s === -1) {
+                    this.nextNews();
+                } else if (s === 1) {
+                    this.prevNews();
+                }
+
+                this.x0 = null;
+            }
+        },
+        moving(e) {
+            if (!this.x0) return;
+            e.preventDefault();
         }
     }
 };
@@ -118,6 +166,14 @@ export default {
     color: $orbit;
     background: $white;
     overflow: hidden;
+}
+.wrapper-title-buttons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .wrapper-buttons {
+        margin: 0 0 0 20px;
+    }
 }
 .news-list-title {
     padding: 0 $gutter;
@@ -135,6 +191,7 @@ export default {
 .news-link {
     display: block;
     text-decoration: none;
+    user-select: none;
     &:hover {
         .news-img {
             .img {
@@ -147,6 +204,7 @@ export default {
     position: relative;
     display: block;
     overflow: hidden;
+    pointer-events: none;
     &::before {
         content: '';
         display: block;
@@ -257,13 +315,6 @@ export default {
     }
     .news-info {
         margin-top: 0;
-    }
-    .wrapper-buttons {
-        position: absolute;
-        top: 0;
-        right: #{$gutter + $grid-gutter-l};
-        margin: 0;
-        padding: 0;
     }
 }
 @media (min-width: $desktop) {

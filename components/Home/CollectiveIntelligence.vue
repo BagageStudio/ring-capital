@@ -223,7 +223,7 @@ export default {
         max-width: 2200px;
         // z-index: -1;
         overflow: hidden;
-        /deep/ svg {
+        ::v-deep svg {
             margin-top: -70px;
         }
     }
@@ -333,7 +333,7 @@ export default {
     }
 }
 @media (min-width: $desktop-xxl) {
-    .schema /deep/ svg {
+    .schema ::v-deep svg {
         margin-top: 0;
     }
     .wrapper-section-1 {

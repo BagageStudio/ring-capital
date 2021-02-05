@@ -111,7 +111,7 @@ export default {
     margin-top: 35px;
     .btn-block {
         width: 100%;
-        /deep/ span {
+        ::v-deep span {
             width: 100%;
         }
     }

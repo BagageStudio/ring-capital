@@ -165,7 +165,7 @@ export default {
                 },
                 paused: true,
                 immediateRender: true,
-                duration: 5,
+                duration: 7,
                 ease: 'none'
             });
             const trail2 = gsap.to('#trail_2', {
@@ -179,7 +179,7 @@ export default {
                 },
                 paused: true,
                 immediateRender: true,
-                duration: 5,
+                duration: 7,
                 ease: 'none'
             });
             const circle1 = gsap.to('#circle_wrapper_1', {
@@ -190,7 +190,7 @@ export default {
                 },
                 paused: true,
                 immediateRender: true,
-                duration: 5,
+                duration: 7,
                 ease: 'none'
             });
             const trail1 = gsap.to('#trail_1', {
@@ -202,7 +202,7 @@ export default {
                 },
                 paused: true,
                 immediateRender: true,
-                duration: 5,
+                duration: 7,
                 ease: 'none'
             });
             // this.tweens.push(circle1, trail1);

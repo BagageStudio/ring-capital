@@ -1,9 +1,9 @@
 <template>
     <div class="fund-hero" :style="{ '--fundColor': data.color.hex }">
         <div class="container">
-            <FundSchemaDesktop :color="data.color.hex" :logo="data.logo" />
+            <FundSchemaDesktop v-if="isDesktop" :color="data.color.hex" :logo="data.logo" />
             <div class="content-pad">
-                <!-- <FundSchemaMobile :color="data.color.hex" :logo="data.logo" /> -->
+                <FundSchemaMobile v-if="!isDesktop" :color="data.color.hex" :logo="data.logo" />
             </div>
             <div class="hero-text content-pad">
                 <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title)"></h1>
@@ -22,6 +22,12 @@ export default {
         data: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        isDesktop() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.xl;
         }
     }
 };

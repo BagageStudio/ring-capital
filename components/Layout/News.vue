@@ -6,8 +6,12 @@
                     <span>{{ title }}</span>
                 </h4>
                 <div v-if="isL" class="wrapper-buttons">
-                    <button class="btn-prev" type="button" @click="prevNews"></button>
-                    <button class="btn-next" type="button" @click="nextNews"></button>
+                    <button aria-label="next news" class="btn-prev" type="button" @click="prevNews">
+                        <span class="bg"></span>
+                    </button>
+                    <button aria-label="previous news" class="btn-next" type="button" @click="nextNews">
+                        <span class="bg"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -263,6 +267,7 @@ export default {
     margin-top: 30px;
     padding: 0 $gutter;
     button {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -271,21 +276,51 @@ export default {
         border: 1px solid $neptune;
         transition: background-color 0.2s ease-out;
         &::before {
+            position: relative;
             content: '';
+            z-index: 1;
             width: 7px;
             height: 7px;
             border-top: 1px solid $orbit;
             border-right: 1px solid $orbit;
-            transition: border-color 0.2s ease-out;
+            transition: border-color 0.15s ease-in-out 0.15s;
+        }
+        .bg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: $neptune;
+                clip-path: ellipse(0% 50% at 0% 50%);
+                transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+            }
         }
         &:hover {
-            background: $neptune;
             &::before {
+                transition: border-color 0.15s ease-in-out 0.1s;
                 border-color: $white;
+            }
+            &.btn-next .bg::before {
+                clip-path: ellipse(130% 80% at 0% 50%);
+            }
+            &.btn-prev .bg::before {
+                clip-path: ellipse(130% 80% at 100% 50%);
             }
         }
         &.btn-prev {
             margin-right: 10px;
+            .bg::before {
+                clip-path: ellipse(0% 50% at 100% 50%);
+            }
             &::before {
                 transform: rotate(225deg);
             }

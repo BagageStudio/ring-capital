@@ -20,6 +20,14 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on InvestorsPageRecord {
+                _modelApiKey
+                slug
+            }
+            ... on ContactRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

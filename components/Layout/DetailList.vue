@@ -12,6 +12,7 @@
                     <FastImage v-if="detail.image" class="bg-img" :image="detail.image" cover />
                     <span v-if="detail.hasLinkedin" class="linkedin-pin">
                         <Icon name="linkedin" />
+                        <span class="bg"></span>
                     </span>
                     <span v-if="detail.logo" class="detail-logo">
                         <span class="wrapper-img">
@@ -127,8 +128,13 @@ a {
             .detail-img .bg-img {
                 transform: scale(1.05);
             }
-            .linkedin-pin::before {
+            .linkedin-pin .bg::before {
+                clip-path: ellipse(80% 130% at 50% 100%);
+            }
+            .detail-txt::after {
+                transform: scaleX(1);
                 opacity: 1;
+                transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out;
             }
         }
     }
@@ -147,16 +153,25 @@ a {
         background-color: #eceff4;
         fill: $orbit;
         z-index: 1;
-        &::before {
-            content: '';
+        .bg {
             position: absolute;
             top: 0;
-            right: 0;
             bottom: 0;
             left: 0;
-            background-color: $white;
-            opacity: 0;
-            transition: opacity 0.2s ease-out;
+            right: 0;
+            overflow: hidden;
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: $white;
+                clip-path: ellipse(50% 0% at 50% 100%);
+                transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+            }
         }
         .icon {
             position: relative;
@@ -179,6 +194,8 @@ a {
         left: 0;
         width: 100%;
         height: 100%;
+        transform: scale(1.002);
+        transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     }
     &.overlay {
         &::after {
@@ -213,10 +230,24 @@ a {
     }
 }
 .detail-txt {
+    position: relative;
     padding: 30px 10px 50px;
     border-bottom: 1px solid rgba($neptune, 0.4);
     .detail-title {
         margin-bottom: 20px;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        left: 0;
+        bottom: -1px;
+        background-color: $orbit;
+        transform: scaleX(0);
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out 0.2s;
     }
 }
 

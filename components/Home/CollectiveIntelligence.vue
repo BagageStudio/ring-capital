@@ -287,7 +287,7 @@ export default {
                 bottom: 0;
                 left: 0;
                 background: $orbit;
-                clip-path: ellipse(50% 0% at 50% 100%);
+                clip-path: ellipse(0% 50% at 0% 50%);
                 transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
             }
         }
@@ -334,7 +334,7 @@ export default {
                     border-color: $white;
                 }
                 .arrow-bg::before {
-                    clip-path: ellipse(80% 130% at 50% 100%);
+                    clip-path: ellipse(130% 80% at 0% 50%);
                 }
             }
         }

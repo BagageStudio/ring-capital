@@ -38,7 +38,9 @@
                     </span>
                     <span class="section-link-txt">
                         <span class="section-link-label">{{ data.section1TopLeftLink.label }}</span>
-                        <span class="section-link-arrow"></span>
+                        <span class="section-link-arrow">
+                            <span class="arrow-bg"></span>
+                        </span>
                     </span>
                 </LinkTo>
                 <LinkTo
@@ -59,7 +61,9 @@
                     </span>
                     <span class="section-link-txt">
                         <span class="section-link-label">{{ data.section1TopRightLink.label }}</span>
-                        <span class="section-link-arrow"></span>
+                        <span class="section-link-arrow">
+                            <span class="arrow-bg"></span>
+                        </span>
                     </span>
                 </LinkTo>
                 <LinkTo
@@ -78,7 +82,9 @@
                     </span>
                     <span class="section-link-txt">
                         <span class="section-link-label">{{ data.section1BottomLeftLink.label }}</span>
-                        <span class="section-link-arrow"></span>
+                        <span class="section-link-arrow">
+                            <span class="arrow-bg"></span>
+                        </span>
                     </span>
                 </LinkTo>
                 <LinkTo
@@ -99,7 +105,9 @@
                     </span>
                     <span class="section-link-txt">
                         <span class="section-link-label">{{ data.section1BottomRightLink.label }}</span>
-                        <span class="section-link-arrow"></span>
+                        <span class="section-link-arrow">
+                            <span class="arrow-bg"></span>
+                        </span>
                     </span>
                 </LinkTo>
             </div>
@@ -257,6 +265,32 @@ export default {
         &::before {
             content: none;
         }
+        .section-link-arrow {
+            position: relative;
+            &::before {
+                z-index: 1;
+                transition: border-color 0.2s ease-in-out 0.2s;
+            }
+        }
+        .arrow-bg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: $orbit;
+                clip-path: ellipse(50% 0% at 50% 100%);
+                transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+            }
+        }
         &:nth-child(1) {
             grid-column-start: 1;
             grid-column-end: 3;
@@ -291,10 +325,16 @@ export default {
         }
         &:hover,
         &:focus {
+            .section-img {
+                transform: scale(1.05);
+            }
             .section-link-arrow {
-                background-color: $orbit;
                 &::before {
+                    transition: border-color 0.2s ease-in-out 0.1s;
                     border-color: $white;
+                }
+                .arrow-bg::before {
+                    clip-path: ellipse(80% 130% at 50% 100%);
                 }
             }
         }
@@ -310,9 +350,12 @@ export default {
     .section-link-img {
         flex: 1 1 auto;
         min-height: 0;
+        overflow: hidden;
         .section-img {
             width: 100%;
             height: 100%;
+            transform-origin: 50% 50%;
+            transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
         }
     }
     .section-link-txt {

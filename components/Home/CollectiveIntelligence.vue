@@ -355,7 +355,7 @@ export default {
             width: 100%;
             height: 100%;
             transform-origin: 50% 50%;
-            transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
         }
     }
     .section-link-txt {

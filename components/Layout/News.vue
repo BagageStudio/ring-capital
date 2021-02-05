@@ -69,7 +69,9 @@ export default {
         nbNewsFullyVisible: 1,
         widthPercentage: 75,
         sign: '-',
-        x0: null
+        x0: null,
+        y0: null,
+        willSwipe: true
     }),
     computed: {
         ww() {
@@ -133,16 +135,15 @@ export default {
             return e.changedTouches ? e.changedTouches[0] : e;
         },
         lock(e) {
-            console.log('lock');
             this.x0 = this.unify(e).clientX;
+            this.y0 = this.unify(e).clientY;
         },
         move(e) {
-            console.log('move');
+            if (!this.willSwipe) return;
             if (this.x0 || this.x0 === 0) {
                 const dx = this.unify(e).clientX - this.x0;
                 const s = Math.sign(dx);
 
-                console.log(s);
                 if (s === -1) {
                     this.nextNews();
                 } else if (s === 1) {
@@ -153,7 +154,16 @@ export default {
             }
         },
         moving(e) {
-            if (!this.x0) return;
+            if (!this.x0 || !this.y0) return;
+            const actualx0 = this.unify(e).clientX;
+            const actualy0 = this.unify(e).clientY;
+            const distX = Math.abs(actualx0 - this.x0);
+            const distY = Math.abs(actualy0 - this.y0);
+            if (distY > distX) {
+                this.willSwipe = false;
+                return;
+            }
+            this.willSwipe = true;
             e.preventDefault();
         }
     }

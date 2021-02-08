@@ -28,6 +28,14 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on FundRecord {
+                _modelApiKey
+                slug
+            }
+            ... on CompanyRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

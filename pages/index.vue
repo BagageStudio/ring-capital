@@ -30,7 +30,6 @@ export default {
             finalData.data = homeData;
 
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo });
-            console.log(finalData.seo);
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }

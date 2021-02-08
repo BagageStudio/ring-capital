@@ -60,7 +60,6 @@ export default {
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo });
             finalData.template = pascalize(finalData.template);
         } catch (e) {
-            console.log(e);
             return error({ statusCode: 404, message: e });
         }
 

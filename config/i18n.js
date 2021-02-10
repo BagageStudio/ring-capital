@@ -30,5 +30,8 @@ export const getPagesList = () => ({
     },
     [routes.contact.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.useCasesPage.i18nFormat]: {
+        en: '/:slug?'
     }
 });

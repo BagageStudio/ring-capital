@@ -469,6 +469,50 @@ export const fundQuery = `
         }
     }`;
 
+export const useCasesPageQuery = `
+    ${linkFragment}
+    query UseCasesPage($lang: SiteLocale) {
+        useCasesPage(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            useCases {
+                id
+                title
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                linkUrl
+            }
+            mosaic {
+                title
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -478,7 +522,8 @@ export const getQuery = _modelApiKey => {
         team: teamQuery,
         portfolio: portfolioQuery,
         investors_page: investorsPageQuery,
-        fund: fundQuery
+        fund: fundQuery,
+        use_cases_page: useCasesPageQuery
     };
     return mapping[_modelApiKey];
 };

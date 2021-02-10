@@ -36,6 +36,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on UseCasesPageRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

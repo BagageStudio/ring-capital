@@ -42,5 +42,12 @@ export default `
                 value
             }
         }
+        useCasesPage{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

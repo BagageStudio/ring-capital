@@ -477,9 +477,10 @@ export const useCasesPageQuery = `
             ${locales}
             title
             subtitle
+            text
             useCases {
                 id
-                title
+                name
                 image {
                     ${img}
                 }
@@ -492,7 +493,9 @@ export const useCasesPageQuery = `
                         ${img}
                     }
                 }
-                linkUrl
+                link {
+                    ...link
+                }
             }
             mosaic {
                 title

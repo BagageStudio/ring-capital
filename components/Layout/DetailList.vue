@@ -21,11 +21,12 @@
                     </span>
                 </span>
                 <span class="detail-txt">
-                    <span>
+                    <span class="wrapper-title-description" :class="{ 'fixed-height': fixedHeight }">
                         <span class="basic-h4 detail-title">{{ detail.name }}</span>
                         <span v-if="detail.description">{{ detail.description }}</span>
                     </span>
                     <Tags v-if="detail.tags && !hideTags" :content="detail.tags" />
+                    <Author v-if="detail.author" :content="detail" />
                 </span>
             </component>
         </li>
@@ -53,6 +54,10 @@ export default {
             default: false
         },
         hideTags: {
+            type: Boolean,
+            default: false
+        },
+        fixedHeight: {
             type: Boolean,
             default: false
         }
@@ -248,6 +253,27 @@ a {
         opacity: 0;
         transform-origin: 50% 0%;
         transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out 0.2s;
+    }
+}
+.wrapper-title-description {
+    &.fixed-height {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(
+                180deg,
+                rgba(245, 247, 250, 0) 7.15%,
+                rgba(245, 247, 250, 0.6) 24.77%,
+                #f5f7fa 45.73%
+            );
+        }
     }
 }
 

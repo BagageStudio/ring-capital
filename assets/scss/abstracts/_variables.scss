@@ -9,6 +9,7 @@ $titan: #90f5ca;
 $neptune: #657da2;
 $orbit: #1f2c3c;
 $saturn: #f4f928;
+$grey: #f5f7fa;
 
 :root {
     --primary: #f4f928;
@@ -21,6 +22,12 @@ $saturn: #f4f928;
     --secondary: #1f2c3c;
     --tertiary: #657da2;
     --bg: #fff;
+}
+.greymode {
+    --primary: #1f2c3c;
+    --secondary: #1f2c3c;
+    --tertiary: #657da2;
+    --bg: #f5f7fa;
 }
 
 // Fonts ✍

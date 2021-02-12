@@ -23,7 +23,7 @@ export default {
     head() {
         return {
             htmlAttrs: {
-                class: 'lightmode'
+                class: 'greymode'
             }
         };
     }

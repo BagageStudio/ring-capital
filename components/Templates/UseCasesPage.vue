@@ -9,6 +9,12 @@
                 <div v-if="data.text" v-html="data.text"></div>
             </div>
             <DetailList class="shape-two" fixed-height :content="data.useCases" />
+            <div v-if="data.seeAllLink" class="wrapper-all">
+                <a :href="data.seeAllLink" target="_blank" rel="noopener noreferrer" class="btn-line on-grey">
+                    <span class="deco"></span>
+                    {{ $t('usecases.seeAllLabel') }}
+                </a>
+            </div>
         </div>
         <Mosaic :content="data.mosaic" />
     </div>
@@ -36,6 +42,11 @@ export default {
 }
 .hero-use-cases {
     padding: 20px $gutter 40px;
+}
+.wrapper-all {
+    display: flex;
+    justify-content: center;
+    padding: 0 $gutter 95px;
 }
 
 @media (min-width: $desktop-small) {

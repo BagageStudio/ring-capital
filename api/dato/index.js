@@ -497,6 +497,7 @@ export const useCasesPageQuery = `
                     ...link
                 }
             }
+            seeAllLink
             mosaic {
                 title
                 text

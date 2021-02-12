@@ -16,5 +16,8 @@
         "foundersTitle": "Founders",
         "otherRefsTitle": "Other portfolio companies",
         "seeAllLabel": "See all"
+    },
+    "usecases": {
+        "seeAllLabel": "See all Use Cases"
     }
 }

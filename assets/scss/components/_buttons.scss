@@ -105,6 +105,13 @@
             }
         }
     }
+    &.on-grey {
+        .deco {
+            &::after {
+                background-color: $grey;
+            }
+        }
+    }
     .deco {
         position: relative;
         display: flex;

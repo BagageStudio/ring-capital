@@ -6,7 +6,7 @@
                     <span>{{ data.title }}</span>
                 </h1>
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
-                <div v-if="data.text" v-html="data.text"></div>
+                <div v-if="data.text" class="neptune" v-html="data.text"></div>
             </div>
             <DetailList class="shape-two" fixed-height :content="data.useCases" />
             <div v-if="data.seeAllLink" class="wrapper-all">
@@ -46,14 +46,23 @@ export default {
 .wrapper-all {
     display: flex;
     justify-content: center;
-    padding: 0 $gutter 95px;
+    padding: 60px $gutter;
 }
 
+@media (min-width: $phone) {
+    .wrapper-all {
+        padding-top: 0;
+    }
+}
 @media (min-width: $desktop-small) {
     .hero-use-cases {
         width: percentage(6/9);
         min-height: 350px;
         padding: 90px #{2 * $gutter} 80px #{$gutter};
+    }
+    .wrapper-all {
+        margin-top: -60px;
+        padding: 0 $gutter 95px;
     }
 }
 @media (min-width: $desktop-large) {

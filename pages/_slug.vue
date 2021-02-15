@@ -20,6 +20,7 @@ import Portfolio from '~/components/Templates/Portfolio';
 import InvestorsPage from '~/components/Templates/InvestorsPage';
 import Fund from '~/components/Templates/Fund';
 import UseCasesPage from '~/components/Templates/UseCasesPage';
+import SustainableEngagement from '~/components/Templates/SustainableEngagement';
 
 export default {
     components: {
@@ -29,7 +30,8 @@ export default {
         Portfolio,
         InvestorsPage,
         Fund,
-        UseCasesPage
+        UseCasesPage,
+        SustainableEngagement
     },
     layout(context) {
         const layoutLang = getIso.call(context);

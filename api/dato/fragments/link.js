@@ -40,6 +40,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on SustainableEngagementRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

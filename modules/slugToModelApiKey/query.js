@@ -49,5 +49,12 @@ export default `
                 value
             }
         }
+        sustainableEngagement{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

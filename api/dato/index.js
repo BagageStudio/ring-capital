@@ -517,6 +517,54 @@ export const useCasesPageQuery = `
         }
     }`;
 
+export const sustainableEngagementQuery = `
+    ${linkFragment}
+    query SustainableEngagement($lang: SiteLocale) {
+        sustainableEngagement(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            section1LeftTitle
+            section1LeftContent
+            section1RightTitle
+            section1RightContent
+            partnersTitle
+            partnersText
+            partners {
+                name
+                logo {
+                    ${img}
+                }
+                link
+            }
+            section2LeftTitle
+            section2LeftSubtitle
+            section2LeftAccordions {
+                title
+                content
+                picto {
+                    ${img}
+                }
+            }
+            section2RightTitle
+            section2RightSubtitle
+            section2RightAccordions {
+                title
+                content
+                picto {
+                    ${img}
+                }
+            }
+            endowmentFundTitle
+            endowmentFundSubtitle
+            endowmentFundLink {
+                ...link
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -527,7 +575,8 @@ export const getQuery = _modelApiKey => {
         portfolio: portfolioQuery,
         investors_page: investorsPageQuery,
         fund: fundQuery,
-        use_cases_page: useCasesPageQuery
+        use_cases_page: useCasesPageQuery,
+        sustainable_engagement: sustainableEngagementQuery
     };
     return mapping[_modelApiKey];
 };

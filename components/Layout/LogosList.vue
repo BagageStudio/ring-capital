@@ -71,6 +71,11 @@ export default {
     width: calc(100% + 4px);
     margin: 0 0 0 -2px;
     padding: 0 $gutter;
+    &.white-mode {
+        .logo-link {
+            background: $grey;
+        }
+    }
     > li {
         width: calc(#{percentage(1/2)} - 4px);
         margin: 2px;

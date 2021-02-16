@@ -10,7 +10,12 @@
             </div>
             <DetailList class="shape-one" :content="data.members" random />
         </div>
-        <InvestorsMod :content="data" />
+        <TextLogos
+            :big-title="data.investorsTitle"
+            :subtitle="data.investorsSubtitle"
+            :link="data.investorsLink"
+            :list="data.investors"
+        />
         <Mosaic :content="data.mosaic" />
     </div>
 </template>

@@ -13,6 +13,7 @@
         </div>
         <SocialDigital :data="data" />
         <TextLogos :small-title="data.partnersTitle" :text="data.partnersText" :list="data.partners" white-mode />
+        <InvestorCompany :data="data" />
     </div>
 </template>
 

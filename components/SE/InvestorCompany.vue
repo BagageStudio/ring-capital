@@ -9,6 +9,7 @@
                     <p v-if="data.section2LeftSubtitle" class="basic-subtitle">
                         {{ data.section2LeftSubtitle }}
                     </p>
+                    <Accordions :content="data.section2LeftAccordions" />
                 </div>
                 <div class="wrapper-col right">
                     <h3 v-if="data.section2RightTitle" class="basic-h3 underlined">
@@ -17,6 +18,7 @@
                     <p v-if="data.section2RightSubtitle" class="basic-subtitle">
                         {{ data.section2RightSubtitle }}
                     </p>
+                    <Accordions :content="data.section2RightAccordions" />
                 </div>
             </div>
         </div>

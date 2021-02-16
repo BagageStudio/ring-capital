@@ -542,6 +542,7 @@ export const sustainableEngagementQuery = `
             section2LeftTitle
             section2LeftSubtitle
             section2LeftAccordions {
+                id
                 title
                 content
                 picto {
@@ -551,6 +552,7 @@ export const sustainableEngagementQuery = `
             section2RightTitle
             section2RightSubtitle
             section2RightAccordions {
+                id
                 title
                 content
                 picto {

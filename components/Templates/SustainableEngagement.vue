@@ -14,6 +14,7 @@
         <SocialDigital :data="data" />
         <TextLogos :small-title="data.partnersTitle" :text="data.partnersText" :list="data.partners" white-mode />
         <InvestorCompany :data="data" />
+        <RingFoundationMod :data="data" />
     </div>
 </template>
 

@@ -9,7 +9,7 @@
                     <p v-if="data.section2LeftSubtitle" class="basic-subtitle">
                         {{ data.section2LeftSubtitle }}
                     </p>
-                    <Accordions :content="data.section2LeftAccordions" />
+                    <Accordions class="invest-co-accordions" :content="data.section2LeftAccordions" />
                 </div>
                 <div class="wrapper-col right">
                     <h3 v-if="data.section2RightTitle" class="basic-h3 underlined">
@@ -18,7 +18,7 @@
                     <p v-if="data.section2RightSubtitle" class="basic-subtitle">
                         {{ data.section2RightSubtitle }}
                     </p>
-                    <Accordions :content="data.section2RightAccordions" />
+                    <Accordions class="invest-co-accordions" :content="data.section2RightAccordions" />
                 </div>
             </div>
         </div>
@@ -43,6 +43,9 @@ export default {
     &.left {
         margin-bottom: 90px;
     }
+}
+.invest-co-accordions {
+    margin-top: 50px;
 }
 
 @media (min-width: $desktop-small) {
@@ -69,6 +72,9 @@ export default {
     .wrapper-col {
         width: percentage(6/12);
         padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+    }
+    .invest-co-accordions {
+        margin-top: 75px;
     }
 }
 </style>

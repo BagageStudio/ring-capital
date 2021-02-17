@@ -560,8 +560,11 @@ export const sustainableEngagementQuery = `
                 }
             }
             endowmentFundTitle
-            endowmentFundSubtitle
-            endowmentFundLink {
+            endowmentFundText
+            endowmentFundLineLink {
+                ...link
+            }
+            endowmentFundBlockLink {
                 ...link
             }
         }

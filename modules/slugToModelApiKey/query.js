@@ -55,6 +55,13 @@ export default `
                 locale
                 value
             }
+        },
+        ring2success{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
         }
     }
 `;

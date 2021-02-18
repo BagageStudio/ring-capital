@@ -576,6 +576,101 @@ export const sustainableEngagementQuery = `
         }
     }`;
 
+export const ring2successQuery = `
+    ${linkFragment}
+    query Ring2success($lang: SiteLocale) {
+        ring2success(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            fiftyFiftyBlocks {
+                id
+                title
+                text
+                accordions {
+                    id
+                    title
+                    content
+                    picto {
+                        ${img}
+                    }
+                }
+            }
+            journeyTitle
+            journey {
+                title
+                text
+            }
+            ecosystemTitle
+            ecosystemSubtitle
+            ecosystemText
+            ecosystemImage {
+                ${img}
+            }
+            mosaic {
+                title
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+            crewTitle
+            crewSections {
+                title
+                crewMembers {
+                    name
+                    description
+                    hasLinkedin
+                    link {
+                        ...link
+                    }
+                    image {
+                        ${img}
+                    }
+                }
+            }
+            partnersTitle
+            partners {
+                name
+                logo {
+                    ${img}
+                }
+                link
+            }
+            storiesTitle
+            storiesSubtitle
+            useCases {
+                id
+                name
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                link {
+                    ...link
+                }
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -587,7 +682,8 @@ export const getQuery = _modelApiKey => {
         investors_page: investorsPageQuery,
         fund: fundQuery,
         use_cases_page: useCasesPageQuery,
-        sustainable_engagement: sustainableEngagementQuery
+        sustainable_engagement: sustainableEngagementQuery,
+        ring2success: ring2successQuery
     };
     return mapping[_modelApiKey];
 };

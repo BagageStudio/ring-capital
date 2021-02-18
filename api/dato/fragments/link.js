@@ -44,6 +44,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on Ring2successRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

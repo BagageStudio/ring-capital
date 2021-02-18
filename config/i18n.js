@@ -36,5 +36,8 @@ export const getPagesList = () => ({
     },
     [routes.sustainableEngagement.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.ring2success.i18nFormat]: {
+        en: '/:slug?'
     }
 });

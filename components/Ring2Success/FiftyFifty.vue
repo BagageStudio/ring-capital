@@ -8,7 +8,7 @@
                         <div class="ff-text neptune" v-html="fiftyFifty.text"></div>
                     </div>
                     <div class="wrapper-accordions-ff">
-                        <Accordions :content="fiftyFifty.accordions" />
+                        <Accordions class="on-white" :content="fiftyFifty.accordions" />
                     </div>
                 </div>
             </div>

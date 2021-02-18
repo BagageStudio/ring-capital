@@ -2,7 +2,12 @@
     <div v-if="content" class="wrapper-accordions">
         <div v-for="accordion in content" :key="accordion.id" ref="accordion" class="accordion">
             <div ref="title" class="wrapper-accordion-title" @click="toggleAccordion">
-                <p class="accordion-title">{{ accordion.title }}</p>
+                <div class="wrapper-title-icon">
+                    <div v-if="accordion.picto" class="wrapper-accordion-picto">
+                        <FastImage class="accordion-picto" :image="accordion.picto" />
+                    </div>
+                    <p class="accordion-title">{{ accordion.title }}</p>
+                </div>
                 <span class="accordion-btn" :class="{ open }"><span class="bg"></span><span class="path"></span></span>
             </div>
             <div ref="contentwrapper" class="accordion-content-wrapper">
@@ -70,6 +75,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper-accordions {
+    &.on-white {
+        .accordion-btn {
+            .path {
+                &::before {
+                    border-color: $orbit;
+                }
+            }
+        }
+        .wrapper-accordion-title {
+            &:hover,
+            &:focus {
+                .accordion-btn {
+                    .path {
+                        &::before {
+                            border-color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 .accordion {
     border-bottom: 1px solid rgba($neptune, 0.4);
 }
@@ -84,13 +112,31 @@ export default {
         .accordion-btn {
             transition: color 0.2s ease-in-out 0.1s;
             color: $white;
+            .path::before {
+                transition: border-color 0.1s ease-out 0.1s;
+            }
             .bg::before {
                 clip-path: ellipse(80% 130% at 50% 100%);
             }
         }
     }
 }
+.wrapper-title-icon {
+    display: flex;
+    align-items: center;
+}
+.wrapper-accordion-picto {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
 .accordion-title {
+    position: relative;
+    top: 0.1em;
     margin: 0;
     padding: 0;
     font-family: $helvetica-neue;
@@ -109,6 +155,7 @@ export default {
     margin-left: 20px;
     border: 1px solid rgba($neptune, 0.4);
     border-radius: 50%;
+    z-index: 1;
     .path {
         position: relative;
         width: 6px;
@@ -124,6 +171,7 @@ export default {
             border-right: 1px solid $white;
             border-bottom: 1px solid $white;
             transform: rotate(45deg);
+            transition: border-color 0.05s ease-out 0.15s;
         }
     }
     .bg {
@@ -159,6 +207,7 @@ export default {
     overflow: hidden;
 }
 .accordion-content {
+    padding-bottom: 20px;
     ::v-deep p {
         margin: 0;
     }

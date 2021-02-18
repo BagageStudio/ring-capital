@@ -2,15 +2,14 @@
     <div v-if="data" class="wrapper-r2s">
         <div class="hero-r2s">
             <div class="container">
-                <div class="wrapper-title">
+                <div class="wrapper-title content-pad">
                     <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
-                    <!-- <div v-if="data.subtitle || data.text" class="wrapper-subtitle">
-                        <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
-                        <div v-if="data.text" class="hero-text neptune" v-html="data.text"></div>
-                    </div> -->
+                    <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>
         </div>
+        <FiftyFifty :content="data.fiftyFiftyBlocks" />
+        <Mosaic :content="data.mosaic" />
     </div>
 </template>
 
@@ -23,4 +22,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.hero-r2s {
+    padding: 0 0 90px;
+}
+@media (min-width: $desktop) {
+    .hero-r2s {
+        padding: 90px 0 160px;
+    }
+    .wrapper-title {
+        width: percentage(6/12);
+    }
+}
+</style>

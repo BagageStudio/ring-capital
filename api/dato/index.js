@@ -567,6 +567,12 @@ export const sustainableEngagementQuery = `
             endowmentFundBlockLink {
                 ...link
             }
+            endowmentFundMobileImage {
+                ${img}
+            }
+            endowmentFundDesktopImage {
+                ${img}
+            }
         }
     }`;
 

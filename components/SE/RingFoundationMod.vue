@@ -1,5 +1,13 @@
 <template>
     <div class="wrapper-foundation-mod">
+        <FastImage
+            v-if="data.endowmentFundMobileImage && !isM"
+            class="mobile-img"
+            :image="data.endowmentFundMobileImage"
+        />
+        <div v-if="data.endowmentFundDesktopImage && isM" class="wrapper-desktop-img">
+            <FastImage class="desktop-img" :image="data.endowmentFundDesktopImage" cover />
+        </div>
         <div class="container">
             <div class="wrapper-txt">
                 <h3
@@ -31,6 +39,12 @@ export default {
         data: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        isM() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
         }
     }
 };

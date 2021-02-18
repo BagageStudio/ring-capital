@@ -9,6 +9,7 @@
             </div>
         </div>
         <FiftyFifty :content="data.fiftyFiftyBlocks" />
+        <Journey :title="data.journeyTitle" :content="data.journey" />
         <Mosaic :content="data.mosaic" />
     </div>
 </template>

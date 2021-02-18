@@ -39,5 +39,8 @@ export const getPagesList = () => ({
     },
     [routes.ring2success.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.vision.i18nFormat]: {
+        en: '/:slug?'
     }
 });

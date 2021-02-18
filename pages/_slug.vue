@@ -22,6 +22,7 @@ import Fund from '~/components/Templates/Fund';
 import UseCasesPage from '~/components/Templates/UseCasesPage';
 import SustainableEngagement from '~/components/Templates/SustainableEngagement';
 import Ring2success from '~/components/Templates/Ring2success';
+import Vision from '~/components/Templates/Vision';
 
 export default {
     components: {
@@ -33,7 +34,8 @@ export default {
         Fund,
         UseCasesPage,
         SustainableEngagement,
-        Ring2success
+        Ring2success,
+        Vision
     },
     layout(context) {
         const layoutLang = getIso.call(context);

@@ -62,6 +62,13 @@ export default `
                 locale
                 value
             }
+        },
+        vision{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
         }
     }
 `;

@@ -548,6 +548,9 @@ export const sustainableEngagementQuery = `
                 picto {
                     ${img}
                 }
+                link {
+                    ...link
+                }
             }
             section2RightTitle
             section2RightSubtitle
@@ -557,6 +560,9 @@ export const sustainableEngagementQuery = `
                 content
                 picto {
                     ${img}
+                }
+                link {
+                    ...link
                 }
             }
             endowmentFundTitle
@@ -594,6 +600,9 @@ export const ring2successQuery = `
                     content
                     picto {
                         ${img}
+                    }
+                    link {
+                        ...link
                     }
                 }
             }
@@ -671,6 +680,43 @@ export const ring2successQuery = `
         }
     }`;
 
+export const visionQuery = `
+    ${linkFragment}
+    query Vision($lang: SiteLocale) {
+        vision(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            believeTitle
+            believeAccordions {
+                id
+                title
+                content
+                picto {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
+            }
+            believeImage {
+                ${img}
+            }
+            manifesto {
+                id
+                blockTitleTitle
+                blockTitleSubtitle
+                blockTitleText
+                blockContentTitle
+                blockContentText
+                blockContentImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -683,7 +729,8 @@ export const getQuery = _modelApiKey => {
         fund: fundQuery,
         use_cases_page: useCasesPageQuery,
         sustainable_engagement: sustainableEngagementQuery,
-        ring2success: ring2successQuery
+        ring2success: ring2successQuery,
+        vision: visionQuery
     };
     return mapping[_modelApiKey];
 };

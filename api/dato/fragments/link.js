@@ -48,6 +48,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on VisionRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

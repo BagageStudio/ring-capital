@@ -614,6 +614,7 @@ export const ring2successQuery = `
             ecosystemTitle
             ecosystemSubtitle
             ecosystemText
+            ecosystemTags
             ecosystemImage {
                 ${img}
             }

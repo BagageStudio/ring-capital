@@ -10,6 +10,7 @@
         </div>
         <FiftyFifty :content="data.fiftyFiftyBlocks" />
         <Journey :title="data.journeyTitle" :content="data.journey" />
+        <Ecosystem :content="data" />
         <Mosaic :content="data.mosaic" />
     </div>
 </template>

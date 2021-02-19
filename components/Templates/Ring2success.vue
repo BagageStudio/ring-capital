@@ -12,6 +12,7 @@
         <Journey :title="data.journeyTitle" :content="data.journey" />
         <Ecosystem :content="data" />
         <Mosaic :content="data.mosaic" />
+        <Crew :content="data" />
     </div>
 </template>
 

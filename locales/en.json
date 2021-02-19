@@ -18,6 +18,7 @@
         "seeAllLabel": "See all"
     },
     "usecases": {
-        "seeAllLabel": "See all Use Cases"
+        "seeAllLabel": "See all Use Cases",
+        "seeAllSmallLabel": "See all"
     }
 }

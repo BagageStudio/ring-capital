@@ -13,6 +13,7 @@
         <Ecosystem :content="data" />
         <Mosaic :content="data.mosaic" />
         <Crew :content="data" />
+        <Stories :content="data" />
     </div>
 </template>
 

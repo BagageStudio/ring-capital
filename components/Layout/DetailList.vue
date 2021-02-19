@@ -126,6 +126,27 @@ span {
             }
         }
     }
+    &.small-height {
+        .detail-img {
+            &::before {
+                padding-bottom: 55%;
+            }
+        }
+    }
+    &.on-white {
+        .wrapper-title-description {
+            &.fixed-height {
+                &::before {
+                    background: linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0) 7.15%,
+                        rgba(255, 255, 255, 0.6) 24.77%,
+                        #ffffff 100%
+                    );
+                }
+            }
+        }
+    }
 }
 a {
     &.detail {
@@ -260,6 +281,9 @@ a {
         position: relative;
         height: 220px;
         overflow: hidden;
+        .small-height & {
+            height: 150px;
+        }
         &::before {
             content: '';
             position: absolute;

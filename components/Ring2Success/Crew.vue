@@ -11,6 +11,9 @@
                 </div>
                 <div class="crew-section">
                     <h4 class="crew-section-title basic-h4">{{ content.partnersTitle }}</h4>
+                    <div class="wrapper-partners">
+                        <LogosList :content="content.partners" show-label class="medium-grid big-height" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,6 +44,10 @@ export default {
 .crew-section-title {
     margin-bottom: 30px;
 }
+.wrapper-partners {
+    width: calc(100% + #{2 * $gutter});
+    margin-left: -$gutter;
+}
 
 @media (min-width: $phone) {
     .crew-section {
@@ -49,7 +56,7 @@ export default {
 }
 @media (min-width: $desktop) {
     .wrapper-crew {
-        padding: 120px 0 130px;
+        padding: 120px 0;
     }
 }
 @media (min-width: $desktop-large) {

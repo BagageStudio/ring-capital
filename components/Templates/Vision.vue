@@ -9,6 +9,7 @@
             </div>
         </div>
         <Believe :content="data" />
+        <Manifesto :content="data.manifesto" />
     </div>
 </template>
 

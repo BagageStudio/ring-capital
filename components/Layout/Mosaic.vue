@@ -44,6 +44,9 @@ export default {
 .wrapper-img {
     margin: 0 0 30px;
     padding: 0 $gutter;
+    ::v-deep .image {
+        max-height: 400px;
+    }
 }
 .wrapper-txt {
     padding: 0 $gutter;
@@ -69,6 +72,9 @@ export default {
         grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} #{percentage(2/5)};
         grid-template-rows: 105px 190px 190px 110px;
         margin: 0;
+        ::v-deep .image {
+            max-height: none;
+        }
         > div {
             &:nth-child(1) {
                 grid-column-start: 1;

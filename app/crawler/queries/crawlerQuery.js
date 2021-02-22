@@ -27,6 +27,10 @@ export default `
         allCompanies(locale: $lang, filter: {slug: {neq: null}}) {
             slug
             _modelApiKey
+        },
+        useCasesPage(locale: $lang) {
+            slug
+            _modelApiKey
         }
     }
 `;

@@ -5,7 +5,7 @@
                 <h2 class="basic-h2 underlined">
                     <span>{{ data.targetsTitle }}</span>
                 </h2>
-                <p>{{ data.targetsDescription }}</p>
+                <div v-html="data.targetsDescription"></div>
             </div>
             <div class="targets-cols">
                 <div class="target-col content-pad">
@@ -69,10 +69,16 @@ export default {
 
 .targets-text {
     margin-bottom: 50px;
-    p {
+    ::v-deep p {
         font-size: 2.2rem;
         line-height: 1.18;
         color: $neptune;
+    }
+    ::v-deep a {
+        transition: color 0.2s;
+        &:hover {
+            color: $white;
+        }
     }
 }
 @media (min-width: $desktop-small) {

@@ -3,7 +3,7 @@
         <div class="hero-r2s">
             <div class="container">
                 <div class="wrapper-title content-pad">
-                    <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
+                    <h1 class="basic-h1 strong-saturn" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
                     <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>

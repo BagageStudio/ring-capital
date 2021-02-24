@@ -204,6 +204,11 @@ body {
         color: $white;
     }
 }
+.strong-titan {
+    strong {
+        color: $titan;
+    }
+}
 
 p {
     margin: 10px 0;

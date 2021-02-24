@@ -1,10 +1,8 @@
 <template>
     <div class="wrapper-foundation-mod">
-        <FastImage
-            v-if="data.endowmentFundMobileImage && !isM"
-            class="mobile-img"
-            :image="data.endowmentFundMobileImage"
-        />
+        <div v-if="data.endowmentFundMobileImage && !isM" class="wrapper-mobile-img">
+            <FastImage class="mobile-img" :image="data.endowmentFundMobileImage" cover />
+        </div>
         <div v-if="data.endowmentFundDesktopImage && isM" class="wrapper-desktop-img">
             <FastImage class="desktop-img" :image="data.endowmentFundDesktopImage" cover />
         </div>
@@ -51,9 +49,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper-foundation-mod {
-    padding: 50px 0;
+    padding: 0 0 50px;
     color: $orbit;
     background: $white;
+}
+.wrapper-mobile-img {
+    margin: 0 0 50px;
+    padding-left: 15px;
 }
 .wrapper-txt {
     padding: 0 $gutter;
@@ -67,13 +69,29 @@ export default {
 
 @media (min-width: $tablet) {
     .wrapper-foundation-mod {
+        position: relative;
         padding: 70px 0;
     }
     .wrapper-txt {
         width: percentage(5/8);
     }
+    .wrapper-desktop-img {
+        position: absolute;
+        right: -20vw;
+        bottom: 0;
+        height: 100%;
+    }
+    .desktop-img {
+        height: 100%;
+        ::v-deep .image {
+            object-position: 0 50%;
+        }
+    }
 }
 @media (min-width: $desktop-small) {
+    .wrapper-desktop-img {
+        right: -10vw;
+    }
     .wrapper-txt {
         width: percentage(4/8);
     }
@@ -81,6 +99,9 @@ export default {
 @media (min-width: $desktop) {
     .wrapper-foundation-mod {
         padding: 95px 0 80px;
+    }
+    .wrapper-desktop-img {
+        right: 0;
     }
     .wrapper-txt {
         width: percentage(6/12);

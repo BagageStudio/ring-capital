@@ -1,7 +1,8 @@
 <template>
     <div v-if="content" class="wrapper-ecosystem">
-        <div class="container">
-            <div class="wrapper-title content-pad">
+        <FastImage v-if="isL" class="ecosystem-image" :image="content.ecosystemImage" />
+        <div class="container-ecosystem container">
+            <div class="wrapper-title">
                 <h3 class="ecosystem-title basic-h3 underlined strong-neptune" v-html="content.ecosystemTitle"></h3>
                 <p v-if="content.ecosystemSubtitle" class="ecosystem-subtitle basic-subtitle">
                     {{ content.ecosystemSubtitle }}
@@ -10,7 +11,6 @@
                 <Tags v-show="!isL" v-if="content.ecosystemTags" :content="content.ecosystemTags" />
             </div>
         </div>
-        <FastImage v-if="isL" class="ecosystem-image" :image="content.ecosystemImage" />
     </div>
 </template>
 
@@ -34,20 +34,60 @@ export default {
     color: $orbit;
     background: $grey;
 }
+.wrapper-title {
+    padding: 0 #{$gutter};
+}
 
 @media (min-width: $desktop-small) {
+    .wrapper-ecosystem {
+        position: relative;
+    }
     .wrapper-title {
         width: percentage(4/8);
+        padding: 0;
+    }
+    .ecosystem-title,
+    .ecosystem-subtitle,
+    .ecosystem-text {
+        padding: 0 #{$gutter};
+    }
+    .ecosystem-text {
+        width: percentage(3/4);
+    }
+    .ecosystem-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 67vw;
+    }
+    .container-ecosystem {
+        position: relative;
     }
 }
 @media (min-width: $desktop) {
+    .wrapper-ecosystem {
+        padding: 160px 0;
+    }
     .wrapper-title {
         width: percentage(7/12);
+    }
+    .ecosystem-text {
+        width: percentage(5/7);
+    }
+    .ecosystem-image {
+        width: 62vw;
+        max-width: 899px;
     }
 }
 @media (min-width: $desktop-large) {
     .wrapper-title {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: percentage(1/12);
+    }
+    .ecosystem-subtitle {
+        width: percentage(4/6);
+    }
+    .ecosystem-text {
+        width: percentage(3/6);
     }
 }
 </style>

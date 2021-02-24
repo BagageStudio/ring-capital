@@ -28,9 +28,9 @@
                 <div class="menu-news">
                     <span v-if="data.megaMenu.newsTitle" class="submenu-title">{{ data.megaMenu.newsTitle }}</span>
                     <a :href="data.megaMenu.news.linkUrl" class="news-link">
-                        <div class="news-img">
-                            <img :src="data.megaMenu.news.cover.url" :alt="data.megaMenu.news.cover.alt" />
-                        </div>
+                        <span class="news-img">
+                            <FastImage class="img" :image="data.megaMenu.news.cover" cover />
+                        </span>
                         <div class="news-text">
                             <div class="news-info">
                                 <span class="news-date">{{
@@ -220,6 +220,32 @@ export default {
     display: block;
     max-width: 380px;
     text-decoration: none;
+    &:hover {
+        .news-img {
+            .img {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.news-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 57%;
+    }
+    .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.2s ease-out;
+    }
 }
 
 .news-info {

@@ -1,9 +1,9 @@
 <template>
     <nuxt-link v-if="data && data.internalLink" :to="data.url" :aria-label="data.title" @click.native="$emit('click')">
+        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
-        <div class="bg"></div>
         <slot />
     </nuxt-link>
     <a
@@ -14,10 +14,10 @@
         rel="noopener noreferrer"
         @click="$emit('click')"
     >
+        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
-        <div class="bg"></div>
         <slot />
     </a>
 </template>

@@ -1,6 +1,11 @@
 <template>
-    <div v-if="content" class="wrapper-accordions">
-        <Accordion v-for="accordion in content" :key="accordion.id" :content="accordion" />
+    <div v-if="content" :class="{ 'on-white': onWhite }" class="wrapper-accordions">
+        <Accordion
+            v-for="accordion in content"
+            :key="accordion.id"
+            :content="accordion"
+            :on-white="onWhite ? true : false"
+        />
     </div>
 </template>
 
@@ -10,6 +15,10 @@ export default {
         content: {
             type: Array,
             required: true
+        },
+        onWhite: {
+            type: Boolean,
+            default: false
         }
     }
 };

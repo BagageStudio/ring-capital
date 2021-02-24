@@ -10,7 +10,7 @@
                 <h3 class="believe-title basic-h3 underlined neptune">
                     <span>{{ content.believeTitle }}</span>
                 </h3>
-                <Accordions class="on-white" :content="content.believeAccordions" />
+                <Accordions on-white :content="content.believeAccordions" />
             </div>
         </div>
     </div>

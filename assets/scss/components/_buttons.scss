@@ -13,7 +13,7 @@
     font-family: $space;
     z-index: 1;
 
-    .bg {
+    .deco {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -72,7 +72,7 @@
     &:focus {
         transition: color 0.2s ease-in-out 0.1s;
         color: $white;
-        .bg::before {
+        .deco::before {
             clip-path: ellipse(80% 130% at 50% 100%);
         }
         &::before {

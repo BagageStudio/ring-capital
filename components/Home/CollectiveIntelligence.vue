@@ -349,11 +349,15 @@ export default {
     }
     .section-link-img {
         flex: 1 1 auto;
+        position: relative;
         min-height: 0;
         overflow: hidden;
         .section-img {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
             transform-origin: 50% 50%;
             transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
         }

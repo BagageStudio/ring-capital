@@ -216,10 +216,10 @@ a {
     }
     .bg-img {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
         transform: scale(1.002);
         transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     }

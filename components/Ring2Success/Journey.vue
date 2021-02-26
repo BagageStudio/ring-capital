@@ -86,6 +86,7 @@ export default {
 @media (min-width: $desktop-large) {
     .journey-title {
         margin-bottom: 60px;
+        padding: 0 #{percentage(1/12)};
     }
     .journey-steps {
         padding: 0 #{percentage(1/12)};

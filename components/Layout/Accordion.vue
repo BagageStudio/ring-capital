@@ -12,6 +12,12 @@
         <div ref="contentwrapper" class="accordion-content-wrapper">
             <div ref="content" class="accordion-content">
                 <div v-html="content.content"></div>
+                <LinkTo
+                    v-if="content.link"
+                    :class="{ 'on-white': onWhite }"
+                    class="accordion-inside-btn btn-line"
+                    :link="content.link"
+                />
             </div>
         </div>
     </div>
@@ -25,6 +31,10 @@ export default {
         content: {
             type: Object,
             required: true
+        },
+        onWhite: {
+            type: Boolean,
+            default: false
         }
     },
     data: () => ({
@@ -93,6 +103,9 @@ export default {
                     }
                 }
             }
+        }
+        .accordion-content {
+            color: $neptune;
         }
     }
 }
@@ -209,5 +222,8 @@ export default {
     ::v-deep p {
         margin: 0;
     }
+}
+.accordion-inside-btn {
+    margin-top: 10px;
 }
 </style>

@@ -23,8 +23,8 @@
                             </div>
                             <div class="wrapper-btn-newsletter">
                                 <button ref="submit" type="submit" class="btn-block primary">
+                                    <span class="deco"></span>
                                     <span>{{ $t('newsletter.sendButton') }}</span>
-                                    <span class="bg"></span>
                                 </button>
                             </div>
                         </div>

@@ -14,21 +14,23 @@
                             :link="link"
                         />
                     </div>
-                    <span class="submenu-title">{{ data.megaMenu.socialTitle }}</span>
-                    <ul v-if="data.megaMenu.social" class="socials">
-                        <li v-for="link in data.megaMenu.social.socialLinks" :key="link.title" class="social">
-                            <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
-                                ><Icon :name="link.iconName"
-                            /></a>
-                        </li>
-                    </ul>
+                    <div class="section-social">
+                        <span class="submenu-title">{{ data.megaMenu.socialTitle }}</span>
+                        <ul v-if="data.megaMenu.social" class="socials">
+                            <li v-for="link in data.megaMenu.social.socialLinks" :key="link.title" class="social">
+                                <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
+                                    ><Icon :name="link.iconName"
+                                /></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="menu-news">
                     <span v-if="data.megaMenu.newsTitle" class="submenu-title">{{ data.megaMenu.newsTitle }}</span>
                     <a :href="data.megaMenu.news.linkUrl" class="news-link">
-                        <div class="news-img">
-                            <img :src="data.megaMenu.news.cover.url" :alt="data.megaMenu.news.cover.alt" />
-                        </div>
+                        <span class="news-img">
+                            <FastImage class="img" :image="data.megaMenu.news.cover" cover />
+                        </span>
                         <div class="news-text">
                             <div class="news-info">
                                 <span class="news-date">{{
@@ -170,23 +172,43 @@ export default {
     &.linkedin {
         width: 24px;
         height: 27px;
+        &:hover {
+            fill: #0077b5;
+        }
     }
     &.twitter {
         width: 28px;
         height: 24px;
+        &:hover {
+            fill: #55acee;
+        }
     }
     &.instagram {
         width: 27px;
         height: 27px;
+        &:hover {
+            fill: #e4405f;
+        }
+    }
+    &.facebook {
+        width: 27px;
+        height: 27px;
+        &:hover {
+            fill: #3b5999;
+        }
     }
     &.medium {
         width: 32px;
         height: 18px;
+        &:hover {
+            fill: #ffffff;
+        }
     }
     > svg {
         display: block;
         width: 100%;
         height: 100%;
+        transition: fill 0.2s ease-out;
     }
 }
 
@@ -198,6 +220,32 @@ export default {
     display: block;
     max-width: 380px;
     text-decoration: none;
+    &:hover {
+        .news-img {
+            .img {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.news-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 57%;
+    }
+    .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.2s ease-out;
+    }
 }
 
 .news-info {
@@ -233,6 +281,9 @@ export default {
     }
     .menu-ressource {
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         padding: 30px 35px 30px 50px;
         &::after {
             content: '';

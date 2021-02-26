@@ -57,6 +57,7 @@
         text-decoration: none;
         margin-bottom: 15px;
         color: var(--secondary);
+        transition: color 0.2s ease-out;
         &.see-all-link {
             display: flex;
             align-items: center;
@@ -134,6 +135,9 @@
         }
         .submenu-link {
             color: white;
+            &:hover {
+                color: $saturn;
+            }
         }
         .submenu-title {
             color: $saturn;
@@ -155,8 +159,14 @@
             .submenu-link {
                 width: 100%;
                 color: $orbit;
+                &:hover {
+                    color: $neptune;
+                }
                 &.see-all-link {
                     color: $neptune;
+                    &:hover {
+                        color: $orbit;
+                    }
                 }
             }
         }

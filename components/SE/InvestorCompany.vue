@@ -3,18 +3,22 @@
         <div class="container">
             <div class="content-invest-co">
                 <div class="wrapper-col left">
-                    <h3 v-if="data.section2LeftTitle" class="basic-h3 underlined">
-                        <span>{{ data.section2LeftTitle }}</span>
-                    </h3>
+                    <h3
+                        v-if="data.section2LeftTitle"
+                        class="basic-h3 underlined strong-saturn"
+                        v-html="data.section2LeftTitle"
+                    ></h3>
                     <p v-if="data.section2LeftSubtitle" class="basic-subtitle">
                         {{ data.section2LeftSubtitle }}
                     </p>
                     <Accordions class="invest-co-accordions" :content="data.section2LeftAccordions" />
                 </div>
                 <div class="wrapper-col right">
-                    <h3 v-if="data.section2RightTitle" class="basic-h3 underlined">
-                        <span>{{ data.section2RightTitle }}</span>
-                    </h3>
+                    <h3
+                        v-if="data.section2RightTitle"
+                        class="basic-h3 underlined strong-titan"
+                        v-html="data.section2RightTitle"
+                    ></h3>
                     <p v-if="data.section2RightSubtitle" class="basic-subtitle">
                         {{ data.section2RightSubtitle }}
                     </p>

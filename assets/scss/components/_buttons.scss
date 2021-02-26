@@ -13,7 +13,7 @@
     font-family: $space;
     z-index: 1;
 
-    .bg {
+    .deco {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -24,13 +24,15 @@
             content: '';
             position: absolute;
             z-index: -1;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
             background: $neptune;
             clip-path: ellipse(50% 0% at 50% 100%);
             transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
         }
     }
     &::after,
@@ -72,7 +74,7 @@
     &:focus {
         transition: color 0.2s ease-in-out 0.1s;
         color: $white;
-        .bg::before {
+        .deco::before {
             clip-path: ellipse(80% 130% at 50% 100%);
         }
         &::before {

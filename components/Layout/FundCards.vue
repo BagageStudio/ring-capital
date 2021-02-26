@@ -72,9 +72,8 @@ export default {
         right: 0;
         bottom: 0;
         left: 0;
-        box-shadow: 0px 100px 80px rgba(19, 27, 37, 0.43), 0px 41.7776px 33.4221px rgba(19, 27, 37, 0.309107),
-            0px 22.3363px 17.869px rgba(19, 27, 37, 0.256326), 0px 12.5216px 10.0172px rgba(19, 27, 37, 0.215),
-            0px 6.6501px 5.32008px rgba(19, 27, 37, 0.173674), 0px 2.76726px 2.21381px rgba(19, 27, 37, 0.120893);
+        box-shadow: 0px 32px 40px rgba(0, 0, 0, 0.1), 16px 16px 24px rgba(0, 0, 0, 0.1),
+            -2px -4px 1px rgba(0, 0, 0, 0.04);
         opacity: 0;
         z-index: -1;
         transition: opacity 0.3s ease-out;

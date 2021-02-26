@@ -343,8 +343,7 @@ export default {
                 left: 0;
                 bottom: 0;
                 right: 0;
-                box-shadow: 0px 33px 80px rgba(54, 54, 54, 0.09), 0px 13.7866px 33.4221px rgba(54, 54, 54, 0.0646969),
-                    0px 0.913195px 2.21381px rgba(54, 54, 54, 0.0253031);
+                box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.04), -10px -2px 25px rgba(0, 0, 0, 0.02);
                 animation: scrollUpShadow 0.4s ease-out;
                 z-index: -1;
             }

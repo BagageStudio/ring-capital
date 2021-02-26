@@ -5,7 +5,7 @@ import axios from 'axios';
 import query from './query';
 
 export default function () {
-    this.nuxt.hook('build:before', async () => {
+    this.nuxt.hook('ready', async () => {
         const { datoApiUrl } = this.nuxt.options.publicRuntimeConfig;
 
         const {

@@ -9,7 +9,7 @@ import { runPromisesSequence } from '@stereorepo/sac';
 import { locales } from '../config/i18n';
 
 const initLayoutData = function (moduleOptions) {
-    this.nuxt.hook('build:before', async () => {
+    this.nuxt.hook('ready', async () => {
         const { datoApiUrl } = this.nuxt.options.publicRuntimeConfig;
 
         const options = {

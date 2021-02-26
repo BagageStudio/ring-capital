@@ -54,9 +54,10 @@ export default {
         toggleAccordion() {
             if (!this.open && !gsap.isTweening(this.contentWrapper)) {
                 this.setMaxHeight();
-                gsap.to(this.contentWrapper, 0.3, {
+                gsap.to(this.contentWrapper, {
                     maxHeight: this.contentHeight,
                     opacity: 1,
+                    duration: 0.3,
                     ease: this.ease,
                     onComplete: () => {
                         gsap.set(this.contentWrapper, { maxHeight: 'none' });
@@ -67,9 +68,10 @@ export default {
                 this.setMaxHeight();
                 gsap.set(this.contentWrapper, { clearProps: 'maxHeight' });
                 gsap.set(this.contentWrapper, { maxHeight: 50 });
-                gsap.to(this.contentWrapper, 0.3, {
+                gsap.to(this.contentWrapper, {
                     maxHeight: 0,
                     opacity: 0,
+                    duration: 0.3,
                     ease: this.ease
                 });
                 this.open = false;

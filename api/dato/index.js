@@ -76,6 +76,9 @@ export const layoutQuery = `
             newsletter {
                 title
             }
+            newsletterEmailError
+            newsletterEmailInvalid
+            newsletterSuccess
             social {
                 socialLinks {
                     title

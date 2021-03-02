@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "lambda": "netlify-lambda serve ./lambda --config ./lambda.config.js"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
@@ -24,11 +25,14 @@
     "core-js": "^3.6.5",
     "gsap": "^3.6.0",
     "nuxt": "^2.14.6",
-    "sass": "^1.32.6"
+    "sass": "^1.32.6",
+    "sib-api-v3-sdk": "^8.2.0"
   },
   "devDependencies": {
+    "@netlify/plugin-sitemap": "^0.7.0",
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/robots": "^2.4.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "babel-eslint": "^10.1.0",
@@ -38,8 +42,10 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
+    "netlify-lambda": "^2.0.3",
     "nuxt-i18n": "^6.16.0",
     "prettier": "^2.1.2",
-    "sass-loader": "^10.1.0"
+    "sass-loader": "^10.1.0",
+    "webpack": "^4.44.2"
   }
 }

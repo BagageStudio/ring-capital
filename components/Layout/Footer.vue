@@ -8,9 +8,9 @@
                         class="footer-title basic-h3 underlined saturn strong-white"
                         v-html="data.newsletter.title"
                     ></h3>
-                    <form class="newsletter-form">
+                    <form v-if="!success" class="newsletter-form" @submit.prevent="sendForm">
                         <div class="content-newsletter-form">
-                            <div class="wrapper-field">
+                            <div :class="['wrapper-field', { error: emailError }]">
                                 <input
                                     v-model="emailInput"
                                     class="newsletter-email"
@@ -29,6 +29,7 @@
                             </div>
                         </div>
                     </form>
+                    <p v-if="formError" class="form-message" :class="{ error: emailError }" v-html="formError" />
                 </div>
                 <Social class="social-footer" :content="data.social" />
             </div>
@@ -74,7 +75,10 @@ export default {
     },
     data() {
         return {
-            emailInput: ''
+            emailInput: '',
+            emailError: '',
+            formError: '',
+            success: false
         };
     },
     computed: {
@@ -85,7 +89,41 @@ export default {
     watch: {},
     mounted() {},
     beforeDestroy() {},
-    methods: {}
+    methods: {
+        sendForm() {
+            const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            this.$refs.submit.setAttribute('disabled', true);
+
+            this.formError = '';
+            this.emailError = false;
+
+            if (!this.emailInput) {
+                this.formError += this.data.newsletterEmailError;
+                this.emailError = true;
+            } else if (!regexEmail.test(this.emailInput)) {
+                this.formError += this.data.newsletterEmailInvalid;
+                this.emailError = true;
+            }
+
+            if (this.formError) {
+                this.$refs.submit.removeAttribute('disabled');
+            } else {
+                this.$axios
+                    .post('/.netlify/functions/newsletter', {
+                        email: this.emailInput
+                    })
+                    .then(res => {
+                        this.formError = this.data.newsletterSuccess;
+                        this.success = true;
+                    })
+                    .catch(error => {
+                        this.$refs.submit.removeAttribute('disabled');
+                        this.formError = error.response.data;
+                    });
+            }
+        }
+    }
 };
 </script>
 
@@ -120,6 +158,13 @@ export default {
 .content-newsletter-form {
     width: 100%;
 }
+.form-message {
+    margin: 10px 0 0;
+    &.error {
+        color: #f74656;
+    }
+}
+
 .wrapper-menu-legal {
     position: relative;
     padding: 50px 0 40px;
@@ -253,6 +298,10 @@ export default {
         justify-content: center;
         width: percentage(2/6);
         padding: 0 $gutter;
+    }
+    .form-message {
+        margin: 0;
+        padding: 0 #{$gutter};
     }
     .footer-title {
         padding-left: $gutter;

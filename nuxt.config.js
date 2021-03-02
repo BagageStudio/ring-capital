@@ -88,10 +88,21 @@ export default {
         ['nuxt-i18n'],
         '@nuxtjs/axios',
         '@nuxtjs/style-resources',
+        '@nuxtjs/proxy',
         '~/modules/slugToModelApiKey',
         '~/modules/initLayoutData',
         '~/modules/mediasToNetlify'
     ],
+
+    // Proxy config
+    proxy: {
+        '/.netlify': {
+            target: 'http://localhost:9000',
+            pathRewrite: {
+                '^/.netlify/functions': ''
+            }
+        }
+    },
 
     // i18n config
     i18n: {

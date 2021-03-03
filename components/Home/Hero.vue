@@ -6,7 +6,7 @@
             <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
 
             <div class="intro content-pad">
-                <h4 v-if="data.introTitle" class="basic-h4">{{ data.introTitle }}</h4>
+                <span v-if="data.introTitle" class="intro-title basic-h4">{{ data.introTitle }}</span>
                 <div v-if="data.introText" class="intro-text" v-html="data.introText"></div>
                 <nuxt-link
                     v-if="data.introAnchorLabel"
@@ -95,6 +95,9 @@ export default {
 }
 .intro {
     margin-top: 56px;
+}
+.intro-title {
+    display: block;
 }
 .intro-text {
     color: $neptune;

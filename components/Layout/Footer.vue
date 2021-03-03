@@ -12,8 +12,8 @@
                         <div class="content-newsletter-form">
                             <div :class="['wrapper-field', { error: emailError }]">
                                 <input
+                                    id="newsletter-email"
                                     v-model="emailInput"
-                                    class="newsletter-email"
                                     type="email"
                                     name="newsletter"
                                     :class="{ on: emailInput !== '' }"

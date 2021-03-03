@@ -94,6 +94,14 @@ export default {
         '~/modules/mediasToNetlify'
     ],
 
+    /*
+     ** Axios module configuration
+     ** See https://axios.nuxtjs.org/options
+     */
+    axios: {
+        baseURL: process.env.URL || 'http://localhost:3000'
+    },
+
     // Proxy config
     proxy: {
         '/.netlify': {

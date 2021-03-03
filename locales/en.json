@@ -4,7 +4,9 @@
         "sendButton": "Submit"
     },
     "news": {
-        "readingTime": "min read"
+        "readingTime": "min read",
+        "btnPrevLabel": "Previous news",
+        "btnNextLabel": "Next news"
     },
     "logo": {
         "hoverLabel": "Visit website"

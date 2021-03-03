@@ -6,10 +6,10 @@
                     <span>{{ title }}</span>
                 </h4>
                 <div v-if="isL" class="wrapper-buttons">
-                    <button aria-label="next news" class="btn-prev" type="button" @click="prevNews">
+                    <button :aria-label="$t('news.btnPrevLabel')" class="btn-prev" type="button" @click="prevNews">
                         <span class="bg"></span>
                     </button>
-                    <button aria-label="previous news" class="btn-next" type="button" @click="nextNews">
+                    <button :aria-label="$t('news.btnNextLabel')" class="btn-next" type="button" @click="nextNews">
                         <span class="bg"></span>
                     </button>
                 </div>
@@ -46,8 +46,8 @@
                 </li>
             </ul>
             <div v-if="!isL" class="wrapper-buttons">
-                <button class="btn-prev" type="button" @click="prevNews"></button>
-                <button class="btn-next" type="button" @click="nextNews"></button>
+                <button :aria-label="$t('news.btnPrevLabel')" class="btn-prev" type="button" @click="prevNews"></button>
+                <button :aria-label="$t('news.btnNextLabel')" class="btn-next" type="button" @click="nextNews"></button>
             </div>
         </div>
     </div>

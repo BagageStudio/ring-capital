@@ -100,6 +100,10 @@ export default {
     line-height: 30px;
     text-decoration: none;
     color: $white;
+    transition: color 0.2s ease-out;
+    &:hover {
+        color: $saturn;
+    }
 }
 .contact-social {
     position: relative;

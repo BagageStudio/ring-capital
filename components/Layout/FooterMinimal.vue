@@ -57,6 +57,10 @@ export default {
 .footer-small-link {
     margin-right: 10px;
     text-decoration: none;
+    transition: color 0.2s ease-out;
+    &:hover {
+        color: $white;
+    }
 }
 .content-footer-minimal {
     padding: 0 $gutter;

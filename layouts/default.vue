@@ -30,7 +30,7 @@ export default {
     beforeDestroy() {
         // NOTE: Avoiding memory leaks
         this.$stereorepo.superWindow.destroyWindow(this.$store);
-        this.$stereorepo.superWindow.destroyScroll();
+        this.$stereorepo.superScroll.destroyScroll();
     }
 };
 </script>

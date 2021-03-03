@@ -265,6 +265,7 @@ export const teamQuery = `
             }
             mosaic {
                 title
+                subtitle
                 text
                 link {
                     ...link
@@ -317,6 +318,7 @@ export const portfolioQuery = `
             }
             mosaic {
                 title
+                subtitle
                 text
                 link {
                     ...link
@@ -459,6 +461,7 @@ export const fundQuery = `
             }
             mosaic {
                 title
+                subtitle
                 text
                 link {
                     ...link
@@ -508,6 +511,7 @@ export const useCasesPageQuery = `
             seeAllLink
             mosaic {
                 title
+                subtitle
                 text
                 link {
                     ...link
@@ -628,6 +632,7 @@ export const ring2successQuery = `
             }
             mosaic {
                 title
+                subtitle
                 text
                 link {
                     ...link

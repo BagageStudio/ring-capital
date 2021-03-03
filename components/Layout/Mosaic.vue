@@ -14,6 +14,7 @@
             </div>
             <div class="wrapper-txt">
                 <h3 class="basic-h3 underlined strong-neptune" v-html="content.title"></h3>
+                <p v-if="content.subtitle" class="basic-subtitle">{{ content.subtitle }}</p>
                 <div v-if="content.text" class="mosaic-text" v-html="content.text"></div>
                 <LinkTo v-if="content.link" class="btn-block mosaic-btn secondary" :link="content.link" />
             </div>

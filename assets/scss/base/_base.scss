@@ -399,6 +399,17 @@ a {
     }
 }
 
+.visually-hidden {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    position: absolute !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+}
+
 @media (min-width: $phone) {
     body {
         font-size: #{$text-size-desktop * 0.1}rem;

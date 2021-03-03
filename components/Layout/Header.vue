@@ -11,6 +11,7 @@
         <div class="header-inner container">
             <div class="wrapper-logo content-pad">
                 <nuxt-link to="/">
+                    <span class="visually-hidden">Ring Capital</span>
                     <Logo class="header-logo" />
                 </nuxt-link>
             </div>

@@ -1,4 +1,4 @@
-const handleSeo = ({ route, seo }) => {
+const handleSeo = ({ route, seo, lang }) => {
     const head = { meta: [] };
 
     if (route) {
@@ -88,6 +88,10 @@ const handleSeo = ({ route, seo }) => {
             }
         ];
     }
+
+    head.htmlAttrs = {
+        lang
+    };
 
     return head;
 };

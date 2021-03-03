@@ -65,7 +65,7 @@ export default {
                 .then(({ data }) => data);
 
             finalData.data = data[camalize(finalData.template)];
-            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo });
+            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
         } catch (e) {
             return error({ statusCode: 404, message: e });

@@ -111,7 +111,7 @@ export default {
             } = await $dato.post('/', { query: companyQuery, variables: { lang, slug } }).then(({ data }) => data);
 
             finalData.data = data;
-            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo });
+            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
         } catch (e) {
             return error({ statusCode: 404 });
         }

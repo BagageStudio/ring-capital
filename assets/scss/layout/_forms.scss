@@ -35,7 +35,7 @@ input {
     position: relative;
     font-size: 1.6rem;
     line-height: 26px;
-    padding: 15px 0;
+    padding: 9px 0 15px;
     border: 0;
     border-bottom: 1px solid $neptune;
     color: $white;
@@ -63,12 +63,13 @@ button {
     position: relative;
     width: 100%;
     margin-bottom: 15px;
-    color: $neptune;
     .label {
+        font-size: 1.6rem;
+        line-height: 25px;
         position: absolute;
         top: 0;
         left: 0;
-        padding: 15px 0;
+        padding: 9px 0 15px;
         user-select: none;
         pointer-events: none;
     }
@@ -79,6 +80,11 @@ button {
         &.on {
             + .label {
                 opacity: 0;
+                + .border-overlay {
+                    transform: scaleX(1);
+                    opacity: 1;
+                    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out;
+                }
             }
         }
     }
@@ -87,5 +93,16 @@ button {
             border-color: #f74656;
             color: #f74656;
         }
+    }
+    .border-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 1px solid $white;
+        transform: scaleX(0);
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out 0.2s;
     }
 }

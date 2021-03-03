@@ -80,6 +80,7 @@ export const layoutQuery = `
             newsletterEmailInvalid
             newsletterSuccess
             newsletterGdpr
+            newsletterTextBeforeLink
             newsletterLink {
                 ...link
             }

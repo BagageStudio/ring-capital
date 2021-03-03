@@ -20,6 +20,7 @@
                                     required
                                 />
                                 <label class="label" for="newsletter-email">{{ $t('newsletter.label') }}</label>
+                                <span class="border-overlay"></span>
                             </div>
                             <div class="wrapper-btn-newsletter">
                                 <button ref="submit" type="submit" class="btn-block primary">
@@ -32,7 +33,14 @@
                     <p v-if="formError" class="form-message" :class="{ error: emailError }" v-html="formError" />
                     <div v-if="!success" class="newsletter-gdpr">
                         <p class="gdpr-message">{{ data.newsletterGdpr }}</p>
-                        <LinkTo class="footer-small-link" :link="data.newsletterLink" />
+                        <p class="gdpr-link">
+                            <span v-if="data.newsletterTextBeforeLink" class="gdpr-link-txt">
+                                {{ data.newsletterTextBeforeLink }}
+                            </span>
+                            <LinkTo class="footer-small-link txt-underlined" :link="data.newsletterLink" />
+                        </p>
+
+                        <p></p>
                     </div>
                 </div>
                 <Social class="social-footer" :content="data.social" />
@@ -169,7 +177,21 @@ export default {
     }
 }
 .newsletter-gdpr {
-    margin-top: 20px;
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+    line-height: 22px;
+    color: $neptune;
+    > p {
+        margin: 0;
+    }
+}
+.gdpr-link {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.gdpr-link-txt {
+    margin-right: 4px;
 }
 
 .wrapper-menu-legal {
@@ -234,6 +256,9 @@ export default {
     text-decoration: none;
     color: $neptune;
     transition: color 0.2s ease-out;
+    &.txt-underlined {
+        text-decoration: underline;
+    }
     &:hover {
         color: $white;
     }
@@ -291,12 +316,18 @@ export default {
     .content-newsletter-form {
         display: flex;
         align-items: flex-start;
+        margin-bottom: 7px;
         .wrapper-field {
             width: percentage(4/6);
+            margin: 0;
             padding: 0 $gutter;
             .label {
                 padding-left: $gutter;
                 padding-right: $gutter;
+            }
+            .border-overlay {
+                left: $gutter;
+                right: $gutter;
             }
         }
     }
@@ -321,7 +352,8 @@ export default {
     }
 
     .newsletter-gdpr {
-        margin-top: 0;
+        width: percentage(4/6);
+        margin: 0;
         padding: 0 #{$gutter};
     }
 }

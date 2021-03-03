@@ -30,6 +30,10 @@
                         </div>
                     </form>
                     <p v-if="formError" class="form-message" :class="{ error: emailError }" v-html="formError" />
+                    <div v-if="!success" class="newsletter-gdpr">
+                        <p class="gdpr-message">{{ data.newsletterGdpr }}</p>
+                        <LinkTo class="footer-small-link" :link="data.newsletterLink" />
+                    </div>
                 </div>
                 <Social class="social-footer" :content="data.social" />
             </div>
@@ -164,6 +168,9 @@ export default {
         color: #f74656;
     }
 }
+.newsletter-gdpr {
+    margin-top: 20px;
+}
 
 .wrapper-menu-legal {
     position: relative;
@@ -225,6 +232,7 @@ export default {
 .footer-small-link {
     margin-right: 10px;
     text-decoration: none;
+    color: $neptune;
     transition: color 0.2s ease-out;
     &:hover {
         color: $white;
@@ -310,6 +318,11 @@ export default {
     .social.social-footer {
         padding-left: $gutter;
         padding-right: $gutter;
+    }
+
+    .newsletter-gdpr {
+        margin-top: 0;
+        padding: 0 #{$gutter};
     }
 }
 @media (min-width: $desktop-large) {

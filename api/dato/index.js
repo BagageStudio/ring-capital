@@ -79,6 +79,10 @@ export const layoutQuery = `
             newsletterEmailError
             newsletterEmailInvalid
             newsletterSuccess
+            newsletterGdpr
+            newsletterLink {
+                ...link
+            }
             social {
                 socialLinks {
                     title

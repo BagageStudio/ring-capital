@@ -33,14 +33,12 @@
                     <p v-if="formError" class="form-message" :class="{ error: emailError }" v-html="formError" />
                     <div v-if="!success" class="newsletter-gdpr">
                         <p class="gdpr-message">{{ data.newsletterGdpr }}</p>
-                        <p class="gdpr-link">
+                        <div class="gdpr-link">
                             <span v-if="data.newsletterTextBeforeLink" class="gdpr-link-txt">
                                 {{ data.newsletterTextBeforeLink }}
                             </span>
                             <LinkTo class="footer-small-link txt-underlined" :link="data.newsletterLink" />
-                        </p>
-
-                        <p></p>
+                        </div>
                     </div>
                 </div>
                 <Social class="social-footer" :content="data.social" />

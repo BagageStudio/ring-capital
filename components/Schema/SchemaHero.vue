@@ -28,9 +28,15 @@
                     <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="7.5" :fill="planet.color.hex" />
                 </g>
 
-                <g v-for="planet in planets" :id="`circle_proxy_${planet.id}`" :key="`circle_proxy_${planet.id}`">
-                    <circle :id="`circle_${planet.id}`" cx="876" cy="297" r="7.5" fill="transparent" />
-                </g>
+                <circle
+                    v-for="planet in planets"
+                    :id="`circle_proxy_${planet.id}`"
+                    :key="`circle_proxy_${planet.id}`"
+                    cx="876"
+                    cy="297"
+                    r="7.5"
+                    fill="transparent"
+                />
 
                 <g v-for="planet in planets" :id="`border_wrapper_${planet.id}`" :key="`border_wrapper_${planet.id}`">
                     <path

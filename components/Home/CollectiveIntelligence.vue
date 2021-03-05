@@ -11,6 +11,7 @@
                     v-if="data.section1MobileImage && !isL"
                     class="section-mobile-image"
                     :image="data.section1MobileImage"
+                    cover
                 />
                 <h2 v-if="data.section1Title" class="basic-h2 underlined">
                     <span>{{ data.section1Title }}</span>
@@ -150,6 +151,9 @@ export default {
 }
 .section-mobile-image {
     margin-bottom: 30px;
+    ::v-deep .image {
+        max-height: 400px;
+    }
 }
 .section-btn {
     margin-top: 10px;

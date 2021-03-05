@@ -2,8 +2,8 @@
     <div class="wrapper-fund">
         <FundHero :data="data" />
         <FundTargets :data="data" />
-        <LinkedCompanies :companies="data.companies" :title="data.companiesTitle" dark />
-        <Mosaic :content="data.mosaic" />
+        <LinkedCompanies v-if="data.companies.length" :companies="data.companies" :title="data.companiesTitle" dark />
+        <Mosaic v-if="data.mosaic" :content="data.mosaic" />
     </div>
 </template>
 

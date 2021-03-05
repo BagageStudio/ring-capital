@@ -110,7 +110,7 @@ export default {
             }
         },
         scrollDirection(dir, oldDir) {
-            if (this.isMobile || dir + oldDir !== 0) return;
+            if (this.isMobile || this.scrollTop === 0 || dir + oldDir !== 0) return;
             this.transitionQuitScrolledUp = false;
             this.transitionQuitScrolledUpOnTop = false;
             if (this.timeoutScrolledUp) clearRequestTimeout(this.timeoutScrolledUp);

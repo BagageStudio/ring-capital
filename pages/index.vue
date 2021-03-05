@@ -6,6 +6,7 @@
         <HomeVision :data="data" />
 
         <News :title="data.newsTitle" :content="data.news" />
+        <Overlay />
     </div>
 </template>
 

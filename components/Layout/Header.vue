@@ -100,6 +100,11 @@ export default {
         }
     },
     watch: {
+        $route() {
+            if (this.isMobile && this.showMenuMobile) {
+                this.toggleMenuMobile();
+            }
+        },
         scrollTop(st) {
             if (st === 0 && this.scrollDirection === -1) {
                 this.transitionQuitScrolledUpOnTop = true;

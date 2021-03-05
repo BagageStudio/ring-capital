@@ -1,6 +1,7 @@
 <template>
     <div>
         <Portfolio :data="data" />
+        <Overlay />
     </div>
 </template>
 <script>

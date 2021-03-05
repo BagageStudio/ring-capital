@@ -7,6 +7,7 @@
         </div>
         <Svgs />
         <LazyGrid v-if="$config.isDevEnv" />
+        <Overlay class="layout-overlay" />
     </div>
 </template>
 

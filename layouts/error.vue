@@ -9,6 +9,7 @@
                 </div>
             </div>
         </div>
+        <Overlay class="layout-overlay" />
     </div>
 </template>
 

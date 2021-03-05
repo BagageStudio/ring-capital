@@ -69,6 +69,11 @@ export default {
         host: '0.0.0.0' // pour accèder au site depuis le réseau lan
     },
 
+    pageTransition: {
+        appear: true,
+        duration: 400
+    },
+
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: ['~assets/scss/main.scss'],
 

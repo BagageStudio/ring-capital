@@ -1,90 +1,95 @@
 <template>
-    <div v-if="data">
-        <div class="wrapper-company" itemscope itemtype="http://schema.org/Organization">
-            <div class="container">
-                <div class="wrapper-back">
-                    <nuxt-link class="btn-line" :to="portfolioListLink">
-                        <span class="deco"></span>
-                        {{ $t('portfolio.backLabel') }}
-                    </nuxt-link>
-                </div>
-                <div class="wrapper-company-content">
-                    <div class="company-col col-left">
-                        <div v-if="data.image && !isM" class="wrapper-company-img">
-                            <FastImage class="company-img" :image="data.image" cover />
-                        </div>
-                        <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
-                        <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
-                        <div v-if="data.founders" class="wrapper-company-founders">
-                            <span class="founders-title">
-                                {{ $t('portfolio.foundersTitle') }}
-                            </span>
-                            <span clas="founders" itemprop="founders">{{ data.founders }}</span>
-                        </div>
-                        <div
-                            v-if="data.largeDescription"
-                            class="company-description"
-                            itemprop="description"
-                            v-html="data.largeDescription"
-                        ></div>
-                        <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
-                        <KeyFigures :content="data.keyFigures" class="company-key-figures" />
-                        <a
-                            v-if="data.recruitmentPageLink"
-                            :href="data.recruitmentPageLink"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="company-hiring btn-line"
-                        >
+    <div>
+        <div v-if="data">
+            <div class="wrapper-company" itemscope itemtype="http://schema.org/Organization">
+                <div class="container">
+                    <div class="wrapper-back">
+                        <nuxt-link class="btn-line" :to="portfolioListLink">
                             <span class="deco"></span>
-                            {{ $t('portfolio.hireLabel') }}
-                        </a>
+                            {{ $t('portfolio.backLabel') }}
+                        </nuxt-link>
                     </div>
-                    <div class="company-col col-right">
-                        <div v-if="data.image && isM" class="wrapper-company-img">
-                            <FastImage class="company-img" :image="data.image" cover />
+                    <div class="wrapper-company-content">
+                        <div class="company-col col-left">
+                            <div v-if="data.image && !isM" class="wrapper-company-img">
+                                <FastImage class="company-img" :image="data.image" cover />
+                            </div>
+                            <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
+                            <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
+                            <div v-if="data.founders" class="wrapper-company-founders">
+                                <span class="founders-title">
+                                    {{ $t('portfolio.foundersTitle') }}
+                                </span>
+                                <span clas="founders" itemprop="founders">{{ data.founders }}</span>
+                            </div>
+                            <div
+                                v-if="data.largeDescription"
+                                class="company-description"
+                                itemprop="description"
+                                v-html="data.largeDescription"
+                            ></div>
+                            <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
+                            <KeyFigures :content="data.keyFigures" class="company-key-figures" />
+                            <a
+                                v-if="data.recruitmentPageLink"
+                                :href="data.recruitmentPageLink"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="company-hiring btn-line"
+                            >
+                                <span class="deco"></span>
+                                {{ $t('portfolio.hireLabel') }}
+                            </a>
                         </div>
-                        <div v-if="data.locations" class="wrapper-company-locations">
-                            <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
-                            <div class="company-locations" itemprop="contactPoints">
+                        <div class="company-col col-right">
+                            <div v-if="data.image && isM" class="wrapper-company-img">
+                                <FastImage class="company-img" :image="data.image" cover />
+                            </div>
+                            <div v-if="data.locations" class="wrapper-company-locations">
+                                <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
+                                <div class="company-locations" itemprop="contactPoints">
+                                    <a
+                                        v-for="location in data.locations"
+                                        :key="location.id"
+                                        :href="location.mapLink"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="location-link"
+                                        itemprop="address"
+                                        itemscope
+                                        itemtype="http://schema.org/PostalAddress"
+                                    >
+                                        <span class="location-city" itemprop="addressLocality">{{
+                                            location.city
+                                        }}</span>
+                                        <span class="location-address" itemprop="streetAddress">
+                                            {{ location.address }}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
+                                <Social :content="data.social" class="company-social" />
                                 <a
-                                    v-for="location in data.locations"
-                                    :key="location.id"
-                                    :href="location.mapLink"
+                                    v-if="data.websiteLink && data.websiteLinkLabel"
+                                    :href="data.websiteLink"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="location-link"
-                                    itemprop="address"
-                                    itemscope
-                                    itemtype="http://schema.org/PostalAddress"
+                                    class="company-website h4"
+                                    itemprop="url"
                                 >
-                                    <span class="location-city" itemprop="addressLocality">{{ location.city }}</span>
-                                    <span class="location-address" itemprop="streetAddress">
-                                        {{ location.address }}
+                                    <span v-if="data.websiteLinkLabel" class="text">
+                                        <span class="btn-label">{{ data.websiteLinkLabel }}</span>
                                     </span>
                                 </a>
                             </div>
                         </div>
-                        <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
-                            <Social :content="data.social" class="company-social" />
-                            <a
-                                v-if="data.websiteLink && data.websiteLinkLabel"
-                                :href="data.websiteLink"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="company-website h4"
-                                itemprop="url"
-                            >
-                                <span v-if="data.websiteLinkLabel" class="text">
-                                    <span class="btn-label">{{ data.websiteLinkLabel }}</span>
-                                </span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
+            <LinkedCompanies :companies="data.otherCompanies" :title="$t('portfolio.otherRefsTitle')" />
         </div>
-        <LinkedCompanies :companies="data.otherCompanies" :title="$t('portfolio.otherRefsTitle')" />
+        <Overlay />
     </div>
 </template>
 

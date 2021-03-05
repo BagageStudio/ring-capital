@@ -2,11 +2,11 @@
     <div ref="schema" class="schema">
         <svg viewBox="0 0 1280 680" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="test">
-                <rect width="1280" height="680" fill="#657DA2" />
+                <rect width="1280" height="680" fill="#37475D" />
                 <path
                     id="model"
                     ref="model"
-                    d="M72.5403 518.536C43.0804 424.808 273.24 268.978 586.62 170.48C899.996 71.9814 1177.92 68.1145 1207.38 161.842C1236.84 255.569 1006.68 411.399 693.304 509.898C379.928 608.397 102 612.264 72.5403 518.536Z"
+                    d="M72.5403,518.536L72.5403,518.536C102,612.264 379.928,608.397 693.304,509.898C1006.68,411.399 1236.84,255.569 1207.38,161.842C1177.92,68.1145 899.996,71.9814 586.62,170.48C273.24,268.978 43.0804,424.808 72.5403,518.536"
                     stroke="#19232F"
                     stroke-width="3"
                 />
@@ -135,7 +135,7 @@ export default {
         appearAnimation() {
             gsap.to(this.$refs.model, {
                 duration: 1.5,
-                strokeDashoffset: -this.pathLength,
+                strokeDashoffset: this.pathLength,
                 ease: 'power3.inOut'
             });
             this.planets.reverse().forEach((planet, index) => {
@@ -196,8 +196,8 @@ export default {
                             align: '#model',
                             alignOrigin: [0.5, 0.5],
                             autoRotate: true,
-                            start: 0 + 0.3 * index,
-                            end: 1 + 0.3 * index
+                            end: 0 + 0.3 * index,
+                            start: 1 + 0.3 * index
                         },
                         duration: 16,
                         repeat: -1,
@@ -219,8 +219,8 @@ export default {
                             align: '#model',
                             alignOrigin: [1, 0.5],
                             autoRotate: true,
-                            start: 0 + 0.3 * index,
-                            end: 1 + 0.3 * index
+                            end: 0 + 0.3 * index,
+                            start: 1 + 0.3 * index
                         },
                         duration: 16,
                         repeat: -1,
@@ -234,8 +234,8 @@ export default {
                             align: '#model',
                             alignOrigin: [0.5, 0.5],
                             autoRotate: true,
-                            start: 0 + 0.3 * index,
-                            end: 1 + 0.3 * index
+                            end: 0 + 0.3 * index,
+                            start: 1 + 0.3 * index
                         },
                         duration: 16,
                         repeat: -1,

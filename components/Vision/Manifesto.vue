@@ -1,6 +1,7 @@
 <template>
     <div v-if="content" class="wrapper-manifesto">
-        <div v-for="manifesto in content" :key="manifesto.id" class="manifesto">
+        <div v-for="(manifesto, index) in content" :key="manifesto.id" class="manifesto">
+            <SchemaVisionBottom v-if="index === 1 && isM" />
             <div class="container-manifesto container">
                 <div class="section-title">
                     <h3
@@ -38,12 +39,19 @@
 export default {
     props: {
         content: { type: Array, required: true }
+    },
+    computed: {
+        isM() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
 .wrapper-manifesto {
+    position: relative;
     padding: 80px 0;
     color: $orbit;
     background: $grey;
@@ -92,6 +100,14 @@ export default {
 }
 
 @media (min-width: $tablet) {
+    .schema {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2350px;
+        margin-top: -50px;
+        transform: translate(-50%, -50%);
+    }
     .manifesto {
         &:nth-child(even) {
             .container-manifesto {
@@ -122,6 +138,12 @@ export default {
         max-height: none;
     }
 }
+
+@media (min-width: $desktop-small) {
+    .schema {
+        width: 2850px;
+    }
+}
 @media (min-width: $desktop) {
     .wrapper-manifesto {
         padding: 130px 0 160px;
@@ -149,6 +171,9 @@ export default {
     }
 }
 @media (min-width: $desktop-large) {
+    .schema {
+        margin-top: 0px;
+    }
     .manifesto {
         &:nth-child(even) {
             .container-manifesto {

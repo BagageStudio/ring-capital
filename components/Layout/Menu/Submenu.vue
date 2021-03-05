@@ -128,8 +128,7 @@ export default {
                 ease: 'power4.inOut',
                 onComplete: () => {
                     gsap.set(submenuWrapper, {
-                        visibility: 'hidden',
-                        pointerEvents: 'none'
+                        clearProps: 'all'
                     });
                 }
             });

@@ -410,6 +410,25 @@ a {
     overflow: hidden !important;
 }
 
+.page-enter,
+.page-leave-to {
+    .loading-overlay {
+        opacity: 1 !important;
+    }
+}
+
+.layout-enter-active,
+.layout-leave-active {
+    transition: opacity 0.4s;
+}
+
+.layout-enter,
+.layout-leave-to {
+    .loading-overlay.layout-overlay {
+        opacity: 1 !important;
+    }
+}
+
 @media (min-width: $phone) {
     body {
         font-size: #{$text-size-desktop * 0.1}rem;

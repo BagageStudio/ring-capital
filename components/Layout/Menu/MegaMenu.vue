@@ -71,6 +71,17 @@ export default {
             return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
         }
     },
+    watch: {
+        $route() {
+            if (this.open) {
+                if (this.isMobile) {
+                    this.toggleMobileSubmenu();
+                } else {
+                    this.hidePopover();
+                }
+            }
+        }
+    },
     methods: {
         toggleMobileSubmenu() {
             if (!this.isMobile) return;

@@ -105,6 +105,11 @@ export default {
                 this.toggleMenuMobile();
             }
         },
+        ww() {
+            if (this.isMobile && this.showMenuMobile) {
+                this.toggleMenuMobile();
+            }
+        },
         scrollTop(st) {
             if (st === 0 && this.scrollDirection === -1) {
                 this.transitionQuitScrolledUpOnTop = true;

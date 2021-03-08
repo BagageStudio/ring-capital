@@ -73,13 +73,10 @@ export default {
     },
     watch: {
         $route() {
-            if (this.open) {
-                if (this.isMobile) {
-                    this.toggleMobileSubmenu();
-                } else {
-                    this.hidePopover();
-                }
-            }
+            this.closeMenu();
+        },
+        ww() {
+            this.closeMenu();
         }
     },
     methods: {
@@ -152,6 +149,15 @@ export default {
                     });
                 }
             });
+        },
+        closeMenu() {
+            if (this.open) {
+                if (this.isMobile) {
+                    this.toggleMobileSubmenu();
+                } else {
+                    this.hidePopover();
+                }
+            }
         }
     }
 };

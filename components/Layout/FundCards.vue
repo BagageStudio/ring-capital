@@ -101,7 +101,7 @@ export default {
         display: block;
         max-width: 100%;
         max-height: 100%;
-        fill: $neptune;
+        fill: $white;
         transition: fill 0.3s ease-out;
     }
 }

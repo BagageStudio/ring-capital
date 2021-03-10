@@ -537,7 +537,6 @@ export const sustainableEngagementQuery = `
             ${locales}
             title
             subtitle
-            text
             section1LeftTitle
             section1LeftContent
             section1RightTitle

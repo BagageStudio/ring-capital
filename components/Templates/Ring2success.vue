@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="wrapper-title content-pad">
                     <h1 class="basic-h1 strong-saturn" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
-                    <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
+                    <div v-if="data.subtitle" class="wrapper-subtitle basic-subtitle" v-html="data.subtitle"></div>
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-crew {
     padding: 80px 0;
+    background: $dark;
 }
 .crew-title {
     margin-bottom: 60px;

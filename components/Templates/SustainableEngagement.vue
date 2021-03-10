@@ -26,8 +26,8 @@ export default {
 
 <style lang="scss" scoped>
 .hero-se {
-    text-align: center;
     padding: 20px 0 60px;
+    text-align: center;
 }
 .wrapper-title {
     padding: 0 $gutter;

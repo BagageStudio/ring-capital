@@ -32,6 +32,12 @@ export default {
 .wrapper-title {
     padding: 0 $gutter;
 }
+.wrapper-subtitle {
+    margin: 0;
+    ::v-deep p {
+        margin: 20px 0;
+    }
+}
 @media (min-width: $desktop-small) {
     .hero-se {
         padding: 90px 0 0;

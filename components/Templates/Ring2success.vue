@@ -47,6 +47,7 @@ export default {
         margin: 20px 0;
     }
 }
+
 @media (min-width: $desktop-small) {
     .hero-r2s {
         padding: 90px 0 0;

@@ -38,6 +38,7 @@ export default {
         margin: 20px 0;
     }
 }
+
 @media (min-width: $desktop-small) {
     .hero-se {
         padding: 90px 0 0;

@@ -701,12 +701,6 @@ export const visionQuery = `
             ${locales}
             title
             subtitle
-            heroLeftImage {
-                ${img}
-            }
-            heroRightImage {
-                ${img}
-            }
             believeTitle
             believeAccordions {
                 id

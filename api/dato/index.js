@@ -459,6 +459,21 @@ export const fundQuery = `
                 }
                 slug
             }
+            crewTitle
+            crewSections {
+                title
+                crewMembers {
+                    name
+                    description
+                    hasLinkedin
+                    link {
+                        ...link
+                    }
+                    image {
+                        ${img}
+                    }
+                }
+            }
             mosaic {
                 title
                 subtitle

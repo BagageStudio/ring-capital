@@ -1,16 +1,18 @@
 <template>
-    <div v-if="content" class="wrapper-crew">
+    <div v-if="content" class="wrapper-crew" :style="{ '--fundColor': fundColor }">
         <div class="container">
             <div class="content-pad">
-                <div class="wrapper-title">
+                <div v-if="content.crewTitle" class="wrapper-title">
                     <h3 class="crew-title basic-h3 underlined strong-saturn" v-html="content.crewTitle"></h3>
                 </div>
                 <div v-for="crewSection in content.crewSections" :key="crewSection.id" class="crew-section">
                     <h4 class="crew-section-title basic-h4">{{ crewSection.title }}</h4>
                     <CrewMembers :content="crewSection.crewMembers" />
                 </div>
-                <div class="crew-section">
-                    <h4 class="crew-section-title basic-h4">{{ content.partnersTitle }}</h4>
+                <div v-if="content.partners" class="crew-section">
+                    <h4 v-if="content.partnersTitle" class="crew-section-title basic-h4">
+                        {{ content.partnersTitle }}
+                    </h4>
                     <div class="wrapper-partners">
                         <LogosList :content="content.partners" show-label class="medium-grid big-height" />
                     </div>
@@ -23,7 +25,8 @@
 <script>
 export default {
     props: {
-        content: { type: Object, required: true }
+        content: { type: Object, required: true },
+        fundColor: { type: String, default: '#f4f928' }
     }
 };
 </script>
@@ -35,6 +38,9 @@ export default {
 }
 .crew-title {
     margin-bottom: 60px;
+    ::v-deep strong {
+        color: var(--fundColor);
+    }
 }
 .crew-section {
     margin-bottom: 60px;

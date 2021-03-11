@@ -64,6 +64,9 @@ export default {
 @media (min-width: $desktop) {
     .wrapper-crew {
         padding: 120px 0;
+        .wrapper-fund & {
+            padding: 60px 0 120px;
+        }
     }
 }
 @media (min-width: $desktop-large) {

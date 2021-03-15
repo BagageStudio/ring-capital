@@ -63,12 +63,18 @@
                 <div class="footer-bottom">
                     <span v-if="data.smallText" class="footer-small-txt">{{ data.smallText }}</span>
                     <div v-if="data.smallLinks" class="wrapper-small-links">
-                        <LinkTo
-                            v-for="(singleLink, linkIndex) in data.smallLinks"
-                            :key="linkIndex"
-                            class="footer-small-link"
-                            :link="singleLink"
-                        />
+                        <div v-for="(singleLink, linkIndex) in data.smallLinks" :key="linkIndex">
+                            <LinkTo
+                                v-if="singleLink.__typename === 'LinkRecord'"
+                                class="footer-small-link"
+                                :link="singleLink"
+                            />
+                            <LinkToFile
+                                v-else-if="singleLink.__typename === 'LinkFileRecord'"
+                                class="footer-small-link"
+                                :link="singleLink"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

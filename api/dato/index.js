@@ -71,7 +71,15 @@ export const layoutQuery = `
             }
             smallText
             smallLinks {
+                __typename
                 ...link
+                ... on LinkFileRecord {
+                    label
+                    title
+                    file {
+                        url
+                    }
+                }
             }
             newsletter {
                 title

@@ -2,6 +2,42 @@
     <div v-if="content" class="wrapper-manifesto">
         <div v-for="(manifesto, index) in content" :key="manifesto.id" class="manifesto">
             <SchemaVisionBottom v-if="index === 1 && isM" />
+            <svg
+                v-if="index === 1 && !isM"
+                class="mobile-schema"
+                viewBox="0 0 375 184"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    opacity="0.4"
+                    d="M-36.9981 126.239C41.3812 111.846 122.401 98.9079 205.502 87.6617C280.542 77.5063 354.529 69.103 427.002 62.3946"
+                    stroke="#657DA2"
+                />
+                <path
+                    d="M256.953 80.6499C167.454 91.1502 107.956 101.15 50.954 110.65"
+                    stroke="url(#paintTopPart0_linear)"
+                />
+                <circle
+                    r="7.5"
+                    transform="matrix(0.697626 -0.716462 -0.716462 -0.697626 261.058 81.2557)"
+                    fill="#1F2C3C"
+                />
+                <defs>
+                    <linearGradient
+                        id="paintTopPart0_linear"
+                        x1="254.428"
+                        y1="83.1134"
+                        x2="77.0241"
+                        y2="119.533"
+                        gradientUnits="userSpaceOnUse"
+                    >
+                        <stop stop-color="#1F2C3C" />
+                        <stop offset="1" stop-color="#1F2C3C" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
             <div class="container-manifesto container">
                 <div class="section-title">
                     <h3
@@ -31,6 +67,41 @@
                     </div>
                 </div>
             </div>
+            <svg
+                v-if="index === 1 && !isM"
+                class="mobile-schema bottom"
+                viewBox="0 0 375 128"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    opacity="0.4"
+                    d="M-30.4995 118.096C69.9368 97.6533 173.457 73.3322 278.679 45.138C323.169 33.2168 366.972 20.8691 410.001 8.14539"
+                    stroke="#657DA2"
+                />
+                <path
+                    d="M228.53 58.6246C315.971 36.8481 373.719 19.3764 429.054 2.71739"
+                    stroke="url(#paintBottomPart0_linear)"
+                />
+                <circle
+                    r="7.5"
+                    transform="matrix(-0.601033 0.799224 0.799224 0.601033 224.381 58.5449)"
+                    fill="#657DA2"
+                />
+                <defs>
+                    <linearGradient
+                        id="paintBottomPart0_linear"
+                        x1="368.394"
+                        y1="21.372"
+                        x2="367.661"
+                        y2="18.4076"
+                        gradientUnits="userSpaceOnUse"
+                    >
+                        <stop stop-color="#677D9F" />
+                        <stop offset="1" stop-color="#677D9F" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
         </div>
     </div>
 </template>
@@ -56,12 +127,7 @@ export default {
     color: $orbit;
     background: $grey;
 }
-.manifesto {
-    margin-bottom: 250px;
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
+
 .section-title,
 .section-content {
     padding: 0 #{$gutter};
@@ -99,6 +165,13 @@ export default {
     }
 }
 
+.mobile-schema {
+    width: 100%;
+    &.bottom {
+        margin: 50px 0;
+    }
+}
+
 @media (min-width: $tablet) {
     .schema {
         position: absolute;
@@ -109,6 +182,10 @@ export default {
         transform: translate(-50%, -50%);
     }
     .manifesto {
+        margin-bottom: 250px;
+        &:last-child {
+            margin-bottom: 0;
+        }
         &:nth-child(even) {
             .container-manifesto {
                 flex-direction: row-reverse;

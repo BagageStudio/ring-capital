@@ -4,6 +4,7 @@ export default `
         label
         title
         externalLink
+        hash
         internalLink {
             ... on HomeRecord {
                 _modelApiKey

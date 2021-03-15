@@ -12,7 +12,8 @@ export const getIso = function () {
 
 export const getSlug = function () {
     const { i18n, route } = getContextData.call(this);
-    const { fullPath: routePath } = route;
+    const { path: routePath } = route;
+
     return i18n.locales
         .reduce((acc, { code }) => {
             const [firstUrlPart] = acc;

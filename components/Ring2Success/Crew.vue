@@ -1,5 +1,5 @@
 <template>
-    <div v-if="content" class="wrapper-crew" :style="{ '--fundColor': fundColor }">
+    <div v-if="content" id="crew" class="wrapper-crew" :style="{ '--fundColor': fundColor }">
         <div class="container">
             <div class="content-pad">
                 <div v-if="content.crewTitle" class="wrapper-title">

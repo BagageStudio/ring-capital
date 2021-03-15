@@ -12,6 +12,7 @@
                         v-html="data.section1LeftContent"
                     ></div>
                 </div>
+                <SchemaVision />
                 <div class="wrapper-col-section right">
                     <h3 v-if="data.section1RightTitle" class="basic-h3 underlined">
                         <span>{{ data.section1RightTitle }}</span>
@@ -38,12 +39,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .vision-wrapper {
-    overflow: hidden;
     position: relative;
     backface-visibility: hidden;
     transform: translateZ(0);
     will-change: transform;
     transform-style: preserve-3d;
+    z-index: -1;
 }
 .wrapper-section-1 {
     padding-top: 50px;
@@ -53,7 +54,22 @@ export default {
     padding: 0 $gutter;
 }
 
+.schema {
+    width: calc(100vw + 200px);
+    margin-left: -140px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
 @media (min-width: $tablet) {
+    .schema {
+        position: relative;
+        margin-top: -100px;
+        margin-bottom: -100px;
+        z-index: -1;
+    }
     .content-section-1 {
         padding: 0;
     }
@@ -65,12 +81,10 @@ export default {
         will-change: transform;
         transform-style: preserve-3d;
         &.left {
+            margin-left: auto;
             .basic-subtitle {
                 margin-bottom: 0;
             }
-        }
-        &.right {
-            margin-left: auto;
         }
     }
 }
@@ -79,23 +93,42 @@ export default {
         padding-top: 190px;
         padding-bottom: 190px;
     }
-    .content-section-2 {
+    .content-section-1 {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0;
+    }
+    .schema {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 2500px;
+        width: calc(100vw + 700px);
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        transform: translate(-50%, -50%);
     }
     .wrapper-col-section {
         width: percentage(5/12);
         &.left {
             order: 1;
             padding-right: calc(#{percentage(1/12)} + #{$gutter});
-            margin-top: 110px;
+            margin-top: -110px;
+            margin-left: 0;
         }
         &.right {
             order: 3;
             padding-left: calc(#{percentage(1/12)} + #{$gutter});
-            margin-top: -110px;
+            margin-top: 110px;
         }
+    }
+}
+
+@media (min-width: $desktop-large) {
+    .schema {
+        max-width: 2200px;
     }
 }
 
@@ -107,9 +140,10 @@ export default {
     .wrapper-col-section {
         &.left {
             padding-left: calc(#{percentage(1/12)} + #{$gutter});
-            margin-top: 90px;
+            margin-top: -190px;
         }
         &.right {
+            margin-top: 90px;
             padding-right: calc(#{percentage(1/12)} + #{$gutter});
         }
     }

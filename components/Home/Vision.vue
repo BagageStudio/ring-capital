@@ -69,15 +69,6 @@ export default {
 .right .basic-h3 {
     color: $titan;
 }
-// .schema {
-//     position: absolute;
-//     top: 40%;
-//     left: 50%;
-//     max-width: 2000px;
-//     width: calc(100vw + 400px);
-//     transform: translate(-50%, -50%);
-//     z-index: -1;
-// }
 .schema {
     width: calc(100vw + 200px);
     margin-left: -140px;

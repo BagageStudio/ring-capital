@@ -90,12 +90,16 @@ export default {
             left: 0;
             right: 0;
             border-top: 1px solid $white;
+            transform: scaleX(0);
             opacity: 0;
-            transition: opacity 0.2s ease-out;
+            transform-origin: 50% 0%;
+            transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out 0.2s;
         }
         &:hover {
             &::before {
+                transform: scaleX(1);
                 opacity: 1;
+                transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease-in-out;
             }
             .content {
                 opacity: 0.7;

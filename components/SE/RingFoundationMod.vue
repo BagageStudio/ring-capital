@@ -19,10 +19,7 @@
                     v-html="data.endowmentFundText"
                 ></div>
                 <div v-if="data.endowmentFundLineLink" class="foundation-mod-link line">
-                    <nuxt-link class="btn-line on-white" :to="data.endowmentFundLineLink">
-                        <span class="deco"></span>
-                        {{ data.endowmentFundLineLink.label }}
-                    </nuxt-link>
+                    <LinkTo class="btn-line on-white" :link="data.endowmentFundLineLink" />
                 </div>
                 <div v-if="data.endowmentFundBlockLink" class="foundation-mod-link">
                     <LinkTo class="btn-block secondary" :link="data.endowmentFundBlockLink" />

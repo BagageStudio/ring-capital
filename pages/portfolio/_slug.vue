@@ -305,6 +305,10 @@ export default {
     margin: 20px 0 0;
     text-decoration: none;
     color: $neptune;
+    transition: color 0.2s ease-out;
+    &:hover {
+        color: $white;
+    }
 }
 
 @media (min-width: $tablet) {

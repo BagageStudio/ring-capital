@@ -20,6 +20,18 @@ export default `
             slug
             _modelApiKey
         }
+        ring2success(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        sustainableEngagement(locale: $lang) {
+            slug
+            _modelApiKey
+        }
+        vision(locale: $lang) {
+            slug
+            _modelApiKey
+        }
         allFunds(locale: $lang, filter: {slug: {neq: null}}) {
             slug
             _modelApiKey

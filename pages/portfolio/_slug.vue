@@ -87,7 +87,11 @@
                     </div>
                 </div>
             </div>
-            <LinkedCompanies :companies="data.otherCompanies" :title="$t('portfolio.otherRefsTitle')" />
+            <LinkedCompanies
+                v-if="data.otherCompanies.length"
+                :companies="data.otherCompanies"
+                :title="$t('portfolio.otherRefsTitle')"
+            />
         </div>
         <Overlay />
     </div>

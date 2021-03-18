@@ -1,5 +1,5 @@
 <template>
-    <div v-if="content" class="wrapper-manifesto">
+    <div v-if="content" id="manifesto" class="wrapper-manifesto">
         <div v-for="(manifesto, index) in content" :key="manifesto.id" class="manifesto">
             <SchemaVisionBottom v-if="index === 1 && isM" />
             <svg

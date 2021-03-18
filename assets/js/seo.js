@@ -1,3 +1,5 @@
+const TITLE_PREFIX = 'Ring Capital • ';
+
 const handleSeo = ({ route, seo, lang }) => {
     const head = { meta: [] };
 
@@ -15,6 +17,7 @@ const handleSeo = ({ route, seo, lang }) => {
     if (!seo) return head;
 
     if (seo.title) {
+        seo.title = TITLE_PREFIX + seo.title;
         head.title = seo.title;
         head.meta = [
             ...head.meta,

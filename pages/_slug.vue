@@ -96,7 +96,7 @@ export default {
         seo: {}
     }),
     head() {
-        if (!this.seo.title) this.seo.title = 'Ring - ' + this.data.title;
+        if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
 
         return {
             ...this.seo

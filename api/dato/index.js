@@ -583,7 +583,15 @@ export const sustainableEngagementQuery = `
                     ${img}
                 }
                 link {
+                    __typename
                     ...link
+                    ... on LinkFileRecord {
+                        label
+                        title
+                        file {
+                            url
+                        }
+                    }
                 }
             }
             section2RightTitle
@@ -596,7 +604,15 @@ export const sustainableEngagementQuery = `
                     ${img}
                 }
                 link {
+                    __typename
                     ...link
+                    ... on LinkFileRecord {
+                        label
+                        title
+                        file {
+                            url
+                        }
+                    }
                 }
             }
             endowmentFundTitle
@@ -636,7 +652,15 @@ export const ring2successQuery = `
                         ${img}
                     }
                     link {
+                        __typename
                         ...link
+                        ... on LinkFileRecord {
+                            label
+                            title
+                            file {
+                                url
+                            }
+                        }
                     }
                 }
             }
@@ -733,7 +757,15 @@ export const visionQuery = `
                     ${img}
                 }
                 link {
+                    __typename
                     ...link
+                    ... on LinkFileRecord {
+                        label
+                        title
+                        file {
+                            url
+                        }
+                    }
                 }
             }
             believeImage {

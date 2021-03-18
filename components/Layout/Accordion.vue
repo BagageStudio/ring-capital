@@ -13,7 +13,13 @@
             <div ref="content" class="accordion-content">
                 <div v-html="content.content"></div>
                 <LinkTo
-                    v-if="content.link"
+                    v-if="content.link && content.link.__typename === 'LinkRecord'"
+                    :class="{ 'on-white': onWhite }"
+                    class="accordion-inside-btn btn-line"
+                    :link="content.link"
+                />
+                <LinkToFile
+                    v-else-if="content.link && content.link.__typename === 'LinkFileRecord'"
                     :class="{ 'on-white': onWhite }"
                     class="accordion-inside-btn btn-line"
                     :link="content.link"

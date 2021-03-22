@@ -90,7 +90,7 @@
             <LinkedCompanies
                 v-if="data.otherCompanies.length"
                 :companies="data.otherCompanies"
-                :title="$t('portfolio.otherRefsTitle')"
+                :title="data.charity ? $t('portfolio.otherCharitiesTitle') : $t('portfolio.otherRefsTitle')"
             />
         </div>
         <Overlay />

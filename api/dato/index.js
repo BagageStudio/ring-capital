@@ -373,6 +373,7 @@ export const companyQuery = `
             ${seo}
             ${locales}
             name
+            charity
             description
             tags
             logo {

@@ -143,16 +143,11 @@ export default {
         ]
     },
 
-    // // Robots config
-    // robots: () => {
-    //     return isProdEnv
-    //         ? { UserAgent: '*', Disallow: ['/404'], Sitemap: `${websiteUrl}/sitemap.xml` }
-    //         : { UserAgent: '*', Disallow: '/' };
-    // },
-
     // Robots config
     robots: () => {
-        return { UserAgent: '*', Disallow: ['/404'], Sitemap: `${websiteUrl}/sitemap.xml` };
+        return isProdEnv
+            ? { UserAgent: '*', Disallow: ['/404'], Sitemap: `${websiteUrl}/sitemap.xml` }
+            : { UserAgent: '*', Disallow: '/' };
     },
 
     /*

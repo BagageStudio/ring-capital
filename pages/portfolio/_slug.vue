@@ -147,7 +147,7 @@ export default {
         }
     },
     head() {
-        if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
+        if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.name;
 
         return {
             ...this.seo

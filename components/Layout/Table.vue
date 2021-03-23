@@ -7,7 +7,7 @@
                 <span class="title">{{ content.col3Title }}</span>
                 <span class="title">{{ content.col4Title }}</span>
             </div>
-            <ul v-if="content.tableEntries" class="table-entries">
+            <ul v-if="content.tableEntries && tableReady" class="table-entries">
                 <li v-for="tableEntryNb in currentCompaniesVisible" :key="tableEntryNb" class="table-entry">
                     <span class="company-name basic-h4">{{ content.tableEntries[tableEntryNb - 1].companyName }}</span>
                     <span class="table-line">
@@ -40,7 +40,8 @@ export default {
     },
     data: () => ({
         currentCompaniesVisible: 5,
-        nbCompanies: 0
+        nbCompanies: 0,
+        tableReady: false
     }),
     computed: {
         isM() {
@@ -50,6 +51,10 @@ export default {
     },
     mounted() {
         this.nbCompanies = this.content.tableEntries.length;
+        if (this.currentCompaniesVisible >= this.nbCompanies) {
+            this.currentCompaniesVisible = this.nbCompanies;
+        }
+        this.tableReady = true;
     },
     methods: {
         nextCompanies() {

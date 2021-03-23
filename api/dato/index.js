@@ -453,6 +453,13 @@ export const fundQuery = `
                 id
                 text
             }
+            video {
+                title
+                text
+                videoUrl {
+                    providerUid
+                }
+            }
             companiesTitle
             companies {
                 _modelApiKey
@@ -781,6 +788,13 @@ export const visionQuery = `
                 blockContentText
                 blockContentImage {
                     ${img}
+                }
+            }
+            video {
+                title
+                text
+                videoUrl {
+                    providerUid
                 }
             }
         }

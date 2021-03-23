@@ -10,6 +10,7 @@
         </div>
         <Believe :content="data" />
         <Manifesto :content="data.manifesto" />
+        <Video v-if="data.video" :content="data.video" />
     </div>
 </template>
 

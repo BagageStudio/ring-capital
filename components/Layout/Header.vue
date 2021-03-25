@@ -10,7 +10,7 @@
     >
         <div class="header-inner container">
             <div class="wrapper-logo content-pad">
-                <nuxt-link to="/">
+                <nuxt-link ref="homeLink" to="/">
                     <span class="visually-hidden">Ring Capital</span>
                     <Logo class="header-logo" />
                 </nuxt-link>
@@ -100,7 +100,11 @@ export default {
         }
     },
     watch: {
-        $route() {
+        $route(r) {
+            // To avoid having the home logo till focused after route change
+            if (r.path === '/') {
+                this.$refs.homeLink.$el.blur();
+            }
             if (this.isMobile && this.showMenuMobile) {
                 this.toggleMenuMobile();
             }

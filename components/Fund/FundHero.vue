@@ -9,7 +9,7 @@
                 <h1 class="basic-h1" v-html="$options.filters.nestedTitle(data.title)"></h1>
                 <p class="basic-subtitle">{{ data.fullDescription }}</p>
             </div>
-            <div class="hero-keyfigures content-pad">
+            <div v-if="data.keyFigures" class="hero-keyfigures content-pad">
                 <KeyFigures :content="data.keyFigures" :color="data.color.hex" />
             </div>
         </div>

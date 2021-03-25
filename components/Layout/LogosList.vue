@@ -146,6 +146,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transform: translate3d(0, 0, 0);
     transition: opacity 0.2s ease-out;
     img {
         flex: 0 1 auto;

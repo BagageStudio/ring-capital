@@ -9,7 +9,12 @@
                 <LinkTo v-if="link" class="btn-block primary text-logos-btn" :link="link" />
             </div>
             <div class="wrapper-list">
-                <LogosList :content="list" class="large-grid" :has-link="false" :class="{ 'white-mode': whiteMode }" />
+                <LogosList
+                    :content="list"
+                    class="large-grid"
+                    :has-link="hasLink"
+                    :class="{ 'white-mode': whiteMode }"
+                />
             </div>
         </div>
     </div>
@@ -32,6 +37,10 @@ export default {
             }
         },
         whiteMode: {
+            type: Boolean,
+            default: false
+        },
+        hasLink: {
             type: Boolean,
             default: false
         }

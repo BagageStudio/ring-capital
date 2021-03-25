@@ -1,9 +1,16 @@
 <template>
     <ul v-if="content" class="social">
         <li v-for="link in content.socialLinks" :key="link.title">
-            <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
-                ><Icon :name="link.iconName"
-            /></a>
+            <a
+                class="social-link"
+                :class="link.iconName"
+                :href="link.link"
+                :aria-label="link.title"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <Icon :name="link.iconName" />
+            </a>
         </li>
     </ul>
 </template>

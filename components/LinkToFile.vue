@@ -1,12 +1,5 @@
 <template>
-    <a
-        v-if="link"
-        :href="link.file.url"
-        :aria-label="link.title"
-        target="_blank"
-        rel="noopener noreferrer"
-        @click="$emit('click')"
-    >
+    <a v-if="link" :href="link.file.url" :aria-label="link.title" target="_blank" rel="noopener noreferrer">
         <div class="deco"></div>
         <span class="text">
             <span class="btn-label">{{ link.label }}</span>

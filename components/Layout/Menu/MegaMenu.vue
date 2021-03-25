@@ -18,9 +18,16 @@
                         <span class="submenu-title">{{ data.megaMenu.socialTitle }}</span>
                         <ul v-if="data.megaMenu.social" class="socials">
                             <li v-for="link in data.megaMenu.social.socialLinks" :key="link.title" class="social">
-                                <a class="social-link" :class="link.iconName" :href="link.link" :aria-label="link.title"
-                                    ><Icon :name="link.iconName"
-                                /></a>
+                                <a
+                                    class="social-link"
+                                    :class="link.iconName"
+                                    :href="link.link"
+                                    :aria-label="link.title"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Icon :name="link.iconName" />
+                                </a>
                             </li>
                         </ul>
                     </div>

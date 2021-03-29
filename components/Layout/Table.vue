@@ -9,19 +9,25 @@
             </div>
             <ul v-if="content.tableEntries && tableReady" class="table-entries">
                 <li v-for="tableEntryNb in currentCompaniesVisible" :key="tableEntryNb" class="table-entry">
-                    <span class="company-name basic-h4">{{ content.tableEntries[tableEntryNb - 1].companyName }}</span>
-                    <span class="table-line">
-                        <span v-if="!isM" class="table-title">{{ content.col2Title }}</span>
-                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].industrySector }}</span>
-                    </span>
-                    <span class="table-line">
-                        <span v-if="!isM" class="table-title">{{ content.col3Title }}</span>
-                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldTo }}</span>
-                    </span>
-                    <span class="table-line">
-                        <span v-if="!isM" class="table-title">{{ content.col4Title }}</span>
-                        <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldYear }}</span>
-                    </span>
+                    <nuxt-link :to="portfolioLink(content.tableEntries[tableEntryNb - 1].company)" class="table-link">
+                        <span class="company-name basic-h4">
+                            {{ content.tableEntries[tableEntryNb - 1].companyName }}
+                        </span>
+                        <span class="table-line">
+                            <span v-if="!isM" class="table-title">{{ content.col2Title }}</span>
+                            <span class="table-content">
+                                {{ content.tableEntries[tableEntryNb - 1].industrySector }}
+                            </span>
+                        </span>
+                        <span class="table-line">
+                            <span v-if="!isM" class="table-title">{{ content.col3Title }}</span>
+                            <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldTo }}</span>
+                        </span>
+                        <span class="table-line">
+                            <span v-if="!isM" class="table-title">{{ content.col4Title }}</span>
+                            <span class="table-content">{{ content.tableEntries[tableEntryNb - 1].soldYear }}</span>
+                        </span>
+                    </nuxt-link>
                 </li>
             </ul>
             <div v-if="currentCompaniesVisible < nbCompanies" class="wrapper-btn">
@@ -34,6 +40,8 @@
 </template>
 
 <script>
+import { routeByApiModels } from '~/app/crawler/routes';
+
 export default {
     props: {
         content: { type: Object, required: true }
@@ -64,6 +72,13 @@ export default {
                         ? this.currentCompaniesVisible + 5
                         : this.nbCompanies;
             }
+        },
+        portfolioLink(detail) {
+            if (!detail.slug) return '';
+            return this.localePath({
+                name: routeByApiModels[detail._modelApiKey].routerFormat,
+                params: { slug: detail.slug }
+            });
         }
     }
 };
@@ -85,7 +100,6 @@ export default {
 }
 .table-entry {
     position: relative;
-    padding: 40px $gutter;
     &::before,
     &::after {
         position: absolute;
@@ -105,6 +119,18 @@ export default {
         &::after {
             content: '';
         }
+    }
+}
+.table-link {
+    display: block;
+    padding: 40px $gutter;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    &:hover {
+        opacity: 0.7;
+    }
+    &:focus {
+        outline: none;
     }
 }
 .company-name {
@@ -162,14 +188,16 @@ export default {
         width: 100%;
     }
     .table-entry {
-        display: flex;
-        align-items: baseline;
-        padding: 40px 0;
         &::before,
         &::after {
             left: $gutter;
             right: $gutter;
         }
+    }
+    .table-link {
+        display: flex;
+        align-items: baseline;
+        padding: 40px 0;
     }
     .company-name {
         width: percentage(2/8);

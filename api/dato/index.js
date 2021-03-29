@@ -323,6 +323,11 @@ export const portfolioQuery = `
                 industrySector
                 soldTo
                 soldYear
+                company {
+                    _modelApiKey
+                    id
+                    slug
+                }
             }
             mosaic {
                 title

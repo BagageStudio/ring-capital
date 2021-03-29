@@ -165,9 +165,6 @@ export default {
     .schema {
         max-width: 2200px;
     }
-}
-
-@media (min-width: $desktop-xxl) {
     .wrapper-section-2 {
         padding-top: 275px;
         padding-bottom: 260px;

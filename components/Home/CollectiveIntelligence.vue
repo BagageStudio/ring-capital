@@ -383,7 +383,7 @@ export default {
         grid-template-columns: #{percentage(1/6)} #{percentage(3/6)} calc(#{percentage(2/6)} + #{$grid-gutter-l});
     }
 }
-@media (min-width: $desktop-xxl) {
+@media (min-width: $desktop-large) {
     .schema ::v-deep svg {
         margin-top: 0;
     }

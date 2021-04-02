@@ -73,7 +73,7 @@ export default {
     }
     ::v-deep span {
         position: relative;
-        padding-top: 8px;
+        padding-top: 5px;
         box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
         background-color: $dark;
         background-position: 0% calc(74% + 0.7px);

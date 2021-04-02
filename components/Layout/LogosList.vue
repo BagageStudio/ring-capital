@@ -14,18 +14,18 @@
                     <span>{{ $t('logo.hoverLabel') }}</span>
                 </span>
                 <span class="content">
-                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                    <div class="img-wrapper"><img :src="logo.logo.url" :alt="logo.logo.alt" /></div>
                     <span v-if="logo.smallText" class="small-txt">{{ logo.smallText }}</span>
                 </span>
             </a>
             <nuxt-link v-else-if="hasLink" :to="getFullLink(logo)" :aria-label="logo.name" class="logo-link">
                 <span class="content">
-                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                    <div class="img-wrapper"><img :src="logo.logo.url" :alt="logo.logo.alt" /></div>
                 </span>
             </nuxt-link>
             <div v-else class="logo-link">
                 <span class="content">
-                    <img :src="logo.logo.url" :alt="logo.logo.alt" />
+                    <div class="img-wrapper"><img :src="logo.logo.url" :alt="logo.logo.alt" /></div>
                 </span>
             </div>
         </li>
@@ -146,10 +146,19 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
     transform: translate3d(0, 0, 0);
     transition: opacity 0.2s ease-out;
     img {
-        flex: 0 1 auto;
+        flex: 1;
+        object-fit: contain;
+    }
+    .img-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        min-height: 0;
     }
 }
 .label {
@@ -193,7 +202,7 @@ export default {
 @media (min-width: $desktop) {
     .logo-link {
         height: 100px;
-        padding: 35px 25px;
+        padding: 20px 25px;
     }
     .logos-list {
         &.big-height {

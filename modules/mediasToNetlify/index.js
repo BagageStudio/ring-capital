@@ -4,7 +4,7 @@ import logger from 'consola';
 import fetch from 'node-fetch';
 
 const CACHE_FOLDER = './node_modules/.cache/website-media';
-const WEBSITE_MEDIA_FOLDER = `${process.env.URL}/medias`;
+const WEBSITE_MEDIA_FOLDER = '/medias';
 const IMAGE_URL_REGEX = /(http(s?):)([\/|.|\w|\s|-])*\.(?:jpg|jpeg|png|svg|gif)/g;
 const CONCURRENCY = 10;
 
@@ -167,7 +167,7 @@ export default function () {
             const ext = '.' + url.pathname.split('.').pop();
             const name = slugify(url.pathname.split(ext).join('')) + ext;
             const imgPath = join(baseDir, name);
-            const replacedPath = WEBSITE_MEDIA_FOLDER + '/' + name;
+            const replacedPath = process.env.URL + WEBSITE_MEDIA_FOLDER + '/' + name;
 
             const img = { url: url.href, path: imgPath, name };
             images.push(img);

@@ -4,7 +4,7 @@ import logger from 'consola';
 import fetch from 'node-fetch';
 
 const CACHE_FOLDER = './node_modules/.cache/website-media';
-const WEBSITE_MEDIA_FOLDER = '/medias';
+const WEBSITE_MEDIA_FOLDER = `${process.env.URL}/medias`;
 const IMAGE_URL_REGEX = /(http(s?):)([\/|.|\w|\s|-])*\.(?:jpg|jpeg|png|svg|gif)/g;
 const CONCURRENCY = 10;
 

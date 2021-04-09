@@ -91,7 +91,7 @@ body {
         &::before {
             content: '';
             position: absolute;
-            top: 0.65em;
+            top: 0.5em;
             left: 0;
             display: block;
             width: 5px;
@@ -216,7 +216,7 @@ p {
 }
 
 strong {
-    font-weight: 700;
+    font-weight: 500;
 }
 
 blockquote {

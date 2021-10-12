@@ -34,7 +34,12 @@ export default {
             errorData: null
         };
     },
-    layout: 'errorLayout'
+    layout: 'errorLayout',
+    mounted() {
+        const _hsq = (window._hsq = window._hsq || []);
+        _hsq.push(['setPath', this.$route.path]);
+        _hsq.push(['trackPageView']);
+    }
 };
 </script>
 

@@ -146,6 +146,11 @@ export default {
             return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
         }
     },
+    mounted() {
+        const _hsq = (window._hsq = window._hsq || []);
+        _hsq.push(['setPath', this.$route.path]);
+        _hsq.push(['trackPageView']);
+    },
     head() {
         if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.name;
 

@@ -62,6 +62,15 @@ export default {
                 rel: 'stylesheet',
                 href: 'https://fonts.googleapis.com/css2?family=Space+Mono&display=swap'
             }
+        ],
+        script: [
+            {
+                type: 'text/javascript',
+                id: 'hs-script-loader',
+                async: true,
+                defer: true,
+                src: '//js-eu1.hs-scripts.com/24964919.js'
+            }
         ]
     },
 

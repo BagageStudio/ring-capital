@@ -5,6 +5,7 @@
     },
     "news": {
         "readingTime": "min read",
+        "listeningTime": "min listening",
         "btnPrevLabel": "Previous news",
         "btnNextLabel": "Next news"
     },

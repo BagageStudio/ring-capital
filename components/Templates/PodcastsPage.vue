@@ -8,7 +8,7 @@
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 <div v-if="data.text" class="neptune" v-html="data.text"></div>
             </div>
-            <DetailList class="shape-two" fixed-height :content="data.podcasts" />
+            <DetailList class="shape-two" fixed-height :content="data.podcasts" podcast />
         </div>
         <Mosaic :content="data.mosaic" />
     </div>

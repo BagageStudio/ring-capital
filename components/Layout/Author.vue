@@ -13,7 +13,8 @@
                         day: '2-digit'
                     }).format(new Date(content.date))
                 }}</span>
-                <span>{{ content.readingTime }} {{ $t('news.readingTime') }}</span>
+                <span v-if="podcast">{{ content.readingTime }} {{ $t('news.listeningTime') }}</span>
+                <span v-else>{{ content.readingTime }} {{ $t('news.readingTime') }}</span>
             </span>
         </div>
     </div>
@@ -25,6 +26,10 @@ export default {
         content: {
             type: Object,
             required: true
+        },
+        podcast: {
+            type: Boolean,
+            default: false
         }
     }
 };

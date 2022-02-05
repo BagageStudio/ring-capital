@@ -26,7 +26,7 @@
                         <span v-if="detail.description">{{ detail.description }}</span>
                     </span>
                     <Tags v-if="detail.tags && !hideTags" :content="detail.tags" />
-                    <Author v-if="detail.author" :content="detail" />
+                    <Author v-if="detail.author" :content="detail" :podcast="podcast" />
                 </span>
             </component>
         </li>
@@ -58,6 +58,10 @@ export default {
             default: false
         },
         fixedHeight: {
+            type: Boolean,
+            default: false
+        },
+        podcast: {
             type: Boolean,
             default: false
         }

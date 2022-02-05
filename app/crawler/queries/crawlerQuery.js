@@ -47,6 +47,10 @@ export default `
         podcastsPage(locale: $lang) {
             slug
             _modelApiKey
+        },
+        pressRoom(locale: $lang) {
+            slug
+            _modelApiKey
         }
     }
 `;

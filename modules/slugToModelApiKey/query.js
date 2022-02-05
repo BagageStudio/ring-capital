@@ -56,6 +56,13 @@ export default `
                 value
             }
         }
+        pressRoom{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
         sustainableEngagement{
             _modelApiKey
             _allSlugLocales{

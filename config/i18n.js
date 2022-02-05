@@ -37,6 +37,9 @@ export const getPagesList = () => ({
     [routes.podcastsPage.i18nFormat]: {
         en: '/:slug?'
     },
+    [routes.pressRoom.i18nFormat]: {
+        en: '/:slug?'
+    },
     [routes.sustainableEngagement.i18nFormat]: {
         en: '/:slug?'
     },

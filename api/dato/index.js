@@ -613,6 +613,49 @@ export const podcastsPageQuery = `
         }
     }`;
 
+export const pressRoomQuery = `
+    ${linkFragment}
+    query PressRoom($lang: SiteLocale) {
+        pressRoom(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            publications {
+                id
+                name
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                description
+                link {
+                    ...link
+                }
+            }
+            mosaic {
+                title
+                subtitle
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 export const sustainableEngagementQuery = `
     ${linkFragment}
     query SustainableEngagement($lang: SiteLocale) {
@@ -865,6 +908,7 @@ export const getQuery = _modelApiKey => {
         fund: fundQuery,
         use_cases_page: useCasesPageQuery,
         podcasts_page: podcastsPageQuery,
+        press_room: pressRoomQuery,
         sustainable_engagement: sustainableEngagementQuery,
         ring2success: ring2successQuery,
         vision: visionQuery

@@ -49,6 +49,13 @@ export default `
                 value
             }
         }
+        podcastsPage{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
         sustainableEngagement{
             _modelApiKey
             _allSlugLocales{

@@ -36,6 +36,10 @@ export const routes = {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
+    podcastsPage: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
     sustainableEngagement: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
@@ -60,6 +64,7 @@ export const routeByApiModels = {
     investors_page: routes.investorsPage,
     contact: routes.contact,
     use_cases_page: routes.useCasesPage,
+    podcasts_page: routes.podcastsPage,
     sustainable_engagement: routes.sustainableEngagement,
     ring2success: routes.ring2success,
     vision: routes.vision

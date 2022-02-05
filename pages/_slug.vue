@@ -21,6 +21,7 @@ import Portfolio from '~/components/Templates/Portfolio';
 import InvestorsPage from '~/components/Templates/InvestorsPage';
 import Fund from '~/components/Templates/Fund';
 import UseCasesPage from '~/components/Templates/UseCasesPage';
+import PodcastsPage from '~/components/Templates/PodcastsPage';
 import SustainableEngagement from '~/components/Templates/SustainableEngagement';
 import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
@@ -34,6 +35,7 @@ export default {
         InvestorsPage,
         Fund,
         UseCasesPage,
+        PodcastsPage,
         SustainableEngagement,
         Ring2success,
         Vision

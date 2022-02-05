@@ -565,6 +565,54 @@ export const useCasesPageQuery = `
         }
     }`;
 
+export const podcastsPageQuery = `
+    ${linkFragment}
+    query PodcastsPage($lang: SiteLocale) {
+        podcastsPage(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            podcasts {
+                id
+                name
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                link {
+                    ...link
+                }
+            }
+            mosaic {
+                title
+                subtitle
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 export const sustainableEngagementQuery = `
     ${linkFragment}
     query SustainableEngagement($lang: SiteLocale) {
@@ -816,6 +864,7 @@ export const getQuery = _modelApiKey => {
         investors_page: investorsPageQuery,
         fund: fundQuery,
         use_cases_page: useCasesPageQuery,
+        podcasts_page: podcastsPageQuery,
         sustainable_engagement: sustainableEngagementQuery,
         ring2success: ring2successQuery,
         vision: visionQuery

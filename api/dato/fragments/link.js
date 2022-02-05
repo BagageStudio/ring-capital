@@ -41,6 +41,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on PodcastsPageRecord {
+                _modelApiKey
+                slug
+            }
             ... on SustainableEngagementRecord {
                 _modelApiKey
                 slug

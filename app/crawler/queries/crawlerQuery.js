@@ -43,6 +43,10 @@ export default `
         useCasesPage(locale: $lang) {
             slug
             _modelApiKey
+        },
+        podcastsPage(locale: $lang) {
+            slug
+            _modelApiKey
         }
     }
 `;

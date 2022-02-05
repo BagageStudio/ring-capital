@@ -2,8 +2,8 @@
     <div>
         <HomeHero :data="data" />
 
-        <HomeCollectiveIntelligence :data="data" />
         <HomeVision :data="data" />
+        <HomeCollectiveIntelligence :data="data" />
 
         <News :title="data.newsTitle" :content="data.news" />
         <Overlay />

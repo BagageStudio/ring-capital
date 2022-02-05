@@ -166,7 +166,7 @@ export default {
         max-width: 2200px;
     }
     .wrapper-section-2 {
-        padding-top: 275px;
+        padding-top: 200px;
         padding-bottom: 260px;
     }
     .wrapper-col-section {

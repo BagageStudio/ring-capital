@@ -153,7 +153,7 @@ export default {
 }
 
 .wrapper-logos {
-    padding: 55px 0;
+    padding: 55px 0 35px;
 }
 @media (min-width: 450px) {
     .container {
@@ -176,7 +176,7 @@ export default {
         width: percentage(8/12);
     }
     .wrapper-logos {
-        padding: 100px 0;
+        padding: 100px 0 50px;
     }
 }
 

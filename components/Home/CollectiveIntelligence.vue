@@ -388,11 +388,7 @@ export default {
         margin-top: 0;
     }
     .wrapper-section-1 {
-        padding: 200px 0 0;
-    }
-    .wrapper-section-txt,
-    .wrapper-section-links {
-        margin-bottom: -220px;
+        padding: 150px 0 75px;
     }
     .wrapper-section-txt {
         margin-top: 0;

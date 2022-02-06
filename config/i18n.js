@@ -13,6 +13,9 @@ export const getPagesList = () => ({
     [routes.page.i18nFormat]: {
         en: '/:slug?'
     },
+    [routes.modularPage.i18nFormat]: {
+        en: '/:slug?'
+    },
     [routes.team.i18nFormat]: {
         en: '/:slug?'
     },

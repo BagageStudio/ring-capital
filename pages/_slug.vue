@@ -15,6 +15,7 @@ import handleSeo from '~/assets/js/seo';
 import { routeByApiModels } from '~/app/crawler/routes';
 
 import Page from '~/components/Templates/Page';
+import ModularPage from '~/components/Templates/ModularPage';
 import Contact from '~/components/Templates/Contact';
 import Team from '~/components/Templates/Team';
 import Portfolio from '~/components/Templates/Portfolio';
@@ -30,6 +31,7 @@ import Vision from '~/components/Templates/Vision';
 export default {
     components: {
         Page,
+        ModularPage,
         Contact,
         Team,
         Portfolio,

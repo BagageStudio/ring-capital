@@ -13,6 +13,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on ModularPageRecord {
+                _modelApiKey
+                slug
+            }
             ... on TeamRecord {
                 _modelApiKey
                 slug

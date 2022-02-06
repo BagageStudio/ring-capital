@@ -4,6 +4,10 @@ export default `
             slug
             _modelApiKey
         }
+        allModularPages(locale: $lang, filter: {slug: {neq: null}}) {
+            slug
+            _modelApiKey
+        },
         contact(locale: $lang) {
             slug
             _modelApiKey

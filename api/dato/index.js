@@ -212,6 +212,39 @@ export const pageQuery = `
         }
     }`;
 
+export const modularPageQuery = `
+    query ModularPage($lang: SiteLocale, $slug: String) {
+        modularPage(locale: $lang, filter: { slug: { eq: $slug } }) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            content
+            whiteBackground
+            modules {
+                ... on DoubleOrbitRecord {
+                    _modelApiKey
+                    id
+                    leftOrbitTitle
+                    leftOrbitContent
+                    rightOrbitTitle
+                    rightOrbitContent
+                    textUnder
+                }
+                ... on TextImageRecord {
+                    _modelApiKey
+                    id
+                    title
+                    text
+                    images {
+                        id
+                        ${img}
+                    }
+                }
+            }
+        }
+    }`;
+
 export const contactQuery = `
     query Contact($lang: SiteLocale) {
         contact(locale: $lang) {
@@ -902,6 +935,7 @@ export const visionQuery = `
 export const getQuery = _modelApiKey => {
     const mapping = {
         page: pageQuery,
+        modular_page: modularPageQuery,
         contact: contactQuery,
         team: teamQuery,
         portfolio: portfolioQuery,

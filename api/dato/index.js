@@ -220,7 +220,6 @@ export const modularPageQuery = `
             ${locales}
             title
             subtitle
-            content
             modules {
                 ... on DoubleOrbitRecord {
                     _modelApiKey
@@ -286,6 +285,11 @@ export const modularPageQuery = `
                     rightMobileImage {
                         ${img}
                     }
+                }
+                ... on TextModuleRecord {
+                    _modelApiKey
+                    id
+                    text
                 }
             }
         }

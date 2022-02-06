@@ -23,6 +23,12 @@
         :content="data"
         class="module module-mosaic"
     />
+    <TextModule
+        v-else-if="data._modelApiKey === 'text_module'"
+        :key="$route.fullPath"
+        :content="data"
+        class="module module-text"
+    />
 </template>
 
 <script>

@@ -10,7 +10,7 @@
                 <h3 class="accordions-module-title basic-h3 underlined neptune">
                     <span>{{ data.title }}</span>
                 </h3>
-                <Accordions :content="data.accordions" />
+                <Accordions on-white :content="data.accordions" />
             </div>
         </div>
     </div>

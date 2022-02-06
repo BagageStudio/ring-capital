@@ -11,7 +11,7 @@
         </div>
         <div ref="contentwrapper" class="accordion-content-wrapper">
             <div ref="content" class="accordion-content">
-                <div v-html="content.content"></div>
+                <div class="wysiwyg" v-html="content.content"></div>
                 <LinkTo
                     v-if="content.link && content.link.__typename === 'LinkRecord'"
                     :class="{ 'on-white': onWhite }"
@@ -228,6 +228,11 @@ export default {
 .accordion-content {
     padding-bottom: 20px;
     ::v-deep p {
+        margin: 0;
+        color: $orbit;
+    }
+    ::v-deep ul {
+        color: $orbit;
         margin: 0;
     }
 }

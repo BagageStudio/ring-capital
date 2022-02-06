@@ -11,6 +11,12 @@
         :data="data"
         class="module module-text-image"
     />
+    <AccordionsModule
+        v-else-if="data._modelApiKey === 'accordions_module'"
+        :key="$route.fullPath"
+        :data="data"
+        class="module module-accordions"
+    />
 </template>
 
 <script>

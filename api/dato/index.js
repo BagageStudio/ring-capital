@@ -213,6 +213,7 @@ export const pageQuery = `
     }`;
 
 export const modularPageQuery = `
+    ${linkFragment}
     query ModularPage($lang: SiteLocale, $slug: String) {
         modularPage(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
@@ -220,7 +221,6 @@ export const modularPageQuery = `
             title
             subtitle
             content
-            whiteBackground
             modules {
                 ... on DoubleOrbitRecord {
                     _modelApiKey
@@ -239,6 +239,33 @@ export const modularPageQuery = `
                     images {
                         id
                         ${img}
+                    }
+                }
+                ... on AccordionsModuleRecord {
+                    _modelApiKey
+                    id
+                    title
+                    image {
+                        ${img}
+                    }
+                    accordions {
+                        id
+                        title
+                        content
+                        picto {
+                            ${img}
+                        }
+                        link {
+                            __typename
+                            ...link
+                            ... on LinkFileRecord {
+                                label
+                                title
+                                file {
+                                    url
+                                }
+                            }
+                        }
                     }
                 }
             }

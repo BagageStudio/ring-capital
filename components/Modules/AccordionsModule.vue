@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'on-white': onWhite }" class="wrapper-accordions-module">
+    <div class="wrapper-accordions-module">
         <div class="container-accordions-module container">
             <div v-if="isM" class="wrapper-img">
                 <div class="accordions-module-img">
@@ -10,7 +10,7 @@
                 <h3 class="accordions-module-title basic-h3 underlined neptune">
                     <span>{{ data.title }}</span>
                 </h3>
-                <Accordions on-white :content="data.accordions" />
+                <Accordions :content="data.accordions" />
             </div>
         </div>
     </div>
@@ -22,10 +22,6 @@ export default {
         data: {
             type: Object,
             required: true
-        },
-        onWhite: {
-            type: Boolean,
-            default: false
         }
     },
     computed: {

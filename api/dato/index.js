@@ -268,6 +268,25 @@ export const modularPageQuery = `
                         }
                     }
                 }
+                ... on MosaicRecord {
+                    _modelApiKey
+                    id
+                    title
+                    subtitle
+                    text
+                    link {
+                        ...link
+                    }
+                    topLeftImage {
+                        ${img}
+                    }
+                    bottomLeftImage {
+                        ${img}
+                    }
+                    rightMobileImage {
+                        ${img}
+                    }
+                }
             }
         }
     }`;

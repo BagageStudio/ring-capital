@@ -3,14 +3,14 @@
         <div class="container-accordions-module container">
             <div v-if="isM" class="wrapper-img">
                 <div class="accordions-module-img">
-                    <FastImage class="img" :image="data.image" cover />
+                    <FastImage class="img" :image="content.image" cover />
                 </div>
             </div>
             <div class="wrapper-txt">
                 <h3 class="accordions-module-title basic-h3 underlined neptune">
-                    <span>{{ data.title }}</span>
+                    <span>{{ content.title }}</span>
                 </h3>
-                <Accordions on-white :content="data.accordions" />
+                <Accordions on-white :content="content.accordions" />
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
 <script>
 export default {
     props: {
-        data: {
+        content: {
             type: Object,
             required: true
         }

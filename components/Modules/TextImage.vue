@@ -2,12 +2,12 @@
     <div class="text-logos">
         <div class="container">
             <div class="wrapper-txt">
-                <h4 class="basic-h4 text-logos-small-title">{{ data.title }}</h4>
-                <div class="text-logos-text" v-html="data.text"></div>
+                <h4 class="basic-h4 text-logos-small-title">{{ content.title }}</h4>
+                <div class="text-logos-text" v-html="content.text"></div>
             </div>
             <div class="wrapper-list">
-                <div class="list-images" :class="{ 'big-image': data.images.length === 1 }">
-                    <div v-for="listimg in data.images" :key="listimg.id" class="list-image">
+                <div class="list-images" :class="{ 'big-image': content.images.length === 1 }">
+                    <div v-for="listimg in content.images" :key="listimg.id" class="list-image">
                         <img :src="listimg.url" :alt="listimg.alt" />
                     </div>
                 </div>
@@ -18,7 +18,7 @@
 <script>
 export default {
     props: {
-        data: {
+        content: {
             type: Object,
             required: true
         }

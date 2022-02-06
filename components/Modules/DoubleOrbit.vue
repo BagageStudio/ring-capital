@@ -4,28 +4,28 @@
             <div class="content-double-orbit">
                 <div class="wrapper-col-section left">
                     <h3 class="basic-h3 underlined">
-                        <span>{{ data.leftOrbitTitle }}</span>
+                        <span>{{ content.leftOrbitTitle }}</span>
                     </h3>
-                    <div class="basic-subtitle neptune" v-html="data.leftOrbitContent"></div>
+                    <div class="basic-subtitle neptune" v-html="content.leftOrbitContent"></div>
                 </div>
                 <SchemaVision />
                 <div class="wrapper-col-section right">
                     <h3 class="basic-h3 underlined">
-                        <span>{{ data.rightOrbitTitle }}</span>
+                        <span>{{ content.rightOrbitTitle }}</span>
                     </h3>
-                    <div class="basic-subtitle neptune" v-html="data.rightOrbitContent"></div>
+                    <div class="basic-subtitle neptune" v-html="content.rightOrbitContent"></div>
                 </div>
             </div>
         </div>
         <div class="container">
-            <div class="text-under content-pad basic-subtitle neptune" v-html="data.textUnder" />
+            <div class="text-under content-pad basic-subtitle neptune" v-html="content.textUnder" />
         </div>
     </div>
 </template>
 <script>
 export default {
     props: {
-        data: {
+        content: {
             type: Object,
             required: true
         }

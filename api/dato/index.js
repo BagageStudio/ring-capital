@@ -810,6 +810,7 @@ export const ring2successQuery = `
                     image {
                         ${img}
                     }
+                    bio
                 }
             }
             partnersTitle

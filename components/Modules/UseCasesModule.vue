@@ -7,22 +7,10 @@
                     <h3 v-if="content.subtitle" class="stories-subtitle neptune">
                         {{ content.subtitle }}
                     </h3>
-                    <div v-if="isS" class="wrapper-btn-line">
-                        <nuxt-link class="btn-line on-white" :to="useCasesLink">
-                            <span class="deco"></span>
-                            {{ $t('usecases.seeAllSmallLabel') }}
-                        </nuxt-link>
-                    </div>
                 </div>
             </div>
             <div class="wrapper-details-stories">
                 <DetailList class="on-white small-height no-margin-large" fixed-height :content="content.useCases" />
-            </div>
-            <div v-if="!isS" class="wrapper-btn-line-mobile">
-                <nuxt-link class="btn-line on-white" :to="useCasesLink">
-                    <span class="deco"></span>
-                    {{ $t('usecases.seeAllSmallLabel') }}
-                </nuxt-link>
             </div>
         </div>
     </div>
@@ -71,11 +59,6 @@ export default {
     line-height: 28px;
     font-weight: 400;
     margin: 0;
-}
-.wrapper-btn-line-mobile {
-    display: flex;
-    justify-content: center;
-    padding: 40px #{$gutter} 0;
 }
 
 @media (min-width: $phone) {

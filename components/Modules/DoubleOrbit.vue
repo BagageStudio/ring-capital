@@ -15,6 +15,9 @@
                     </h3>
                     <div class="basic-subtitle neptune" v-html="content.rightOrbitContent"></div>
                 </div>
+                <div v-if="isXl" class="wrapper-btn-section">
+                    <img :src="content.ellipse.url" :alt="content.ellipse.alt" class="ellipse" />
+                </div>
             </div>
         </div>
         <div class="container">
@@ -28,6 +31,12 @@ export default {
         content: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        isXl() {
+            if (!this.$store.state.superWindow) return true;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.xl;
         }
     }
 };
@@ -136,6 +145,24 @@ export default {
         max-width: 600px;
         margin: 0 auto;
         text-align: center;
+    }
+    .wrapper-btn-section {
+        order: 2;
+        width: percentage(2/12);
+        padding: 0 $gutter;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+    .ellipse {
+        display: block;
+        width: 100px;
+        margin: 0 auto;
     }
 }
 

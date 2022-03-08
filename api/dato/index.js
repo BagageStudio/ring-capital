@@ -229,6 +229,9 @@ export const modularPageQuery = `
                     rightOrbitTitle
                     rightOrbitContent
                     textUnder
+                    ellipse {
+                        ${img}
+                    }
                 }
                 ... on TextImageRecord {
                     _modelApiKey

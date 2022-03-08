@@ -29,6 +29,12 @@
         :content="data"
         class="module module-text"
     />
+    <UseCasesModule
+        v-else-if="data._modelApiKey === 'use_cases_module'"
+        :key="$route.fullPath"
+        :content="data"
+        class="module module-use-cases"
+    />
 </template>
 
 <script>

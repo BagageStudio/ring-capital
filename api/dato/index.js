@@ -291,6 +291,31 @@ export const modularPageQuery = `
                     id
                     text
                 }
+                ... on UseCasesModuleRecord {
+                    _modelApiKey
+                    id
+                    title
+                    subtitle
+                    useCases {
+                        id
+                        name
+                        image {
+                            ${img}
+                        }
+                        description
+                        date
+                        readingTime
+                        author {
+                            name
+                            image {
+                                ${img}
+                            }
+                        }
+                        link {
+                            ...link
+                        }
+                    }
+                }
             }
         }
     }`;

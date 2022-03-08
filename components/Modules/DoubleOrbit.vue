@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="text-under content-pad basic-subtitle neptune" v-html="content.textUnder" />
+            <div class="text-under content-pad basic-subtitle" v-html="content.textUnder" />
         </div>
     </div>
 </template>

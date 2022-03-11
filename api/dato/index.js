@@ -1008,6 +1008,27 @@ export const visionQuery = `
         }
     }`;
 
+export const jobsPageQuery = `
+    query JobsPage($lang: SiteLocale) {
+        jobsPage(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            companies {
+                id
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                wttjId
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -1024,7 +1045,8 @@ export const getQuery = _modelApiKey => {
         press_room: pressRoomQuery,
         sustainable_engagement: sustainableEngagementQuery,
         ring2success: ring2successQuery,
-        vision: visionQuery
+        vision: visionQuery,
+        jobs_page: jobsPageQuery
     };
     return mapping[_modelApiKey];
 };

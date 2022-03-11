@@ -51,5 +51,8 @@ export const getPagesList = () => ({
     },
     [routes.vision.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.jobsPage.i18nFormat]: {
+        en: '/:slug?'
     }
 });

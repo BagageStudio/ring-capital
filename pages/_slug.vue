@@ -7,6 +7,7 @@
 
 <script>
 import { camalize, pascalize } from '@stereorepo/sac';
+import { forEach } from '@stereorepo/sac/src/core';
 import { getIso, getSlug, setRouteParams } from '~/api/dato/helpers';
 
 import slugToModelApiKey from '~/api/dato/helpers/slugToModelApiKey.json';
@@ -27,6 +28,7 @@ import PressRoom from '~/components/Templates/PressRoom';
 import SustainableEngagement from '~/components/Templates/SustainableEngagement';
 import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
+import JobsPage from '~/components/Templates/JobsPage';
 
 export default {
     components: {
@@ -42,7 +44,8 @@ export default {
         PressRoom,
         SustainableEngagement,
         Ring2success,
-        Vision
+        Vision,
+        JobsPage
     },
     layout(context) {
         const layoutLang = getIso.call(context);
@@ -54,7 +57,7 @@ export default {
         }
     },
     async asyncData(context) {
-        const { $dato, error, route } = context;
+        const { $dato, error, route, $axios } = context;
         const finalData = {};
 
         // Getting the right locale iso
@@ -89,6 +92,18 @@ export default {
                     })
                 })
             );
+        }
+
+        if (finalData.template === 'JobsPage') {
+            if (finalData.data.companies.length) {
+                const promises = finalData.data.companies.map(({ wttjId }) => {
+                    return $axios.$get('https://www.welcomekit.co/api/v1/embed?organization_reference=' + wttjId);
+                });
+                let wttjInstances = await Promise.all(promises);
+                wttjInstances = wttjInstances.filter(company => company.jobs.length);
+                console.log(wttjInstances);
+                finalData.data.wttj = wttjInstances;
+            }
         }
 
         // Getting raw slugs for the current page from Dato

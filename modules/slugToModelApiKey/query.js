@@ -90,6 +90,13 @@ export default `
                 locale
                 value
             }
+        },
+        jobsPage{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
         }
     }
 `;

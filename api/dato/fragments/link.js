@@ -65,6 +65,10 @@ export default `
                 _modelApiKey
                 slug
             }
+            ... on JobsPageRecord {
+                _modelApiKey
+                slug
+            }
         }
         description
     }

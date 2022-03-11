@@ -55,6 +55,10 @@ export default `
         pressRoom(locale: $lang) {
             slug
             _modelApiKey
+        },
+        jobsPage(locale: $lang) {
+            slug
+            _modelApiKey
         }
     }
 `;

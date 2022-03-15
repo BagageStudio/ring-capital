@@ -100,7 +100,12 @@ export default {
                     return $axios.$get('https://www.welcomekit.co/api/v1/embed?organization_reference=' + wttjId);
                 });
                 let wttjInstances = await Promise.all(promises);
-                wttjInstances = wttjInstances.filter(company => company.jobs.length);
+                wttjInstances = wttjInstances.map((instance, index) => ({
+                    ...instance,
+                    logo: finalData.data.companies[index].logo,
+                    image: finalData.data.companies[index].image
+                }));
+                wttjInstances = wttjInstances.filter(instance => instance.jobs.length);
                 console.log(wttjInstances);
                 finalData.data.wttj = wttjInstances;
             }

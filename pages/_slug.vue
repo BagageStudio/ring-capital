@@ -29,6 +29,7 @@ import SustainableEngagement from '~/components/Templates/SustainableEngagement'
 import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
 import JobsPage from '~/components/Templates/JobsPage';
+import { log } from '~/functions/newsletter';
 
 export default {
     components: {
@@ -70,11 +71,14 @@ export default {
         finalData.template = slugToModelApiKey[lang][slug];
 
         try {
-            const { data } = await $dato
+            const oui = await $dato
                 .post('/', { query: getQuery(finalData.template), variables: { lang, slug } })
                 .then(({ data }) => data);
+            if (slug === 'jobs') {
+                console.log(oui);
+            }
 
-            finalData.data = data[camalize(finalData.template)];
+            finalData.data = oui.data[camalize(finalData.template)];
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
         } catch (e) {
@@ -99,15 +103,22 @@ export default {
                 const promises = finalData.data.companies.map(({ wttjId }) => {
                     return $axios.$get('https://www.welcomekit.co/api/v1/embed?organization_reference=' + wttjId);
                 });
-                let wttjInstances = await Promise.all(promises);
-                wttjInstances = wttjInstances.map((instance, index) => ({
-                    ...instance,
-                    logo: finalData.data.companies[index].logo,
-                    image: finalData.data.companies[index].image
-                }));
-                wttjInstances = wttjInstances.filter(instance => instance.jobs.length);
-                console.log(wttjInstances);
-                finalData.data.wttj = wttjInstances;
+                const wttjCompanies = await Promise.all(promises);
+                const jobs = wttjCompanies.reduce((acc, company, index) => {
+                    if (!company.jobs.length) return acc;
+
+                    company.jobs.forEach(job => {
+                        acc.push({
+                            logo: finalData.data.companies[index].logo,
+                            image: finalData.data.companies[index].image,
+                            companyName: company.name,
+                            ...job
+                        });
+                    });
+                    return acc;
+                }, []);
+
+                finalData.data.jobs = jobs;
             }
         }
 

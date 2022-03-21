@@ -1015,7 +1015,6 @@ export const jobsPageQuery = `
             ${locales}
             title
             subtitle
-            text
             companies {
                 id
                 logo {

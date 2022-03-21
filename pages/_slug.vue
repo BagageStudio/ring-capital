@@ -29,7 +29,6 @@ import SustainableEngagement from '~/components/Templates/SustainableEngagement'
 import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
 import JobsPage from '~/components/Templates/JobsPage';
-import { log } from '~/functions/newsletter';
 
 export default {
     components: {
@@ -71,14 +70,11 @@ export default {
         finalData.template = slugToModelApiKey[lang][slug];
 
         try {
-            const oui = await $dato
+            const { data } = await $dato
                 .post('/', { query: getQuery(finalData.template), variables: { lang, slug } })
                 .then(({ data }) => data);
-            if (slug === 'jobs') {
-                console.log(oui);
-            }
 
-            finalData.data = oui.data[camalize(finalData.template)];
+            finalData.data = data[camalize(finalData.template)];
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
         } catch (e) {

@@ -204,6 +204,7 @@ async function routeGeneration({ routes }) {
 
         // Resolving pages collected with the gql query
         const routesHandler = async routeData => {
+            if (!routeData) return;
             const resolvedRoute = routeResolver({
                 dynamicRootPageName,
                 i18nOptions,

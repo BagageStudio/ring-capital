@@ -22,6 +22,7 @@ export default function () {
 
         const mapping = Object.entries(data).reduce((acc, model) => {
             const pages = model[1];
+            if (!pages) return acc;
             // Multiples pages in the model
             if (Array.isArray(pages)) {
                 pages.map(page => {

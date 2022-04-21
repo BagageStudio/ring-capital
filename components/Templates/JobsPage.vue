@@ -117,7 +117,7 @@
                             <div class="infos">
                                 <div class="tags">
                                     <span class="tag">{{ job.contract_type.en }}</span>
-                                    <span class="tag">{{ job.department.name }}</span>
+                                    <span v-if="job.department" class="tag">{{ job.department.name }}</span>
                                 </div>
                                 <div class="location">
                                     <span class="neptune">Location</span>
@@ -172,7 +172,7 @@ export default {
             return [...new Set(this.data.jobs.map(j => j.contract_type.en))];
         },
         departments() {
-            return [...new Set(this.data.jobs.map(j => j.department.name))];
+            return [...new Set(this.data.jobs.filter(j => j.department).map(j => j.department.name))];
         },
         filteredJobs() {
             if (

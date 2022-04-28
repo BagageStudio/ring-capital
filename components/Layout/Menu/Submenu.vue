@@ -18,7 +18,10 @@
                             :key="link.label"
                             class="submenu-link"
                             :link="link"
-                            :class="{ 'see-all-link': i === 1 && j === submenu.links.length - 1 }"
+                            :class="{
+                                'see-all-link':
+                                    i === 1 && (j === submenu.links.length - 1 || j === submenu.links.length - 2)
+                            }"
                         />
                     </div>
                 </div>

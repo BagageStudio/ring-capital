@@ -186,7 +186,8 @@ export default {
                     return (
                         (this.currentCompany === 'all' || job.companyName === this.currentCompany) &&
                         (this.currentContractType === 'all' || job.contract_type.en === this.currentContractType) &&
-                        (this.currentDepartment === 'all' || job.department.name.includes(this.currentDepartment))
+                        (this.currentDepartment === 'all' ||
+                            (job.department && job.department.name.includes(this.currentDepartment)))
                     );
                 });
             }

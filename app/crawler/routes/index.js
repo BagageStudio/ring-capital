@@ -86,4 +86,4 @@ export const routeByApiModels = {
 };
 
 // You can pass an array of regular expressions to exclude dynamic routes.
-export const excludedDynamicRoutes = () => (process.env.NETLIFY_ENV === 'production' ? ['/jobs', '/podcasts'] : []);
+export const excludedDynamicRoutes = () => (process.env.NETLIFY_ENV === 'production' ? ['/podcasts'] : []);

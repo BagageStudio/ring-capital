@@ -166,7 +166,7 @@ export default {
     }),
     computed: {
         companies() {
-            return [...new Set(this.data.jobs.map(j => j.companyName))];
+            return [...new Set(this.data.jobs.map(j => j.companyName.trim()))];
         },
         contractTypes() {
             return [...new Set(this.data.jobs.map(j => j.contract_type.en))];
@@ -184,7 +184,7 @@ export default {
             } else {
                 return this.jobs.filter(job => {
                     return (
-                        (this.currentCompany === 'all' || job.companyName === this.currentCompany) &&
+                        (this.currentCompany === 'all' || job.companyName.trim() === this.currentCompany) &&
                         (this.currentContractType === 'all' || job.contract_type.en === this.currentContractType) &&
                         (this.currentDepartment === 'all' ||
                             (job.department && job.department.name.includes(this.currentDepartment)))

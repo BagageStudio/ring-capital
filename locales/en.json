@@ -21,6 +21,15 @@
         "otherCharitiesTitle": "Other portfolio charities",
         "seeAllLabel": "See all"
     },
+    "portfolio-tech": {
+        "backLabel": "Back to portfolio",
+        "hireLabel": "They're hiring!",
+        "locationLabel": "Location",
+        "foundersTitle": "Founders / Executives",
+        "otherRefsTitle": "Other portfolio companies",
+        "otherCharitiesTitle": "Other portfolio charities",
+        "seeAllLabel": "See all"
+    },
     "usecases": {
         "seeAllLabel": "See all Use Cases",
         "seeAllSmallLabel": "See all"

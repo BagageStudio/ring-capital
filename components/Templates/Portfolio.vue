@@ -9,16 +9,16 @@
             </div>
             <DetailList class="shape-two" :content="data.companies" random overlay />
             <div class="container-see-other-potfolio-companies">
-                <a
-                    id="see-other-portfolio-companies-link"
-                    class="btn-block"
-                    :href="data.seeOtherPortfolioCompaniesLink.slug"
-                >
-                    {{ data.seeOtherPortfolioCompanies }}
-                </a>
+                <LinkTo
+                    v-if="data.seeOtherPortfolioCompanies"
+                    class="btn-block secondary"
+                    :link="data.seeOtherPortfolioCompanies"
+                />
             </div>
         </div>
-        <Table :content="data" />
+        <div v-if="data.tableEntries.length > 0">
+            <Table :content="data" />
+        </div>
         <Mosaic :content="data.mosaic" />
     </div>
 </template>

@@ -9,7 +9,9 @@
             </div>
             <DetailList class="shape-two" :content="data.companies" random overlay />
         </div>
-        <Table :content="data" />
+        <div v-if="data.tableEntries.length > 0">
+            <Table :content="data" />
+        </div>
         <Mosaic :content="data.mosaic" />
     </div>
 </template>

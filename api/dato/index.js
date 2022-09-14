@@ -457,10 +457,9 @@ export const portfolioQuery = `
                     ${img}
                 }
             }
-			seeOtherPortfolioCompanies
-    		seeOtherPortfolioCompaniesLink {
-      			slug
-    		}	
+			seeOtherPortfolioCompanies {
+				...link
+			}
 		}
     }`;
 

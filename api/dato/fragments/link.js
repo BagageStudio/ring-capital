@@ -25,6 +25,10 @@ export default `
                 _modelApiKey
                 slug
             }
+			... on PortfolioTechRecord {
+                _modelApiKey
+                slug
+            }
             ... on InvestorsPageRecord {
                 _modelApiKey
                 slug

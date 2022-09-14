@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Portfolio :data="data" />
+        <PortfolioTech :data="data" />
         <Overlay />
     </div>
 </template>
@@ -26,7 +26,6 @@ export default {
 
         // Ici ton _modelApiKey
         finalData.template = slugToModelApiKey[lang][slug];
-        console.log(finalData.template);
         try {
             const { data } = await $dato
                 .post('/', { query: getQuery(finalData.template), variables: { lang, slug } })
@@ -38,7 +37,6 @@ export default {
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }
-
         if (finalData.template === 'Landing') {
             finalData.data.newsCaseStudies = finalData.data.newsCaseStudies.map(
                 ({ slug, _modelApiKey, ...postProps }) => ({

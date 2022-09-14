@@ -107,13 +107,12 @@ export default {
     async asyncData(context) {
         const { $dato, error, route } = context;
         const finalData = {};
-        console.log('coucou');
+
         // Getting the right locale iso
         const lang = getIso.call(context);
 
         // Getting the slug
         const slug = getSlug.call(context);
-        console.log(slug);
         try {
             const {
                 data: { company: data }

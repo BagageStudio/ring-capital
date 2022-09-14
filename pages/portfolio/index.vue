@@ -38,7 +38,6 @@ export default {
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }
-
         if (finalData.template === 'Landing') {
             finalData.data.newsCaseStudies = finalData.data.newsCaseStudies.map(
                 ({ slug, _modelApiKey, ...postProps }) => ({

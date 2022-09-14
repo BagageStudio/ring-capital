@@ -21,7 +21,7 @@ export const routes = {
         routerFormat: 'portfolio'
     },
     portfolioTech: {
-        i18nFormat: 'portfolioTech/index',
+        i18nFormat: 'portfolio-tech/index',
         routerFormat: 'portfolio-tech'
     },
     portfolioSingle: {

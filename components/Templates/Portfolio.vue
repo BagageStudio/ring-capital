@@ -8,6 +8,15 @@
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
             </div>
             <DetailList class="shape-two" :content="data.companies" random overlay />
+            <div class="container-see-other-potfolio-companies">
+                <a
+                    id="see-other-portfolio-companies-link"
+                    class="btn-block"
+                    :href="data.seeOtherPortfolioCompaniesLink.slug"
+                >
+                    {{ data.seeOtherPortfolioCompanies }}
+                </a>
+            </div>
         </div>
         <Table :content="data" />
         <Mosaic :content="data.mosaic" />
@@ -50,5 +59,17 @@ export default {
     .hero-portfolio {
         width: percentage(4/9);
     }
+}
+
+.container-see-other-potfolio-companies {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+#see-other-portfolio-companies-link:hover {
+    color: $orbit;
 }
 </style>

@@ -457,7 +457,11 @@ export const portfolioQuery = `
                     ${img}
                 }
             }
-        }
+			seeOtherPortfolioCompanies
+    		seeOtherPortfolioCompaniesLink {
+      			slug
+    		}	
+		}
     }`;
 
 export const portfolioTechQuery = `

@@ -545,6 +545,7 @@ export const investorsPageQuery = `
     }`;
 
 export const companyQuery = `
+    ${linkFragment}
     query Company($lang: SiteLocale, $slug: String) {
         company(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
@@ -596,6 +597,29 @@ export const companyQuery = `
                     ${img}
                 }
                 slug
+            }
+			believeTitle
+            believeAccordions {
+                id
+                title
+                content
+                picto {
+                    ${img}
+                }
+                link {
+                    __typename
+                    ...link
+                    ... on LinkFileRecord {
+                        label
+                        title
+                        file {
+                           url
+                        }
+                    }
+                }
+            }
+            believeImage {
+                ${img}
             }
         }
     }`;

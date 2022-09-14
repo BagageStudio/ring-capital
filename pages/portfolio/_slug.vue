@@ -87,6 +87,9 @@
                     </div>
                 </div>
             </div>
+            <div v-if="data.believeAccordions.length > 0">
+                <Believe :content="data" />
+            </div>
             <LinkedCompanies
                 v-if="data.otherCompanies.length"
                 :companies="data.otherCompanies"

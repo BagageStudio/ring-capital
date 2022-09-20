@@ -20,6 +20,10 @@ export default `
             slug
             _modelApiKey
         }
+		portfolioTech(locale: $lang) {
+            slug
+            _modelApiKey
+        }
         investorsPage(locale: $lang) {
             slug
             _modelApiKey

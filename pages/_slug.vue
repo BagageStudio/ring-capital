@@ -29,6 +29,7 @@ import SustainableEngagement from '~/components/Templates/SustainableEngagement'
 import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
 import JobsPage from '~/components/Templates/JobsPage';
+import PortfolioTech from '~/components/Templates/PortfolioTech';
 
 export default {
     components: {
@@ -45,7 +46,8 @@ export default {
         SustainableEngagement,
         Ring2success,
         Vision,
-        JobsPage
+        JobsPage,
+        PortfolioTech
     },
     layout(context) {
         const layoutLang = getIso.call(context);

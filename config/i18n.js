@@ -28,6 +28,9 @@ export const getPagesList = () => ({
     [routes.portfolio.i18nFormat]: {
         en: '/portfolio'
     },
+    [routes.portfolioTech.i18nFormat]: {
+        en: '/portfolio-tech'
+    },
     [routes.portfolioSingle.i18nFormat]: {
         en: '/portfolio/:slug?'
     },

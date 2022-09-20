@@ -35,6 +35,13 @@ export default `
                 value
             }
         }
+        portfolioTech{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
         investorsPage{
             _modelApiKey
             _allSlugLocales{

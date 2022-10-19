@@ -63,6 +63,10 @@ export default `
         jobsPage(locale: $lang) {
             slug
             _modelApiKey
-        }
+        },
+		blog(locale: $lang) {
+            slug
+            _modelApiKey
+        },
     }
 `;

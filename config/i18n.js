@@ -57,5 +57,8 @@ export const getPagesList = () => ({
     },
     [routes.jobsPage.i18nFormat]: {
         en: '/:slug?'
+    },
+    [routes.blog.i18nFormat]: {
+        en: '/:slug?'
     }
 });

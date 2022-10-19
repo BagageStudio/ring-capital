@@ -30,6 +30,7 @@ import Ring2success from '~/components/Templates/Ring2success';
 import Vision from '~/components/Templates/Vision';
 import JobsPage from '~/components/Templates/JobsPage';
 import PortfolioTech from '~/components/Templates/PortfolioTech';
+import Blog from '~/components/Templates/Blog';
 
 export default {
     components: {
@@ -47,7 +48,8 @@ export default {
         Ring2success,
         Vision,
         JobsPage,
-        PortfolioTech
+        PortfolioTech,
+        Blog
     },
     layout(context) {
         const layoutLang = getIso.call(context);

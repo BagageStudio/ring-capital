@@ -809,6 +809,54 @@ export const podcastsPageQuery = `
         }
     }`;
 
+export const blogQuery = `
+    ${linkFragment}
+    query Blog($lang: SiteLocale) {
+        blog(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            podcasts {
+                id
+                name
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                link {
+                    ...link
+                }
+            }
+            mosaic {
+                title
+                subtitle
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 export const pressRoomQuery = `
     ${linkFragment}
     query PressRoom($lang: SiteLocale) {
@@ -1131,7 +1179,8 @@ export const getQuery = _modelApiKey => {
         ring2success: ring2successQuery,
         vision: visionQuery,
         jobs_page: jobsPageQuery,
-        portfolio_tech: portfolioTechQuery
+        portfolio_tech: portfolioTechQuery,
+        blog: blogQuery
     };
     return mapping[_modelApiKey];
 };

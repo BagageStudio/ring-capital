@@ -104,6 +104,13 @@ export default `
                 locale
                 value
             }
+        },
+		blog{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
         }
     }
 `;

@@ -18,6 +18,7 @@
         />
         <InvestorCompany :data="data" />
         <RingFoundationMod :data="data" />
+        <BCorp :data="data" />
     </div>
 </template>
 

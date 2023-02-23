@@ -977,6 +977,20 @@ export const sustainableEngagementQuery = `
             endowmentFundDesktopImage {
                 ${img}
             }
+			bCorpTitle
+            bCorpText
+            bCorpLineLink {
+                ...link
+            }
+            bCorpBlockLink {
+                ...link
+            }
+            bCorpMobileImage {
+                ${img}
+            }
+            bCorpDesktopImage {
+                ${img}
+            }
         }
     }`;
 

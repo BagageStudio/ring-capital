@@ -977,18 +977,18 @@ export const sustainableEngagementQuery = `
             endowmentFundDesktopImage {
                 ${img}
             }
-			bCorpTitle
-            bCorpText
-            bCorpLineLink {
+			bcorpTitle
+            bcorpText
+            bcorpLineLink {
                 ...link
             }
-            bCorpBlockLink {
+            bcorpBlockLink {
                 ...link
             }
-            bCorpMobileImage {
+            bcorpMobileImage {
                 ${img}
             }
-            bCorpDesktopImage {
+            bcorpDesktopImage {
                 ${img}
             }
         }

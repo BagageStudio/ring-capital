@@ -1,20 +1,24 @@
 <template>
     <div class="wrapper-foundation-mod">
-        <div v-if="data.bCorpMobileImage && !isM" class="wrapper-mobile-img">
-            <FastImage class="mobile-img" :image="data.bCorpMobileImage" cover />
+        <div v-if="data.bcorpMobileImage && !isM" class="wrapper-mobile-img">
+            <FastImage class="mobile-img" :image="data.bcorpMobileImage" cover />
         </div>
-        <div v-if="data.bCorpDesktopImage && isM" class="wrapper-desktop-img">
-            <FastImage class="desktop-img" :image="data.bCorpDesktopImage" cover />
+        <div v-if="data.bcorpDesktopImage && isM" class="wrapper-desktop-img">
+            <FastImage class="desktop-img" :image="data.bcorpDesktopImage" cover />
         </div>
         <div class="container">
             <div class="wrapper-txt">
-                <h3 v-if="data.bCorpTitle" class="basic-h3 underlined strong-neptune" v-html="data.BCorpTitle"></h3>
-                <div v-if="data.bCorpText" class="foundation-mod-text neptune" v-html="data.BCorpText"></div>
-                <div v-if="data.bCorpLineLink" class="foundation-mod-link line">
-                    <LinkTo class="btn-line on-white" :link="data.bCorpLineLink" />
+                <h3
+                    v-if="data.bcorpTitle"
+                    class="basic-h3 underlined neptune strong-white"
+                    v-html="data.bcorpTitle"
+                ></h3>
+                <div v-if="data.bcorpText" class="foundation-mod-text white" v-html="data.bcorpText"></div>
+                <div v-if="data.bcorpLineLink" class="foundation-mod-link line">
+                    <LinkTo class="btn-line on-white" :link="data.bcorpLineLink" />
                 </div>
-                <div v-if="data.bCorpBlockLink" class="foundation-mod-link">
-                    <LinkTo class="btn-block secondary" :link="data.bCorpBlockLink" />
+                <div v-if="data.bcorpBlockLink" class="foundation-mod-link">
+                    <LinkTo class="btn-block primary" :link="data.bcorpBlockLink" />
                 </div>
             </div>
         </div>
@@ -40,7 +44,7 @@ export default {
 .wrapper-foundation-mod {
     padding: 0 0 50px;
     color: $orbit;
-    background: $white;
+    background: $dark;
 }
 .wrapper-mobile-img {
     margin: 0 0 50px;
@@ -54,6 +58,9 @@ export default {
     &.line {
         margin-top: 20px;
     }
+}
+.foundation-mod-text {
+    color: $white;
 }
 
 @media (min-width: $tablet) {

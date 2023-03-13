@@ -16,9 +16,9 @@
             has-link
             white-mode
         />
-        <InvestorCompany :data="data" />
-        <RingFoundationMod :data="data" />
         <BCorp :data="data" />
+        <RingFoundationMod :data="data" />
+        <InvestorCompany :data="data" />
     </div>
 </template>
 

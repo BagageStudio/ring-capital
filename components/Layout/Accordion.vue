@@ -113,7 +113,7 @@ export default {
             }
         }
         .accordion-content {
-            color: $neptune;
+            color: $white;
         }
     }
 }
@@ -229,7 +229,7 @@ export default {
     padding-bottom: 20px;
     ::v-deep p {
         margin: 0;
-        color: $orbit;
+        color: $white;
     }
     ::v-deep ul {
         color: $orbit;

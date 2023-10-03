@@ -63,11 +63,13 @@
 import FundLogoAltitude from './FundLogoAltitude';
 import FundLogoMission from './FundLogoMission';
 import FundLogoFoundation from './FundLogoFoundation';
+import FundLogoGenerations from './FundLogoGenerations';
 export default {
     components: {
         FundLogoAltitude,
         FundLogoMission,
-        FundLogoFoundation
+        FundLogoFoundation,
+        FundLogoGenerations
     },
     props: {
         color: {
@@ -84,7 +86,8 @@ export default {
             const mapping = {
                 'ring-altitude': 'FundLogoAltitude',
                 'ring-mission': 'FundLogoMission',
-                'ring-foundation': 'FundLogoFoundation'
+                'ring-foundation': 'FundLogoFoundation',
+                'ring-generations': 'FundLogoGenerations'
             };
             return mapping[this.logo];
         }

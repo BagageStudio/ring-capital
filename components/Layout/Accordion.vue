@@ -230,6 +230,9 @@ export default {
     ::v-deep p {
         margin: 0;
         color: $white;
+        .on-white & {
+            color: $orbit;
+        }
     }
     ::v-deep ul {
         color: $orbit;

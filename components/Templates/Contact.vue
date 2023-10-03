@@ -16,7 +16,7 @@
                             {{ data.mailTitle }}
                         </div>
                         <div class="single-content">
-                            <a :href="data.mail" class="contact-link-single">{{ data.mail }}</a>
+                            <a :href="data.mail" class="contact-link-single" target="_blank">{{ data.mail }}</a>
                         </div>
                     </div>
                     <div v-if="data.socialTitle && data.social" class="contact-single">

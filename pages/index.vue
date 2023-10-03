@@ -46,11 +46,6 @@ export default {
 
     watch: {},
     beforeCreate() {},
-    mounted() {
-        const _hsq = (window._hsq = window._hsq || []);
-        _hsq.push(['setPath', this.$route.path]);
-        _hsq.push(['trackPageView']);
-    },
     beforeDestroy() {},
     methods: {},
     head() {

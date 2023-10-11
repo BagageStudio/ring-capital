@@ -15,6 +15,8 @@
                 </span>
                 <span class="wrapper-fund-txt">
                     <span class="fund-name">{{ fundCard.name }}</span>
+                    <span v-if="fundCard.name === 'Generations'" class="edhec-tag">Powered by Edhec</span>
+                    <span v-if="fundCard.name !== 'Generations'" class="edhec-tag">&nbsp;</span>
                     <span class="fund-desc">{{ fundCard.description }}</span>
                 </span>
             </nuxt-link>
@@ -183,5 +185,8 @@ export default {
     .fund-name {
         font-size: 1.6rem;
     }
+}
+.edhec-tag {
+    font-size: 1.2rem;
 }
 </style>

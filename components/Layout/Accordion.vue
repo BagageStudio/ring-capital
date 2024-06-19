@@ -158,7 +158,7 @@ export default {
     top: 0.1em;
     margin: 0;
     padding: 0;
-    font-family: $helvetica-neue;
+    font-family: var(--roboto);
     font-weight: 400;
     font-size: 1.8rem;
     line-height: 26px;

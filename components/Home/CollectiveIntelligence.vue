@@ -197,7 +197,7 @@ export default {
     justify-content: space-between;
 }
 .section-link-label {
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 1.6rem;
     padding: 25px 0 25px 30px;
 }

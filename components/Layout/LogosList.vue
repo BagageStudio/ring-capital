@@ -170,7 +170,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 1.6rem;
     line-height: 24px;
     opacity: 0;
@@ -179,7 +179,7 @@ export default {
 .small-txt {
     display: block;
     margin-top: 13px;
-    font-family: $helvetica-neue;
+    font-family: var(--roboto);
     font-size: 1.3rem;
     font-weight: 400;
     line-height: 22px;

@@ -106,7 +106,7 @@ export default {
 .enter-orbit {
     display: flex;
     align-items: center;
-    font-family: $space;
+    font-family: var(--roboto);
     color: $saturn;
     text-decoration: none;
     transition: opacity 0.3s ease-in-out;

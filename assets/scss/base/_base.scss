@@ -22,8 +22,8 @@ html {
 }
 
 body {
-    font: 1.6em / 1.63 $helvetica-neue;
-    color: $white;
+    font: 1.6em / 1.63 var(--roboto);
+    color: var(--txt);
     font-kerning: normal;
     font-weight: 400;
     overflow-x: hidden;

@@ -186,7 +186,7 @@ export default {
     }
 }
 .step-title {
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 1.6rem;
     line-height: 24px;
     margin-bottom: 10px;

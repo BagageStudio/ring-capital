@@ -43,14 +43,14 @@ export default {
 
 @media (min-width: $desktop-small) {
     .hero-portfolio {
-        width: percentage(6/9);
+        width: math.percentage(math.div(6, 9));
         min-height: 350px;
         padding: 90px #{2 * $gutter} 80px #{$gutter};
     }
 }
 @media (min-width: $desktop-large) {
     .hero-portfolio {
-        width: percentage(4/9);
+        width: math.percentage(math.div(4, 9));
     }
 }
 </style>

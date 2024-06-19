@@ -142,7 +142,7 @@ export default {
     align-items: baseline;
     justify-content: space-between;
     margin: 10px 0;
-    font-family: $helvetica-neue;
+    font-family: var(--roboto);
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 26px;
@@ -176,7 +176,7 @@ export default {
         justify-content: flex-end;
         padding: 20px 0;
         color: $neptune;
-        font-family: $helvetica-neue;
+        font-family: var(--roboto);
         font-weight: 400;
         font-size: 1.4rem;
         .title {

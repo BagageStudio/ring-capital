@@ -4,7 +4,6 @@
 $black: #19232f;
 $dark: #19232f;
 $white: #fff;
-$txt: #000;
 $titan: #90f5ca;
 $neptune: #657da2;
 $orbit: #1f2c3c;
@@ -15,24 +14,11 @@ $grey: #f5f7fa;
     --primary: #f4f928;
     --secondary: #fff;
     --tertiary: #f4f928;
-    --bg: #19232f;
+    --bg: #fffcf0;
+    --txt: #1f1f1f;
+    --roboto: 'Roboto', sans-serif;
+    --urbanist: 'Urbanist', sans-serif;
 }
-.lightmode {
-    --primary: #1f2c3c;
-    --secondary: #1f2c3c;
-    --tertiary: #657da2;
-    --bg: #fff;
-}
-.greymode {
-    --primary: #1f2c3c;
-    --secondary: #1f2c3c;
-    --tertiary: #657da2;
-    --bg: #f5f7fa;
-}
-
-// Fonts ✍
-$space: 'Space Mono', serif;
-$helvetica-neue: 'HelveticaNeueLTStd', sans-serif;
 
 // Texts variables 🖌
 $text-size-mobile: 13;

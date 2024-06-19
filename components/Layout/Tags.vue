@@ -38,7 +38,7 @@ export default {
     }
 }
 .tag {
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 1.6rem;
     line-height: 24px;
     margin: 10px 10px 0 0;

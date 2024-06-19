@@ -91,7 +91,7 @@ export default {
     }
 }
 .single-title {
-    font-family: $space;
+    font-family: var(--roboto);
     margin: 0 0 10px;
     color: $saturn;
 }

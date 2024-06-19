@@ -113,7 +113,7 @@ export default {
     }
 }
 .fund-name {
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 2rem;
 }
 .fund-desc {

@@ -24,7 +24,7 @@
                             {{ data.socialTitle }}
                         </div>
                         <div class="single-content">
-                            <Social class="contact-social white" :content="data.social" />
+                            <LayoutSocial class="contact-social white" :content="data.social" />
                         </div>
                     </div>
                     <div v-if="data.locationTitle && data.location && data.locationLink" class="contact-single">
@@ -134,12 +134,12 @@ export default {
         }
     }
     .single-title {
-        width: percentage(2/8);
+        width: math.percentage(math.div(2, 8));
         margin: 0;
         padding: 0 $gutter;
     }
     .single-content {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
         padding: 0 $gutter;
     }
 }
@@ -151,16 +151,16 @@ export default {
         }
     }
     .content-contact {
-        padding: 0 0 0 #{percentage(5/12)};
+        padding: 0 0 0 #{math.percentage(math.div(5, 12))};
     }
     .contact-group {
         margin-top: 100px;
     }
     .single-title {
-        width: percentage(2/7);
+        width: math.percentage(math.div(2, 7));
     }
     .single-content {
-        width: percentage(5/7);
+        width: math.percentage(math.div(5, 7));
     }
     .wrapper-image {
         position: absolute;
@@ -173,7 +173,7 @@ export default {
         }
     }
     .content-image {
-        width: calc(#{percentage(4/12)} + #{$grid-gutter-l - $gutter});
+        width: calc(#{math.percentage(math.div(4, 12))} + #{$grid-gutter-l - $gutter});
         height: 100%;
         margin-left: -#{$grid-gutter-l};
         .img {

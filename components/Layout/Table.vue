@@ -180,7 +180,7 @@ export default {
         font-weight: 400;
         font-size: 1.4rem;
         .title {
-            width: percentage(2/8);
+            width: math.percentage(math.div(2, 8));
             padding: 0 $gutter;
         }
     }
@@ -200,13 +200,13 @@ export default {
         padding: 40px 0;
     }
     .company-name {
-        width: percentage(2/8);
+        width: math.percentage(math.div(2, 8));
         margin: 0;
         padding: 0 $gutter;
     }
     .table-line {
         display: block;
-        width: percentage(2/8);
+        width: math.percentage(math.div(2, 8));
         padding: 0 $gutter;
     }
     .table-content {
@@ -220,7 +220,7 @@ export default {
         width: calc(100% + 20px);
         margin-left: -10px;
         .title {
-            width: percentage(2/9);
+            width: math.percentage(math.div(2, 9));
             padding: 0 20px;
         }
     }
@@ -236,11 +236,11 @@ export default {
         }
     }
     .company-name {
-        width: percentage(3/9);
+        width: math.percentage(math.div(3, 9));
         padding: 0 20px;
     }
     .table-line {
-        width: percentage(2/9);
+        width: math.percentage(math.div(2, 9));
         padding: 0 20px;
     }
 }

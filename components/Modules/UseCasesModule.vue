@@ -10,7 +10,11 @@
                 </div>
             </div>
             <div class="wrapper-details-stories">
-                <DetailList class="on-white small-height no-margin-large" fixed-height :content="content.useCases" />
+                <LayoutDetailList
+                    class="on-white small-height no-margin-large"
+                    fixed-height
+                    :content="content.useCases"
+                />
             </div>
         </div>
     </div>
@@ -87,13 +91,13 @@ export default {
     }
     .stories-subtitle {
         flex: 0 0 auto;
-        width: percentage(3/4);
+        width: math.percentage(math.div(3, 4));
         padding: 0 #{$gutter};
     }
 }
 @media (min-width: $tablet) {
     .stories-subtitle {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
     }
 }
 @media (min-width: $desktop-small) {
@@ -109,7 +113,7 @@ export default {
         margin-top: 60px;
     }
     .stories-subtitle {
-        width: percentage(9/12);
+        width: math.percentage(math.div(9, 12));
     }
 }
 </style>

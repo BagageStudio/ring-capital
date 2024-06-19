@@ -1,7 +1,7 @@
 <template>
     <div>
-        <Portfolio :data="data" />
-        <Overlay />
+        <TemplatesPortfolio :data="data" />
+        <LayoutOverlay />
     </div>
 </template>
 <script>

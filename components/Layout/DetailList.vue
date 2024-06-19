@@ -25,21 +25,17 @@
                         <span class="basic-h4 detail-title">{{ detail.name }}</span>
                         <span v-if="detail.description">{{ detail.description }}</span>
                     </span>
-                    <Tags v-if="detail.tags && !hideTags" :content="detail.tags" />
-                    <Author v-if="detail.author" :content="detail" :podcast="podcast" />
+                    <LayoutTags v-if="detail.tags && !hideTags" :content="detail.tags" />
+                    <LayoutAuthor v-if="detail.author" :content="detail" :podcast="podcast" />
                 </span>
             </component>
         </li>
     </ul>
 </template>
 <script>
-import LinkTo from '~/components/LinkTo';
 import { routeByApiModels } from '~/app/crawler/routes';
 
 export default {
-    components: {
-        LinkTo
-    },
     props: {
         content: {
             type: Array,
@@ -328,7 +324,7 @@ a {
         }
         > li {
             position: relative;
-            width: percentage(2/4);
+            width: math.percentage(math.div(2, 4));
             padding: 0 #{2 * $gutter};
             &:last-child {
                 margin-bottom: 70px;
@@ -369,7 +365,7 @@ a {
 @media (min-width: $desktop-small) {
     .detail-list {
         > li {
-            width: percentage(1/3);
+            width: math.percentage(math.div(1, 3));
             margin-bottom: 150px;
             &:last-child {
                 margin-bottom: 150px;
@@ -415,7 +411,7 @@ a {
 @media (min-width: $desktop) {
     .detail-list {
         > li {
-            width: percentage(4/12);
+            width: math.percentage(math.div(4, 12));
         }
     }
 }

@@ -8,9 +8,9 @@
                 </div>
             </div>
         </div>
-        <Believe :content="data" />
-        <Manifesto :content="data.manifesto" />
-        <Video v-if="data.video" :content="data.video" />
+        <VisionBelieve :content="data" />
+        <VisionManifesto :content="data.manifesto" />
+        <LayoutVideo v-if="data.video" :content="data.video" />
     </div>
 </template>
 

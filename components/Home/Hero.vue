@@ -3,7 +3,7 @@
         <SchemaHero :links="data.funds" :selected="selected" />
         <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
         <div class="hero-content">
-            <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
+            <LayoutFundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
 
             <div class="intro content-pad">
                 <span v-if="data.introTitle" class="intro-title basic-h4">{{ data.introTitle }}</span>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="wrapper-logos">
-            <LogosList :content="data.companies" />
+            <LayoutLogosList :content="data.companies" />
         </div>
     </div>
 </template>
@@ -162,7 +162,7 @@ export default {
 }
 @media (min-width: $tablet) {
     .basic-h1 {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
         &::after {
             content: none;
         }
@@ -173,7 +173,7 @@ export default {
 }
 @media (min-width: $desktop-small) {
     .basic-h1 {
-        width: percentage(8/12);
+        width: math.percentage(math.div(8, 12));
     }
     .wrapper-logos {
         padding: 100px 0 50px;
@@ -203,7 +203,7 @@ export default {
     }
     .intro {
         margin-top: 0;
-        width: percentage(4/12);
+        width: math.percentage(math.div(4, 12));
     }
 }
 

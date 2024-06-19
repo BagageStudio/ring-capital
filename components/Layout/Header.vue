@@ -54,24 +54,15 @@ import { requestTimeout, clearRequestTimeout } from '@stereorepo/sac';
 
 import layoutData from '~/cms/data/layout-data.json';
 
-import Submenu from '~/components/Layout/Menu/Submenu';
-import MegaMenu from '~/components/Layout/Menu/MegaMenu';
-import SingleMenuItem from '~/components/Layout/Menu/SingleMenuItem';
-
 if (process.client) gsap.registerPlugin(ScrollToPlugin);
 
 export default {
-    components: {
-        Submenu,
-        MegaMenu,
-        SingleMenuItem
-    },
     data: () => ({
         showMenuMobile: false,
         menuItemMapping: {
-            submenu_group: 'Submenu',
-            mega: 'MegaMenu',
-            single_link: 'SingleMenuItem'
+            submenu_group: 'LayoutMenuSubmenu',
+            mega: 'LayoutMenuMegaMenu',
+            single_link: 'LayoutMenuSingleMenuItem'
         },
         scrolledUp: false,
         transitionQuitScrolledUp: false,
@@ -436,11 +427,11 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .menu {
-        width: percentage(9/12);
+        width: math.percentage(math.div(9, 12));
         padding: 0;
     }
     .menu-items {
-        width: percentage(6/9);
+        width: math.percentage(math.div(6, 9));
         padding: 0 10px;
     }
     .contact-link {

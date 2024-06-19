@@ -8,15 +8,15 @@
                     <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 </div>
             </div>
-            <DetailList class="shape-one" :content="data.members" random />
+            <LayoutDetailList class="shape-one" :content="data.members" random />
         </div>
-        <TextLogos
+        <LayoutTextLogos
             :big-title="data.investorsTitle"
             :subtitle="data.investorsSubtitle"
             :link="data.investorsLink"
             :list="data.investors"
         />
-        <Mosaic :content="data.mosaic" />
+        <LayoutMosaic :content="data.mosaic" />
     </div>
 </template>
 

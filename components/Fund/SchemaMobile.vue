@@ -60,15 +60,7 @@
     </div>
 </template>
 <script>
-import FundLogoAltitude from './FundLogoAltitude';
-import FundLogoMission from './FundLogoMission';
-import FundLogoFoundation from './FundLogoFoundation';
 export default {
-    components: {
-        FundLogoAltitude,
-        FundLogoMission,
-        FundLogoFoundation
-    },
     props: {
         color: {
             type: String,

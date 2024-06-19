@@ -8,7 +8,7 @@
                         <div class="ff-text neptune" v-html="fiftyFifty.text"></div>
                     </div>
                     <div class="wrapper-accordions-ff">
-                        <Accordions class="on-white" :content="fiftyFifty.accordions" />
+                        <LayoutAccordions class="on-white" :content="fiftyFifty.accordions" />
                     </div>
                 </div>
             </div>
@@ -55,20 +55,20 @@ export default {
         justify-content: space-between;
         &:nth-child(odd) {
             .wrapper-txt-ff {
-                padding-right: calc(#{percentage(1/8)} + #{$gutter});
+                padding-right: calc(#{math.percentage(math.div(1, 8))} + #{$gutter});
             }
         }
         &:nth-child(even) {
             flex-direction: row-reverse;
             .wrapper-txt-ff {
-                padding-left: calc(#{percentage(1/8)} + #{$gutter});
+                padding-left: calc(#{math.percentage(math.div(1, 8))} + #{$gutter});
             }
         }
     }
     .wrapper-txt-ff,
     .wrapper-accordions-ff {
         flex: 0 0 auto;
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
         padding: 0 $gutter;
     }
     .wrapper-accordions-ff {
@@ -83,18 +83,18 @@ export default {
         margin-bottom: 160px;
         &:nth-child(odd) {
             .wrapper-txt-ff {
-                padding-right: calc(#{percentage(2/12)} + #{$gutter});
+                padding-right: calc(#{math.percentage(math.div(2, 12))} + #{$gutter});
             }
         }
         &:nth-child(even) {
             .wrapper-txt-ff {
-                padding-left: calc(#{percentage(2/12)} + #{$gutter});
+                padding-left: calc(#{math.percentage(math.div(2, 12))} + #{$gutter});
             }
         }
     }
     .wrapper-txt-ff,
     .wrapper-accordions-ff {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }
 @media (min-width: $desktop-large) {
@@ -102,18 +102,20 @@ export default {
         margin-bottom: 160px;
         &:nth-child(odd) {
             .wrapper-txt-ff {
-                padding: 0 calc(#{percentage(2/12)} + #{$gutter}) 0 calc(#{percentage(1/12)} + #{$gutter});
+                padding: 0 calc(#{math.percentage(math.div(2, 12))} + #{$gutter}) 0
+                    calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             }
             .wrapper-accordions-ff {
-                padding-right: calc(#{percentage(1/12)} + #{$gutter});
+                padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             }
         }
         &:nth-child(even) {
             .wrapper-txt-ff {
-                padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 calc(#{percentage(2/12)} + #{$gutter});
+                padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter}) 0
+                    calc(#{math.percentage(math.div(2, 12))} + #{$gutter});
             }
             .wrapper-accordions-ff {
-                padding-left: calc(#{percentage(1/12)} + #{$gutter});
+                padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             }
         }
     }

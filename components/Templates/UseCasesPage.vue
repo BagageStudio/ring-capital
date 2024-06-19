@@ -8,7 +8,7 @@
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 <div v-if="data.text" class="neptune" v-html="data.text"></div>
             </div>
-            <DetailList class="shape-two" fixed-height :content="data.useCases" />
+            <LayoutDetailList class="shape-two" fixed-height :content="data.useCases" />
             <div v-if="data.seeAllLink" class="wrapper-all">
                 <a :href="data.seeAllLink" target="_blank" rel="noopener noreferrer" class="btn-line on-grey">
                     <span class="deco"></span>
@@ -16,7 +16,7 @@
                 </a>
             </div>
         </div>
-        <Mosaic :content="data.mosaic" />
+        <LayoutMosaic :content="data.mosaic" />
     </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 }
 @media (min-width: $desktop-small) {
     .hero-use-cases {
-        width: percentage(6/9);
+        width: math.percentage(math.div(6, 9));
         min-height: 350px;
         padding: 90px #{2 * $gutter} 80px #{$gutter};
     }
@@ -67,7 +67,7 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .hero-use-cases {
-        width: percentage(4/9);
+        width: math.percentage(math.div(4, 9));
     }
 }
 </style>

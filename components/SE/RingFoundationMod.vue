@@ -70,7 +70,7 @@ export default {
         padding: 70px 0;
     }
     .wrapper-txt {
-        width: percentage(5/8);
+        width: math.percentage(math.div(5, 8));
     }
     .wrapper-desktop-img {
         position: absolute;
@@ -90,7 +90,7 @@ export default {
         right: -10vw;
     }
     .wrapper-txt {
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
     }
 }
 @media (min-width: $desktop) {
@@ -101,12 +101,12 @@ export default {
         right: 0;
     }
     .wrapper-txt {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }
 @media (min-width: $desktop-large) {
     .wrapper-txt {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
 }
 </style>

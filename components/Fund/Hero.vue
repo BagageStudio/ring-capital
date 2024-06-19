@@ -10,7 +10,7 @@
                 <p class="basic-subtitle">{{ data.fullDescription }}</p>
             </div>
             <div v-if="data.keyFigures" class="hero-keyfigures content-pad">
-                <KeyFigures :content="data.keyFigures" :color="data.color.hex" />
+                <LayoutKeyFigures :content="data.keyFigures" :color="data.color.hex" />
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@ export default {
 }
 @media (min-width: $tablet) {
     .hero-keyfigures {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
     }
 }
 @media (min-width: $desktop) {
@@ -62,10 +62,10 @@ export default {
         padding-top: 90px;
     }
     .hero-text {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
     .hero-keyfigures {
-        width: percentage(4/12);
+        width: math.percentage(math.div(4, 12));
         margin-bottom: 160px;
         padding-left: 0;
         padding-right: 0;

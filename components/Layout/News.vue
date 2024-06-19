@@ -198,7 +198,7 @@ export default {
     margin: 40px 0 0;
     > li {
         flex: 0 0 auto;
-        width: percentage(3/4);
+        width: math.percentage(math.div(3, 4));
         padding: 0 $gutter;
     }
 }
@@ -336,7 +336,7 @@ export default {
 @media (min-width: $tablet) {
     .news-list {
         > li {
-            width: percentage(5/8);
+            width: math.percentage(math.div(5, 8));
         }
     }
 }
@@ -365,7 +365,7 @@ export default {
 @media (min-width: $desktop) {
     .news-list {
         > li {
-            width: percentage(5/12);
+            width: math.percentage(math.div(5, 12));
         }
     }
     .news-text {

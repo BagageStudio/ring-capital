@@ -7,14 +7,14 @@
                 </div>
                 <div v-for="crewSection in content.crewSections" :key="crewSection.id" class="crew-section">
                     <h4 class="crew-section-title basic-h4">{{ crewSection.title }}</h4>
-                    <CrewMembers :content="crewSection.crewMembers" />
+                    <Ring2SuccessCrewMembers :content="crewSection.crewMembers" />
                 </div>
                 <div v-if="content.partners" class="crew-section">
                     <h4 v-if="content.partnersTitle" class="crew-section-title basic-h4">
                         {{ content.partnersTitle }}
                     </h4>
                     <div class="wrapper-partners">
-                        <LogosList :content="content.partners" show-label class="medium-grid big-height" />
+                        <LayoutLogosList :content="content.partners" show-label class="medium-grid big-height" />
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <Overlay class="layout-overlay" />
+        <LayoutOverlay class="layout-overlay" />
     </div>
 </template>
 
@@ -65,7 +65,7 @@ export default {
 }
 @media (min-width: $desktop) {
     .e404-content {
-        padding: 50px calc(#{percentage(3/12)} + #{$gutter});
+        padding: 50px calc(#{math.percentage(math.div(3, 12))} + #{$gutter});
     }
 }
 </style>

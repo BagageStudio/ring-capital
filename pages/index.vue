@@ -1,18 +1,13 @@
 <template>
     <div>
-        <HomeHero :data="data" />
-
-        <HomeVision :data="data" />
-        <HomeCollectiveIntelligence :data="data" />
-
-        <News :title="data.newsTitle" :content="data.news" />
-        <Overlay />
+        <h1>Home</h1>
+        {{ data }}
     </div>
 </template>
 
 <script>
 import { getIso } from '~/api/dato/helpers';
-import { homeQuery } from '~/api/dato';
+import { homepageQuery } from '~/api/dato';
 import handleSeo from '~/assets/js/seo';
 
 export default {
@@ -25,12 +20,12 @@ export default {
 
         try {
             const {
-                data: { home: homeData }
-            } = await $dato.post('/', { query: homeQuery, variables: { lang } }).then(({ data }) => data);
+                data: { home: homepageData }
+            } = await $dato.post('/', { query: homepageQuery, variables: { lang } }).then(({ data }) => data);
 
-            finalData.data = homeData;
+            finalData.data = homepageData;
 
-            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
+            // finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }
@@ -54,18 +49,10 @@ export default {
     beforeDestroy() {},
     methods: {},
     head() {
-        if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
-
-        return {
-            ...this.seo
-        };
+        // if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
+        // return {
+        //     ...this.seo
+        // };
     }
 };
 </script>
-
-<style lang="scss" scoped>
-.intro {
-    margin-top: 55px;
-    padding: 0 $gutter;
-}
-</style>

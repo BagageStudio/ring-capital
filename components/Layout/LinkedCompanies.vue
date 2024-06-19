@@ -8,7 +8,7 @@
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
             </div>
-            <DetailList class="no-margin-large grid-gutter fixed-height" :content="companies" hide-tags overlay />
+            <LayoutDetailList class="no-margin-large grid-gutter fixed-height" :content="companies" hide-tags overlay />
             <div v-if="!isL" class="wrapper-see-all">
                 <nuxt-link class="btn-line" :class="{ 'on-white': !dark }" :to="portfolioListLink">
                     <span class="deco"></span>

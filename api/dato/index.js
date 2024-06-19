@@ -201,6 +201,14 @@ export const homeQuery = `
     }
 `;
 
+export const homepageQuery = `
+    query Homepage($lang: SiteLocale) {
+        homepage(locale: $lang) {
+            title
+        }
+    }
+`;
+
 export const pageQuery = `
     query Page($lang: SiteLocale, $slug: String) {
         page(locale: $lang, filter: { slug: { eq: $slug } }) {

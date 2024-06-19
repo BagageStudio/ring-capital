@@ -77,7 +77,7 @@ export default {
         }
     }
     > li {
-        width: calc(#{percentage(1/2)} - 4px);
+        width: calc(#{math.percentage(math.div(1, 2))} - 4px);
         margin: 2px;
     }
     a {
@@ -190,7 +190,7 @@ export default {
 @media (min-width: $tablet) {
     .logos-list {
         > li {
-            width: calc(#{percentage(1/3)} - 4px);
+            width: calc(#{math.percentage(math.div(1, 3))} - 4px);
         }
         &.medium-grid {
             > li {
@@ -215,16 +215,16 @@ export default {
 @media (min-width: $desktop-large) {
     .logos-list {
         > li {
-            width: calc(#{percentage(1/6)} - 4px);
+            width: calc(#{math.percentage(math.div(1, 6))} - 4px);
         }
         &.medium-grid {
             > li {
-                width: calc(#{percentage(1/4)} - 20px);
+                width: calc(#{math.percentage(math.div(1, 4))} - 20px);
             }
         }
         &.large-grid {
             > li {
-                width: calc(#{percentage(1/3)} - 4px);
+                width: calc(#{math.percentage(math.div(1, 3))} - 4px);
             }
         }
     }

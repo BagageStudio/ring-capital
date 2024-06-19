@@ -86,20 +86,20 @@ export default {
         display: flex;
     }
     .target-col {
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
     }
     .targets-text {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
     }
 }
 @media (min-width: $desktop) {
     .target-col {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
         margin-right: auto;
         margin-bottom: 100px;
     }
     .targets-text {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
     }
 }
 </style>

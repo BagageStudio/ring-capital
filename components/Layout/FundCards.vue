@@ -126,7 +126,7 @@ export default {
         flex-wrap: wrap;
         padding: 0;
         > li {
-            width: percentage(1/3);
+            width: math.percentage(math.div(1, 3));
             margin: 0;
             padding: 0 $gutter;
         }
@@ -161,7 +161,7 @@ export default {
 }
 @media (min-width: $desktop) {
     .funds {
-        width: percentage(7/12);
+        width: math.percentage(math.div(7, 12));
         align-self: flex-start;
     }
     .fund-card {
@@ -173,7 +173,7 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .funds {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
     .fund-card {
         padding: 30px 18px;

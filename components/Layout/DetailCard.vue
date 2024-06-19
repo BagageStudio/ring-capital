@@ -1,34 +1,31 @@
 <template>
-    <li v-for="detail in detailList" :key="detail.id">
-        <component :is="detail.link ? 'LinkTo' : 'div'" :link="detail.link" :hide-label="true" class="detail">
-            <span class="detail-img" :class="{ overlay }">
-                <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
-                <span v-if="detail.hasLinkedin" class="linkedin-pin">
-                    <Icon name="linkedin" />
-                </span>
-                <span v-if="detail.logo" class="detail-logo">
-                    <span class="wrapper-img">
-                        <img :src="detail.logo.url" :alt="detail.logo.alt" />
+    <div>
+        <li v-for="detail in detailList" :key="detail.id">
+            <component :is="detail.link ? 'LinkTo' : 'div'" :link="detail.link" :hide-label="true" class="detail">
+                <span class="detail-img" :class="{ overlay }">
+                    <img v-if="detail.image" class="bg-img" :src="detail.image.url" :alt="detail.image.alt" />
+                    <span v-if="detail.hasLinkedin" class="linkedin-pin">
+                        <Icon name="linkedin" />
+                    </span>
+                    <span v-if="detail.logo" class="detail-logo">
+                        <span class="wrapper-img">
+                            <img :src="detail.logo.url" :alt="detail.logo.alt" />
+                        </span>
                     </span>
                 </span>
-            </span>
-            <span class="detail-txt">
-                <span>
-                    <span class="basic-h4 detail-title">{{ detail.name }}</span>
-                    <span v-if="detail.description">{{ detail.description }}</span>
+                <span class="detail-txt">
+                    <span>
+                        <span class="basic-h4 detail-title">{{ detail.name }}</span>
+                        <span v-if="detail.description">{{ detail.description }}</span>
+                    </span>
+                    <LayoutTags v-if="detail.tags" :content="detail.tags" />
                 </span>
-                <Tags v-if="detail.tags" :content="detail.tags" />
-            </span>
-        </component>
-    </li>
+            </component>
+        </li>
+    </div>
 </template>
 <script>
-import LinkTo from '~/components/LinkTo';
-
 export default {
-    components: {
-        LinkTo
-    },
     props: {
         content: {
             type: Array,
@@ -157,7 +154,7 @@ span {
         margin-left: -$gutter;
         > li {
             position: relative;
-            width: percentage(2/4);
+            width: math.percentage(math.div(2, 4));
             padding: 0 #{2 * $gutter};
             &:last-child {
                 margin-bottom: 70px;
@@ -198,7 +195,7 @@ span {
 @media (min-width: $desktop-small) {
     .detail-list {
         > li {
-            width: percentage(1/3);
+            width: math.percentage(math.div(1, 3));
             margin-bottom: 150px;
             &:last-child {
                 margin-bottom: 150px;
@@ -236,7 +233,7 @@ span {
 @media (min-width: $desktop) {
     .detail-list {
         > li {
-            width: percentage(4/12);
+            width: math.percentage(math.div(4, 12));
         }
     }
 }

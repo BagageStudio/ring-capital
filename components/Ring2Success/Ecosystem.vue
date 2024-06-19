@@ -8,7 +8,7 @@
                     {{ content.ecosystemSubtitle }}
                 </p>
                 <div v-if="content.ecosystemText" class="ecosystem-text neptune" v-html="content.ecosystemText"></div>
-                <Tags v-show="!isL" v-if="content.ecosystemTags" :content="content.ecosystemTags" />
+                <LayoutTags v-show="!isL" v-if="content.ecosystemTags" :content="content.ecosystemTags" />
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@ export default {
         position: relative;
     }
     .wrapper-title {
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
         padding: 0;
     }
     .ecosystem-title,
@@ -52,7 +52,7 @@ export default {
         padding: 0 #{$gutter};
     }
     .ecosystem-text {
-        width: percentage(3/4);
+        width: math.percentage(math.div(3, 4));
     }
     .ecosystem-image {
         position: absolute;
@@ -69,10 +69,10 @@ export default {
         padding: 160px 0;
     }
     .wrapper-title {
-        width: percentage(7/12);
+        width: math.percentage(math.div(7, 12));
     }
     .ecosystem-text {
-        width: percentage(5/7);
+        width: math.percentage(math.div(5, 7));
     }
     .ecosystem-image {
         width: 62vw;
@@ -81,13 +81,13 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .wrapper-title {
-        padding-left: percentage(1/12);
+        padding-left: math.percentage(math.div(1, 12));
     }
     .ecosystem-subtitle {
-        width: percentage(4/6);
+        width: math.percentage(math.div(4, 6));
     }
     .ecosystem-text {
-        width: percentage(3/6);
+        width: math.percentage(math.div(3, 6));
     }
 }
 </style>

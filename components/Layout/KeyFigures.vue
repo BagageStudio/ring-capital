@@ -53,7 +53,7 @@ export default {
 
 @media (min-width: $desktop-large) {
     .key-figures {
-        width: calc(#{percentage(4/5)} + #{2 * $gutter});
+        width: calc(#{math.percentage(math.div(4, 5))} + #{2 * $gutter});
     }
 }
 </style>

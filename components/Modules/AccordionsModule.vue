@@ -10,7 +10,7 @@
                 <h3 class="accordions-module-title basic-h3 underlined neptune">
                     <span>{{ content.title }}</span>
                 </h3>
-                <Accordions on-white :content="content.accordions" />
+                <LayoutAccordions on-white :content="content.accordions" />
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@ export default {
     }
     .wrapper-img {
         flex: 0 0 auto;
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
         padding: 0 #{$gutter};
     }
     .accordions-module-img {
@@ -74,7 +74,7 @@ export default {
     }
     .wrapper-txt {
         flex: 0 0 auto;
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
     }
 }
 @media (min-width: $desktop) {
@@ -82,20 +82,20 @@ export default {
         padding: 130px 0 55px;
     }
     .wrapper-img {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
     }
     .wrapper-txt {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }
 @media (min-width: $desktop-large) {
     .wrapper-img {
-        width: percentage(6/12);
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+        width: math.percentage(math.div(6, 12));
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .wrapper-txt {
         margin-top: 40px;
-        padding-right: calc(#{percentage(1/12)} + #{$gutter});
+        padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
 }
 </style>

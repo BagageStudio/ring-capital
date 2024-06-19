@@ -8,16 +8,16 @@
                 </div>
             </div>
         </div>
-        <SocialDigital :data="data" />
-        <TextLogos
+        <SESocialDigital :data="data" />
+        <LayoutTextLogos
             :small-title="data.partnersTitle"
             :text="data.partnersText"
             :list="data.partners"
             has-link
             white-mode
         />
-        <InvestorCompany :data="data" />
-        <RingFoundationMod :data="data" />
+        <SEInvestorCompany :data="data" />
+        <SERingFoundationMod :data="data" />
     </div>
 </template>
 

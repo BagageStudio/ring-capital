@@ -8,12 +8,12 @@
                 </div>
             </div>
         </div>
-        <FiftyFifty :content="data.fiftyFiftyBlocks" />
-        <Journey :title="data.journeyTitle" :content="data.journey" />
-        <Ecosystem :content="data" />
-        <Mosaic :content="data.mosaic" />
-        <Crew :content="data" />
-        <Stories :content="data" />
+        <Ring2SuccessFiftyFifty :content="data.fiftyFiftyBlocks" />
+        <Ring2SuccessJourney :title="data.journeyTitle" :content="data.journey" />
+        <Ring2SuccessEcosystem :content="data" />
+        <LayoutMosaic :content="data.mosaic" />
+        <Ring2SuccessCrew :content="data" />
+        <Ring2SuccessStories :content="data" />
     </div>
 </template>
 <script>

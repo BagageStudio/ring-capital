@@ -68,9 +68,11 @@ export default {
         }
     }
     .wrapper-img {
-        width: percentage(5/8);
+        width: math.percentage(math.div(5, 8));
         display: grid;
-        grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} #{percentage(2/5)};
+        grid-template-columns: #{math.percentage(math.div(1, 5))} #{math.percentage(math.div(2, 5))} #{math.percentage(
+                math.div(2, 5)
+            )};
         grid-template-rows: 105px 190px 190px 110px;
         margin: 0;
         ::v-deep .image {
@@ -107,21 +109,23 @@ export default {
         }
     }
     .wrapper-txt {
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
     }
 }
 @media (min-width: $desktop) {
     .wrapper-img {
-        width: percentage(7/12);
-        grid-template-columns: #{percentage(1/7)} #{percentage(3/7)} #{percentage(3/7)};
+        width: math.percentage(math.div(7, 12));
+        grid-template-columns: #{math.percentage(math.div(1, 7))} #{math.percentage(math.div(3, 7))} #{math.percentage(
+                math.div(3, 7)
+            )};
     }
     .wrapper-txt {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
     }
 }
 @media (min-width: $desktop-xxl) {
     .wrapper-txt {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
 }
 </style>

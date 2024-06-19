@@ -79,50 +79,50 @@ export default {
         padding: 0;
     }
     .footer-small-txt {
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
         padding: 0 $gutter;
     }
     .wrapper-small-links {
-        width: percentage(5/8);
+        width: math.percentage(math.div(5, 8));
         padding: 0 $gutter;
     }
 }
 @media (min-width: $desktop) {
     .content-footer-minimal {
-        padding: 0 0 0 #{percentage(5/12)};
+        padding: 0 0 0 #{math.percentage(math.div(5, 12))};
         &.small-padding {
-            padding: 0 #{percentage(3/12)};
+            padding: 0 #{math.percentage(math.div(3, 12))};
             .footer-small-txt {
-                width: percentage(4/6);
+                width: math.percentage(math.div(4, 6));
             }
             .wrapper-small-links {
-                width: percentage(2/6);
+                width: math.percentage(math.div(2, 6));
             }
         }
     }
     .footer-small-txt {
-        width: percentage(4/7);
+        width: math.percentage(math.div(4, 7));
     }
     .wrapper-small-links {
-        width: percentage(3/7);
+        width: math.percentage(math.div(3, 7));
     }
 }
 @media (min-width: $desktop-large) {
     content-footer-minimal {
         &.small-padding {
             .footer-small-txt {
-                width: percentage(3/6);
+                width: math.percentage(math.div(3, 6));
             }
             .wrapper-small-links {
-                width: percentage(3/6);
+                width: math.percentage(math.div(3, 6));
             }
         }
     }
     .footer-small-txt {
-        width: percentage(3/7);
+        width: math.percentage(math.div(3, 7));
     }
     .wrapper-small-links {
-        width: percentage(4/7);
+        width: math.percentage(math.div(4, 7));
     }
 }
 </style>

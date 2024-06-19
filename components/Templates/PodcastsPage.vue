@@ -8,9 +8,9 @@
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
                 <div v-if="data.text" class="neptune" v-html="data.text"></div>
             </div>
-            <DetailList class="shape-two" fixed-height :content="data.podcasts" podcast />
+            <LayoutDetailList class="shape-two" fixed-height :content="data.podcasts" podcast />
         </div>
-        <Mosaic :content="data.mosaic" />
+        <LayoutMosaic :content="data.mosaic" />
     </div>
 </template>
 
@@ -40,14 +40,14 @@ export default {
 
 @media (min-width: $desktop-small) {
     .hero-use-cases {
-        width: percentage(6/9);
+        width: math.percentage(math.div(6, 9));
         min-height: 350px;
         padding: 90px #{2 * $gutter} 80px #{$gutter};
     }
 }
 @media (min-width: $desktop-large) {
     .hero-use-cases {
-        width: percentage(4/9);
+        width: math.percentage(math.div(4, 9));
     }
 }
 </style>

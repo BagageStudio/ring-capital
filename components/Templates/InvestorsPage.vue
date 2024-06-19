@@ -8,10 +8,10 @@
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
             </div>
             <div class="wrapper-logos">
-                <LogosList :content="data.investors" show-label class="medium-grid big-height" />
+                <LayoutLogosList :content="data.investors" show-label class="medium-grid big-height" />
             </div>
         </div>
-        <CenteredText :content="data.moduleText" />
+        <LayoutCenteredText :content="data.moduleText" />
     </div>
 </template>
 

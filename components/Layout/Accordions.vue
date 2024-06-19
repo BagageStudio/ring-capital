@@ -1,6 +1,6 @@
 <template>
     <div v-if="content" :class="{ 'on-white': onWhite }" class="wrapper-accordions">
-        <Accordion
+        <LayoutAccordion
             v-for="accordion in content"
             :key="accordion.id"
             :content="accordion"

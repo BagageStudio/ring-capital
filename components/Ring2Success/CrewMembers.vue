@@ -1,7 +1,7 @@
 <template>
     <ul v-if="content" class="crew-member-list">
         <li v-for="crewMember in content" :key="crewMember.id">
-            <CrewMember :content="crewMember" />
+            <Ring2SuccessCrewMember :content="crewMember" />
         </li>
     </ul>
 </template>
@@ -42,7 +42,7 @@ export default {
         margin-left: -$gutter;
         > li {
             position: relative;
-            width: percentage(2/4);
+            width: math.percentage(math.div(2, 4));
             padding: 0 #{$gutter};
             &:last-child {
                 margin-bottom: 20px;
@@ -53,7 +53,7 @@ export default {
 @media (min-width: $desktop-large) {
     .crew-member-list {
         > li {
-            width: percentage(3/12);
+            width: math.percentage(math.div(3, 12));
             margin-bottom: 40px;
             &:last-child {
                 margin-bottom: 40px;

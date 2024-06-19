@@ -461,9 +461,9 @@ a {
 
 @media (min-width: $desktop-small) {
     .wysiwyg img {
-        width: percentage(8/6);
+        width: math.percentage(math.div(8, 6));
         max-width: none;
-        margin-left: -#{percentage(1/6)};
+        margin-left: -#{math.percentage(math.div(1, 6))};
     }
     .basic-h1 {
         font-size: 6.8rem;
@@ -484,14 +484,14 @@ a {
 
 @media (min-width: $desktop) {
     .wysiwyg img {
-        width: percentage(10/8);
-        margin-left: -#{percentage(1/8)};
+        width: math.percentage(math.div(10, 8));
+        margin-left: -#{math.percentage(math.div(1, 8))};
     }
 }
 
 @media (min-width: $desktop-large) {
     .wysiwyg img {
-        width: percentage(8/6);
-        margin-left: -#{percentage(1/6)};
+        width: math.percentage(math.div(8, 6));
+        margin-left: -#{math.percentage(math.div(1, 6))};
     }
 }

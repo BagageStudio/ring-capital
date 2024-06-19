@@ -145,16 +145,8 @@
 import { gsap } from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
-import FundLogoAltitude from './FundLogoAltitude';
-import FundLogoMission from './FundLogoMission';
-import FundLogoFoundation from './FundLogoFoundation';
 gsap.registerPlugin(MotionPathPlugin);
 export default {
-    components: {
-        FundLogoAltitude,
-        FundLogoMission,
-        FundLogoFoundation
-    },
     props: {
         color: {
             type: String,

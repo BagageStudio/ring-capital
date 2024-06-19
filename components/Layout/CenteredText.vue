@@ -46,7 +46,7 @@ export default {
 
 @media (min-width: $tablet) {
     .content-text {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
         margin: 0 auto;
     }
 }
@@ -55,12 +55,12 @@ export default {
         padding: 120px 0;
     }
     .content-text {
-        width: percentage(8/12);
+        width: math.percentage(math.div(8, 12));
     }
 }
 @media (min-width: $desktop-large) {
     .content-text {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }
 </style>

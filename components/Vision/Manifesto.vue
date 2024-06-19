@@ -190,10 +190,10 @@ export default {
             .container-manifesto {
                 flex-direction: row-reverse;
                 .section-title {
-                    width: percentage(4/8);
+                    width: math.percentage(math.div(4, 8));
                 }
                 .section-content {
-                    width: percentage(3/8);
+                    width: math.percentage(math.div(3, 8));
                 }
             }
         }
@@ -205,11 +205,11 @@ export default {
     }
     .section-title {
         flex: 0 0 auto;
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
     }
     .section-content {
         flex: 0 0 auto;
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
     }
     .manifesto-img {
         max-height: none;
@@ -229,22 +229,22 @@ export default {
         &:nth-child(even) {
             .container-manifesto {
                 .section-title {
-                    width: percentage(6/12);
+                    width: math.percentage(math.div(6, 12));
                     padding: 0 #{$gutter};
                 }
                 .section-content {
-                    width: percentage(6/12);
-                    padding-right: calc(#{percentage(1/12)} + #{$gutter});
+                    width: math.percentage(math.div(6, 12));
+                    padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
                 }
             }
         }
     }
     .section-title {
-        width: percentage(6/12);
-        padding-right: calc(#{percentage(1/12)} + #{$gutter});
+        width: math.percentage(math.div(6, 12));
+        padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .section-content {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }
 @media (min-width: $desktop-large) {
@@ -255,19 +255,19 @@ export default {
         &:nth-child(even) {
             .container-manifesto {
                 .section-title {
-                    padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+                    padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter}) 0 #{$gutter};
                 }
                 .section-content {
-                    padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+                    padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
                 }
             }
         }
     }
     .section-title {
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .section-content {
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter}) 0 #{$gutter};
     }
     .manifesto-img {
         position: relative;

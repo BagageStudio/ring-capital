@@ -15,7 +15,7 @@
                                 <FastImage class="company-img" :image="data.image" cover />
                             </div>
                             <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
-                            <Tags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
+                            <LayoutTags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
                             <div v-if="data.founders" class="wrapper-company-founders">
                                 <span class="founders-title">
                                     {{ $t('portfolio.foundersTitle') }}
@@ -29,7 +29,7 @@
                                 v-html="data.largeDescription"
                             ></div>
                             <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
-                            <KeyFigures :content="data.keyFigures" class="company-key-figures" />
+                            <LayoutKeyFigures :content="data.keyFigures" class="company-key-figures" />
                             <a
                                 v-if="data.recruitmentPageLink"
                                 :href="data.recruitmentPageLink"
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
-                                <Social :content="data.social" class="company-social" />
+                                <LayoutSocial :content="data.social" class="company-social" />
                                 <a
                                     v-if="data.websiteLink && data.websiteLinkLabel"
                                     :href="data.websiteLink"
@@ -87,13 +87,13 @@
                     </div>
                 </div>
             </div>
-            <LinkedCompanies
+            <LayoutLinkedCompanies
                 v-if="data.otherCompanies.length"
                 :companies="data.otherCompanies"
                 :title="data.charity ? $t('portfolio.otherCharitiesTitle') : $t('portfolio.otherRefsTitle')"
             />
         </div>
-        <Overlay />
+        <LayoutOverlay />
     </div>
 </template>
 
@@ -332,7 +332,7 @@ export default {
         margin-bottom: 55px;
     }
     .company-col {
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
     }
     .company-title {
         margin-top: 0;
@@ -346,10 +346,10 @@ export default {
 
 @media (min-width: $desktop) {
     .company-col {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
     .col-right {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .wrapper-social-website {
         display: flex;
@@ -376,13 +376,13 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .wrapper-back {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .col-left {
-        padding-left: calc(#{percentage(1/12)} + #{$gutter});
+        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .col-right {
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
 }
 </style>

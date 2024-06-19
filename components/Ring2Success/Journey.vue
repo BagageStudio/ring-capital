@@ -210,7 +210,7 @@ export default {
     }
     .journey-step {
         flex: 0 0 auto;
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
         padding: 0 $gutter;
     }
 }
@@ -219,20 +219,20 @@ export default {
         padding: 80px 0;
     }
     .journey-step {
-        width: percentage(4/12);
+        width: math.percentage(math.div(4, 12));
     }
 }
 @media (min-width: $desktop-large) {
     .journey-title {
         margin-bottom: 60px;
-        padding: 0 #{percentage(1/12)};
+        padding: 0 #{math.percentage(math.div(1, 12))};
     }
     .journey-steps {
-        padding: 0 #{percentage(1/12)};
+        padding: 0 #{math.percentage(math.div(1, 12))};
     }
     .journey-step {
         position: relative;
-        width: percentage(2/10);
+        width: math.percentage(math.div(2, 10));
         padding-top: 60px;
         &:first-child {
             .step-line {

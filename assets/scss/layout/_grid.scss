@@ -17,7 +17,7 @@
 
 @media (min-width: $desktop-small) {
     .container-small {
-        width: percentage(6/8);
+        width: math.percentage(math.div(6, 8));
         margin: 0 auto;
     }
 }
@@ -27,12 +27,12 @@
         padding: 0 $grid-gutter-l;
     }
     .container-small {
-        width: percentage(8/12);
+        width: math.percentage(math.div(8, 12));
     }
 }
 
 @media (min-width: $desktop-large) {
     .container-small {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
 }

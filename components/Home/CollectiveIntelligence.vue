@@ -221,7 +221,7 @@ export default {
 
 @media (min-width: $phone) {
     .wrapper-section-links {
-        width: percentage(3/4);
+        width: math.percentage(math.div(3, 4));
     }
 }
 
@@ -252,12 +252,14 @@ export default {
     }
     .wrapper-section-txt {
         margin-top: 140px;
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
     }
     .wrapper-section-links {
-        width: percentage(5/8);
+        width: math.percentage(math.div(5, 8));
         display: grid;
-        grid-template-columns: #{percentage(1/5)} #{percentage(2/5)} calc(#{percentage(2/5)} + #{$grid-gutter-s});
+        grid-template-columns: #{math.percentage(math.div(1, 5))} #{math.percentage(math.div(2, 5))} calc(
+                #{math.percentage(math.div(2, 5))} + #{$grid-gutter-s}
+            );
         grid-template-rows: 94px 199px 188px 233px 83px;
         margin: 0;
         padding: 0;
@@ -375,12 +377,14 @@ export default {
         padding: 80px 0;
     }
     .wrapper-section-txt {
-        width: percentage(6/12);
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter}) 0 #{$gutter};
+        width: math.percentage(math.div(6, 12));
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter}) 0 #{$gutter};
     }
     .wrapper-section-links {
-        width: percentage(6/12);
-        grid-template-columns: #{percentage(1/6)} #{percentage(3/6)} calc(#{percentage(2/6)} + #{$grid-gutter-l});
+        width: math.percentage(math.div(6, 12));
+        grid-template-columns: #{math.percentage(math.div(1, 6))} #{math.percentage(math.div(3, 6))} calc(
+                #{math.percentage(math.div(2, 6))} + #{$grid-gutter-l}
+            );
     }
 }
 @media (min-width: $desktop-large) {
@@ -392,7 +396,7 @@ export default {
     }
     .wrapper-section-txt {
         margin-top: 0;
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .wrapper-section-links {
         grid-template-rows: 125px 265px 250px 310px 110px;

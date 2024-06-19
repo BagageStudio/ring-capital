@@ -62,7 +62,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(#{percentage(1/2)} - 4px);
+    width: calc(#{math.percentage(math.div(1, 2))} - 4px);
     margin: 2px;
     padding: 15px;
     height: 72px;
@@ -75,7 +75,7 @@ export default {
 
 @media (min-width: $tablet) {
     .list-image {
-        width: calc(#{percentage(1/3)} - 4px);
+        width: calc(#{math.percentage(math.div(1, 3))} - 4px);
     }
 }
 @media (min-width: $desktop-small) {
@@ -86,10 +86,10 @@ export default {
         }
     }
     .wrapper-txt {
-        width: percentage(3/8);
+        width: math.percentage(math.div(3, 8));
     }
     .wrapper-list {
-        width: percentage(5/8);
+        width: math.percentage(math.div(5, 8));
         margin: 0;
     }
 }
@@ -98,11 +98,11 @@ export default {
         padding: 140px 0 155px;
     }
     .wrapper-txt {
-        width: percentage(6/12);
-        padding-right: calc(#{percentage(1/12)} + #{$gutter});
+        width: math.percentage(math.div(6, 12));
+        padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .wrapper-list {
-        width: percentage(6/12);
+        width: math.percentage(math.div(6, 12));
     }
     .list-image {
         height: 100px;
@@ -111,17 +111,17 @@ export default {
 }
 @media (min-width: $desktop-large) {
     .list-image {
-        width: calc(#{percentage(1/3)} - 4px);
+        width: calc(#{math.percentage(math.div(1, 3))} - 4px);
     }
 }
 @media (min-width: $desktop-xxl) {
     .wrapper-txt {
-        width: percentage(5/12);
-        padding: 0 calc(#{percentage(1/12)} + #{$gutter});
+        width: math.percentage(math.div(5, 12));
+        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
     }
     .wrapper-list {
-        width: percentage(7/12);
-        padding-right: percentage(1/12);
+        width: math.percentage(math.div(7, 12));
+        padding-right: math.percentage(math.div(1, 12));
     }
 }
 </style>

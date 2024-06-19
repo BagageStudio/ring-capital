@@ -1,13 +1,13 @@
 <template>
     <div class="main">
-        <Header />
+        <LayoutHeader />
         <div class="wrapper-content-footer">
             <Nuxt />
-            <FooterMinimal />
+            <LayoutFooterMinimal />
         </div>
         <Svgs />
-        <LazyGrid v-if="$config.isDevEnv" />
-        <Overlay class="layout-overlay" />
+        <LayoutGrid v-if="$config.isDevEnv" />
+        <LayoutOverlay class="layout-overlay" />
     </div>
 </template>
 

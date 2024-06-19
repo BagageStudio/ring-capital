@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <Social class="social-footer" :content="data.social" />
+                <LayoutSocial class="social-footer" :content="data.social" />
             </div>
             <div class="wrapper-menu-legal">
                 <div class="content-sub">
@@ -107,6 +107,7 @@ export default {
     beforeDestroy() {},
     methods: {
         sendForm() {
+            // eslint-disable-next-line
             const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
             this.$refs.submit.setAttribute('disabled', true);
@@ -307,7 +308,7 @@ export default {
 }
 @media (min-width: $desktop-small) {
     .col-footer {
-        width: percentage(1/3);
+        width: math.percentage(math.div(1, 3));
     }
     .wrapper-newsletter-social {
         padding: 50px 0 30px;
@@ -322,7 +323,7 @@ export default {
         align-items: flex-start;
         margin-bottom: 7px;
         .wrapper-field {
-            width: percentage(4/6);
+            width: math.percentage(math.div(4, 6));
             margin: 0;
             padding: 0 $gutter;
             .label {
@@ -339,7 +340,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: percentage(2/6);
+        width: math.percentage(math.div(2, 6));
         padding: 0 $gutter;
     }
     .form-message {
@@ -356,7 +357,7 @@ export default {
     }
 
     .newsletter-gdpr {
-        width: percentage(4/6);
+        width: math.percentage(math.div(4, 6));
         margin: 0;
         padding: 0 #{$gutter};
     }
@@ -365,7 +366,7 @@ export default {
     .footer {
         &::before,
         &::after {
-            width: calc(50vw - #{$desktop-large/2} + #{$grid-gutter-l});
+            width: calc(50vw - #{math.div($desktop-large, 2)} + #{$grid-gutter-l});
         }
     }
     .wrapper-menu-legal,
@@ -375,13 +376,13 @@ export default {
         justify-content: space-between;
     }
     .wrapper-menu-legal {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
         padding: 90px 0 80px;
         background: $orbit;
     }
     .wrapper-newsletter-social {
-        width: percentage(7/12);
-        padding: 100px 0 80px #{percentage(1/12)};
+        width: math.percentage(math.div(7, 12));
+        padding: 100px 0 80px #{math.percentage(math.div(1, 12))};
         border-top: 1px solid $neptune;
     }
     .footer-bottom {
@@ -391,11 +392,11 @@ export default {
         padding: 0;
     }
     .footer-small-txt {
-        width: percentage(3/5);
+        width: math.percentage(math.div(3, 5));
         padding: 0 $gutter;
     }
     .wrapper-small-links {
-        width: percentage(2/5);
+        width: math.percentage(math.div(2, 5));
         margin: 0;
         padding: 0 $gutter;
     }
@@ -407,7 +408,7 @@ export default {
     .footer {
         &::before,
         &::after {
-            width: calc(50vw - #{$desktop-xxl/2} + #{$grid-gutter-l});
+            width: calc(50vw - #{math.div($desktop-xxl, 2)} + #{$grid-gutter-l});
         }
     }
 }

@@ -83,7 +83,7 @@ export default {
         padding: 0;
     }
     .wrapper-col-section {
-        width: percentage(4/8);
+        width: math.percentage(math.div(4, 8));
         padding: 0 $gutter;
         backface-visibility: hidden;
         transform: translateZ(0);
@@ -125,16 +125,16 @@ export default {
         transform: translate(-50%, -50%);
     }
     .wrapper-col-section {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
         &.left {
             order: 1;
-            padding-right: calc(#{percentage(1/12)} + #{$gutter});
+            padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             margin-top: -140px;
             margin-left: 0;
         }
         &.right {
             order: 3;
-            padding-left: calc(#{percentage(1/12)} + #{$gutter});
+            padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             margin-top: 140px;
         }
     }
@@ -148,7 +148,7 @@ export default {
     }
     .wrapper-btn-section {
         order: 2;
-        width: percentage(2/12);
+        width: math.percentage(math.div(2, 12));
         padding: 0 $gutter;
         display: flex;
         flex-direction: column;
@@ -182,12 +182,12 @@ export default {
     }
     .wrapper-col-section {
         &.left {
-            padding-left: calc(#{percentage(1/12)} + #{$gutter});
+            padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
             margin-top: -190px;
         }
         &.right {
             margin-top: 140px;
-            padding-right: calc(#{percentage(1/12)} + #{$gutter});
+            padding-right: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
         }
     }
 }

@@ -92,17 +92,17 @@ export default {
         justify-content: space-between;
     }
     .text {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
     }
 }
 
 @media (min-width: $desktop-xxl) {
     .text {
-        width: percentage(4/12);
+        width: math.percentage(math.div(4, 12));
         margin-right: auto;
     }
     .container-video {
-        width: percentage(5/12);
+        width: math.percentage(math.div(5, 12));
         margin-left: auto;
         margin-right: auto;
     }

@@ -174,12 +174,12 @@ export default {
      ** See https://nuxtjs.org/api/configuration-build/
      */
     build: {
-        /*
-         ** Transpiling es6 packages
-         */
-        transpile: [/@stereorepo/, 'gsap'],
+        transpile: [/@stereorepo/, /gsap/],
         loaders: {
             scss: customSass
+        },
+        extend(config, { loaders }) {
+            loaders.scss.additionalData = '@use "sass:math";';
         }
     },
     /*

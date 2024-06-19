@@ -8,37 +8,14 @@
                         class="footer-title basic-h3 underlined saturn strong-white"
                         v-html="data.newsletter.title"
                     ></h3>
-                    <form v-if="!success" class="newsletter-form" @submit.prevent="sendForm">
-                        <div class="content-newsletter-form">
-                            <div :class="['wrapper-field', { error: emailError }]">
-                                <input
-                                    id="newsletter-email"
-                                    v-model="emailInput"
-                                    type="email"
-                                    name="newsletter"
-                                    :class="{ on: emailInput !== '' }"
-                                    required
-                                />
-                                <label class="label" for="newsletter-email">{{ $t('newsletter.label') }}</label>
-                                <span class="border-overlay"></span>
-                            </div>
-                            <div class="wrapper-btn-newsletter">
-                                <button ref="submit" type="submit" class="btn-block primary">
-                                    <span class="deco"></span>
-                                    <span>{{ $t('newsletter.sendButton') }}</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <p v-if="formError" class="form-message" :class="{ error: emailError }" v-html="formError" />
-                    <div v-if="!success" class="newsletter-gdpr">
-                        <p class="gdpr-message">{{ data.newsletterGdpr }}</p>
-                        <div class="gdpr-link">
-                            <span v-if="data.newsletterTextBeforeLink" class="gdpr-link-txt">
-                                {{ data.newsletterTextBeforeLink }}
-                            </span>
-                            <LinkTo class="footer-small-link txt-underlined" :link="data.newsletterLink" />
-                        </div>
+                    <div class="both-container">
+                        <p class="both-tagline">
+                            Discover <span class="both-strong">BOTH</span>, our newsletter about Impact and Growth
+                        </p>
+                        <a href="https://ringcapital.substack.com/" target="_blank" class="btn-block primary">
+                            <span class="deco"></span>
+                            <span>Subscribe</span>
+                        </a>
                     </div>
                 </div>
                 <LayoutSocial class="social-footer" :content="data.social" />
@@ -105,46 +82,21 @@ export default {
     watch: {},
     mounted() {},
     beforeDestroy() {},
-    methods: {
-        sendForm() {
-            // eslint-disable-next-line
-            const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-            this.$refs.submit.setAttribute('disabled', true);
-
-            this.formError = '';
-            this.emailError = false;
-
-            if (!this.emailInput) {
-                this.formError += this.data.newsletterEmailError;
-                this.emailError = true;
-            } else if (!regexEmail.test(this.emailInput)) {
-                this.formError += this.data.newsletterEmailInvalid;
-                this.emailError = true;
-            }
-
-            if (this.formError) {
-                this.$refs.submit.removeAttribute('disabled');
-            } else {
-                this.$axios
-                    .post('/.netlify/functions/newsletter', {
-                        email: this.emailInput
-                    })
-                    .then(res => {
-                        this.formError = this.data.newsletterSuccess;
-                        this.success = true;
-                    })
-                    .catch(error => {
-                        this.$refs.submit.removeAttribute('disabled');
-                        this.formError = error.response.data;
-                    });
-            }
-        }
-    }
+    methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
+.both-container {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.both-tagline {
+    font-size: 2rem;
+}
+.both-strong {
+    color: $titan;
+}
 .footer {
     position: relative;
     background: $black;

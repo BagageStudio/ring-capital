@@ -16,7 +16,7 @@
                             {{ data.mailTitle }}
                         </div>
                         <div class="single-content">
-                            <a :href="'mailto:' + data.mail" class="contact-link-single">{{ data.mail }}</a>
+                            <a :href="data.mail" class="contact-link-single" target="_blank">{{ data.mail }}</a>
                         </div>
                     </div>
                     <div v-if="data.socialTitle && data.social" class="contact-single">
@@ -96,7 +96,7 @@ export default {
     color: $saturn;
 }
 .contact-link-single {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     line-height: 30px;
     text-decoration: none;
     color: $white;

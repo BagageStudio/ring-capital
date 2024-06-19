@@ -1,7 +1,7 @@
 <template>
     <div>
-        <TemplatesPortfolio :data="data" />
-        <LayoutOverlay />
+        <PortfolioTech :data="data" />
+        <Overlay />
     </div>
 </template>
 <script>
@@ -26,7 +26,6 @@ export default {
 
         // Ici ton _modelApiKey
         finalData.template = slugToModelApiKey[lang][slug];
-
         try {
             const { data } = await $dato
                 .post('/', { query: getQuery(finalData.template), variables: { lang, slug } })

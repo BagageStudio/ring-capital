@@ -16,8 +16,9 @@
             has-link
             white-mode
         />
-        <SEInvestorCompany :data="data" />
+        <SEBCorp :data="data" />
         <SERingFoundationMod :data="data" />
+        <SEInvestorCompany :data="data" />
     </div>
 </template>
 

@@ -565,6 +565,67 @@ export const portfolioQuery = `
                     ${img}
                 }
             }
+			seeOtherPortfolioCompanies {
+				...link
+			}
+		}
+    }`;
+
+export const portfolioTechQuery = `
+    ${linkFragment}
+    query PortfolioTech($lang: SiteLocale) {
+        portfolioTech(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            companies {
+                _modelApiKey
+                id
+                name
+                description
+                tags
+                logo {
+                    ${img}
+                }
+                image {
+                    ${img}
+                }
+                slug
+            }
+            tableTitle
+            col2Title
+            col3Title
+            col4Title
+            tableEntries {
+                id
+                companyName
+                industrySector
+                soldTo
+                soldYear
+                company {
+                    _modelApiKey
+                    id
+                    slug
+                }
+            }
+            mosaic {
+                title
+                subtitle
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
         }
     }`;
 
@@ -592,6 +653,7 @@ export const investorsPageQuery = `
     }`;
 
 export const companyQuery = `
+    ${linkFragment}
     query Company($lang: SiteLocale, $slug: String) {
         company(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
@@ -643,6 +705,29 @@ export const companyQuery = `
                     ${img}
                 }
                 slug
+            }
+			believeTitle
+            believeAccordions {
+                id
+                title
+                content
+                picto {
+                    ${img}
+                }
+                link {
+                    __typename
+                    ...link
+                    ... on LinkFileRecord {
+                        label
+                        title
+                        file {
+                           url
+                        }
+                    }
+                }
+            }
+            believeImage {
+                ${img}
             }
         }
     }`;
@@ -832,6 +917,54 @@ export const podcastsPageQuery = `
         }
     }`;
 
+export const blogQuery = `
+    ${linkFragment}
+    query Blog($lang: SiteLocale) {
+        blog(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            text
+            podcasts {
+                id
+                name
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                link {
+                    ...link
+                }
+            }
+            mosaic {
+                title
+                subtitle
+                text
+                link {
+                    ...link
+                }
+                topLeftImage {
+                    ${img}
+                }
+                bottomLeftImage {
+                    ${img}
+                }
+                rightMobileImage {
+                    ${img}
+                }
+            }
+        }
+    }`;
+
 export const pressRoomQuery = `
     ${linkFragment}
     query PressRoom($lang: SiteLocale) {
@@ -950,6 +1083,20 @@ export const sustainableEngagementQuery = `
                 ${img}
             }
             endowmentFundDesktopImage {
+                ${img}
+            }
+			bcorpTitle
+            bcorpText
+            bcorpLineLink {
+                ...link
+            }
+            bcorpBlockLink {
+                ...link
+            }
+            bcorpMobileImage {
+                ${img}
+            }
+            bcorpDesktopImage {
                 ${img}
             }
         }
@@ -1153,7 +1300,9 @@ export const getQuery = _modelApiKey => {
         sustainable_engagement: sustainableEngagementQuery,
         ring2success: ring2successQuery,
         vision: visionQuery,
-        jobs_page: jobsPageQuery
+        jobs_page: jobsPageQuery,
+        portfolio_tech: portfolioTechQuery,
+        blog: blogQuery
     };
     return mapping[_modelApiKey];
 };

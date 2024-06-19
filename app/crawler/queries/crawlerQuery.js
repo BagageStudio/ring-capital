@@ -20,6 +20,10 @@ export default `
             slug
             _modelApiKey
         }
+		portfolioTech(locale: $lang) {
+            slug
+            _modelApiKey
+        }
         investorsPage(locale: $lang) {
             slug
             _modelApiKey
@@ -59,6 +63,10 @@ export default `
         jobsPage(locale: $lang) {
             slug
             _modelApiKey
-        }
+        },
+		blog(locale: $lang) {
+            slug
+            _modelApiKey
+        },
     }
 `;

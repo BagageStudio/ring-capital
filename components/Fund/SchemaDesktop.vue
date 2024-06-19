@@ -144,8 +144,8 @@
 <script>
 import { gsap } from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-
 gsap.registerPlugin(MotionPathPlugin);
+
 export default {
     props: {
         color: {
@@ -166,7 +166,8 @@ export default {
             const mapping = {
                 'ring-altitude': 'FundLogoAltitude',
                 'ring-mission': 'FundLogoMission',
-                'ring-foundation': 'FundLogoFoundation'
+                'ring-foundation': 'FundLogoFoundation',
+                'ring-generations': 'FundLogoGenerations'
             };
             return mapping[this.logo];
         }

@@ -7,19 +7,12 @@
                 </h1>
                 <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
             </div>
-            <LayoutDetailList class="shape-two" :content="data.companies" random overlay />
-            <div class="container-see-other-potfolio-companies">
-                <LinkTo
-                    v-if="data.seeOtherPortfolioCompanies"
-                    class="btn-block secondary"
-                    :link="data.seeOtherPortfolioCompanies"
-                />
-            </div>
+            <DetailList class="shape-two" :content="data.companies" random overlay />
         </div>
         <div v-if="data.tableEntries.length > 0">
-            <LayoutTable :content="data" />
+            <Table :content="data" />
         </div>
-        <LayoutMosaic :content="data.mosaic" />
+        <Mosaic :content="data.mosaic" />
     </div>
 </template>
 
@@ -50,26 +43,14 @@ export default {
 
 @media (min-width: $desktop-small) {
     .hero-portfolio {
-        width: math.percentage(math.div(6, 9));
+        width: percentage(6/9);
         min-height: 350px;
         padding: 90px #{2 * $gutter} 80px #{$gutter};
     }
 }
 @media (min-width: $desktop-large) {
     .hero-portfolio {
-        width: math.percentage(math.div(4, 9));
+        width: percentage(4/9);
     }
-}
-
-.container-see-other-potfolio-companies {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 40px;
-    margin-top: 40px;
-}
-
-#see-other-portfolio-companies-link:hover {
-    color: $orbit;
 }
 </style>

@@ -87,6 +87,9 @@
                     </div>
                 </div>
             </div>
+            <div v-if="data.believeAccordions.length > 0">
+                <VisionBelieve :content="data" />
+            </div>
             <LayoutLinkedCompanies
                 v-if="data.otherCompanies.length"
                 :companies="data.otherCompanies"
@@ -145,11 +148,6 @@ export default {
             if (!this.$store.state.superWindow) return true;
             return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
         }
-    },
-    mounted() {
-        const _hsq = (window._hsq = window._hsq || []);
-        _hsq.push(['setPath', this.$route.path]);
-        _hsq.push(['trackPageView']);
     },
     head() {
         if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.name;

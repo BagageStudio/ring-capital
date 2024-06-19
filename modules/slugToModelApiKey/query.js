@@ -35,6 +35,13 @@ export default `
                 value
             }
         }
+        portfolioTech{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
         investorsPage{
             _modelApiKey
             _allSlugLocales{
@@ -92,6 +99,13 @@ export default `
             }
         },
         jobsPage{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        },
+		blog{
             _modelApiKey
             _allSlugLocales{
                 locale

@@ -20,6 +20,10 @@ export const routes = {
         i18nFormat: 'portfolio/index',
         routerFormat: 'portfolio'
     },
+    portfolioTech: {
+        i18nFormat: 'portfolio-tech/index',
+        routerFormat: 'portfolio-tech'
+    },
     portfolioSingle: {
         i18nFormat: 'portfolio/_slug',
         routerFormat: 'portfolio-slug'
@@ -63,6 +67,10 @@ export const routes = {
     jobsPage: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
+    },
+    blog: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
     }
 };
 
@@ -82,7 +90,9 @@ export const routeByApiModels = {
     sustainable_engagement: routes.sustainableEngagement,
     ring2success: routes.ring2success,
     vision: routes.vision,
-    jobs_page: routes.jobsPage
+    jobs_page: routes.jobsPage,
+    portfolio_tech: routes.portfolioTech,
+    blog: routes.blog
 };
 
 // You can pass an array of regular expressions to exclude dynamic routes.

@@ -20,12 +20,12 @@ export default {
 
         try {
             const {
-                data: { home: homepageData }
+                data: { homepage: homepageData }
             } = await $dato.post('/', { query: homepageQuery, variables: { lang } }).then(({ data }) => data);
 
             finalData.data = homepageData;
 
-            // finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
+            finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }
@@ -49,10 +49,10 @@ export default {
     beforeDestroy() {},
     methods: {},
     head() {
-        // if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
-        // return {
-        //     ...this.seo
-        // };
+        if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.title;
+        return {
+            ...this.seo
+        };
     }
 };
 </script>

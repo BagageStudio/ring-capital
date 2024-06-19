@@ -204,6 +204,7 @@ export const homeQuery = `
 export const homepageQuery = `
     query Homepage($lang: SiteLocale) {
         homepage(locale: $lang) {
+            ${seo}
             title
         }
     }

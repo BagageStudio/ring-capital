@@ -202,10 +202,109 @@ export const homeQuery = `
 `;
 
 export const homepageQuery = `
+    ${linkFragment}
     query Homepage($lang: SiteLocale) {
         homepage(locale: $lang) {
             ${seo}
             title
+            heroSlides {
+                id
+                title
+                video {
+                    url
+                    height
+                    width
+                    alt
+                }
+            }
+            vitalityTitle
+            vitalitySubtitle
+            vitalityIntro
+            vitalityNumbers {
+                id
+                number
+                content
+            }
+            investmentStrategyTitle
+            investmentStrategyIntro
+            fundsSlides {
+                id
+                slug
+                name
+                title
+                description
+                logo
+            }
+            learnMoreButtonLabel
+            ecosystemTitle
+            ecosystemIntro
+            ecosystemMosaic {
+                ... on EcosystemQuoteTileRecord {
+                    id
+                    quote
+                    quoteAuthor
+                }
+                ... on EcosystemLogoTileRecord {
+                    id
+                    logos {
+                        id
+                        ${img}
+                    }
+                }
+                ... on EcosystemImageTileRecord {
+                    id
+                    title
+                    image {
+                        ${img}
+                    }
+                }
+            }
+            podcastTitle
+            podcastIntro
+            podcastAllEpisodesLink {
+                ...link
+            }
+            podcastSelection {
+                id
+                name
+                image {
+                    ${img}
+                }
+                description
+                date
+                readingTime
+                author {
+                    name
+                    image {
+                        ${img}
+                    }
+                }
+                link {
+                    ...link
+                }
+            }
+            podcastLinkLabel
+            podcastPlatforms {
+                id
+                logo {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
+            }
+            newsletterTitle
+            newsletterIntro
+            newsletterSubscribeLink {
+                ...link
+            }
+            articleSelection {
+                id
+                title
+                readingTime
+                date
+                linkUrl
+            }
         }
     }
 `;

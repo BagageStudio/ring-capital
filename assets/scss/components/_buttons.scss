@@ -155,3 +155,16 @@
         }
     }
 }
+
+.btn-rounded {
+    display: inline-flex;
+    padding: 1.4rem 4rem;
+    font-family: var(--urbanist);
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03rem;
+    border: 1px solid currentColor;
+    border-radius: 100px;
+}

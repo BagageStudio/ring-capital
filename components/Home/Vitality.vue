@@ -122,7 +122,7 @@ export default {
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.7rem;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.03rem;
 }
 
 @media (min-width: $desktop) {

@@ -233,7 +233,9 @@ export const homepageQuery = `
                 name
                 title
                 description
-                logo
+                logoImage {
+                    ${img}
+                }
             }
             learnMoreButtonLabel
             ecosystemTitle

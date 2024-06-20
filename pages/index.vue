@@ -1,6 +1,7 @@
 <template>
     <div>
         <HomeVitality :data="data" />
+        <HomeInvestmentStrategy :data="data" />
     </div>
 </template>
 

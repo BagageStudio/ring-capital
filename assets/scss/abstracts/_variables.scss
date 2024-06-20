@@ -10,16 +10,6 @@ $orbit: #1f2c3c;
 $saturn: #f4f928;
 $grey: #f5f7fa;
 
-:root {
-    --primary: #f4f928;
-    --secondary: #fff;
-    --tertiary: #f4f928;
-    --bg: #fffcf0;
-    --txt: #1f1f1f;
-    --roboto: 'Roboto', sans-serif;
-    --urbanist: 'Urbanist', sans-serif;
-}
-
 // Texts variables 🖌
 $text-size-mobile: 13;
 $text-size-desktop: 15;
@@ -45,3 +35,25 @@ $phone-small-v: 600px;
 $desktop-v: 900px;
 $desktop-xxl-v: 1080px;
 $header-height: 120px;
+
+:root {
+    --primary: #f4f928;
+    --secondary: #fff;
+    --tertiary: #f4f928;
+    --bg: #fffcf0;
+    --txt: #1f1f1f;
+
+    // Fonts
+    --roboto: 'Roboto', sans-serif;
+    --urbanist: 'Urbanist', sans-serif;
+
+    // Grid
+    --gutter: 8px;
+}
+
+@media (min-width: $desktop-small) {
+    :root {
+        // Grid
+        --gutter: 30px;
+    }
+}

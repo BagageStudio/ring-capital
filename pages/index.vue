@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Home</h1>
-        {{ data }}
+        <HomeVitality :data="data" />
     </div>
 </template>
 

@@ -33,15 +33,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper-vitality {
-    margin-top: 60px;
-    margin-bottom: 50px;
+    margin-top: 6rem;
+    margin-bottom: 5rem;
 }
 .vitality {
     container-type: inline-size;
 }
 .vitality-title {
     display: block;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
     padding: 0 var(--gutter);
     font-family: var(--urbanist);
     font-weight: 700;
@@ -56,14 +56,14 @@ export default {
     padding: 0 var(--gutter);
     font-family: var(--urbanist);
     font-size: 4rem;
-    line-height: 48px;
+    line-height: 4.8rem;
     font-weight: 700;
     color: #148668;
 }
 .bottom-vitality {
     position: relative;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 2rem;
+    padding-top: 2rem;
     &::before {
         content: '';
         position: absolute;
@@ -76,18 +76,18 @@ export default {
 .vitality-intro {
     padding: 0 var(--gutter);
     font-size: 2.5rem;
-    line-height: 32px;
+    line-height: 3.2rem;
 }
 .vitality-numbers {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 .vitality-number-content {
     position: relative;
     flex: 0 0 auto;
     width: 50%;
-    padding: 10px var(--gutter) 20px;
+    padding: 1rem var(--gutter) 2rem;
     &::before {
         content: '';
         position: absolute;
@@ -114,24 +114,24 @@ export default {
     font-family: var(--urbanist);
     font-size: 5rem;
     font-weight: 600;
-    line-height: 60px;
+    line-height: 6rem;
 }
 .vitality-content {
     font-family: var(--urbanist);
     text-transform: uppercase;
     font-size: 1.4rem;
     font-weight: 700;
-    line-height: 17px;
+    line-height: 1.7rem;
     letter-spacing: 0.3px;
 }
 
 @media (min-width: $desktop) {
     .vitality-title {
-        margin-bottom: 60px;
+        margin-bottom: 6rem;
     }
     .vitality-subtitle {
         font-size: 5rem;
-        line-height: 60px;
+        line-height: 6rem;
     }
     .bottom-vitality {
         display: flex;
@@ -141,7 +141,7 @@ export default {
     .vitality-intro {
         flex: 0 0 auto;
         width: 50%;
-        padding-top: 30px;
+        padding-top: 3rem;
     }
     .vitality-numbers {
         flex: 0 0 auto;
@@ -149,7 +149,7 @@ export default {
         margin-top: 0;
     }
     .vitality-number-content {
-        padding: 10px var(--gutter) 40px;
+        padding: 1rem var(--gutter) 4rem;
         &:nth-child(-n + 2) {
             &::before {
                 content: none;

@@ -459,7 +459,10 @@ a {
     }
 }
 
-@media (min-width: $desktop-small) {
+@media (min-width: $desktop) {
+    html {
+        font-size: 0.6944444vw;
+    }
     .wysiwyg img {
         width: math.percentage(math.div(8, 6));
         max-width: none;

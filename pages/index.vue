@@ -2,6 +2,7 @@
     <div>
         <HomeVitality :data="data" />
         <HomeInvestmentStrategy :data="data" />
+        <HomeEcosystem :data="data" />
     </div>
 </template>
 

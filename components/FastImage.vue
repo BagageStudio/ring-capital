@@ -59,7 +59,7 @@ export default {
             this.loaded = true;
         },
         imgixParameters(url) {
-            return `${url}?lossless=true&auto=format&fm=webp,png`;
+            return `${url}?auto=format`;
         },
         resolveSrcSet(data, isFullWidth) {
             if (this.cover) return;

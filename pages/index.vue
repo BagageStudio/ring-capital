@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="hero"></div>
         <HomeVitality :data="data" />
         <HomeInvestmentStrategy :data="data" />
     </div>
@@ -51,3 +52,11 @@ export default {
     }
 };
 </script>
+
+<style lang="scss" scoped>
+.hero {
+    width: 100vw;
+    height: 90vh;
+    background-color: #409875;
+}
+</style>

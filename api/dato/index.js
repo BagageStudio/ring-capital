@@ -61,6 +61,25 @@ export const layoutQuery = `
                 ...link
             }
         }
+        navigation(locale: $lang){
+            quickMenu {
+                ...link
+            }
+            menu {
+                title
+                links {
+                    ...link
+                }
+            }
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
+            }
+        }
         footer(locale: $lang) {
             linksColumn {
                 links {

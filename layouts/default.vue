@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <LayoutHeader />
+        <LayoutNavigation />
         <Nuxt />
         <LayoutFooter />
         <Svgs />

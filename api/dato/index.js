@@ -261,18 +261,22 @@ export const homepageQuery = `
             ecosystemIntro
             ecosystemMosaic {
                 ... on EcosystemQuoteTileRecord {
+                    _modelApiKey
                     id
                     quote
                     quoteAuthor
                 }
                 ... on EcosystemLogoTileRecord {
+                    _modelApiKey
                     id
+                    title
                     logos {
                         id
                         ${img}
                     }
                 }
                 ... on EcosystemImageTileRecord {
+                    _modelApiKey
                     id
                     title
                     image {
@@ -288,18 +292,8 @@ export const homepageQuery = `
             podcastSelection {
                 id
                 name
-                image {
-                    ${img}
-                }
-                description
-                date
+                subtitle
                 readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
                 link {
                     ...link
                 }

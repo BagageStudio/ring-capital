@@ -147,13 +147,11 @@ body {
 }
 
 .basic-h2 {
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 40px;
-    margin: 0 0 30px;
-    strong {
-        font-weight: 300;
-    }
+    font-family: var(--urbanist);
+    font-weight: 600;
+    font-size: 5rem;
+    line-height: 5rem;
+    margin: 0 0 4rem;
 }
 
 .basic-h3 {
@@ -184,7 +182,13 @@ body {
 }
 
 .basic-txt {
-    color: $neptune;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    p {
+        margin: 1em 0;
+        font-size: 2.5rem;
+        line-height: 3.2rem;
+    }
 }
 
 .saturn {
@@ -478,9 +482,9 @@ a {
         margin-bottom: 40px;
     }
     .basic-h2 {
-        font-size: 5.2rem;
-        line-height: 62px;
-        margin-bottom: 40px;
+        font-size: 8rem;
+        line-height: 8rem;
+        margin-bottom: 6rem;
     }
     .basic-h3 {
         font-size: 4.4rem;

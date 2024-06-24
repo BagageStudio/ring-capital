@@ -5,7 +5,7 @@
                 <h2 class="vitality-title">{{ data.vitalityTitle }}</h2>
                 <h3 class="vitality-subtitle" v-html="data.vitalitySubtitle"></h3>
                 <div class="bottom-vitality">
-                    <div class="vitality-intro" v-html="data.vitalityIntro"></div>
+                    <div class="vitality-intro basic-txt" v-html="data.vitalityIntro"></div>
                     <div class="vitality-numbers">
                         <div
                             v-for="vitalityNumber in data.vitalityNumbers"
@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-vitality {
     margin-top: 6rem;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
 }
 .vitality {
     container-type: inline-size;
@@ -75,8 +75,6 @@ export default {
 }
 .vitality-intro {
     padding: 0 var(--gutter);
-    font-size: 2.5rem;
-    line-height: 3.2rem;
 }
 .vitality-numbers {
     display: flex;

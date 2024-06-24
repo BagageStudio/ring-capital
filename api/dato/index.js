@@ -273,18 +273,8 @@ export const homepageQuery = `
             podcastSelection {
                 id
                 name
-                image {
-                    ${img}
-                }
-                description
-                date
+                subtitle
                 readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
                 link {
                     ...link
                 }

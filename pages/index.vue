@@ -3,6 +3,7 @@
         <HomeVitality :data="data" />
         <HomeInvestmentStrategy :data="data" />
         <HomeEcosystem :data="data" />
+        <HomePodcast :data="data" />
     </div>
 </template>
 

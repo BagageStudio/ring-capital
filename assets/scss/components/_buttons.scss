@@ -168,3 +168,16 @@
     border: 1px solid currentColor;
     border-radius: 100px;
 }
+
+.btn-underlined {
+    display: inline-flex;
+    font-family: var(--urbanist);
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid currentColor;
+}

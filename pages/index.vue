@@ -5,6 +5,7 @@
         <HomeInvestmentStrategy :data="data" />
         <HomeEcosystem :data="data" />
         <HomePodcast :data="data" />
+        <HomeNewsletter :data="data" />
     </div>
 </template>
 

@@ -5,7 +5,9 @@
                 <div class="wrapper-txt">
                     <h2 class="podcast-title basic-h2">{{ data.podcastTitle }}</h2>
                     <div class="podcast-intro basic-txt" v-html="data.podcastIntro"></div>
-                    <LinkTo v-if="isDesktop" class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
+                    <div v-if="isDesktop" class="podcast-btn">
+                        <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
+                    </div>
                 </div>
                 <div class="wrapper-podcasts">
                     <HomeBlockPodcast
@@ -66,6 +68,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    max-width: 600px;
     margin-top: 4rem;
     padding: 0 var(--gutter);
 }
@@ -101,15 +104,30 @@ export default {
         width: 50%;
     }
     .wrapper-podcasts {
+        max-width: 100%;
         margin-top: 0;
     }
-    .btn-all-episodes {
+    .podcast-btn {
         margin-top: 4rem;
     }
     .podcast-platforms {
         margin-top: 13rem;
         padding: 3rem 0.5rem;
         justify-content: space-evenly;
+    }
+}
+@media (min-width: $desktop-large) {
+    .wrapper-txt {
+        padding: 0;
+    }
+    .podcast-title,
+    .podcast-intro,
+    .podcast-btn {
+        padding: 0 var(--gutter);
+    }
+    .podcast-intro,
+    .podcast-btn {
+        width: calc(4 / 5 * 100%);
     }
 }
 </style>

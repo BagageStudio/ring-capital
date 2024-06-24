@@ -316,7 +316,9 @@ export const homepageQuery = `
             articleSelection {
                 id
                 title
-                readingTime
+                cover {
+                    ${img}
+                }
                 date
                 linkUrl
             }

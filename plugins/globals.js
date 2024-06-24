@@ -7,7 +7,7 @@ Vue.filter('formatDate', (date, i18n) => {
     const localeIso = iso.replace('_', '-');
     return new Date(date).toLocaleDateString(localeIso, {
         year: 'numeric',
-        month: 'long',
+        month: 'short',
         day: 'numeric'
     });
 });

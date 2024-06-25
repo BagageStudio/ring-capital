@@ -234,6 +234,7 @@ export const homepageQuery = `
                     height
                     width
                     alt
+                    format
                 }
             }
             vitalityTitle

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="hero"></div>
+        <HomeHero :data="data" />
         <HomeVitality :data="data" />
         <HomeInvestmentStrategy :data="data" />
         <HomeEcosystem :data="data" />
@@ -55,11 +55,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss" scoped>
-.hero {
-    width: 100vw;
-    height: 90vh;
-    background-color: #409875;
-}
-</style>

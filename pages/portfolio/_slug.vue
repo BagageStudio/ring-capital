@@ -368,4 +368,14 @@ export default {
         }
     }
 }
+@media (min-width: $desktop) {
+    .wrapper-infos {
+        padding-left: calc(var(--gutter) * 2);
+    }
+}
+@media (min-width: $desktop-large) {
+    .wrapper-infos {
+        padding-left: calc(var(--gutter) * 3);
+    }
+}
 </style>

@@ -161,13 +161,14 @@ export default {
         margin-top: 0;
     }
     .other-company {
-        padding: 4.5rem 0;
+        min-height: 12rem;
+        padding: 2rem 0;
         gap: 0;
     }
     .other-company-name {
         order: 1;
         flex: 0 0 auto;
-        width: calc(2 / 12 * 100%);
+        width: calc(3 / 12 * 100%);
         padding: 0 var(--gutter);
     }
     .other-company-title {
@@ -179,8 +180,9 @@ export default {
     .other-company-sector {
         order: 3;
         flex: 0 0 auto;
-        width: calc(3 / 12 * 100%);
+        width: calc(2 / 12 * 100%);
         padding: 0 var(--gutter);
+        gap: 1rem;
     }
     .other-company-arrow {
         order: 4;
@@ -189,6 +191,15 @@ export default {
         padding: 0 var(--gutter);
         display: flex;
         justify-content: flex-start;
+    }
+}
+@media (min-width: $desktop-large) {
+    .other-company-sector {
+        width: calc(3 / 12 * 100%);
+        gap: 2rem;
+    }
+    .other-company-name {
+        width: calc(2 / 12 * 100%);
     }
 }
 </style>

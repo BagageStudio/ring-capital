@@ -48,6 +48,10 @@ export default `
             slug
             _modelApiKey
         },
+        allPortfolioItems(locale: $lang, filter: {slug: {neq: null}}) {
+            slug
+            _modelApiKey
+        },
         useCasesPage(locale: $lang) {
             slug
             _modelApiKey

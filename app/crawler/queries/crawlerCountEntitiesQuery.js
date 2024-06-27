@@ -9,5 +9,8 @@ export default `
         _allCompaniesMeta(locale: $lang, filter: {slug: {neq: null}}) {
             count
         }
+        _allPortfolioItemsMeta(locale: $lang, filter: {slug: {neq: null}}) {
+            count
+        }
     }
 `;

@@ -1,20 +1,33 @@
 <template>
-    <div v-if="companies" class="wrapper-other-companies" :class="{ dark }">
-        <div class="container">
-            <div class="wrapper-title-btn">
-                <h2 v-if="title" class="other-refs-title h2">{{ title }}</h2>
-                <nuxt-link v-if="isL" class="btn-line" :class="{ 'on-white': !dark }" :to="portfolioListLink">
-                    <span class="deco"></span>
+    <div class="wrapper-other-companies">
+        <div class="wrapper-title-portfolio">
+            <h2 class="other-companies-title">{{ $t('portfolio.otherCompaniesTitle') }}</h2>
+            <div v-if="isDesktop" class="wrapper-portfolio-link content-pad">
+                <nuxt-link v-if="isDesktop" :to="portfolioListLink" class="btn-underlined">
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
             </div>
-            <LayoutDetailList class="no-margin-large grid-gutter fixed-height" :content="companies" hide-tags overlay />
-            <div v-if="!isL" class="wrapper-see-all">
-                <nuxt-link class="btn-line" :class="{ 'on-white': !dark }" :to="portfolioListLink">
-                    <span class="deco"></span>
-                    {{ $t('portfolio.seeAllLabel') }}
-                </nuxt-link>
-            </div>
+        </div>
+        <div class="other-companies">
+            <nuxt-link
+                v-for="company in companies"
+                :key="company.id"
+                :to="portfolioLink(company)"
+                class="other-company"
+            >
+                <h3 class="other-company-name">{{ company.name }}</h3>
+                <div class="other-company-arrow"><Icon name="arrow-diag" /></div>
+                <div class="other-company-title">{{ company.title }}</div>
+                <div class="other-company-sector">
+                    <span class="sector-title">{{ $t('portfolio.sectorTitle') }}</span>
+                    <span class="sector-content">{{ company.sector }}</span>
+                </div>
+            </nuxt-link>
+        </div>
+        <div v-if="!isDesktop" class="wrapper-portfolio-link content-pad">
+            <nuxt-link :to="portfolioListLink" class="btn-underlined">
+                {{ $t('portfolio.seeAllLabel') }}
+            </nuxt-link>
         </div>
     </div>
 </template>
@@ -27,16 +40,6 @@ export default {
         companies: {
             type: Array,
             required: true
-        },
-        title: {
-            type: String,
-            required: false,
-            default: ''
-        },
-        dark: {
-            type: Boolean,
-            required: false,
-            default: false
         }
     },
     data() {
@@ -47,9 +50,18 @@ export default {
         };
     },
     computed: {
-        isL() {
+        isDesktop() {
             if (!this.$store.state.superWindow) return true;
             return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
+        }
+    },
+    methods: {
+        portfolioLink(detail) {
+            if (!detail.slug) return '';
+            return this.localePath({
+                name: routeByApiModels[detail._modelApiKey].routerFormat,
+                params: { slug: detail.slug }
+            });
         }
     }
 };
@@ -57,40 +69,126 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper-other-companies {
-    --color: #{$orbit};
-    --backgroundColor: #{$white};
-    &.dark {
-        --color: #{$white};
-        --backgroundColor: #{$dark};
-    }
-    padding: 60px 0;
-    color: var(--color);
-    background: var(--backgroundColor);
+    margin-top: 10rem;
 }
-.wrapper-title-btn {
+.other-companies-title {
+    font-family: var(--urbanist);
+    font-size: 5rem;
+    line-height: 5rem;
+    font-weight: 600;
+    margin: 0 0 4rem;
+    padding: 0 var(--gutter);
+}
+.wrapper-portfolio-link {
+    margin-top: 4rem;
+}
+.other-company {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 0 0 55px;
-    padding: 0 $gutter;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 4rem var(--gutter);
+    text-decoration: none;
+    &::before {
+        content: '';
+        position: absolute;
+        left: var(--gutter);
+        right: var(--gutter);
+        top: 0;
+        border-top: 1px solid currentColor;
+    }
+    &:last-child {
+        &::after {
+            content: '';
+            position: absolute;
+            left: var(--gutter);
+            right: var(--gutter);
+            bottom: 0;
+            border-bottom: 1px solid currentColor;
+        }
+    }
 }
-.other-refs-title {
-    margin: 0 20px 0 0;
+.other-company-name {
+    flex: 1 1 auto;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 3.2rem;
 }
-.wrapper-see-all {
+.other-company-arrow {
+    .icon {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}
+.other-company-title {
+    flex: 0 0 auto;
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.1rem;
+}
+.other-company-sector {
     display: flex;
-    justify-content: center;
-    padding: 50px $gutter 25px;
+    align-items: baseline;
+    gap: 2rem;
+}
+.sector-title {
+    font-family: var(--urbanist);
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+}
+.sector-content {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.1rem;
 }
 
 @media (min-width: $desktop-small) {
     .wrapper-other-companies {
-        padding: 130px 0 120px;
+        margin-top: 9rem;
     }
-}
-@media (min-width: $desktop) {
-    .wrapper-other-companies {
-        padding: 100px 0;
+    .wrapper-title-portfolio {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+    .wrapper-portfolio-link {
+        margin-top: 0;
+    }
+    .other-company {
+        padding: 4.5rem 0;
+        gap: 0;
+    }
+    .other-company-name {
+        order: 1;
+        flex: 0 0 auto;
+        width: calc(2 / 12 * 100%);
+        padding: 0 var(--gutter);
+    }
+    .other-company-title {
+        order: 2;
+        flex: 0 0 auto;
+        width: calc(6 / 12 * 100%);
+        padding: 0 var(--gutter);
+    }
+    .other-company-sector {
+        order: 3;
+        flex: 0 0 auto;
+        width: calc(3 / 12 * 100%);
+        padding: 0 var(--gutter);
+    }
+    .other-company-arrow {
+        order: 4;
+        flex: 0 0 auto;
+        width: calc(1 / 12 * 100%);
+        padding: 0 var(--gutter);
+        display: flex;
+        justify-content: flex-start;
     }
 }
 </style>

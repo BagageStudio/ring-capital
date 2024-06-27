@@ -76,11 +76,13 @@ export const routes = {
 
 export const routeByApiModels = {
     home: routes.home,
+    homepage: routes.home,
     page: routes.page,
     modular_page: routes.modularPage,
     team: routes.team,
     portfolio: routes.portfolio,
     company: routes.portfolioSingle,
+    portfolio_item: routes.portfolioSingle,
     fund: routes.fund,
     investors_page: routes.investorsPage,
     contact: routes.contact,

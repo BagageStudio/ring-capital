@@ -750,6 +750,49 @@ export const companyQuery = `
         }
     }`;
 
+export const portfolioItemQuery = `
+    query PortfolioItem($lang: SiteLocale, $slug: String) {
+        portfolioItem(locale: $lang, filter: { slug: { eq: $slug } }) {
+            ${seo}
+            ${locales}
+            name
+            title
+            description
+            logo {
+                ${img}
+            }
+            founders
+            location
+            websiteLink
+            websiteLinkLabel
+            fund {
+                id
+                name
+            }
+            social {
+                socialLinks {
+                    title
+                    iconName
+                    link
+                }
+            }
+            image {
+                ${img}
+            }
+            challenge
+            impact
+            way
+            otherCompanies {
+                _modelApiKey
+                id
+                name
+                title
+                slug
+                sector
+            }
+        }
+    }`;
+
 export const fundQuery = `
     ${linkFragment}
     query Fund($lang: SiteLocale, $slug: String) {

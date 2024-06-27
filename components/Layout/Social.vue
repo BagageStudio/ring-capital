@@ -32,55 +32,35 @@ export default {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    gap: 1rem 2rem;
     margin: 0;
     padding: 0;
     > li {
         flex: 0 0 auto;
-        margin: 7px 40px 0 0;
-    }
-    &.white {
-        .social-link {
-            fill: $white;
-        }
     }
 }
 .social-link {
     display: block;
-    fill: $neptune;
+    fill: currentColor;
     &.linkedin {
-        width: 24px;
-        height: 27px;
-        &:hover {
-            fill: #0077b5;
-        }
+        width: 15px;
+        height: 15px;
     }
     &.twitter {
-        width: 28px;
-        height: 24px;
-        &:hover {
-            fill: #55acee;
-        }
+        width: 15px;
+        height: 13px;
     }
     &.instagram {
-        width: 27px;
-        height: 27px;
-        &:hover {
-            fill: #e4405f;
-        }
+        width: 15px;
+        height: 15px;
     }
     &.facebook {
-        width: 27px;
-        height: 27px;
-        &:hover {
-            fill: #3b5999;
-        }
+        width: 15px;
+        height: 15px;
     }
     &.medium {
-        width: 32px;
-        height: 18px;
-        &:hover {
-            fill: #ffffff;
-        }
+        width: 15px;
+        height: 15px;
     }
     > svg {
         display: block;

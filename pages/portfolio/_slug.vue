@@ -1,109 +1,101 @@
 <template>
     <div>
         <div v-if="data">
-            <div class="wrapper-company" itemscope itemtype="http://schema.org/Organization">
-                <div class="container">
-                    <div class="wrapper-back">
-                        <nuxt-link class="btn-line" :to="portfolioListLink">
-                            <span class="deco"></span>
-                            {{ $t('portfolio.backLabel') }}
-                        </nuxt-link>
+            <div class="container" itemscope itemtype="http://schema.org/Organization">
+                <header class="company-header">
+                    <h1 class="company-name">{{ data.name }}</h1>
+                    <nuxt-link :to="portfolioListLink" class="company-close">
+                        <Icon name="cross" />
+                    </nuxt-link>
+                </header>
+                <div class="wrapper-intro-infos">
+                    <div class="wrapper-intro">
+                        <FastImage v-if="!isDesktop" class="company-image" :image="data.image" cover />
+                        <h2 class="company-title">{{ data.title }}</h2>
+                        <div
+                            class="company-description basic-txt"
+                            itemprop="description"
+                            v-html="data.description"
+                        ></div>
                     </div>
-                    <div class="wrapper-company-content">
-                        <div class="company-col col-left">
-                            <div v-if="data.image && !isM" class="wrapper-company-img">
-                                <FastImage class="company-img" :image="data.image" cover />
-                            </div>
-                            <h1 class="company-title h1" itemprop="name">{{ data.name }}</h1>
-                            <LayoutTags v-if="data.tags" class="company-tags inverted" :content="data.tags" />
-                            <div v-if="data.founders" class="wrapper-company-founders">
-                                <span class="founders-title">
-                                    {{ $t('portfolio.foundersTitle') }}
-                                </span>
-                                <span clas="founders" itemprop="founders">{{ data.founders }}</span>
-                            </div>
-                            <div
-                                v-if="data.largeDescription"
-                                class="company-description"
-                                itemprop="description"
-                                v-html="data.largeDescription"
-                            ></div>
-                            <blockquote v-if="data.quote" class="company-quote">{{ data.quote }}</blockquote>
-                            <LayoutKeyFigures :content="data.keyFigures" class="company-key-figures" />
-                            <a
-                                v-if="data.recruitmentPageLink"
-                                :href="data.recruitmentPageLink"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="company-hiring btn-line"
-                            >
-                                <span class="deco"></span>
-                                {{ $t('portfolio.hireLabel') }}
-                            </a>
+                    <div class="wrapper-infos">
+                        <div class="wrapper-company-logo">
+                            <FastImage class="company-logo" :image="data.logo" contains />
                         </div>
-                        <div class="company-col col-right">
-                            <div v-if="data.image && isM" class="wrapper-company-img">
-                                <FastImage class="company-img" :image="data.image" cover />
+                        <div class="company-infos">
+                            <div v-if="data.founders" class="company-info">
+                                <div class="info-title">{{ $t('portfolio.foundersTitle') }}</div>
+                                <div class="info-content" itemprop="founders">{{ data.founders }}</div>
                             </div>
-                            <div v-if="data.locations" class="wrapper-company-locations">
-                                <span class="location-title h3">{{ $t('portfolio.locationLabel') }}</span>
-                                <div class="company-locations" itemprop="contactPoints">
+                            <div v-if="data.location" class="company-info">
+                                <div class="info-title">{{ $t('portfolio.locationTitle') }}</div>
+                                <div class="info-content">{{ data.location }}</div>
+                            </div>
+                            <div v-if="data.websiteLink && data.websiteLinkLabel" class="company-info">
+                                <div class="info-title">{{ $t('portfolio.websiteTitle') }}</div>
+                                <div class="info-content">
                                     <a
-                                        v-for="location in data.locations"
-                                        :key="location.id"
-                                        :href="location.mapLink"
+                                        :href="data.websiteLink"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="location-link"
-                                        itemprop="address"
-                                        itemscope
-                                        itemtype="http://schema.org/PostalAddress"
+                                        class="company-website"
+                                        itemprop="url"
                                     >
-                                        <span class="location-city" itemprop="addressLocality">{{
-                                            location.city
-                                        }}</span>
-                                        <span class="location-address" itemprop="streetAddress">
-                                            {{ location.address }}
-                                        </span>
+                                        {{ data.websiteLinkLabel }}
                                     </a>
                                 </div>
                             </div>
-                            <div v-if="data.social || data.websiteLink" class="wrapper-social-website">
-                                <LayoutSocial :content="data.social" class="company-social" />
-                                <a
-                                    v-if="data.websiteLink && data.websiteLinkLabel"
-                                    :href="data.websiteLink"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="company-website h4"
-                                    itemprop="url"
-                                >
-                                    <span v-if="data.websiteLinkLabel" class="text">
-                                        <span class="btn-label">{{ data.websiteLinkLabel }}</span>
-                                    </span>
-                                </a>
+                            <div v-if="data.fund" class="company-info">
+                                <div class="info-title">{{ $t('portfolio.fundTitle') }}</div>
+                                <div class="info-content">{{ data.fund.name }}</div>
+                            </div>
+                            <div v-if="data.social" class="company-info">
+                                <div class="info-title">{{ $t('portfolio.socialsTitle') }}</div>
+                                <div class="info-content">
+                                    <LayoutSocial :content="data.social" class="company-social" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="wrapper-image-key-infos">
+                    <div v-if="isDesktop" class="wrapper-image">
+                        <FastImage class="company-image" :image="data.image" cover />
+                    </div>
+                    <div class="wrapper-key-infos">
+                        <div class="key-info">
+                            <h3 class="key-info-title">
+                                <span>{{ $t('portfolio.challengeFirstLine') }}</span>
+                                <span>{{ $t('portfolio.challengeSecondLine') }}</span>
+                            </h3>
+                            <div class="key-info-content" v-html="data.challenge"></div>
+                        </div>
+                        <div class="key-info">
+                            <h3 class="key-info-title">
+                                <span>{{ $t('portfolio.impactFirstLine') }}</span>
+                                <span>{{ $t('portfolio.impactSecondLine') }}</span>
+                            </h3>
+                            <div class="key-info-content" v-html="data.impact"></div>
+                        </div>
+                        <div class="key-info">
+                            <h3 class="key-info-title">
+                                <span>{{ $t('portfolio.wayFirstLine') }}</span>
+                                <span>{{ $t('portfolio.waySecondLine') }}</span>
+                            </h3>
+                            <div class="key-info-content" v-html="data.way"></div>
+                        </div>
+                    </div>
+                </div>
+                <LayoutLinkedCompanies :companies="data.otherCompanies" />
             </div>
-            <div v-if="data.believeAccordions.length > 0">
-                <VisionBelieve :content="data" />
-            </div>
-            <LayoutLinkedCompanies
-                v-if="data.otherCompanies.length"
-                :companies="data.otherCompanies"
-                :title="data.charity ? $t('portfolio.otherCharitiesTitle') : $t('portfolio.otherRefsTitle')"
-            />
         </div>
-        <LayoutOverlay />
     </div>
 </template>
 
 <script>
 import { routeByApiModels } from '~/app/crawler/routes';
 import { getIso, getSlug, setRouteParams } from '~/api/dato/helpers';
-import { companyQuery } from '~/api/dato';
+import { portfolioItemQuery } from '~/api/dato';
 import handleSeo from '~/assets/js/seo';
 
 export default {
@@ -119,8 +111,10 @@ export default {
 
         try {
             const {
-                data: { company: data }
-            } = await $dato.post('/', { query: companyQuery, variables: { lang, slug } }).then(({ data }) => data);
+                data: { portfolioItem: data }
+            } = await $dato
+                .post('/', { query: portfolioItemQuery, variables: { lang, slug } })
+                .then(({ data }) => data);
 
             finalData.data = data;
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
@@ -144,9 +138,9 @@ export default {
         };
     },
     computed: {
-        isM() {
+        isDesktop() {
             if (!this.$store.state.superWindow) return true;
-            return this.$store.state.superWindow.width >= this.$breakpoints.list.m;
+            return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
         }
     },
     head() {
@@ -155,232 +149,223 @@ export default {
         return {
             ...this.seo
         };
-    }
+    },
+    layout: 'popupLike'
 };
 </script>
 
 <style lang="scss" scoped>
-.wrapper-company {
-    padding: 10px 0 75px;
-}
-.wrapper-back {
-    margin-bottom: 30px;
-    padding: 0 $gutter;
-}
-.company-col {
-    padding: 0 $gutter;
-}
-.wrapper-company-img {
+.company-header {
     position: relative;
-    &::before {
-        content: '';
-        display: block;
-        padding-bottom: 100%;
-    }
-    .company-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-.company-title {
-    margin: 40px 0 0;
-}
-.company-tags {
-    margin: 0;
-}
-.wrapper-company-founders {
-    margin: 20px 0 0;
-    font-size: 1.4rem;
-    line-height: 24px;
-}
-.founders-title {
     display: flex;
     align-items: center;
-    color: $neptune;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem var(--gutter);
+}
+.company-name {
+    font-family: var(--urbanist);
+    font-size: 5rem;
+    line-height: 5rem;
+    font-weight: 600;
+}
+.company-close {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.3rem;
+    height: 6.3rem;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    .icon {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}
+.wrapper-intro-infos {
+    position: relative;
+    &::before,
     &::after {
         content: '';
-        position: relative;
-        top: -2px;
-        display: inline-block;
-        width: 40px;
-        height: 1px;
-        margin-left: 10px;
-        background-color: currentColor;
+        position: absolute;
+        left: var(--gutter);
+        right: var(--gutter);
     }
-    .deco {
+    &::before {
+        top: 0;
+        border-top: 1px solid currentColor;
+    }
+    &::after {
+        bottom: 0;
+        border-bottom: 1px solid currentColor;
+    }
+}
+.wrapper-intro {
+    padding: 4rem var(--gutter);
+}
+.company-image {
+    aspect-ratio: 1 / 0.9305;
+    margin-bottom: 3rem;
+}
+.company-title {
+    font-family: var(--urbanist);
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: 600;
+}
+.company-description {
+    margin-top: 3rem;
+    ::v-deep p {
+        margin: 0;
+    }
+    ::v-deep p + p {
+        margin-top: 1em;
+    }
+}
+.wrapper-infos {
+    position: relative;
+    padding: 4rem var(--gutter);
+    &::before {
+        content: '';
+        position: absolute;
+        left: var(--gutter);
+        right: var(--gutter);
+        top: 0;
+        border-top: 1px solid currentColor;
+    }
+}
+.wrapper-company-logo {
+    width: 23rem;
+    height: 8.3rem;
+    margin-bottom: 4rem;
+    padding: 2.4rem;
+    background: var(--brand-primary-blue);
+}
+.company-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.company-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.company-info {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+}
+.info-title {
+    font-family: var(--urbanist);
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    min-width: 10rem;
+}
+.info-content {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    a {
+        text-underline-offset: 2px;
+    }
+}
+.wrapper-key-infos {
+    padding: 0 var(--gutter);
+}
+.key-info {
+    padding: 4rem 0;
+    border-bottom: 1px solid currentColor;
+}
+.key-info-title {
+    display: block;
+    font-family: var(--urbanist);
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    > span {
+        display: block;
+        &:nth-child(2) {
+            color: #80807b;
+        }
+    }
+}
+.key-info-content {
+    ::v-deep p {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        margin: 0;
+    }
+    ::v-deep p + p {
+        margin-top: 1em;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .company-name {
+        font-size: 8rem;
+        line-height: 8rem;
+    }
+    .wrapper-intro-infos {
+        display: flex;
+    }
+    .wrapper-intro {
+        flex: 0 0 auto;
+        width: calc(8 / 12 * 100%);
+    }
+    .wrapper-infos {
+        flex: 0 0 auto;
+        width: calc(4 / 12 * 100%);
+        padding-left: calc(var(--gutter) * 3);
+        &::before {
+            left: var(--gutter);
+            right: auto;
+            bottom: 0;
+            border-top: 0;
+            border-left: 1px solid currentColor;
+        }
+    }
+    .company-title {
+        font-size: 5rem;
+        line-height: 5rem;
+    }
+    .wrapper-image-key-infos {
         position: relative;
         display: flex;
         align-items: center;
-        height: 15px;
-        width: 40px;
-        margin-left: 10px;
-        overflow: hidden;
-        &::before {
-            content: '';
-            height: 1px;
-            width: 40px;
-            background-color: currentColor;
-            transform-origin: 100% 50%;
-            transition: 0.2s ease-in;
-        }
+        padding: 6rem 0;
         &::after {
-            position: absolute;
             content: '';
-            left: -15px;
-            height: 15px;
-            width: 15px;
-            background-color: $dark;
-            border-radius: 50%;
+            position: absolute;
+            left: var(--gutter);
+            right: var(--gutter);
+            bottom: 0;
+            border-bottom: 1px solid currentColor;
         }
     }
-}
-.company-description {
-    margin: 40px 0;
-    color: $neptune;
-}
-.company-quote {
-    position: relative;
-    font-size: 2.2rem;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 28px;
-    padding: 0 0 0 27px;
-    border: none;
-    color: $white;
-    &::before {
-        content: '“';
-        position: absolute;
-        top: -5px;
-        left: 0;
-        font-size: 4.4rem;
-        font-weight: 300;
-        line-height: 50px;
+    .wrapper-image {
+        flex: 0 0 auto;
+        width: calc(8 / 12 * 100%);
+        padding: 0 var(--gutter);
     }
-}
-
-.company-hiring {
-    margin-top: 40px;
-    color: $saturn;
-}
-
-.wrapper-company-locations {
-    margin-top: 50px;
-    padding: 43px 0;
-    border-top: 1px solid rgba($neptune, 0.5);
-    border-bottom: 1px solid rgba($neptune, 0.5);
-}
-.location-title {
-    display: block;
-    margin: 0 0 15px;
-}
-.company-locations {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    width: calc(100% + #{2 * $gutter});
-    margin-left: -$gutter;
-}
-.location-link {
-    width: calc(50% - #{2 * $gutter});
-    margin: 0 $gutter;
-    text-decoration: none;
-    > span {
-        display: block;
+    .wrapper-key-infos {
+        flex: 0 0 auto;
+        width: calc(4 / 12 * 100%);
     }
-}
-.location-city {
-    font-size: 1.4rem;
-    font-weight: 400;
-    line-height: 24px;
-    color: $neptune;
-}
-.location-address {
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 21px;
-}
-
-.company-social {
-    margin-top: 13px;
-}
-
-.company-website {
-    display: inline-block;
-    margin: 20px 0 0;
-    text-decoration: none;
-    color: $neptune;
-    transition: color 0.2s ease-out;
-    &:hover {
-        color: $white;
-    }
-}
-
-@media (min-width: $tablet) {
-    .wrapper-company {
-        padding: 40px 0 100px;
-    }
-    .wrapper-company-content {
-        display: flex;
-        align-items: flex-start;
-    }
-    .wrapper-back {
-        margin-bottom: 55px;
-    }
-    .company-col {
-        width: math.percentage(math.div(4, 8));
-    }
-    .company-title {
-        margin-top: 0;
-    }
-    .wrapper-company-locations {
-        margin-top: 0;
-        padding-top: 30px;
-        border-top: none;
-    }
-}
-
-@media (min-width: $desktop) {
-    .company-col {
-        width: math.percentage(math.div(6, 12));
-    }
-    .col-right {
-        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
-    }
-    .wrapper-social-website {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        padding-top: 10px;
-    }
-    .company-social {
-        margin: 0;
-    }
-    .company-website {
-        margin: 10px 0;
-    }
-    .wrapper-company-founders {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-    }
-    .founders-title {
-        margin-right: 20px;
-    }
-}
-@media (min-width: $desktop-large) {
-    .wrapper-back {
-        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
-    }
-    .col-left {
-        padding-left: calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
-    }
-    .col-right {
-        padding: 0 calc(#{math.percentage(math.div(1, 12))} + #{$gutter});
+    .key-info {
+        &:first-child {
+            padding-top: 0;
+        }
+        &:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
     }
 }
 </style>

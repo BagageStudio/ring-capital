@@ -119,6 +119,23 @@ export const layoutQuery = `
                 }
             }
         }
+        footerReduced(locale: $lang) {
+            leftSideTitle
+            leftSideText
+            podcastTitle
+            youtubeLink
+            spotifyLink
+            applePodcastsLink
+            deezerLink
+            rightSideTitle
+            rightSideText
+            rightSideLink {
+                ...link
+            }
+            backgroundShape {
+                ${img}
+            }
+        }
     }
 `;
 

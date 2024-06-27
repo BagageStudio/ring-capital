@@ -1,6 +1,7 @@
 <template>
     <div class="main">
         <Nuxt />
+        <LayoutFooterReduced />
         <Svgs />
         <LayoutGrid v-if="$config.isDevEnv" />
         <LayoutOverlay class="layout-overlay" />

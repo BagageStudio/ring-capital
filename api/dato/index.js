@@ -119,6 +119,43 @@ export const layoutQuery = `
                 }
             }
         }
+        footerClassic(locale: $lang) {
+            topTitle
+            topLink {
+                ...link
+            }
+            linksColumn {
+                id
+                groupTitle
+                links {
+                    label
+                    title
+                    ...link
+                }
+            }
+            ringLogo {
+                ${img}
+            }
+            bCorporationLogo {
+                ${img}
+            }
+            bottomLinks {
+                links {
+                    label
+                    title
+                    ...link
+                }
+            }
+            copyText
+            linkedinLogo {
+                ${img}
+            }
+            linkedinLink
+            substackLogo {
+                ${img}
+            }
+            substackLink
+        }
         footerReduced(locale: $lang) {
             leftSideTitle
             leftSideText

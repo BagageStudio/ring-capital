@@ -310,6 +310,7 @@ export const homepageQuery = `
                 name
                 title
                 description
+                fullDescription
                 logoImage {
                     ${img}
                 }

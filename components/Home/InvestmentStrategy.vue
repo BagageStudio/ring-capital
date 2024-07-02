@@ -1,16 +1,19 @@
 <template>
-    <div class="wrapper-investment-strategy container">
-        <div class="container-small">
-            <h2 class="investment-strategy-title basic-h2">{{ data.investmentStrategyTitle }}</h2>
-            <div class="investment-strategy-intro basic-txt" v-html="data.investmentStrategyIntro"></div>
-            <div class="investment-strategy-funds">
-                <div v-for="fund in data.fundsSlides" :key="fund.id" class="investment-strategy-fund">
-                    <div class="fund-logo"><FastImage :image="fund.logoImage" contain /></div>
-                    <div class="fund-name">{{ fund.name }}</div>
-                    <div class="fund-description">{{ fund.description }}</div>
-                    <nuxt-link :to="fund.slug" :aria-label="fund.name" class="fund-btn btn-rounded">
-                        {{ data.learnMoreButtonLabel }}
-                    </nuxt-link>
+    <div class="wrapper-investment-strategy">
+        <FastImage class="background-shape" :image="data.investmentStrategyBackgroundShape" contains />
+        <div class="container">
+            <div class="container-small">
+                <h2 class="investment-strategy-title basic-h2">{{ data.investmentStrategyTitle }}</h2>
+                <div class="investment-strategy-intro basic-txt" v-html="data.investmentStrategyIntro"></div>
+                <div class="investment-strategy-funds">
+                    <div v-for="fund in data.fundsSlides" :key="fund.id" class="investment-strategy-fund">
+                        <div class="fund-logo"><FastImage :image="fund.logoImage" contain /></div>
+                        <div class="fund-name">{{ fund.name }}</div>
+                        <div class="fund-description">{{ fund.description }}</div>
+                        <nuxt-link :to="fund.slug" :aria-label="fund.name" class="fund-btn btn-rounded">
+                            {{ data.learnMoreButtonLabel }}
+                        </nuxt-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,7 +31,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper-investment-strategy {
-    margin: 10rem 0;
+    position: relative;
+    padding: 5rem 0;
+    > .container {
+        position: relative;
+    }
+}
+.background-shape {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 500px;
+    ::v-deep .image {
+        object-position: 0% 100%;
+    }
 }
 .investment-strategy-title {
     position: relative;

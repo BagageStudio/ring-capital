@@ -155,6 +155,9 @@ export const layoutQuery = `
                 ${img}
             }
             substackLink
+            backgroundShape {
+                ${img}
+            }
         }
         footerReduced(locale: $lang) {
             leftSideTitle
@@ -312,6 +315,9 @@ export const homepageQuery = `
                 }
             }
             learnMoreButtonLabel
+            investmentStrategyBackgroundShape {
+                ${img}
+            }
             ecosystemTitle
             ecosystemIntro
             ecosystemMosaic {
@@ -362,6 +368,9 @@ export const homepageQuery = `
                 link {
                     ...link
                 }
+            }
+            podcastBackgroundShape {
+                ${img}
             }
             newsletterTitle
             newsletterIntro

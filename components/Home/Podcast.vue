@@ -1,38 +1,41 @@
 <template>
-    <div class="wrapper-podcast container">
-        <div class="container-small">
-            <div class="wrapper-intro-episodes">
-                <div class="wrapper-txt">
-                    <h2 class="podcast-title basic-h2">{{ data.podcastTitle }}</h2>
-                    <div class="podcast-intro basic-txt" v-html="data.podcastIntro"></div>
-                    <div v-if="isDesktop" class="podcast-btn">
-                        <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
+    <div class="wrapper-podcast">
+        <FastImage class="background-shape" :image="data.podcastBackgroundShape" contains />
+        <div class="container">
+            <div class="container-small">
+                <div class="wrapper-intro-episodes">
+                    <div class="wrapper-txt">
+                        <h2 class="podcast-title basic-h2">{{ data.podcastTitle }}</h2>
+                        <div class="podcast-intro basic-txt" v-html="data.podcastIntro"></div>
+                        <div v-if="isDesktop" class="podcast-btn">
+                            <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
+                        </div>
+                    </div>
+                    <div class="wrapper-podcasts">
+                        <HomeBlockPodcast
+                            v-for="podcast in data.podcastSelection"
+                            :key="podcast.id"
+                            :data="podcast"
+                            :link-label="data.podcastLinkLabel"
+                        />
                     </div>
                 </div>
-                <div class="wrapper-podcasts">
-                    <HomeBlockPodcast
-                        v-for="podcast in data.podcastSelection"
-                        :key="podcast.id"
-                        :data="podcast"
-                        :link-label="data.podcastLinkLabel"
-                    />
+                <div v-if="!isDesktop" class="wrapper-all-episodes content-pad">
+                    <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
                 </div>
-            </div>
-            <div v-if="!isDesktop" class="wrapper-all-episodes content-pad">
-                <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />
-            </div>
-            <div class="wrapper-podcast-platforms content-pad">
-                <div class="podcast-platforms">
-                    <component
-                        :is="platform.link ? 'LinkTo' : 'div'"
-                        v-for="platform in data.podcastPlatforms"
-                        :key="platform.id"
-                        :link="platform.link"
-                        :hide-label="true"
-                        class="platform"
-                    >
-                        <FastImage class="platform-logo" :image="platform.logo" contains />
-                    </component>
+                <div class="wrapper-podcast-platforms content-pad">
+                    <div class="podcast-platforms">
+                        <component
+                            :is="platform.link ? 'LinkTo' : 'div'"
+                            v-for="platform in data.podcastPlatforms"
+                            :key="platform.id"
+                            :link="platform.link"
+                            :hide-label="true"
+                            class="platform"
+                        >
+                            <FastImage class="platform-logo" :image="platform.logo" contains />
+                        </component>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,7 +59,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper-podcast {
-    margin: 10rem 0;
+    position: relative;
+    padding: 5rem 0;
+    > .container {
+        position: relative;
+    }
+}
+.background-shape {
+    position: absolute;
+    top: -100px;
+    right: 0;
+    bottom: -100px;
+    width: 70%;
+    max-width: 500px;
+    ::v-deep .image {
+        object-position: 100% 0%;
+    }
 }
 .wrapper-txt {
     padding: 0 var(--gutter);
@@ -94,6 +112,11 @@ export default {
 }
 
 @media (min-width: $desktop) {
+    .background-shape {
+        ::v-deep .image {
+            object-position: 100% 50%;
+        }
+    }
     .wrapper-intro-episodes {
         display: flex;
         align-items: center;

@@ -1,5 +1,6 @@
 <template>
     <footer class="footer">
+        <FastImage class="background-shape" :image="data.backgroundShape" contains />
         <div class="footer-container container">
             <div v-if="data.topTitle || data.topLink" class="footer-top">
                 <div class="content-footer-top container-small content-pad">
@@ -85,6 +86,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.footer {
+    position: relative;
+}
+.background-shape {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 500px;
+    ::v-deep .image {
+        object-position: 100% 100%;
+    }
+}
 .footer-container {
     position: relative;
     &::before {
@@ -150,8 +165,8 @@ export default {
 }
 .footer-bottom {
     position: relative;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     &::before {
         content: '';
         position: absolute;
@@ -250,6 +265,10 @@ export default {
     .content-footer-top {
         flex-direction: row;
         justify-content: space-between;
+    }
+    .footer-bottom {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
     }
     .content-footer-bottom {
         flex-direction: row;

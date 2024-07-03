@@ -50,7 +50,10 @@
             <div class="footer-reduced-side content-pad">
                 <h4 class="footer-reduced-title">{{ data.rightSideTitle }}</h4>
                 <div class="footer-reduced-text" v-html="data.rightSideText"></div>
-                <LinkTo class="right-side-link btn-underlined" :link="data.rightSideLink" />
+                <LinkTo class="right-side-link btn-arrow" :link="data.rightSideLink" :hide-label="true">
+                    <span>{{ data.rightSideLink.label }}</span>
+                    <Icon name="arrow-diag" />
+                </LinkTo>
             </div>
         </div>
     </footer>

@@ -9,8 +9,9 @@
         </header>
         <span class="podcast-name basic-txt">{{ data.name }}</span>
         <div class="wrapper-podcast-link">
-            <LinkTo class="podcast-link btn-underlined" :link="data.link" :hide-label="true">
-                {{ linkLabel }}
+            <LinkTo class="podcast-link btn-arrow" :link="data.link" :hide-label="true">
+                <span>{{ linkLabel }}</span>
+                <Icon name="arrow-diag" />
             </LinkTo>
         </div>
     </div>

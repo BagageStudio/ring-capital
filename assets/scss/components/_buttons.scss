@@ -181,3 +181,22 @@
     padding-bottom: 0.8rem;
     border-bottom: 1px solid currentColor;
 }
+
+.btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--urbanist);
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    .icon {
+        flex: 0 0 auto;
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-left: 0.8rem;
+        fill: currentColor;
+    }
+}

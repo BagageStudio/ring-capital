@@ -13,9 +13,12 @@
                 v-for="company in companies"
                 :key="company.id"
                 :to="portfolioLink(company)"
+                :aria-label="company.name"
                 class="other-company"
             >
-                <h3 class="other-company-name">{{ company.name }}</h3>
+                <div class="other-company-logo">
+                    <div class="wrapper-logo"><FastImage :image="company.logo" class="logo" contains /></div>
+                </div>
                 <div class="other-company-arrow"><Icon name="arrow-diag" /></div>
                 <div class="other-company-title">{{ company.title }}</div>
                 <div class="other-company-sector">
@@ -85,7 +88,7 @@ export default {
 .other-company {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 2rem;
     padding: 4rem var(--gutter);
@@ -109,11 +112,17 @@ export default {
         }
     }
 }
-.other-company-name {
-    flex: 1 1 auto;
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 3.2rem;
+.other-company-logo {
+    flex: 0 0 auto;
+    width: calc(100% - 50px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    filter: brightness(0%);
+    ::v-deep .image {
+        max-width: 12rem;
+        max-height: 6rem;
+    }
 }
 .other-company-arrow {
     .icon {
@@ -161,26 +170,37 @@ export default {
         margin-top: 0;
     }
     .other-company {
+        align-items: center;
         min-height: 12rem;
         padding: 2rem 0;
         gap: 0;
     }
-    .other-company-name {
+    .other-company-logo {
         order: 1;
-        flex: 0 0 auto;
+        justify-content: space-between;
         width: calc(3 / 12 * 100%);
-        padding: 0 var(--gutter);
+        height: 10rem;
+        padding: 3rem calc(var(--gutter) + 5rem);
+        .wrapper-logo,
+        .logo {
+            width: 100%;
+            height: 100%;
+        }
+        ::v-deep .image {
+            max-width: 100%;
+            max-height: 100%;
+        }
     }
     .other-company-title {
         order: 2;
         flex: 0 0 auto;
-        width: calc(6 / 12 * 100%);
+        width: calc(5 / 12 * 100%);
         padding: 0 var(--gutter);
     }
     .other-company-sector {
         order: 3;
         flex: 0 0 auto;
-        width: calc(2 / 12 * 100%);
+        width: calc(3 / 12 * 100%);
         padding: 0 var(--gutter);
         gap: 1rem;
     }
@@ -191,15 +211,6 @@ export default {
         padding: 0 var(--gutter);
         display: flex;
         justify-content: flex-start;
-    }
-}
-@media (min-width: $desktop-large) {
-    .other-company-sector {
-        width: calc(3 / 12 * 100%);
-        gap: 2rem;
-    }
-    .other-company-name {
-        width: calc(2 / 12 * 100%);
     }
 }
 </style>

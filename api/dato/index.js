@@ -853,6 +853,9 @@ export const portfolioItemQuery = `
                 title
                 slug
                 sector
+                logo {
+                    ${img}
+                }
             }
         }
     }`;

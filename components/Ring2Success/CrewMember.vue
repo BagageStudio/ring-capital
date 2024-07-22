@@ -54,6 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .crew-member {
+    text-decoration: none;
     &.has-bio,
     &.has-link {
         .crew-member-content {
@@ -81,7 +82,6 @@ export default {
             cursor: pointer;
         }
     }
-    text-decoration: none;
 }
 .crew-member-content {
     display: flex;

@@ -16,4 +16,5 @@ export default function ({ app }, inject) {
     gsap.ticker.lagSmoothing(0);
 
     inject('lenis', lenis);
+    inject('gsap', gsap);
 }

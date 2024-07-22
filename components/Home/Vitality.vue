@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper-vitality container">
+    <div ref="vitality" :style="{ '--scroll-offset': 0 }" class="wrapper-vitality container">
         <div class="container-small">
             <div class="vitality">
                 <h2 class="vitality-title">{{ data.vitalityTitle }}</h2>
@@ -28,6 +28,16 @@ export default {
             type: Object,
             required: true
         }
+    },
+    mounted() {
+        this.$gsap.to(this.$refs.vitality, {
+            scrollTrigger: {
+                trigger: this.$refs.vitality,
+                scrub: true
+            },
+            '--scroll-offset': 1,
+            ease: 'linear'
+        });
     }
 };
 </script>
@@ -48,7 +58,10 @@ export default {
     text-transform: uppercase;
     font-size: 22cqw;
     line-height: 0.7;
-    background-image: linear-gradient(#148668, #bfe593);
+    background-image: url('/img/big-ring-green.png');
+    // background-size: 150% auto;
+    background-size: calc(150% + 10% * var(--scroll-offset)) auto;
+    background-position: 50% calc(25% + 20% * var(--scroll-offset));
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }

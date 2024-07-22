@@ -119,7 +119,11 @@ export default {
     }
     .wrapper-intro-episodes {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        > .wrapper-txt {
+            position: sticky;
+            top: 200px;
+        }
     }
     .wrapper-txt,
     .wrapper-podcasts {

@@ -100,17 +100,6 @@ export default {
         object-position: 100% 100%;
     }
 }
-.footer-container {
-    position: relative;
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc(var(--gutter) * 2);
-        right: calc(var(--gutter) * 2);
-        border-top: 1px solid currentColor;
-    }
-}
 .footer-top {
     padding-top: 4rem;
     padding-bottom: 4rem;

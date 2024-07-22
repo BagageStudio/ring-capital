@@ -2,8 +2,8 @@
     <div class="wrapper-other-companies">
         <div class="wrapper-title-portfolio">
             <h2 class="other-companies-title">{{ $t('portfolio.otherCompaniesTitle') }}</h2>
-            <div v-if="isDesktop" class="wrapper-portfolio-link content-pad">
-                <nuxt-link v-if="isDesktop" :to="portfolioListLink" class="btn-underlined">
+            <div class="wrapper-portfolio-link content-pad">
+                <nuxt-link :to="portfolioListLink" class="btn-underlined">
                     {{ $t('portfolio.seeAllLabel') }}
                 </nuxt-link>
             </div>
@@ -19,17 +19,12 @@
                 <div class="other-company-logo">
                     <div class="wrapper-logo"><FastImage :image="company.logo" class="logo" contains /></div>
                 </div>
-                <div class="other-company-arrow"><Icon name="arrow-diag" /></div>
+                <div class="other-company-arrow"><Icon name="arrow-diag-light" /></div>
                 <div class="other-company-title">{{ company.title }}</div>
                 <div class="other-company-sector">
                     <span class="sector-title">{{ $t('portfolio.sectorTitle') }}</span>
                     <span class="sector-content">{{ company.sector }}</span>
                 </div>
-            </nuxt-link>
-        </div>
-        <div v-if="!isDesktop" class="wrapper-portfolio-link content-pad">
-            <nuxt-link :to="portfolioListLink" class="btn-underlined">
-                {{ $t('portfolio.seeAllLabel') }}
             </nuxt-link>
         </div>
     </div>
@@ -84,6 +79,7 @@ export default {
 }
 .wrapper-portfolio-link {
     margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 .other-company {
     position: relative;
@@ -126,8 +122,8 @@ export default {
 }
 .other-company-arrow {
     .icon {
-        width: 1.2rem;
-        height: 1.2rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }
 .other-company-title {
@@ -168,6 +164,7 @@ export default {
     }
     .wrapper-portfolio-link {
         margin-top: 0;
+        margin-bottom: 0;
     }
     .other-company {
         align-items: center;

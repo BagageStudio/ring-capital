@@ -1,19 +1,21 @@
 <template>
-    <div ref="vitality" :style="{ '--scroll-offset': 0 }" class="wrapper-vitality container">
+    <div ref="vitality" :style="{ '--scroll-parallax': 0, '--scroll-appear': 1 }" class="wrapper-vitality container">
         <div class="container-small">
             <div class="vitality">
                 <h2 class="vitality-title">{{ data.vitalityTitle }}</h2>
-                <h3 class="vitality-subtitle" v-html="data.vitalitySubtitle"></h3>
-                <div class="bottom-vitality">
-                    <div class="vitality-intro basic-txt" v-html="data.vitalityIntro"></div>
-                    <div class="vitality-numbers">
-                        <div
-                            v-for="vitalityNumber in data.vitalityNumbers"
-                            :key="vitalityNumber.id"
-                            class="vitality-number-content"
-                        >
-                            <span class="vitality-number">{{ vitalityNumber.number }}</span>
-                            <span class="vitality-content">{{ vitalityNumber.content }}</span>
+                <div class="vitality-text">
+                    <h3 class="vitality-subtitle" v-html="data.vitalitySubtitle"></h3>
+                    <div class="bottom-vitality">
+                        <div class="vitality-intro basic-txt" v-html="data.vitalityIntro"></div>
+                        <div class="vitality-numbers">
+                            <div
+                                v-for="vitalityNumber in data.vitalityNumbers"
+                                :key="vitalityNumber.id"
+                                class="vitality-number-content"
+                            >
+                                <span class="vitality-number">{{ vitalityNumber.number }}</span>
+                                <span class="vitality-content">{{ vitalityNumber.content }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +37,17 @@ export default {
                 trigger: this.$refs.vitality,
                 scrub: true
             },
-            '--scroll-offset': 1,
+            '--scroll-parallax': 1,
+            ease: 'linear'
+        });
+        this.$gsap.to(this.$refs.vitality, {
+            scrollTrigger: {
+                trigger: this.$refs.vitality,
+                scrub: true,
+                start: 'top bottom',
+                end: 'top top'
+            },
+            '--scroll-appear': 0,
             ease: 'linear'
         });
     }
@@ -59,11 +71,16 @@ export default {
     font-size: 22cqw;
     line-height: 0.7;
     background-image: url('/img/big-ring-green.png');
+    transform-origin: 50% 0%;
+    transform: translateY(calc(-20px * var(--scroll-appear))) scale(calc(1 + var(--scroll-appear) * 0.5));
     // background-size: 150% auto;
-    background-size: calc(150% + 10% * var(--scroll-offset)) auto;
-    background-position: 50% calc(25% + 20% * var(--scroll-offset));
+    background-size: calc(150% + 10% * var(--scroll-parallax)) auto;
+    background-position: 50% calc(25% + 10% * var(--scroll-parallax));
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.vitality-text {
+    transform: translateY(calc((-20px + 7vw) * var(--scroll-appear)));
 }
 .vitality-subtitle {
     padding: 0 var(--gutter);
@@ -137,8 +154,15 @@ export default {
 }
 
 @media (min-width: $desktop) {
+    .wrapper-vitality {
+        margin-top: 20rem;
+    }
+    .vitality-text {
+        transform: translateY(calc((-140px + 7vw) * var(--scroll-appear)));
+    }
     .vitality-title {
         margin-bottom: 6rem;
+        transform: translateY(calc(-140px * var(--scroll-appear))) scale(calc(1 + var(--scroll-appear) * 0.5));
     }
     .vitality-subtitle {
         font-size: 5rem;

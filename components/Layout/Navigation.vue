@@ -87,6 +87,9 @@ export default {
         }
     },
     watch: {
+        $route(r) {
+            if (this.showMenu) this.toggleMenu();
+        },
         isMobile() {
             this.headerFixed = false;
             this.headerVisible = false;

@@ -10,7 +10,7 @@
                 </header>
                 <div class="wrapper-intro-infos">
                     <div class="wrapper-intro">
-                        <FastImage v-if="!isDesktop" class="company-image" :image="data.image" cover />
+                        <FastImage class="company-image image-mobile" :image="data.image" cover />
                         <h2 class="company-title">{{ data.title }}</h2>
                         <div
                             class="company-description basic-txt"
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="wrapper-image-key-infos">
-                    <div v-if="isDesktop" class="wrapper-image">
+                <div ref="companyImageInfos" class="wrapper-image-key-infos" :style="{ '--scroll-appear': 1 }">
+                    <div class="wrapper-image image-desktop">
                         <FastImage class="company-image" :image="data.image" cover />
                     </div>
                     <div class="wrapper-key-infos">
@@ -142,6 +142,18 @@ export default {
             if (!this.$store.state.superWindow) return true;
             return this.$store.state.superWindow.width >= this.$breakpoints.list.l;
         }
+    },
+    mounted() {
+        this.$gsap.to(this.$refs.companyImageInfos, {
+            scrollTrigger: {
+                trigger: this.$refs.companyImageInfos,
+                scrub: true,
+                start: 'top 50%',
+                end: 'top -50%'
+            },
+            '--scroll-appear': 0,
+            ease: 'power4.out'
+        });
     },
     head() {
         if (!this.seo.title) this.seo.title = 'Ring Capital • ' + this.data.name;
@@ -307,7 +319,17 @@ export default {
     }
 }
 
+.image-desktop {
+    display: none;
+}
+
 @media (min-width: $desktop-small) {
+    .image-desktop {
+        display: block;
+    }
+    .image-mobile {
+        display: none;
+    }
     .company-name {
         font-size: 8rem;
         line-height: 8rem;
@@ -338,7 +360,6 @@ export default {
     .wrapper-image-key-infos {
         position: relative;
         display: flex;
-        align-items: center;
         padding: 6rem 0;
         &::after {
             content: '';
@@ -351,18 +372,29 @@ export default {
     }
     .wrapper-image {
         flex: 0 0 auto;
-        width: calc(8 / 12 * 100%);
+        width: calc((66.666% + 33.3333% * var(--scroll-appear)) + (var(--gutter) * 4) * var(--scroll-appear));
+        transform: translateX(calc((var(--gutter) * -2) * var(--scroll-appear)))
+            translateY(calc(-6rem * var(--scroll-appear)));
         padding: 0 var(--gutter);
+    }
+    .company-image {
+        height: calc(100% + 12rem * var(--scroll-appear));
+        aspect-ratio: unset;
+        margin-bottom: 0;
     }
     .wrapper-key-infos {
         flex: 0 0 auto;
         width: calc(4 / 12 * 100%);
     }
     .key-info {
-        &:first-child {
+        &:nth-child(1) {
             padding-top: 0;
         }
-        &:last-child {
+        &:nth-child(2) {
+            transform: translateX(calc(100px * var(--scroll-appear)));
+        }
+        &:nth-child(3) {
+            transform: translateX(calc(200px * var(--scroll-appear)));
             padding-bottom: 0;
             border-bottom: 0;
         }

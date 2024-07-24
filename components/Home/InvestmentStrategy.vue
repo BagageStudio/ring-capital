@@ -71,6 +71,9 @@ export default {
             if (!id && this.timer) this.killAnim();
         }
     },
+    beforeDestroy() {
+        this.killAnim();
+    },
     mounted() {
         this.slides = this.shuffle(this.data.fundsSlides);
         if (this.isDesktop) {
@@ -288,6 +291,7 @@ export default {
         flex: 0 0 auto;
         width: calc(5 / 10 * 100%);
         padding: 0;
+        z-index: 1;
     }
     .investment-strategy-fund {
         position: absolute;

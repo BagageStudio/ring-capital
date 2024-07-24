@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper-ecosystem container content-pad">
         <h2 class="ecosystem-title basic-h2">{{ data.ecosystemTitle }}</h2>
-        <div v-if="!isDesktop" class="ecosystem-intro basic-txt" v-html="data.ecosystemIntro"></div>
+        <div class="ecosystem-intro intro-mobile basic-txt" v-html="data.ecosystemIntro"></div>
         <div class="ecosystem">
             <component
                 :is="getTagName(tile)"
@@ -10,7 +10,7 @@
                 :data="tile"
                 class="tile"
             />
-            <div v-if="isDesktop" class="tile ecosystem-intro basic-txt" v-html="data.ecosystemIntro"></div>
+            <div class="tile ecosystem-intro intro-desktop basic-txt" v-html="data.ecosystemIntro"></div>
         </div>
     </div>
 </template>
@@ -58,6 +58,8 @@ export default {
 .tile {
     border: 1px solid var(--txt);
     overflow: hidden;
+    transform: translateY(calc(50px * var(--scroll-appear)));
+    opacity: calc(1 - var(--scroll-appear));
     &:nth-child(1) {
         grid-column: 1 / 2;
         grid-row: 1 / 3;
@@ -97,6 +99,10 @@ export default {
     }
 }
 
+.intro-desktop {
+    display: none;
+}
+
 @media (min-width: $tablet) {
     .tile {
         &:nth-child(2) {
@@ -105,6 +111,12 @@ export default {
     }
 }
 @media (min-width: $desktop-small) {
+    .intro-desktop {
+        display: block;
+    }
+    .intro-mobile {
+        display: none;
+    }
     .ecosystem {
         grid-gap: 20px;
         grid-template-columns: repeat(4, 1fr);

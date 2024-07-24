@@ -1,5 +1,5 @@
 <template>
-    <div class="tile-image">
+    <div ref="tile" class="tile-image">
         <FastImage class="image" :image="data.image" cover />
         <span class="title">{{ data.title }}</span>
     </div>
@@ -12,6 +12,18 @@ export default {
             type: Object,
             required: true
         }
+    },
+    mounted() {
+        this.$gsap.to(this.$refs.tile, {
+            scrollTrigger: {
+                trigger: this.$refs.tile,
+                scrub: true,
+                start: 'top bottom',
+                end: 'bottom 80%'
+            },
+            '--scroll-appear': 0,
+            ease: 'linear'
+        });
     }
 };
 </script>
@@ -19,6 +31,7 @@ export default {
 .tile-image {
     position: relative;
     padding: 2rem;
+    --scroll-appear: 1;
 }
 .image {
     position: absolute;

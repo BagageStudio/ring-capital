@@ -1,5 +1,5 @@
 <template>
-    <div class="tile-quote">
+    <div ref="tile" class="tile-quote">
         <blockquote>
             <Icon name="quote" />
             <div class="quote" v-html="data.quote"></div>
@@ -17,6 +17,18 @@ export default {
             type: Object,
             required: true
         }
+    },
+    mounted() {
+        this.$gsap.to(this.$refs.tile, {
+            scrollTrigger: {
+                trigger: this.$refs.tile,
+                scrub: true,
+                start: 'top bottom',
+                end: 'bottom 80%'
+            },
+            '--scroll-appear': 0,
+            ease: 'linear'
+        });
     }
 };
 </script>
@@ -24,6 +36,7 @@ export default {
 .tile-quote {
     padding: 4rem;
     background: #22d3df;
+    --scroll-appear: 1;
 }
 blockquote {
     margin: 0;

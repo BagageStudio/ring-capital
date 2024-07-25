@@ -344,7 +344,6 @@ export default {
         background-color: transparent;
         color: var(--bg);
         padding: 0;
-        z-index: 1;
     }
     .header-container {
         padding: 40px 0;

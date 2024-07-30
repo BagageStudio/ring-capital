@@ -15,6 +15,7 @@ import { homepageQuery } from '~/api/dato';
 import handleSeo from '~/assets/js/seo';
 
 export default {
+    layout: 'home',
     async asyncData(context) {
         const { $dato, error, route } = context;
         const finalData = {};

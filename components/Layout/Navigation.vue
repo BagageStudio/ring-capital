@@ -2,7 +2,9 @@
     <header class="header">
         <div class="container header-container" :class="{ scrolled: headerScrolled }">
             <div class="header-inner content-pad">
-                <Logo class="header-logo" />
+                <nuxt-link to="/">
+                    <Logo class="header-logo" />
+                </nuxt-link>
                 <div v-if="data.quickMenu.length" class="quick-menu">
                     <LinkTo
                         v-for="quickLink in data.quickMenu"
@@ -353,8 +355,10 @@ export default {
         position: fixed;
         box-shadow: none;
         background-color: transparent;
-        color: var(--bg);
         padding: 0;
+        &.white-color {
+            color: var(--bg);
+        }
     }
     .header-container {
         padding: 40px 0;
@@ -375,8 +379,10 @@ export default {
         }
     }
     .burger {
-        border: none;
-        background-color: rgba(#fffcf0, 0.2);
+        .white-color & {
+            border: none;
+            background-color: rgba(#fffcf0, 0.2);
+        }
     }
 
     .menu {

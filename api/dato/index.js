@@ -516,26 +516,25 @@ export const modularPageQuery = `
     }`;
 
 export const contactQuery = `
+    ${linkFragment}
     query Contact($lang: SiteLocale) {
         contact(locale: $lang) {
             ${seo}
             ${locales}
             title
-            mailTitle
-            mail
             socialTitle
-            social {
-                socialLinks {
-                title
-                iconName
-                link
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
                 }
             }
             locationTitle
             location
-            locationLink
-            image {
-                ${img}
+            contactButton {
+                ...link
             }
         }
     }`;

@@ -1,7 +1,6 @@
 <template>
     <div>
         <component :is="'Templates' + template" v-if="template" :data="data" />
-        <LayoutOverlay />
     </div>
 </template>
 
@@ -22,7 +21,7 @@ export default {
         const layoutTemplate = slugToModelApiKey[layoutLang][layoutSlug];
 
         if (layoutTemplate === 'contact') {
-            return 'minimal';
+            return 'footerless';
         }
     },
     async asyncData(context) {

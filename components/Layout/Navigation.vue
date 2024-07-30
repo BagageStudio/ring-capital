@@ -139,10 +139,16 @@ export default {
     left: 0;
     right: 0;
     padding: 30px 0;
-    background-color: var(--bg);
     box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
         0px 6px 5px 0px rgba(31, 31, 31, 0.02);
     z-index: 10;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--bg);
+        z-index: -1;
+    }
 }
 
 .header-inner {
@@ -228,12 +234,14 @@ export default {
     background-color: var(--bg);
     z-index: -1;
     pointer-events: none;
-    opacity: 0;
+    transform: translateY(-100%);
     color: var(--txt);
     box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
         0px 6px 5px 0px rgba(31, 31, 31, 0.02);
+    transition: transform 0.3s ease-in-out;
+    z-index: -2;
     &.show {
-        opacity: 1;
+        transform: translateY(0%);
         pointer-events: auto;
     }
     .nuxt-link-exact-active {
@@ -251,26 +259,14 @@ export default {
     padding: 30px 0;
 }
 
-.submenu-items {
-    display: none;
-}
-
 .menu-item {
     &:not(:last-child) {
         margin-bottom: 30px;
     }
-    &.open {
-        .submenu-items {
-            display: block;
-        }
-        .menu-item-label {
-            color: #148668;
-            border-bottom: 1px solid currentColor;
-        }
-    }
 }
 
 .menu-item-label {
+    position: relative;
     width: 100%;
     text-align: left;
     font-family: var(--urbanist);
@@ -279,12 +275,24 @@ export default {
     font-size: 25px;
     line-height: 1;
     text-decoration: none;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .submenu {
     .menu-item-label {
-        padding-bottom: 10px;
-        margin-bottom: 20px;
+        transition: color 0.2s ease-in-out;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            right: 0;
+            background-color: currentColor;
+            transform-origin: 0 0;
+            transition: transform 0.2s ease-in-out;
+        }
     }
 }
 
@@ -326,6 +334,9 @@ export default {
 }
 
 @media (min-width: $desktop) {
+    .header::before {
+        content: none;
+    }
     .quick-menu {
         display: flex;
     }
@@ -375,6 +386,10 @@ export default {
         margin: 0;
         padding-top: 0;
         z-index: 1;
+        transform: translateX(100%);
+        &.show {
+            transform: translateX(0%);
+        }
     }
 
     .menu-overlay {
@@ -394,6 +409,32 @@ export default {
     }
     .socials {
         margin-top: auto;
+    }
+
+    .submenu-items {
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.2s ease-in-out;
+    }
+    .submenu {
+        .menu-item-label {
+            &::after {
+                transform: scaleX(0);
+            }
+        }
+    }
+    .menu-item {
+        &.open {
+            .submenu-items {
+                max-height: 250px;
+            }
+            .menu-item-label {
+                color: #148668;
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
     }
     .menu-item-label {
         font-weight: 700;

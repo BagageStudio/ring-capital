@@ -192,6 +192,13 @@ export default {
 <style lang="scss" scoped>
 .hero {
     position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.15);
+        z-index: 2;
+    }
 }
 .videos {
     position: absolute;
@@ -248,10 +255,13 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    font-family: var(--urbanist);
-    font-size: 3.5rem;
-    line-height: 3.5rem;
-    font-weight: 600;
+    > p {
+        margin: 0;
+        font-family: var(--urbanist);
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        font-weight: 600;
+    }
 }
 .subtitle-part,
 .subtitle-ring {

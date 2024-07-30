@@ -18,13 +18,13 @@
                 <h1 class="hero-title" v-html="$options.filters.noPAround(data.title)"></h1>
                 <div class="subtitles-wrapper">
                     <div class="subtitles">
-                        <div
-                            v-for="slide in data.heroSlides"
-                            :key="slide.id"
-                            ref="subtitles"
-                            class="subtitle"
-                            v-html="$options.filters.noPAround(slide.title)"
-                        ></div>
+                        <div v-for="slide in data.heroSlides" :key="slide.id" ref="subtitles" class="subtitle">
+                            <p class="first-line-subtitle">
+                                <span class="subtitle-part">{{ slide.firstPartTitle }}</span>
+                                <span class="subtitle-ring">ring</span>
+                            </p>
+                            <p class="subtitle-part">{{ slide.secondPartTitle }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,11 @@ export default {
         this.changeSlide(0);
     },
     methods: {
+        formattedSubtitle(subtitle) {
+            const sub = subtitle.replace('<span>', '').replace('</span>', '');
+            console.log(sub);
+            return sub;
+        },
         prevSlide() {
             const prevIndex = this.currentSlide === 0 ? this.data.heroSlides.length - 1 : this.currentSlide - 1;
             this.changeSlide(prevIndex);
@@ -105,12 +110,20 @@ export default {
                 });
             }
             if (currentSubtitle) {
-                this.$gsap.to(currentSubtitle, {
-                    duration: 0.7,
-                    autoAlpha: 0,
-                    ease: 'power2.inOut',
-                    overwrite: true
-                });
+                this.$gsap.to(
+                    [
+                        ...currentSubtitle.getElementsByClassName('subtitle-ring'),
+                        ...currentSubtitle.getElementsByClassName('subtitle-part')
+                    ].reverse(),
+                    {
+                        duration: 0.3,
+                        stagger: 0.1,
+                        autoAlpha: 0,
+                        y: 30,
+                        ease: 'power2.inOut',
+                        overwrite: true
+                    }
+                );
             }
 
             // Reappear
@@ -146,13 +159,19 @@ export default {
                 }
             );
             this.$gsap.fromTo(
-                nextSubtitle,
+                [
+                    ...nextSubtitle.getElementsByClassName('subtitle-ring'),
+                    ...nextSubtitle.getElementsByClassName('subtitle-part')
+                ].reverse(),
                 {
-                    autoAlpha: 0
+                    autoAlpha: 0,
+                    y: -30
                 },
                 {
+                    stagger: 0.3,
                     duration: 0.7,
                     autoAlpha: 1,
+                    y: 0,
                     ease: 'power2.inOut',
                     delay: 0.1,
                     overwrite: true
@@ -233,7 +252,14 @@ export default {
     font-size: 3.5rem;
     line-height: 3.5rem;
     font-weight: 600;
+}
+.subtitle-part,
+.subtitle-ring {
+    transform: translateY(-30px);
     opacity: 0;
+}
+.first-line-subtitle {
+    display: flex;
 }
 .wrapper-arrows {
     display: flex;

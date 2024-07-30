@@ -286,6 +286,8 @@ export const homepageQuery = `
             heroSlides {
                 id
                 title
+                firstPartTitle
+                secondPartTitle
                 video {
                     url
                     height

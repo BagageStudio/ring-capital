@@ -72,5 +72,9 @@ export default `
             slug
             _modelApiKey
         },
+        mediaList(locale: $lang) {
+            slug
+            _modelApiKey
+        },
     }
 `;

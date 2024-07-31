@@ -3,7 +3,7 @@
         <FastImage class="background-shape" :image="data.investmentStrategyBackgroundShape" contains />
         <div class="container">
             <div class="container-small">
-                <h2 class="investment-strategy-title basic-h2">{{ data.investmentStrategyTitle }}</h2>
+                <h2 class="investment-strategy-title basic-h1">{{ data.investmentStrategyTitle }}</h2>
                 <div class="investment-strategy-intro basic-txt" v-html="data.investmentStrategyIntro"></div>
                 <div class="wrapper-buttons-funds">
                     <div class="funds-buttons">

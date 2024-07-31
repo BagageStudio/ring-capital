@@ -3,7 +3,7 @@
         <div class="container-small">
             <div class="wrapper-intro-newsletters">
                 <div class="wrapper-txt">
-                    <h2 class="newsletter-title basic-h2">{{ data.newsletterTitle }}</h2>
+                    <h2 class="newsletter-title basic-h1">{{ data.newsletterTitle }}</h2>
                     <div class="newsletter-intro basic-txt" v-html="data.newsletterIntro"></div>
                     <LinkTo v-if="isDesktop" class="btn-subscribe btn-rounded" :link="data.newsletterSubscribeLink" />
                 </div>

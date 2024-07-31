@@ -112,5 +112,12 @@ export default `
                 value
             }
         }
+        mediaList{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
     }
 `;

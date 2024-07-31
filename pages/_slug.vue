@@ -6,7 +6,6 @@
 
 <script>
 import { camalize, pascalize } from '@stereorepo/sac';
-import { forEach } from '@stereorepo/sac/src/core';
 import { getIso, getSlug, setRouteParams } from '~/api/dato/helpers';
 
 import slugToModelApiKey from '~/api/dato/helpers/slugToModelApiKey.json';
@@ -15,6 +14,7 @@ import handleSeo from '~/assets/js/seo';
 import { routeByApiModels } from '~/app/crawler/routes';
 
 export default {
+    name: 'Slug',
     layout(context) {
         const layoutLang = getIso.call(context);
         const layoutSlug = getSlug.call(context);
@@ -45,6 +45,7 @@ export default {
             finalData.data = data[camalize(finalData.template)];
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
+            if (finalData.template === 'MediaList') finalData.data.allMediaContents = data.allMediaContents;
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }

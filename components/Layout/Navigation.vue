@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <div class="container header-container" :class="{ scrolled: headerScrolled }">
+        <div class="container header-container" :class="{ scrolled: headerScrolled, open: isMobile && showMenu }">
             <div class="header-inner content-pad">
                 <nuxt-link to="/">
                     <Logo class="header-logo" />
@@ -85,7 +85,8 @@ export default {
             return this.$store.state.scroll.scrollTop;
         },
         headerScrolled() {
-            return this.scrollTop > 300;
+            const scrollTreshold = this.isMobile ? 100 : 300;
+            return this.scrollTop > scrollTreshold;
         }
     },
     watch: {
@@ -140,17 +141,7 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    padding: 30px 0;
-    box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
-        0px 6px 5px 0px rgba(31, 31, 31, 0.02);
     z-index: 10;
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: var(--bg);
-        z-index: -1;
-    }
 }
 
 .header-inner {
@@ -158,6 +149,49 @@ export default {
     align-items: center;
     width: 100%;
     justify-content: space-between;
+}
+
+.header-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--bg);
+        z-index: -2;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+        box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
+            0px 6px 5px 0px rgba(31, 31, 31, 0.02);
+    }
+    .white-color & {
+        color: var(--bg);
+    }
+    &.scrolled {
+        &::before {
+            opacity: 1;
+        }
+        .white-color & {
+            color: var(--txt);
+            .burger {
+                border: 1px solid var(--txt);
+                background-color: transparent;
+            }
+        }
+    }
+    &.open {
+        .white-color & {
+            color: var(--txt);
+        }
+    }
+}
+
+.burger {
+    .white-color & {
+        border: none;
+        background-color: rgba(#fffcf0, 0.2);
+    }
 }
 
 .header-logo {
@@ -236,14 +270,14 @@ export default {
     background-color: var(--bg);
     z-index: -1;
     pointer-events: none;
-    transform: translateY(-100%);
+    transform: translateX(100%);
     color: var(--txt);
     box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
         0px 6px 5px 0px rgba(31, 31, 31, 0.02);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     z-index: -2;
     &.show {
-        transform: translateY(0%);
+        transform: translateX(0%);
         pointer-events: auto;
     }
     .nuxt-link-exact-active {
@@ -336,9 +370,6 @@ export default {
 }
 
 @media (min-width: $desktop) {
-    .header::before {
-        content: none;
-    }
     .quick-menu {
         display: flex;
     }
@@ -356,32 +387,26 @@ export default {
         box-shadow: none;
         background-color: transparent;
         padding: 0;
-        &.white-color {
-            color: var(--bg);
-        }
+    }
+    .header-logo {
+        height: 40px;
     }
     .header-container {
         padding: 40px 0;
         transition: 0.2s ease-out;
+        &::before {
+            content: none;
+        }
         &.scrolled {
             padding: 20px 0;
             box-shadow: 0px 84px 80px 0px rgba(31, 31, 31, 0.05), 0px 19px 18px 0px rgba(31, 31, 31, 0.03),
                 0px 6px 5px 0px rgba(31, 31, 31, 0.02);
             background-color: var(--bg);
             color: var(--txt);
-            .header-logo {
-                height: 40px;
-            }
             .burger {
                 background-color: transparent;
                 border: 1px solid var(--txt);
             }
-        }
-    }
-    .burger {
-        .white-color & {
-            border: none;
-            background-color: rgba(#fffcf0, 0.2);
         }
     }
 
@@ -392,10 +417,6 @@ export default {
         margin: 0;
         padding-top: 0;
         z-index: 1;
-        transform: translateX(100%);
-        &.show {
-            transform: translateX(0%);
-        }
     }
 
     .menu-overlay {

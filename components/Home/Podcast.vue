@@ -5,7 +5,7 @@
             <div class="container-small">
                 <div class="wrapper-intro-episodes">
                     <div class="wrapper-txt">
-                        <h2 class="podcast-title basic-h2">{{ data.podcastTitle }}</h2>
+                        <h2 class="podcast-title basic-h1">{{ data.podcastTitle }}</h2>
                         <div class="podcast-intro basic-txt" v-html="data.podcastIntro"></div>
                         <div v-if="isDesktop" class="podcast-btn">
                             <LinkTo class="btn-all-episodes btn-rounded" :link="data.podcastAllEpisodesLink" />

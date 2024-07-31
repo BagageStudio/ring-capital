@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper-ecosystem container content-pad">
-        <h2 class="ecosystem-title basic-h2">{{ data.ecosystemTitle }}</h2>
+        <h2 class="ecosystem-title basic-h1">{{ data.ecosystemTitle }}</h2>
         <div class="ecosystem-intro intro-mobile basic-txt" v-html="data.ecosystemIntro"></div>
         <div class="ecosystem">
             <component

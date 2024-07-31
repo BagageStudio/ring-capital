@@ -1412,6 +1412,45 @@ export const jobsPageQuery = `
         }
     }`;
 
+export const mediaListQuery = `
+    ${linkFragment}
+    query MediaList($lang: SiteLocale) {
+        mediaList(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            filterText
+            mediaTypes {
+                mediaType
+                title
+                description
+                extraTitle
+                extraLinks {
+                    image {
+                        ${img}
+                    }
+                    link {
+                        ...link
+                    }
+                }
+            }
+            moreTitle
+            seeMoreText
+        }
+        allMediaContents {
+            id
+            title
+            mediaType
+            infos
+            image {
+                ${img}
+            }
+            link {
+                ...link
+            }
+        }
+    }`;
+
 // This is use by the `~/pages/_slug.vue` file to get the right query given a _modelApiKey
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
@@ -1431,7 +1470,8 @@ export const getQuery = _modelApiKey => {
         vision: visionQuery,
         jobs_page: jobsPageQuery,
         portfolio_tech: portfolioTechQuery,
-        blog: blogQuery
+        blog: blogQuery,
+        media_list: mediaListQuery
     };
     return mapping[_modelApiKey];
 };

@@ -1,14 +1,14 @@
 <template>
     <div v-if="data" class="wrapper-contact">
         <div class="container content-pad">
-            <h1 class="contact-title basic-h2" v-html="$options.filters.noPAround(data.title)"></h1>
+            <h1 class="contact-title basic-h1" v-html="$options.filters.noPAround(data.title)"></h1>
             <div class="contact-content">
                 <div v-if="data.locationTitle && data.location" class="contact-cell">
-                    <div class="cell-title">{{ data.locationTitle }}</div>
+                    <div class="cell-title basic-tag">{{ data.locationTitle }}</div>
                     <div class="cell-content">{{ data.location }}</div>
                 </div>
                 <div v-if="data.socialTitle && data.socials.length" class="contact-cell">
-                    <div class="cell-title">{{ data.socialTitle }}</div>
+                    <div class="cell-title basic-tag">{{ data.socialTitle }}</div>
                     <div class="cell-content socials">
                         <LinkTo
                             v-for="social in data.socials"
@@ -63,14 +63,6 @@ export default {
     align-items: center;
     padding: 4rem 2rem;
     border-top: 1px solid currentColor;
-}
-
-.cell-title {
-    margin-right: 4rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
 }
 
 .socials {

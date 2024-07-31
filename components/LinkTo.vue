@@ -1,6 +1,5 @@
 <template>
     <nuxt-link v-if="data && data.internalLink" :to="data.url" :aria-label="data.title">
-        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
@@ -13,7 +12,6 @@
         target="_blank"
         rel="noopener noreferrer"
     >
-        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>

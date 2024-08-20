@@ -44,25 +44,16 @@
                             {{ data.copyText }}
                         </span>
                     </div>
-                    <div class="bottom-socials">
-                        <a
-                            class="bottom-social linkedin"
-                            aria-label="LinkedIn"
-                            :href="data.linkedinLink"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                    <div v-if="data.socials.length" class="bottom-socials">
+                        <LinkTo
+                            v-for="social in data.socials"
+                            :key="social.link.id"
+                            class="bottom-social"
+                            :link="social.link"
+                            hide-label
                         >
-                            <FastImage :image="data.linkedinLogo" contains />
-                        </a>
-                        <a
-                            class="bottom-social substack"
-                            aria-label="Substack"
-                            :href="data.substackLink"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FastImage :image="data.substackLogo" contains />
-                        </a>
+                            <FastImage :image="social.image" />
+                        </LinkTo>
                     </div>
                 </div>
             </div>
@@ -189,16 +180,7 @@ export default {
     gap: 3rem;
 }
 .bottom-social {
-    &.linkedin {
-        .fast-image {
-            height: 2.5rem;
-        }
-    }
-    &.substack {
-        .fast-image {
-            height: 1.8rem;
-        }
-    }
+    height: 2.5rem;
     .fast-image {
         display: block;
         ::v-deep .image {

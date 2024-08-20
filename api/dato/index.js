@@ -147,14 +147,14 @@ export const layoutQuery = `
                 }
             }
             copyText
-            linkedinLogo {
-                ${img}
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
             }
-            linkedinLink
-            substackLogo {
-                ${img}
-            }
-            substackLink
             backgroundShape {
                 ${img}
             }

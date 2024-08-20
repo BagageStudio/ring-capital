@@ -45,9 +45,13 @@
                                     </a>
                                 </div>
                             </div>
-                            <div v-if="data.fund" class="company-info">
+                            <div v-if="data.fund.length" class="company-info">
                                 <div class="info-title">{{ $t('portfolio.fundTitle') }}</div>
-                                <div class="info-content">{{ data.fund.name }}</div>
+                                <div class="info-content">
+                                    <span v-for="(fund, index) in data.fund" :key="fund.name"
+                                        >{{ index > 0 ? ', ' : '' }}{{ fund.name }}</span
+                                    >
+                                </div>
                             </div>
                             <div v-if="data.social" class="company-info">
                                 <div class="info-title">{{ $t('portfolio.socialsTitle') }}</div>

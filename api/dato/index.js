@@ -559,6 +559,7 @@ export const teamQuery = `
                 image {
                     ${img}
                 }
+                ringColor
             }
             investorsTitle
             investorsSubtitle

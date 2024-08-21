@@ -815,6 +815,37 @@ export const companyQuery = `
         }
     }`;
 
+export const portfolioListQuery = `
+    query PortfolioList($lang: SiteLocale) {
+        portfolioList(locale: $lang) {
+            ${seo}
+            title
+            description
+            filterText
+            seeMoreText
+            companiesSoldText
+        }
+        allPortfolioItems(locale: $lang) {
+            _modelApiKey
+            slug
+            id
+            name
+            title
+            description
+            logo {
+                ${img}
+            }
+            fund {
+                id
+                name
+            }
+            sector
+            sold
+            soldTo
+            soldYear
+        }
+    }`;
+
 export const portfolioItemQuery = `
     query PortfolioItem($lang: SiteLocale, $slug: String) {
         portfolioItem(locale: $lang, filter: { slug: { eq: $slug } }) {

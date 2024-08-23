@@ -456,7 +456,7 @@ export default {
                 max-height: 250px;
             }
             .menu-item-label {
-                color: #148668;
+                color: var(--brand-primary-green);
                 &::after {
                     transform: scaleX(1);
                 }

@@ -88,7 +88,7 @@ export default {
     font-size: 4rem;
     line-height: 4.8rem;
     font-weight: 700;
-    color: #148668;
+    color: var(--brand-primary-green);
 }
 .bottom-vitality {
     position: relative;

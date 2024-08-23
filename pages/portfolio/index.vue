@@ -64,8 +64,6 @@ export default {
             finalData.portfolioItems = data.allPortfolioItems;
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
         } catch (e) {
-            console.log(e);
-
             return error({ statusCode: 404, message: e });
         }
 

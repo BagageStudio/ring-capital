@@ -19,7 +19,6 @@ export default function () {
                 }
             }
         );
-        console.log(data);
 
         const mapping = Object.entries(data).reduce((acc, model) => {
             const pages = model[1];

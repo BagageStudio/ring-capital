@@ -894,7 +894,6 @@ export const portfolioItemQuery = `
     }`;
 
 export const fundQuery = `
-    ${linkFragment}
     query Fund($lang: SiteLocale, $slug: String) {
         fund(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
@@ -902,17 +901,16 @@ export const fundQuery = `
             name
             title
             fullDescription
-            logo
-            color {
-                hex
+            description
+            theme
+            logoImage {
+                ${img}
             }
             keyFigures {
                 id
                 title
                 number
             }
-            targetsTitle
-            targetsDescription
             targetsFirstColumnTitle
             targetsFirstColumnItems {
                 id
@@ -923,57 +921,15 @@ export const fundQuery = `
                 id
                 text
             }
-            video {
-                title
-                text
-                videoUrl {
-                    providerUid
-                }
-            }
             companiesTitle
-            companies {
+            portfolioItems {
                 _modelApiKey
                 id
                 name
-                description
-                tags
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
+                title
                 slug
-            }
-            crewTitle
-            crewSections {
-                title
-                crewMembers {
-                    name
-                    description
-                    hasLinkedin
-                    link {
-                        ...link
-                    }
-                    image {
-                        ${img}
-                    }
-                }
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
+                sector
+                logo {
                     ${img}
                 }
             }

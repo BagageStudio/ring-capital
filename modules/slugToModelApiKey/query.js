@@ -14,6 +14,13 @@ export default `
                 value
             }
         }
+        allModulars{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
         contact{
             _modelApiKey
             _allSlugLocales{

@@ -2,6 +2,7 @@ import linkFragment from './fragments/link';
 
 import seo from './fields/seo';
 import img from './fields/img';
+import modules from './fields/modules';
 import locales from './fields/locales';
 
 export const layoutQuery = `
@@ -19,9 +20,9 @@ export const layoutQuery = `
                         }
                         social {
                             socialLinks {
-                            title
-                            iconName
-                            link
+                                title
+                                iconName
+                                link
                             }
                         }
                         newsTitle
@@ -407,110 +408,13 @@ export const pageQuery = `
 export const modularPageQuery = `
     ${linkFragment}
     query ModularPage($lang: SiteLocale, $slug: String) {
-        modularPage(locale: $lang, filter: { slug: { eq: $slug } }) {
+        modular(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
             ${locales}
             title
             subtitle
             modules {
-                ... on DoubleOrbitRecord {
-                    _modelApiKey
-                    id
-                    leftOrbitTitle
-                    leftOrbitContent
-                    rightOrbitTitle
-                    rightOrbitContent
-                    textUnder
-                    ellipse {
-                        ${img}
-                    }
-                }
-                ... on TextImageRecord {
-                    _modelApiKey
-                    id
-                    title
-                    text
-                    images {
-                        id
-                        ${img}
-                    }
-                }
-                ... on AccordionsModuleRecord {
-                    _modelApiKey
-                    id
-                    title
-                    image {
-                        ${img}
-                    }
-                    accordions {
-                        id
-                        title
-                        content
-                        picto {
-                            ${img}
-                        }
-                        link {
-                            __typename
-                            ...link
-                            ... on LinkFileRecord {
-                                label
-                                title
-                                file {
-                                    url
-                                }
-                            }
-                        }
-                    }
-                }
-                ... on MosaicRecord {
-                    _modelApiKey
-                    id
-                    title
-                    subtitle
-                    text
-                    link {
-                        ...link
-                    }
-                    topLeftImage {
-                        ${img}
-                    }
-                    bottomLeftImage {
-                        ${img}
-                    }
-                    rightMobileImage {
-                        ${img}
-                    }
-                }
-                ... on TextModuleRecord {
-                    _modelApiKey
-                    id
-                    text
-                }
-                ... on UseCasesModuleRecord {
-                    _modelApiKey
-                    id
-                    title
-                    subtitle
-                    useCases {
-                        id
-                        name
-                        image {
-                            ${img}
-                        }
-                        description
-                        date
-                        readingTime
-                        author {
-                            name
-                            image {
-                                ${img}
-                            }
-                        }
-                        link {
-                            ...link
-                        }
-                    }
-                }
+                ${modules}
             }
         }
     }`;
@@ -1444,7 +1348,7 @@ export const mediaListQuery = `
 export const getQuery = _modelApiKey => {
     const mapping = {
         page: pageQuery,
-        modular_page: modularPageQuery,
+        modular: modularPageQuery,
         contact: contactQuery,
         team: teamQuery,
         portfolio: portfolioQuery,

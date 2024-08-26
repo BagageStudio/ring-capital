@@ -10,15 +10,6 @@
         <div class="container members">
             <LayoutTeamCard v-for="member in members" :key="member.id" :content="member" />
         </div>
-        <!-- <div class="container">
-            <div class="hero-team">
-                <div class="wrapper-title">
-                    <h1 class="basic-h1 team-title" v-html="$options.filters.nestedTitle(data.title, true)"></h1>
-                    <p v-if="data.subtitle" class="basic-subtitle">{{ data.subtitle }}</p>
-                </div>
-            </div>
-            <LayoutDetailList class="shape-one" :content="data.members" random />
-        </div> -->
     </div>
 </template>
 

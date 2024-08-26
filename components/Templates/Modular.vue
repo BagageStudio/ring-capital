@@ -1,10 +1,12 @@
 <template>
     <div v-if="data" class="wrapper-page">
-        <img src="/img/ring-green.png" class="bg-img right" />
-        <img src="/img/ring-green.png" class="bg-img left" />
-        <div class="container content-pad hero-modular">
-            <h1 class="basic-h1" v-html="$options.filters.noPAround(data.title)"></h1>
-            <div v-if="data.subtitle" class="basic-h3" v-html="$options.filters.noPAround(data.subtitle)"></div>
+        <div v-if="data.title || data.subtitle" class="hero-wrapper">
+            <img src="/img/ring-green.png" class="bg-img right" />
+            <img src="/img/ring-green.png" class="bg-img left" />
+            <div class="container content-pad hero-modular">
+                <h1 v-if="data.title" class="basic-h1">{{ data.title }}</h1>
+                <div v-if="data.subtitle" class="basic-h3">{{ data.subtitle }}</div>
+            </div>
         </div>
         <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>
@@ -21,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-page {
     position: relative;
-    padding-top: 14rem;
+    padding-top: 9rem;
 }
 .bg-img {
     position: absolute;
@@ -39,7 +41,13 @@ export default {
     }
 }
 
+.hero-wrapper {
+    width: 100%;
+}
+
 .hero-modular {
+    padding-top: 4rem;
+    padding-bottom: 5px;
     text-align: center;
 }
 
@@ -56,6 +64,29 @@ export default {
     .hero-modular {
         width: 66.66%;
         margin: 0 auto;
+    }
+}
+
+@media (min-width: $desktop) {
+    .wrapper-page {
+        padding-top: 6.5rem;
+    }
+    .hero-modular {
+        padding-top: 16.5rem;
+        padding-bottom: 7.5rem;
+    }
+
+    .bg-img {
+        top: -13rem;
+        width: 38rem;
+        &.left {
+            left: 0rem;
+            transform: scaleX(-1);
+        }
+        &.right {
+            right: 0rem;
+            transform: rotate(0);
+        }
     }
 }
 </style>

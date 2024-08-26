@@ -167,4 +167,32 @@ export default `
             }
         }
     }
+    ... on LogosModuleRecord {
+        _modelApiKey
+        id
+        title
+        link {
+            __typename
+            ...link
+            ... on LinkFileRecord {
+                label
+                title
+                file {
+                    url
+                }
+            }
+        }
+        images {
+            ${img}
+        }
+    }
+    ... on FreeTextModuleRecord {
+        _modelApiKey
+        id
+        title
+        text
+        backgroundImage {
+            ${img}
+        }
+    }
 `;

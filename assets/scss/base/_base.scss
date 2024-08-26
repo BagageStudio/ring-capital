@@ -38,48 +38,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.wysiwyg h1,
-.h1 {
-    font-size: 4.4rem;
-    line-height: 50px;
-    font-weight: 300;
-    margin: 0 0 40px;
-}
-
-.wysiwyg h2,
-.h2 {
-    font-size: 3.4rem;
-    line-height: 30px;
-    font-weight: 300;
-    margin: 100px 0 40px;
-}
-
-.wysiwyg h3,
-.h3 {
-    font-size: 2.2rem;
-    line-height: 28px;
-    font-weight: 400;
-    margin: 40px 0 20px;
-}
-
-.wysiwyg h4,
-.h4 {
-    font-size: 1.8rem;
-    line-height: 26px;
-    font-weight: 400;
-    margin: 20px 0 10px;
-}
-
-.wysiwyg h5,
-.h5,
-.wysiwyg h6,
-.h6 {
-    font-size: 1.5rem;
-    line-height: 21px;
-    font-weight: 500;
-    margin: 20px 0 10px;
-}
-
 .wysiwyg ul {
     margin: 40px 0;
     padding: 0;
@@ -104,14 +62,14 @@ body {
     margin: 40px 0;
     padding: 0;
     li {
-        position: relative;
+        display: flex;
+        align-items: center;
         margin: 5px 0;
-        padding: 0 0 0 25px;
+        padding: 0 0 0 10px;
         &::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: $titan;
+            display: block;
+            margin-right: 10px;
+            color: var(--txt);
         }
     }
 }
@@ -121,7 +79,13 @@ body {
 }
 
 .wysiwyg a {
-    font-weight: 500;
+    font-weight: 700;
+}
+
+.wysiwyg {
+    h2, h3, h4 {
+        margin-bottom: 2rem;
+    }
 }
 
 .basic-h1 {
@@ -131,21 +95,21 @@ body {
     line-height: 6rem;
 }
 
-.basic-h2 {
+.basic-h2, .wysiwyg h2 {
     font-family: var(--urbanist);
     font-weight: 600;
     font-size: 4rem;
     line-height: 4rem;
 }
 
-.basic-h3 {
+.basic-h3, .wysiwyg h3 {
     font-family: var(--urbanist);
     font-weight: 600;
     font-size: 3.5rem;
     line-height: 3.5rem;
 }
 
-.basic-h4 {
+.basic-h4, .wysiwyg h4 {
     font-family: var(--urbanist);
     font-weight: 700;
     font-size: 2.5rem;
@@ -182,36 +146,6 @@ body {
         margin: 1em 0;
         font-size: 2.5rem;
         line-height: 3.2rem;
-    }
-}
-
-.saturn {
-    color: $saturn;
-}
-.neptune {
-    color: $neptune;
-}
-.orbit {
-    color: $orbit;
-}
-.strong-neptune {
-    strong {
-        color: $neptune;
-    }
-}
-.strong-saturn {
-    strong {
-        color: $saturn;
-    }
-}
-.strong-white {
-    strong {
-        color: $white;
-    }
-}
-.strong-titan {
-    strong {
-        color: $titan;
     }
 }
 
@@ -458,30 +392,6 @@ a {
 @media (min-width: $phone) {
     body {
         font-size: #{$text-size-desktop * 0.1}rem;
-    }
-    .wysiwyg h1,
-    .h1 {
-        font-size: 4rem;
-    }
-    .wysiwyg h2,
-    .h2 {
-        font-size: 3.2rem;
-    }
-    .wysiwyg h3,
-    .h3 {
-        font-size: 2.8rem;
-    }
-    .wysiwyg h4,
-    .h4 {
-        font-size: 2.2rem;
-    }
-    .wysiwyg h5,
-    .h5 {
-        font-size: 2rem;
-    }
-    .wysiwyg h6,
-    .h6 {
-        font-size: 1.8rem;
     }
 }
 

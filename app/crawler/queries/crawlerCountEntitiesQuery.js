@@ -3,6 +3,9 @@ export default `
         _allPagesMeta(locale: $lang) {
             count
         }
+        _allModularsMeta(locale: $lang) {
+            count
+        }
         _allFundsMeta(locale: $lang, filter: {slug: {neq: null}}) {
             count
         }

@@ -12,6 +12,10 @@ export const routes = {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
+    modular: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
     team: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
@@ -79,6 +83,7 @@ export const routeByApiModels = {
     homepage: routes.home,
     page: routes.page,
     modular_page: routes.modularPage,
+    modular: routes.modular,
     team: routes.team,
     portfolio: routes.portfolio,
     company: routes.portfolioSingle,

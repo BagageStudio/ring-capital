@@ -137,7 +137,7 @@ export default {
             data: {},
             seo: {},
             portfolioListLink: this.localePath({
-                name: routeByApiModels.portfolio.routerFormat
+                name: routeByApiModels.portfolio_list.routerFormat
             })
         };
     },

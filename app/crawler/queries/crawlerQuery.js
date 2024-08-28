@@ -1,13 +1,17 @@
 export default `
     query Crawler($lang: SiteLocale, $first: IntType, $skip: IntType) {
-        allPages(locale: $lang, first: $first, skip: $skip) {
+        allModulars(locale: $lang, first: $first, skip: $skip, filter: {slug: {neq: null}}) {
             slug
             _modelApiKey
         }
-        allModulars(locale: $lang, filter: {slug: {neq: null}}) {
+        allPortfolioItems(locale: $lang, first: $first, skip: $skip, filter: {slug: {neq: null}}) {
             slug
             _modelApiKey
-        },
+        }
+        allFunds(locale: $lang, first: $first, skip: $skip, filter: {slug: {neq: null}}) {
+            slug
+            _modelApiKey
+        }
         contact(locale: $lang) {
             slug
             _modelApiKey
@@ -16,61 +20,9 @@ export default `
             slug
             _modelApiKey
         }
-        portfolio(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-		portfolioTech(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-        investorsPage(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-        ring2success(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-        sustainableEngagement(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-        allFunds(locale: $lang, filter: {slug: {neq: null}}) {
-            slug
-            _modelApiKey
-        }
-        allCompanies(locale: $lang, filter: {slug: {neq: null}}) {
-            slug
-            _modelApiKey
-        },
-        allPortfolioItems(locale: $lang, filter: {slug: {neq: null}}) {
-            slug
-            _modelApiKey
-        },
-        useCasesPage(locale: $lang) {
-            slug
-            _modelApiKey
-        },
-        podcastsPage(locale: $lang) {
-            slug
-            _modelApiKey
-        },
-        pressRoom(locale: $lang) {
-            slug
-            _modelApiKey
-        },
-        jobsPage(locale: $lang) {
-            slug
-            _modelApiKey
-        },
-		blog(locale: $lang) {
-            slug
-            _modelApiKey
-        },
         mediaList(locale: $lang) {
             slug
             _modelApiKey
-        },
+        }
     }
 `;

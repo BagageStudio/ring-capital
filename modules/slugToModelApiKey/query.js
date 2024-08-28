@@ -1,13 +1,27 @@
 export default `
     query AllSlugs{
-        allPages{
+        allModulars{
             _modelApiKey
             _allSlugLocales{
                 locale
                 value
             }
         }
-        allModulars{
+        allFunds{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
+        mediaList{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
+        portfolioList{
             _modelApiKey
             _allSlugLocales{
                 locale
@@ -22,6 +36,13 @@ export default `
             }
         }
         team{
+            _modelApiKey
+            _allSlugLocales{
+                locale
+                value
+            }
+        }
+        allPages{
             _modelApiKey
             _allSlugLocales{
                 locale
@@ -43,13 +64,6 @@ export default `
             }
         }
         investorsPage{
-            _modelApiKey
-            _allSlugLocales{
-                locale
-                value
-            }
-        }
-        allFunds{
             _modelApiKey
             _allSlugLocales{
                 locale
@@ -83,29 +97,22 @@ export default `
                 locale
                 value
             }
-        },
+        }
         ring2success{
             _modelApiKey
             _allSlugLocales{
                 locale
                 value
             }
-        },
+        }
         jobsPage{
             _modelApiKey
             _allSlugLocales{
                 locale
                 value
             }
-        },
-		blog{
-            _modelApiKey
-            _allSlugLocales{
-                locale
-                value
-            }
         }
-        mediaList{
+		blog{
             _modelApiKey
             _allSlugLocales{
                 locale

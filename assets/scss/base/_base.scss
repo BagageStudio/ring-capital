@@ -38,8 +38,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.wysiwyg p {
+    margin-bottom: 2rem;
+}
+
 .wysiwyg ul {
-    margin: 40px 0;
+    margin-bottom: 2rem;
     padding: 0;
     li {
         display: flex;
@@ -60,7 +64,7 @@ body {
 }
 
 .wysiwyg ol {
-    margin: 40px 0;
+    margin-bottom: 2rem;
     padding: 0;
     li {
         display: flex;
@@ -74,20 +78,18 @@ body {
     }
 }
 
-.wysiwyg img {
-    margin: 40px auto;
-}
-
 .wysiwyg a, .wysiwyg strong {
     font-weight: 700;
 }
-
-
 
 .wysiwyg {
     h2, h3, h4 {
         margin-bottom: 2rem;
     }
+}
+
+.wysiwyg > *:last-child {
+    margin-bottom: 0;
 }
 
 .basic-h1 {

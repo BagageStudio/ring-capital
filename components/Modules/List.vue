@@ -8,7 +8,7 @@
             <div class="items content-pad">
                 <div v-for="item in content.items" :key="item.id" class="item">
                     <div v-if="item.title" class="basic-h4 item-title">{{ item.title }}</div>
-                    <div v-if="item.text" class="basic-subtitle item-text">{{ item.text }}</div>
+                    <div v-if="item.text" class="basic-subtitle item-text wysiwyg" v-html="item.text"></div>
                 </div>
             </div>
         </div>

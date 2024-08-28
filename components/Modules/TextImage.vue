@@ -2,8 +2,8 @@
     <div class="text-logos">
         <div class="container">
             <div class="wrapper-txt">
-                <h4 class="basic-h4 text-logos-small-title">{{ content.title }}</h4>
-                <div class="text-logos-text" v-html="content.text"></div>
+                <h4 v-if="content.title" class="basic-h4 text-logos-small-title">{{ content.title }}</h4>
+                <div v-if="content.text" class="text-logos-text wysiwyg" v-html="content.text"></div>
             </div>
             <div class="wrapper-list">
                 <div class="list-images" :class="{ 'big-image': content.images.length === 1 }">

@@ -5,7 +5,7 @@
                 <FastImage v-if="col.icon" class="col-icon" :image="col.icon" contains />
                 <FastImage v-if="col.image" class="col-image" :image="col.image" cover />
                 <div v-if="col.title" class="col-title basic-h2">{{ col.title }}</div>
-                <div v-if="col.text" class="col-text basic-subtitle">{{ col.text }}</div>
+                <div v-if="col.text" class="col-text basic-subtitle wysiwyg" v-html="col.text"></div>
                 <LinkTo
                     v-if="col.link && col.link.__typename === 'LinkRecord'"
                     class="col-cta btn-rounded"

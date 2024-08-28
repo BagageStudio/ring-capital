@@ -1,10 +1,10 @@
 <template>
     <div class="big-text-wrapper container">
         <div class="big-text">
-            <h2 class="basic-h2 big-title content-pad">{{ content.title }}</h2>
+            <h2 v-if="content.title" class="basic-h2 big-title content-pad">{{ content.title }}</h2>
             <div class="text-wrapper content-pad">
                 <div v-if="content.subtitle" class="basic-h3 text-subtitle">{{ content.subtitle }}</div>
-                <div v-if="content.text" class="basic-subtitle text-text">{{ content.text }}</div>
+                <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
             </div>
         </div>
     </div>

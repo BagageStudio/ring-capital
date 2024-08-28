@@ -3,7 +3,7 @@
         <!-- <div v-if="content.title || content.text" class="external-content-header content-pad"> -->
         <div class="external-content-header content-pad">
             <h2 v-if="content.title" class="basic-h3 text-title">{{ content.title }}</h2>
-            <div v-if="content.text" class="basic-subtitle text-text">{{ content.text }}</div>
+            <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
         </div>
         <div class="contents">
             <LayoutContentCard v-for="media in content.contents" :key="media.id" :content="media" />

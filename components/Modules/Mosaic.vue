@@ -5,7 +5,7 @@
         </div>
         <div class="text-wrapper content-pad">
             <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
-            <div v-if="content.text" class="basic-subtitle text-text">{{ content.text }}</div>
+            <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
             <LinkTo
                 v-if="content.link && content.link.__typename === 'LinkRecord'"
                 class="col-cta btn-rounded"

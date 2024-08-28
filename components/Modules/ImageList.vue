@@ -10,14 +10,14 @@
                         <FastImage v-if="item.image" class="item-img" :image="item.image" cover />
                         <div class="item-info">
                             <div v-if="item.title" class="basic-subtitle item-title">{{ item.title }}</div>
-                            <div v-if="item.text" class="item-text">{{ item.text }}</div>
+                            <div v-if="item.text" class="item-text wysiwyg" v-html="item.text"></div>
                         </div>
                     </div>
                     <LinkTo v-else :link="item.link" class="item-inner" hide-label>
                         <FastImage v-if="item.image" class="item-img" :image="item.image" cover />
                         <div class="item-info">
                             <div v-if="item.title" class="basic-subtitle item-title">{{ item.title }}</div>
-                            <div v-if="item.text" class="item-text">{{ item.text }}</div>
+                            <div v-if="item.text" class="item-text wysiwyg" v-html="item.text"></div>
                         </div>
                     </LinkTo>
                 </div>

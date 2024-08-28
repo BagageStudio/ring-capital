@@ -6,7 +6,7 @@
             </div>
             <div class="accordions-list content-pad">
                 <h2 v-if="content.title" class="basic-h3 list-title">{{ content.title }}</h2>
-                <div v-if="content.text" class="basic-subtitle list-text">{{ content.text }}</div>
+                <div v-if="content.text" class="basic-subtitle list-text wysiwyg" v-html="content.text"></div>
                 <button
                     v-for="(acc, index) in content.accordions"
                     :key="acc.id"

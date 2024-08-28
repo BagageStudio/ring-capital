@@ -43,12 +43,13 @@ body {
     padding: 0;
     li {
         display: flex;
-        align-items: center;
         margin: 5px 0;
         padding: 0 0 0 10px;
         &::before {
             content: '';
             display: block;
+            flex-shrink: 0;
+            margin-top: 0.6em;
             margin-right: 10px;
             width: 0.5rem;
             height: 0.5rem;
@@ -63,7 +64,6 @@ body {
     padding: 0;
     li {
         display: flex;
-        align-items: center;
         margin: 5px 0;
         padding: 0 0 0 10px;
         &::before {
@@ -78,9 +78,11 @@ body {
     margin: 40px auto;
 }
 
-.wysiwyg a {
+.wysiwyg a, .wysiwyg strong {
     font-weight: 700;
 }
+
+
 
 .wysiwyg {
     h2, h3, h4 {
@@ -149,10 +151,10 @@ body {
     }
 }
 
-p {
-    margin: 10px 0;
-    line-height: 26px;
-}
+// p {
+//     margin: 10px 0;
+//     line-height: 26px;
+// }
 
 strong {
     font-weight: 500;

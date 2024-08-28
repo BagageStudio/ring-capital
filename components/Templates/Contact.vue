@@ -51,6 +51,10 @@ export default {
     z-index: -1;
 }
 
+.contact-title {
+    margin-bottom: 4rem;
+}
+
 .contact-content {
     display: flex;
     flex-direction: column;
@@ -63,6 +67,10 @@ export default {
     align-items: center;
     padding: 4rem 2rem;
     border-top: 1px solid currentColor;
+}
+
+.cell-title {
+    margin-right: 4rem;
 }
 
 .socials {

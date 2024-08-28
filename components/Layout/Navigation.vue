@@ -94,6 +94,9 @@ export default {
             if (this.showMenu) this.toggleMenu();
         },
         isMobile() {
+            this.itemsState = this.data.menu.map(i => {
+                return this.isMobile;
+            });
             this.headerFixed = false;
             this.headerVisible = false;
             this.showMenu = false;
@@ -312,7 +315,6 @@ export default {
     line-height: 1;
     text-decoration: none;
     padding-bottom: 10px;
-    margin-bottom: 20px;
 }
 
 .submenu {
@@ -338,6 +340,9 @@ export default {
     font-size: 18px;
     line-height: 1;
     text-decoration: none;
+    &:first-child {
+        margin-top: 20px;
+    }
 }
 
 .socials {

@@ -226,7 +226,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 80svh;
+    min-height: 100svh;
     padding-top: calc(var(--header-height) + 8rem);
     padding-bottom: 8rem;
     color: var(--bg);

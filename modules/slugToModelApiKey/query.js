@@ -7,13 +7,6 @@ export default `
                 value
             }
         }
-        allModularPages{
-            _modelApiKey
-            _allSlugLocales{
-                locale
-                value
-            }
-        }
         allModulars{
             _modelApiKey
             _allSlugLocales{
@@ -92,13 +85,6 @@ export default `
             }
         },
         ring2success{
-            _modelApiKey
-            _allSlugLocales{
-                locale
-                value
-            }
-        },
-        vision{
             _modelApiKey
             _allSlugLocales{
                 locale

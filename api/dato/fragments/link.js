@@ -13,7 +13,7 @@ export default `
                 _modelApiKey
                 slug
             }
-            ... on ModularPageRecord {
+            ... on ModularRecord {
                 _modelApiKey
                 slug
             }
@@ -62,10 +62,6 @@ export default `
                 slug
             }
             ... on Ring2successRecord {
-                _modelApiKey
-                slug
-            }
-            ... on VisionRecord {
                 _modelApiKey
                 slug
             }

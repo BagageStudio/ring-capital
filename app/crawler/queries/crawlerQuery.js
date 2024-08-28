@@ -4,10 +4,6 @@ export default `
             slug
             _modelApiKey
         }
-        allModularPages(locale: $lang, filter: {slug: {neq: null}}) {
-            slug
-            _modelApiKey
-        },
         allModulars(locale: $lang, filter: {slug: {neq: null}}) {
             slug
             _modelApiKey
@@ -37,10 +33,6 @@ export default `
             _modelApiKey
         }
         sustainableEngagement(locale: $lang) {
-            slug
-            _modelApiKey
-        }
-        vision(locale: $lang) {
             slug
             _modelApiKey
         }

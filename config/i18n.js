@@ -13,7 +13,7 @@ export const getPagesList = () => ({
     [routes.page.i18nFormat]: {
         en: '/:slug?'
     },
-    [routes.modularPage.i18nFormat]: {
+    [routes.modular.i18nFormat]: {
         en: '/:slug?'
     },
     [routes.team.i18nFormat]: {
@@ -50,9 +50,6 @@ export const getPagesList = () => ({
         en: '/:slug?'
     },
     [routes.ring2success.i18nFormat]: {
-        en: '/:slug?'
-    },
-    [routes.vision.i18nFormat]: {
         en: '/:slug?'
     },
     [routes.jobsPage.i18nFormat]: {

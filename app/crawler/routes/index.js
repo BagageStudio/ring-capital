@@ -8,10 +8,6 @@ export const routes = {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
-    modularPage: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
     modular: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
@@ -64,10 +60,6 @@ export const routes = {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
-    vision: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
     jobsPage: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
@@ -86,7 +78,6 @@ export const routeByApiModels = {
     home: routes.home,
     homepage: routes.home,
     page: routes.page,
-    modular_page: routes.modularPage,
     modular: routes.modular,
     team: routes.team,
     portfolio: routes.portfolio,
@@ -100,7 +91,6 @@ export const routeByApiModels = {
     press_room: routes.pressRoom,
     sustainable_engagement: routes.sustainableEngagement,
     ring2success: routes.ring2success,
-    vision: routes.vision,
     jobs_page: routes.jobsPage,
     portfolio_tech: routes.portfolioTech,
     blog: routes.blog,

@@ -1,7 +1,13 @@
 <template>
-    <div v-if="content" class="content-card content-pad">
+    <div v-if="content" class="content-card content-pad" :class="{ 'is-press-room': isPressRoom }">
         <LinkTo hide-label :link="content.link" class="card-link">
-            <FastImage v-if="content.image" class="card-image" :image="content.image" cover />
+            <FastImage
+                v-if="content.image"
+                class="card-image"
+                :image="content.image"
+                :cover="!isPressRoom"
+                :contains="isPressRoom"
+            />
             <div v-if="content.tags" class="tags">
                 <div v-for="tag in content.tags" :key="tag" class="tag basic-tag">{{ tag }}</div>
             </div>
@@ -15,6 +21,11 @@
 export default {
     props: {
         content: { type: Object, required: true }
+    },
+    computed: {
+        isPressRoom() {
+            return this.content.mediaType === 'Press room';
+        }
     }
 };
 </script>
@@ -22,6 +33,12 @@ export default {
 <style lang="scss" scoped>
 .content-card {
     margin-bottom: 4rem;
+    &.is-press-room {
+        .card-image {
+            padding: 65px;
+            background-color: var(--brand-primary-blue);
+        }
+    }
 }
 .card-link {
     text-decoration: none;

@@ -1330,7 +1330,19 @@ export const mediaListQuery = `
             moreTitle
             seeMoreText
         }
-        allMediaContents {
+        allMediaContentsFirst: allMediaContents(first: 100) {
+            id
+            title
+            mediaType
+            infos
+            image {
+                ${img}
+            }
+            link {
+                ...link
+            }
+        }
+        allMediaContentsSecond: allMediaContents(first: 100, skip: 100) {
             id
             title
             mediaType
@@ -1352,18 +1364,8 @@ export const getQuery = _modelApiKey => {
         modular: modularPageQuery,
         contact: contactQuery,
         team: teamQuery,
-        portfolio: portfolioQuery,
-        investors_page: investorsPageQuery,
+        portfolio_list: portfolioQuery,
         fund: fundQuery,
-        use_cases_page: useCasesPageQuery,
-        podcasts_page: podcastsPageQuery,
-        press_room: pressRoomQuery,
-        sustainable_engagement: sustainableEngagementQuery,
-        ring2success: ring2successQuery,
-        vision: visionQuery,
-        jobs_page: jobsPageQuery,
-        portfolio_tech: portfolioTechQuery,
-        blog: blogQuery,
         media_list: mediaListQuery
     };
     return mapping[_modelApiKey];

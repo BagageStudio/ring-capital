@@ -45,7 +45,8 @@ export default {
             finalData.data = data[camalize(finalData.template)];
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
-            if (finalData.template === 'MediaList') finalData.data.allMediaContents = data.allMediaContents;
+            if (finalData.template === 'MediaList')
+                finalData.data.allMediaContents = data.allMediaContentsFirst.concat(data.allMediaContentsSecond);
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }

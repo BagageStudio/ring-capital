@@ -391,6 +391,9 @@ export const homepageQuery = `
                     ...link
                 }
             }
+            modules {
+                ${modules}
+            }
         }
     }
 `;
@@ -495,6 +498,9 @@ export const teamQuery = `
                 rightMobileImage {
                     ${img}
                 }
+            }
+            modules {
+                ${modules}
             }
         }
     }`;
@@ -722,6 +728,7 @@ export const companyQuery = `
     }`;
 
 export const portfolioListQuery = `
+    ${linkFragment}
     query PortfolioList($lang: SiteLocale) {
         portfolioList(locale: $lang) {
             ${seo}
@@ -730,6 +737,9 @@ export const portfolioListQuery = `
             filterText
             seeMoreText
             companiesSoldText
+            modules {
+                ${modules}
+            }
         }
         allPortfolioItems(locale: $lang) {
             _modelApiKey
@@ -799,6 +809,7 @@ export const portfolioItemQuery = `
     }`;
 
 export const fundQuery = `
+    ${linkFragment}
     query Fund($lang: SiteLocale, $slug: String) {
         fund(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
@@ -838,7 +849,9 @@ export const fundQuery = `
                     ${img}
                 }
             }
-
+            modules {
+                ${modules}
+            }
         }
     }`;
 
@@ -1329,6 +1342,9 @@ export const mediaListQuery = `
             }
             moreTitle
             seeMoreText
+            modules {
+                ${modules}
+            }
         }
         allMediaContentsFirst: allMediaContents(first: 100) {
             id

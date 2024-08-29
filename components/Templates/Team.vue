@@ -10,6 +10,7 @@
         <div class="container members">
             <LayoutTeamCard v-for="member in members" :key="member.id" :content="member" />
         </div>
+        <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>
 </template>
 

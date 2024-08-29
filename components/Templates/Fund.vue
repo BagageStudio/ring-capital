@@ -21,7 +21,6 @@
                 </div>
             </div>
         </div>
-
         <div class="targets-cols container">
             <div class="target-col content-pad">
                 <div class="target-title basic-h4">{{ data.targetsFirstColumnTitle }}</div>
@@ -36,10 +35,10 @@
                 </div>
             </div>
         </div>
-
         <div class="container">
             <LayoutLinkedCompanies :companies="data.portfolioItems" />
         </div>
+        <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>
 </template>
 

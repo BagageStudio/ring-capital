@@ -6,6 +6,7 @@
         <HomeEcosystem :data="data" />
         <HomePodcast :data="data" />
         <HomeNewsletter :data="data" />
+        <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>
 </template>
 

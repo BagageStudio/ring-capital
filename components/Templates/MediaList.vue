@@ -69,6 +69,7 @@
                 {{ data.seeMoreText }}
             </button>
         </div>
+        <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>
 </template>
 

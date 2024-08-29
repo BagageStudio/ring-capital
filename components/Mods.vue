@@ -14,6 +14,7 @@
     <ModulesImageList v-else-if="data._modelApiKey === 'image_list_module'" :content="data" class="module" />
     <ModulesLogos v-else-if="data._modelApiKey === 'logos_module'" :content="data" class="module" />
     <ModulesFreeText v-else-if="data._modelApiKey === 'free_text_module'" :content="data" class="module" />
+    <ModulesHero v-else-if="data._modelApiKey === 'hero_module'" :content="data" class="module" />
 
     <!-- <ModulesTextImage
         v-else-if="data._modelApiKey === 'text_image'"

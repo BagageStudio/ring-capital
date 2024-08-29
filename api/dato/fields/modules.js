@@ -195,4 +195,10 @@ export default `
             ${img}
         }
     }
+    ... on HeroModuleRecord {
+        _modelApiKey
+        id
+        title
+        subtitle
+    }
 `;

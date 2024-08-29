@@ -3,7 +3,7 @@
         <FastImage v-if="content.backgroundImage" class="bg-img" :image="content.backgroundImage" contains />
         <div class="free-text container content-pad">
             <h2 v-if="content.title" class="basic-h1 free-title">{{ content.title }}</h2>
-            <div class="wysiwyg" v-html="content.text"></div>
+            <div class="wysiwyg basic-subtitle" v-html="content.text"></div>
         </div>
     </div>
 </template>
@@ -41,6 +41,9 @@ export default {
         padding-bottom: 7.5rem;
     }
     .free-title {
+        width: 83.33%;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 6rem;
     }
     .bg-img {
@@ -58,6 +61,8 @@ export default {
     }
     .wysiwyg {
         width: 83.33%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 </style>

@@ -356,9 +356,8 @@ export const homepageQuery = `
             }
             podcastSelection {
                 id
-                name
-                subtitle
-                readingTime
+                title
+                infos
                 link {
                     ...link
                 }
@@ -384,11 +383,13 @@ export const homepageQuery = `
             articleSelection {
                 id
                 title
-                cover {
+                image {
                     ${img}
                 }
-                date
-                linkUrl
+                infos
+                link {
+                    ...link
+                }
             }
         }
     }

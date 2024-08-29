@@ -2,12 +2,11 @@
     <div class="block-podcast">
         <header class="header-podcast">
             <div class="podcast-infos">
-                <span v-if="data.subtitle" class="podcast-subtitle">{{ data.subtitle }}</span
-                >{{ data.readingTime }}&nbsp;MN
+                <span v-if="data.infos" class="podcast-subtitle">{{ data.infos }}</span>
             </div>
             <Icon name="podcast" />
         </header>
-        <span class="podcast-name basic-txt">{{ data.name }}</span>
+        <span class="podcast-name basic-txt">{{ data.title }}</span>
         <div class="wrapper-podcast-link">
             <LinkTo class="podcast-link btn-arrow" :link="data.link" :hide-label="true">
                 <span>{{ linkLabel }}</span>
@@ -60,18 +59,5 @@ export default {
     font-weight: 700;
     text-transform: uppercase;
     color: #9d9d9d;
-}
-.podcast-subtitle {
-    display: flex;
-    align-items: center;
-    &::after {
-        content: '';
-        display: block;
-        width: 4px;
-        height: 4px;
-        margin: 0 6px;
-        border-radius: 50%;
-        background: currentColor;
-    }
 }
 </style>

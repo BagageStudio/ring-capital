@@ -1,13 +1,13 @@
 <template>
-    <a class="block-newsletter" :href="data.linkUrl" target="_blank" rel="noopener noreferrer">
+    <LinkTo class="block-newsletter" :link="data.link" :hide-label="true">
         <div class="wrapper-newsletter-cover">
-            <FastImage class="newsletter-cover" :image="data.cover" cover />
+            <FastImage class="newsletter-cover" :image="data.image" cover />
         </div>
         <div class="wrapper-txt">
             <span class="newsletter-title basic-txt">{{ data.title }}</span>
-            <span class="newsletter-date">{{ $options.filters.formatDate(data.date, $store.$i18n) }}</span>
+            <span v-if="data.infos" class="newsletter-date">{{ data.infos }}</span>
         </div>
-    </a>
+    </LinkTo>
 </template>
 <script>
 export default {

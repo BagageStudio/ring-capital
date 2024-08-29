@@ -3,7 +3,8 @@
         <FastImage v-if="content.backgroundImage" class="bg-img" :image="content.backgroundImage" contains />
         <div class="container">
             <div v-if="content.title" class="content-pad title-wrapper">
-                <h2 class="basic-h2">{{ content.title }}</h2>
+                <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
+                <h3 v-if="content.subtitle" class="basic-h3 text-subtitle">{{ content.subtitle }}</h3>
             </div>
             <div class="items content-pad">
                 <div v-for="item in content.items" :key="item.id" class="item">
@@ -37,6 +38,12 @@ export default {
 
 .title-wrapper {
     margin-bottom: 4rem;
+    .text-title,
+    .text-subtitle {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
 }
 
 .item {

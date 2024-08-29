@@ -5,7 +5,8 @@
                 <FastImage class="image" :image="content.image" cover />
             </div>
             <div class="accordions-list content-pad">
-                <h2 v-if="content.title" class="basic-h3 list-title">{{ content.title }}</h2>
+                <h2 v-if="content.title" class="basic-h2 list-title">{{ content.title }}</h2>
+                <h3 v-if="content.subtitle" class="basic-h3 list-subtitle">{{ content.subtitle }}</h3>
                 <div v-if="content.text" class="basic-subtitle list-text wysiwyg" v-html="content.text"></div>
                 <button
                     v-for="(acc, index) in content.accordions"
@@ -79,10 +80,8 @@ export default {
     border: 1px solid var(--txt);
 }
 
-.list-title {
-    margin-bottom: 4rem;
-}
-
+.list-title,
+.list-subtitle,
 .list-text {
     margin-bottom: 4rem;
 }

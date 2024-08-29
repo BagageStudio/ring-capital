@@ -5,6 +5,7 @@
         </div>
         <div class="text-wrapper content-pad">
             <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
+            <h3 v-if="content.subtitle" class="basic-h3 text-subtitle">{{ content.subtitle }}</h3>
             <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
             <LinkTo
                 v-if="content.link && content.link.__typename === 'LinkRecord'"
@@ -68,10 +69,8 @@ export default {
     width: 100%;
 }
 
-.text-title {
-    margin-bottom: 4rem;
-}
-
+.text-title,
+.text-subtitle,
 .text-text {
     margin-bottom: 4rem;
 }

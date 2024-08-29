@@ -2,7 +2,8 @@
     <div class="external-content-wrapper container" :class="{ reversed: content.reverse }">
         <!-- <div v-if="content.title || content.text" class="external-content-header content-pad"> -->
         <div class="external-content-header content-pad">
-            <h2 v-if="content.title" class="basic-h3 text-title">{{ content.title }}</h2>
+            <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
+            <h3 v-if="content.subtitle" class="basic-h3 text-subtitle">{{ content.subtitle }}</h3>
             <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
         </div>
         <div class="contents">
@@ -40,8 +41,11 @@ export default {
         height: 1px;
         background-color: var(--txt);
     }
-    .text-title + .text-text {
-        margin-top: 2rem;
+    .text-title,
+    .text-subtitle {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
     }
 }
 

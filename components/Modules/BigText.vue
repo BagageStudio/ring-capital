@@ -55,10 +55,6 @@ export default {
     line-height: 6rem;
 }
 
-.text-subtitle {
-    line-height: 4.2rem;
-}
-
 .text-subtitle + .text-text {
     margin-top: 2rem;
 }

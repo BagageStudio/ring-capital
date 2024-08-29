@@ -1,8 +1,11 @@
 <template>
     <div class="image-list-wrapper">
         <div class="container">
-            <div v-if="content.title" class="content-pad title-wrapper">
-                <h2 class="basic-h2">{{ content.title }}</h2>
+            <div v-if="content.title || content.subtitle" class="content-pad">
+                <div class="title-wrapper">
+                    <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
+                    <h3 v-if="content.subtitle" class="basic-h3 text-subtitle">{{ content.subtitle }}</h3>
+                </div>
             </div>
             <div class="items">
                 <div v-for="item in content.items" :key="item.id" class="item content-pad">
@@ -44,9 +47,13 @@ export default {
 
 .title-wrapper {
     margin-bottom: 6rem;
-    & > h2 {
-        padding-bottom: 4rem;
-        border-bottom: 1px solid var(--txt);
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--txt);
+    .text-title,
+    .text-subtitle {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
     }
 }
 

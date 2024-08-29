@@ -4,6 +4,8 @@ export default `
     ... on TwoColumnsModuleRecord {
         _modelApiKey
         id
+        title
+        subtitle
         columns {
             id
             title
@@ -31,6 +33,8 @@ export default `
     ... on ThreeColumnsModuleRecord {
         _modelApiKey
         id
+        title
+        subtitle
         columns {
             id
             title
@@ -58,6 +62,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         text
         image {
             ${img}
@@ -75,6 +80,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         text
         images {
             ${img}
@@ -96,6 +102,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         text
         image {
             ${img}
@@ -117,6 +124,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         text
         contents {
             id
@@ -142,6 +150,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         items {
             id
             title
@@ -155,6 +164,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         items {
             id
             title
@@ -171,6 +181,7 @@ export default `
         _modelApiKey
         id
         title
+        subtitle
         link {
             __typename
             ...link

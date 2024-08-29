@@ -1,5 +1,7 @@
 <template>
     <div v-if="content.columns.length" class="two-columns-wrapper container">
+        <h2 v-if="content.title" class="basic-h2 text-title content-pad">{{ content.title }}</h2>
+        <h3 v-if="content.subtitle" class="basic-h3 text-subtitle content-pad">{{ content.subtitle }}</h3>
         <div class="two-columns">
             <div v-for="col in content.columns" :key="col.id" class="column content-pad">
                 <FastImage v-if="col.icon" class="col-icon" :image="col.icon" contains />
@@ -36,6 +38,11 @@ export default {
 .two-columns-wrapper {
     padding-top: 5rem;
     padding-bottom: 5rem;
+}
+
+.text-title,
+.text-subtitle {
+    margin-bottom: 4rem;
 }
 
 .two-columns {

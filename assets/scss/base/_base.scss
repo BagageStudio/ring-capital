@@ -111,7 +111,7 @@ body {
     font-family: var(--urbanist);
     font-weight: 600;
     font-size: 3.5rem;
-    line-height: 3.5rem;
+    line-height: 4.2rem;
 }
 
 .basic-h4, .wysiwyg h4 {
@@ -404,7 +404,7 @@ a {
         font-size: 8rem;
         line-height: 8rem;
     }
-    .basic-h2 {
+    .basic-h2, .wysiwyg h2 {
         font-size: 5rem;
         line-height: 5rem;
     }

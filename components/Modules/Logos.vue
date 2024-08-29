@@ -1,6 +1,7 @@
 <template>
     <div class="logos-wrapper container content-pad">
         <h2 v-if="content.title" class="basic-h2 logos-title">{{ content.title }}</h2>
+        <h3 v-if="content.subtitle" class="basic-h3 logos-subtitle">{{ content.subtitle }}</h3>
         <div class="logos">
             <div v-for="image in content.images" :key="image.url" class="logo">
                 <FastImage :image="image" contains />
@@ -33,7 +34,8 @@ export default {
     padding-bottom: 5rem;
 }
 
-.logos-title {
+.logos-title,
+.logos-subtitle {
     width: 100%;
     margin-bottom: 4rem;
     text-align: center;
@@ -83,7 +85,8 @@ export default {
         padding-top: 7.5rem;
         padding-bottom: 7.5rem;
     }
-    .logos-title {
+    .logos-title,
+    .logos-subtitle {
         width: 66.66%;
         margin-left: auto;
         margin-right: auto;

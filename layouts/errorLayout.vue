@@ -1,10 +1,10 @@
 <template>
     <div class="main">
-        <LayoutHeader />
+        <LayoutNavigation />
         <div class="wrapper-content-footer">
             <Nuxt />
-            <LayoutFooterMinimal small-padding />
         </div>
+        <LayoutFooter />
         <Svgs />
         <LayoutGrid v-if="$config.isDevEnv" />
         <LayoutOverlay class="layout-overlay" />

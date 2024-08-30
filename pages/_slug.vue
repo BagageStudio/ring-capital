@@ -1,6 +1,7 @@
 <template>
     <div>
         <component :is="'Templates' + template" v-if="template" :data="data" />
+        <LayoutOverlay />
     </div>
 </template>
 

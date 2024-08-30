@@ -93,6 +93,7 @@
                 <LayoutLinkedCompanies :companies="data.otherCompanies" />
             </div>
         </div>
+        <LayoutOverlay />
     </div>
 </template>
 

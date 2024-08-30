@@ -65,9 +65,6 @@
 import layoutData from '~/cms/data/layout-data.json';
 
 export default {
-    props: {
-        minimal: { type: Boolean, default: false }
-    },
     computed: {
         data() {
             return layoutData[this.$store.state.i18n.locale].footerClassic;

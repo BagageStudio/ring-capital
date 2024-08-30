@@ -37,6 +37,7 @@
             <LayoutCompanySoldRow v-for="company in soldCompanies" :key="company.id" :company="company" />
         </div>
         <Mods v-for="m in data.modules" :key="m.id" :data="m" />
+        <LayoutOverlay />
     </div>
 </template>
 

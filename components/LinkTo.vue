@@ -9,8 +9,8 @@
         v-else-if="data && data.externalLink"
         :href="data.externalLink"
         :aria-label="data.title"
-        target="_blank"
-        rel="noopener noreferrer"
+        :target="data.openInCurrentTab ? '' : '_blank'"
+        :rel="data.openInCurrentTab ? '' : 'noopener noreferrer'"
     >
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>

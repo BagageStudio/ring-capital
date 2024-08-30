@@ -4,6 +4,7 @@ export default `
         label
         title
         externalLink
+        openInCurrentTab
         hash
         internalLink {
             ... on ModularRecord {

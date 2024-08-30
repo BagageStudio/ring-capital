@@ -8,60 +8,6 @@ import locales from './fields/locales';
 export const layoutQuery = `
     ${linkFragment}
     query Layout($lang: SiteLocale) {
-        header(locale: $lang) {
-            navigation {
-                ... on MegaRecord {
-                    _modelApiKey
-                    id
-                    megaMenu {
-                        title
-                        links {
-                            ...link
-                        }
-                        social {
-                            socialLinks {
-                                title
-                                iconName
-                                link
-                            }
-                        }
-                        newsTitle
-                        socialTitle
-                        news {
-                            title
-                            cover {
-                                ${img}
-                            }
-                            readingTime
-                            date
-                            linkUrl
-                        }
-                    }
-                }
-                ... on SingleLinkRecord {
-                    _modelApiKey
-                    id
-                    link {
-                        ...link
-                    }
-                }
-                ... on SubmenuGroupRecord {
-                    _modelApiKey
-                    id
-                    title
-                    submenus {
-                        id
-                        title
-                        links {
-                            ...link
-                        }
-                    }
-                }
-            }
-            contact {
-                ...link
-            }
-        }
         navigation(locale: $lang){
             quickMenu {
                 ...link
@@ -78,45 +24,6 @@ export const layoutQuery = `
                 }
                 link {
                     ...link
-                }
-            }
-        }
-        footer(locale: $lang) {
-            linksColumn {
-                links {
-                    label
-                    title
-                    ...link
-                }
-            }
-            smallText
-            smallLinks {
-                __typename
-                ...link
-                ... on LinkFileRecord {
-                    label
-                    title
-                    file {
-                        url
-                    }
-                }
-            }
-            newsletter {
-                title
-            }
-            newsletterEmailError
-            newsletterEmailInvalid
-            newsletterSuccess
-            newsletterGdpr
-            newsletterTextBeforeLink
-            newsletterLink {
-                ...link
-            }
-            social {
-                socialLinks {
-                    title
-                    iconName
-                    link
                 }
             }
         }

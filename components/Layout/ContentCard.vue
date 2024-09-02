@@ -1,13 +1,10 @@
 <template>
     <div v-if="content" class="content-card content-pad" :class="{ 'is-press-room': isPressRoom }">
         <LinkTo hide-label :link="content.link" class="card-link">
-            <FastImage
-                v-if="content.image"
-                class="card-image"
-                :image="content.image"
-                :cover="!isPressRoom"
-                :contains="isPressRoom"
-            />
+            <div v-if="content.image" class="card-image-wrapper">
+                <FastImage class="card-image" :image="content.image" :cover="!isPressRoom" :contains="isPressRoom" />
+                <LayoutImpactRingsGrey />
+            </div>
             <div v-if="content.tags" class="tags">
                 <div v-for="tag in content.tags" :key="tag" class="tag basic-tag">{{ tag }}</div>
             </div>
@@ -34,7 +31,7 @@ export default {
 .content-card {
     margin-bottom: 4rem;
     &.is-press-room {
-        .card-image {
+        .card-image-wrapper {
             padding: 65px;
             background-color: var(--brand-primary-blue);
         }
@@ -43,12 +40,41 @@ export default {
 .card-link {
     text-decoration: none;
     width: 100%;
+    &:hover {
+        ::v-deep path {
+            opacity: 1;
+            transform: scale(1);
+        }
+        @for $i from 0 to 21 {
+            ::v-deep path:nth-child(#{$i + 1}) {
+                transition-delay: $i * 0.01s;
+            }
+        }
+    }
 }
+
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    aspect-ratio: 360/250;
+}
+
+.impact-ring {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    width: 100%;
+    transform: scale(4);
+    pointer-events: none;
+    backface-visibility: hidden;
+}
+
 .card-image {
     width: 100%;
-    aspect-ratio: 360/250;
-    margin-bottom: 2rem;
-    border: 1px solid var(--txt);
+    height: 100%;
 }
 
 .infos {

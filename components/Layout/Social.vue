@@ -40,32 +40,11 @@ export default {
     }
 }
 .social-link {
-    display: block;
-    fill: currentColor;
-    &.linkedin {
-        width: 15px;
-        height: 15px;
-    }
-    &.twitter {
-        width: 15px;
-        height: 13px;
-    }
-    &.instagram {
-        width: 15px;
-        height: 15px;
-    }
-    &.facebook {
-        width: 15px;
-        height: 15px;
-    }
-    &.medium {
-        width: 15px;
-        height: 15px;
-    }
     > svg {
         display: block;
-        width: 100%;
-        height: 100%;
+        height: 15px;
+        width: 20px;
+        fill: currentColor;
         transition: fill 0.2s ease-out;
     }
 }

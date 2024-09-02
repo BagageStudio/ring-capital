@@ -26,9 +26,13 @@
                         <div class="acc-text wysiwyg" v-html="acc.text"></div>
                     </div>
                 </button>
-                <LinkTo v-if="content.link.__typename === 'LinkRecord'" class="btn-rounded" :link="content.link" />
+                <LinkTo
+                    v-if="content.link && content.link.__typename === 'LinkRecord'"
+                    class="btn-rounded"
+                    :link="content.link"
+                />
                 <LinkToFile
-                    v-else-if="content.link.__typename === 'LinkFileRecord'"
+                    v-else-if="content.link && content.link.__typename === 'LinkFileRecord'"
                     class="btn-rounded"
                     :link="content.link"
                 />

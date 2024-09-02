@@ -12,6 +12,14 @@
                     <div v-if="item.text" class="basic-subtitle item-text wysiwyg" v-html="item.text"></div>
                 </div>
             </div>
+            <div v-if="content.link" class="content-pad wrapper-cta">
+                <LinkTo v-if="content.link.__typename === 'LinkRecord'" class="btn-rounded" :link="content.link" />
+                <LinkToFile
+                    v-else-if="content.link.__typename === 'LinkFileRecord'"
+                    class="btn-rounded"
+                    :link="content.link"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -57,6 +65,10 @@ export default {
 
 .item-title + .item-text {
     margin-top: 1rem;
+}
+
+.wrapper-cta {
+    margin-top: 4rem;
 }
 
 @media (min-width: $desktop) {

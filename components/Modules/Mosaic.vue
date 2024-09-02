@@ -9,12 +9,12 @@
             <div v-if="content.text" class="basic-subtitle text-text wysiwyg" v-html="content.text"></div>
             <LinkTo
                 v-if="content.link && content.link.__typename === 'LinkRecord'"
-                class="col-cta btn-rounded"
+                class="btn-rounded"
                 :link="content.link"
             />
             <LinkToFile
                 v-else-if="content.link && content.link.__typename === 'LinkFileRecord'"
-                class="col-cta btn-rounded"
+                class="btn-rounded"
                 :link="content.link"
             />
         </div>

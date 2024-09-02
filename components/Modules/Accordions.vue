@@ -26,6 +26,12 @@
                         <div class="acc-text wysiwyg" v-html="acc.text"></div>
                     </div>
                 </button>
+                <LinkTo v-if="content.link.__typename === 'LinkRecord'" class="btn-rounded" :link="content.link" />
+                <LinkToFile
+                    v-else-if="content.link.__typename === 'LinkFileRecord'"
+                    class="btn-rounded"
+                    :link="content.link"
+                />
             </div>
         </div>
     </div>
@@ -140,6 +146,10 @@ export default {
     ::v-deep ul {
         margin: 0;
     }
+}
+
+.btn-rounded {
+    margin-top: 4rem;
 }
 
 @media (min-width: $desktop) {

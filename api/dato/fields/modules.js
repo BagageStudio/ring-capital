@@ -75,6 +75,17 @@ export default `
                 ${img}
             }
         }
+        link {
+            __typename
+            ...link
+            ... on LinkFileRecord {
+                label
+                title
+                file {
+                    url
+                }
+            }
+        }
     }
     ... on MosaicModuleRecord {
         _modelApiKey
@@ -159,6 +170,17 @@ export default `
         backgroundImage {
             ${img}
         }
+        link {
+            __typename
+            ...link
+            ... on LinkFileRecord {
+                label
+                title
+                file {
+                    url
+                }
+            }
+        }
     }
     ... on ImageListModuleRecord {
         _modelApiKey
@@ -174,6 +196,17 @@ export default `
             }
             image {
                 ${img}
+            }
+        }
+        link {
+            __typename
+            ...link
+            ... on LinkFileRecord {
+                label
+                title
+                file {
+                    url
+                }
             }
         }
     }

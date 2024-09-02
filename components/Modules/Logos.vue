@@ -13,10 +13,10 @@
             </div>
         </div>
         <div v-if="content.link" class="link-wrapper">
-            <LinkTo v-if="content.link.__typename === 'LinkRecord'" class="col-cta btn-rounded" :link="content.link" />
+            <LinkTo v-if="content.link.__typename === 'LinkRecord'" class="btn-rounded" :link="content.link" />
             <LinkToFile
                 v-else-if="content.link.__typename === 'LinkFileRecord'"
-                class="col-cta btn-rounded"
+                class="btn-rounded"
                 :link="content.link"
             />
         </div>

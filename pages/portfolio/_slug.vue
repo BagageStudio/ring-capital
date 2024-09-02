@@ -48,9 +48,14 @@
                             <div v-if="data.fund.length" class="company-info">
                                 <div class="info-title">{{ $t('portfolio.fundTitle') }}</div>
                                 <div class="info-content">
-                                    <span v-for="(fund, index) in data.fund" :key="fund.name"
-                                        >{{ index > 0 ? ', ' : '' }}{{ fund.name }}</span
+                                    <nuxt-link
+                                        v-for="(fund, index) in data.fund"
+                                        :key="fund.name"
+                                        :to="fund.slug"
+                                        :aria-label="fund.name"
                                     >
+                                        {{ index > 0 ? ', ' : '' }}{{ fund.name }}
+                                    </nuxt-link>
                                 </div>
                             </div>
                             <div v-if="data.social" class="company-info">

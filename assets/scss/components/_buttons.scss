@@ -157,6 +157,7 @@
 }
 
 .btn-rounded {
+    position: relative;
     display: inline-flex;
     padding: 1.4rem 4rem;
     font-family: var(--urbanist);
@@ -165,8 +166,39 @@
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.03rem;
-    border: 1px solid currentColor;
-    border-radius: 100px;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+        border: 1px solid currentColor;
+        border-radius: 100px;
+        pointer-events: none;
+    }
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: -20px;
+        border: 1px solid currentColor;
+        border-radius: 100px;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &:hover {
+        &::before {
+            inset: 5px;
+            opacity: 0;
+            transition: 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+            transition-property: opacity, inset;
+        }
+        &::after {
+            inset: 0;
+            opacity: 1;
+            transition: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-property: opacity, inset;
+        }
+    }
 }
 
 .btn-underlined {

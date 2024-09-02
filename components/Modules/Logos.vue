@@ -3,8 +3,13 @@
         <h2 v-if="content.title" class="basic-h2 logos-title">{{ content.title }}</h2>
         <h3 v-if="content.subtitle" class="basic-h3 logos-subtitle">{{ content.subtitle }}</h3>
         <div class="logos">
-            <div v-for="image in content.images" :key="image.url" class="logo">
-                <FastImage :image="image" contains />
+            <div v-for="logo in content.logos" :key="logo.id" class="logo">
+                <LinkTo v-if="logo.link" class="inner-logo" :link="logo.link" hide-label>
+                    <FastImage :image="logo.image" contains />
+                </LinkTo>
+                <div v-else class="inner-logo">
+                    <FastImage :image="logo.image" contains />
+                </div>
             </div>
         </div>
         <div v-if="content.link" class="link-wrapper">
@@ -53,12 +58,17 @@ export default {
 }
 
 .logo {
+    width: 50%;
+    height: calc(5.5rem + 4rem);
+}
+
+.inner-logo {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
     padding: 2rem;
-    width: 50%;
-    height: calc(5.5rem + 4rem);
     .fast-image {
         width: 100%;
         height: 100%;

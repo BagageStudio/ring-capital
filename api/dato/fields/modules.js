@@ -193,8 +193,14 @@ export default `
                 }
             }
         }
-        images {
-            ${img}
+        logos {
+            id
+            image {
+                ${img}
+            }
+            link {
+                ...link
+            }
         }
     }
     ... on FreeTextModuleRecord {

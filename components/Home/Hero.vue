@@ -21,7 +21,7 @@
                         <div v-for="slide in data.heroSlides" :key="slide.id" ref="subtitles" class="subtitle">
                             <p class="first-line-subtitle">
                                 <span class="subtitle-part">{{ slide.firstPartTitle }}</span>
-                                <span class="subtitle-ring">ring</span>
+                                <span class="subtitle-part">ring</span>
                             </p>
                             <p class="subtitle-part">{{ slide.secondPartTitle }}</p>
                         </div>
@@ -110,20 +110,14 @@ export default {
                 });
             }
             if (currentSubtitle) {
-                this.$gsap.to(
-                    [
-                        ...currentSubtitle.getElementsByClassName('subtitle-ring'),
-                        ...currentSubtitle.getElementsByClassName('subtitle-part')
-                    ].reverse(),
-                    {
-                        duration: 0.3,
-                        stagger: 0.1,
-                        autoAlpha: 0,
-                        y: 30,
-                        ease: 'power2.inOut',
-                        overwrite: true
-                    }
-                );
+                this.$gsap.to([...currentSubtitle.getElementsByClassName('subtitle-part')].reverse(), {
+                    duration: 0.3,
+                    stagger: 0.1,
+                    autoAlpha: 0,
+                    y: 30,
+                    ease: 'power2.inOut',
+                    overwrite: true
+                });
             }
 
             // Reappear
@@ -159,10 +153,7 @@ export default {
                 }
             );
             this.$gsap.fromTo(
-                [
-                    ...nextSubtitle.getElementsByClassName('subtitle-ring'),
-                    ...nextSubtitle.getElementsByClassName('subtitle-part')
-                ].reverse(),
+                [...nextSubtitle.getElementsByClassName('subtitle-part')],
                 {
                     autoAlpha: 0,
                     y: -30
@@ -263,8 +254,7 @@ export default {
         font-weight: 600;
     }
 }
-.subtitle-part,
-.subtitle-ring {
+.subtitle-part {
     transform: translateY(-30px);
     opacity: 0;
 }

@@ -120,7 +120,7 @@ export default {
         order: 1;
         justify-content: space-between;
         width: calc(3 / 12 * 100%);
-        height: 10rem;
+        height: 13rem;
         padding: 3rem calc(var(--gutter) + 5rem);
         .wrapper-logo,
         .logo {

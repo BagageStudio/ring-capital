@@ -1,6 +1,6 @@
 export default `
     query AllSlugs{
-        allModulars{
+        allModulars(first: 100){
             _modelApiKey
             _allSlugLocales{
                 locale

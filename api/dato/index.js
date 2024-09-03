@@ -329,7 +329,7 @@ export const portfolioListQuery = `
                 ${modules}
             }
         }
-        allPortfolioItems(locale: $lang) {
+        allPortfolioItems(locale: $lang, first: 100) {
             _modelApiKey
             slug
             id

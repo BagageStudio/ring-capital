@@ -3,7 +3,7 @@
         <div class="wrapper-newsletter-cover">
             <div class="newsletter-cover-inner">
                 <FastImage class="newsletter-cover" :image="data.image" cover />
-                <LayoutImpactRingsGrey />
+                <!-- <LayoutImpactRingsGrey /> -->
             </div>
         </div>
         <div class="wrapper-txt">

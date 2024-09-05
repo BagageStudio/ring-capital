@@ -2,7 +2,7 @@
     <div v-if="content" class="team-card content-pad">
         <LinkTo hide-label :link="content.link" class="card-link">
             <div class="card-image-wrapper">
-                <component :is="rings[content.ringColor]" />
+                <!-- <component :is="rings[content.ringColor]" /> -->
                 <FastImage v-if="content.image" class="card-image" :image="content.image" cover />
             </div>
             <div v-if="content.tags" class="tags">

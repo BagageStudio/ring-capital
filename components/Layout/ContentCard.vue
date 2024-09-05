@@ -3,7 +3,7 @@
         <LinkTo hide-label :link="content.link" class="card-link">
             <div v-if="content.image" class="card-image-wrapper">
                 <FastImage class="card-image" :image="content.image" :cover="!isPressRoom" :contains="isPressRoom" />
-                <LayoutImpactRingsGrey />
+                <!-- <LayoutImpactRingsGrey /> -->
             </div>
             <div v-if="content.tags" class="tags">
                 <div v-for="tag in content.tags" :key="tag" class="tag basic-tag">{{ tag }}</div>
@@ -60,6 +60,7 @@ export default {
     margin-bottom: 2rem;
     overflow: hidden;
     aspect-ratio: 360/250;
+    border: 1px solid var(--txt);
 }
 
 .impact-ring {

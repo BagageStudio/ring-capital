@@ -1,7 +1,18 @@
 <template>
     <div class="image-text-wrapper container" :class="{ reversed: content.reverse }">
         <div class="content-pad image-wrapper">
-            <FastImage class="image" :image="content.image" cover />
+            <div v-if="content.video" class="video">
+                <iframe
+                    class="embed-video"
+                    width="1440"
+                    height="762"
+                    :src="`https://www.youtube.com/embed/${content.video.providerUid}?modestbranding=1&rel=0&showinfo=0`"
+                    frameborder="0"
+                    allow="encrypted-media"
+                    allowfullscreen
+                ></iframe>
+            </div>
+            <FastImage v-else-if="content.image" class="image" :image="content.image" cover />
         </div>
         <div class="text-wrapper content-pad">
             <h2 v-if="content.title" class="basic-h2 text-title">{{ content.title }}</h2>
@@ -44,6 +55,20 @@ export default {
     width: 100%;
     aspect-ratio: 360/420;
     border: 1px solid var(--txt);
+}
+
+.video {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16/9;
+}
+
+.embed-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .text-wrapper {

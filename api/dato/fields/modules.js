@@ -118,6 +118,9 @@ export default `
         image {
             ${img}
         }
+        video {
+            providerUid
+        }
         link {
             __typename
             ...link

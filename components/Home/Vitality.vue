@@ -70,7 +70,7 @@ export default {
     text-transform: uppercase;
     font-size: 22cqw;
     line-height: 0.7;
-    background-image: url('/img/big-ring-green.png');
+    background-image: url('/img/big-ring-green-mini.png');
     transform-origin: 50% 0%;
     transform: translateY(calc(-20px * var(--scroll-appear))) scale(calc(1 + var(--scroll-appear) * 0.5));
     // background-size: 150% auto;

@@ -1,13 +1,12 @@
 <template>
     <div>
-        <component :is="template" v-if="template" :data="data" />
-        <Overlay />
+        <component :is="'Templates' + template" v-if="template" :data="data" />
+        <LayoutOverlay />
     </div>
 </template>
 
 <script>
 import { camalize, pascalize } from '@stereorepo/sac';
-import { forEach } from '@stereorepo/sac/src/core';
 import { getIso, getSlug, setRouteParams } from '~/api/dato/helpers';
 
 import slugToModelApiKey from '~/api/dato/helpers/slugToModelApiKey.json';
@@ -15,49 +14,15 @@ import { getQuery } from '~/api/dato';
 import handleSeo from '~/assets/js/seo';
 import { routeByApiModels } from '~/app/crawler/routes';
 
-import Page from '~/components/Templates/Page';
-import ModularPage from '~/components/Templates/ModularPage';
-import Contact from '~/components/Templates/Contact';
-import Team from '~/components/Templates/Team';
-import Portfolio from '~/components/Templates/Portfolio';
-import InvestorsPage from '~/components/Templates/InvestorsPage';
-import Fund from '~/components/Templates/Fund';
-import UseCasesPage from '~/components/Templates/UseCasesPage';
-import PodcastsPage from '~/components/Templates/PodcastsPage';
-import PressRoom from '~/components/Templates/PressRoom';
-import SustainableEngagement from '~/components/Templates/SustainableEngagement';
-import Ring2success from '~/components/Templates/Ring2success';
-import Vision from '~/components/Templates/Vision';
-import JobsPage from '~/components/Templates/JobsPage';
-import PortfolioTech from '~/components/Templates/PortfolioTech';
-import Blog from '~/components/Templates/Blog';
-
 export default {
-    components: {
-        Page,
-        ModularPage,
-        Contact,
-        Team,
-        Portfolio,
-        InvestorsPage,
-        Fund,
-        UseCasesPage,
-        PodcastsPage,
-        PressRoom,
-        SustainableEngagement,
-        Ring2success,
-        Vision,
-        JobsPage,
-        PortfolioTech,
-        Blog
-    },
+    name: 'Slug',
     layout(context) {
         const layoutLang = getIso.call(context);
         const layoutSlug = getSlug.call(context);
         const layoutTemplate = slugToModelApiKey[layoutLang][layoutSlug];
 
         if (layoutTemplate === 'contact') {
-            return 'minimal';
+            return 'footerless';
         }
     },
     async asyncData(context) {
@@ -81,6 +46,8 @@ export default {
             finalData.data = data[camalize(finalData.template)];
             finalData.seo = handleSeo({ route: route.fullPath, seo: finalData.data.seo, lang });
             finalData.template = pascalize(finalData.template);
+            if (finalData.template === 'MediaList')
+                finalData.data.allMediaContents = data.allMediaContentsFirst.concat(data.allMediaContentsSecond);
         } catch (e) {
             return error({ statusCode: 404, message: e });
         }

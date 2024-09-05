@@ -78,8 +78,18 @@ export default {
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: ['~assets/scss/main.scss'],
 
+    router: {
+        middleware: 'scroll'
+    },
+
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-    plugins: ['~/plugins/globals.js', '~/plugins/axios', '~/plugins/breakpoints', '~/plugins/stereorepo'],
+    plugins: [
+        '~/plugins/globals.js',
+        '~/plugins/axios',
+        '~/plugins/breakpoints',
+        '~/plugins/scroll.client.js',
+        '~/plugins/stereorepo'
+    ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
     components: ['~/components', { path: '~/components/Home/', prefix: 'Home' }],
@@ -166,12 +176,12 @@ export default {
      ** See https://nuxtjs.org/api/configuration-build/
      */
     build: {
-        /*
-         ** Transpiling es6 packages
-         */
-        transpile: [/@stereorepo/, 'gsap'],
+        transpile: [/@stereorepo/, /gsap/, 'lenis'],
         loaders: {
             scss: customSass
+        },
+        extend(config, { loaders }) {
+            loaders.scss.additionalData = '@use "sass:math";';
         }
     },
     /*

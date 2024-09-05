@@ -1,15 +1,15 @@
 <template>
     <div class="e404">
-        <div class="container">
+        <div class="container content-pad">
             <div v-if="errorData" class="e404-content">
-                <h1 v-if="errorData.title" class="e404-title saturn">{{ errorData.title }}</h1>
-                <h2 v-if="errorData.text" class="h1">{{ errorData.text }}</h2>
+                <h1 v-if="errorData.title" class="basic-h1">{{ errorData.title }}</h1>
+                <h2 v-if="errorData.text" class="basic-subtitle">{{ errorData.text }}</h2>
                 <div class="e404-btn">
-                    <LinkTo v-if="errorData.link" class="btn-block" :link="errorData.link" />
+                    <LinkTo v-if="errorData.link" class="btn-rounded" :link="errorData.link" />
                 </div>
             </div>
         </div>
-        <Overlay />
+        <LayoutOverlay />
     </div>
 </template>
 
@@ -47,31 +47,19 @@ export default {
         width: 100%;
     }
 }
-.e404-content {
-    padding: 20px $gutter;
-}
-.e404-title {
-    font-size: 6rem;
-    line-height: 50px;
-    font-weight: 300;
-    margin: 0 0 30px;
-    color: $saturn;
-}
 .e404-btn {
-    margin-top: 30px;
+    margin-top: 4rem;
 }
-@media (min-width: $tablet) {
-    .e404-title {
-        font-size: 11rem;
-        line-height: 70px;
-    }
-    .e404-btn {
-        margin-top: 70px;
-    }
+
+.basic-subtitle {
+    margin-top: 2rem;
 }
+
 @media (min-width: $desktop) {
     .e404-content {
-        padding: 70px calc(#{percentage(3/12)} + #{$gutter});
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 </style>

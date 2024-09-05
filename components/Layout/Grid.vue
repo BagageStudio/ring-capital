@@ -74,12 +74,6 @@ export default {
 }
 
 .container {
-    &:first-child {
-        position: fixed;
-    }
-    &:last-child {
-        position: absolute;
-    }
     display: flex;
     position: relative;
     top: 0;
@@ -88,6 +82,12 @@ export default {
     bottom: 0;
     height: 100%;
     z-index: 999;
+    &:first-child {
+        position: fixed;
+    }
+    &:last-child {
+        position: absolute;
+    }
 }
 
 .column-block {

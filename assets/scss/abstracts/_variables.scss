@@ -4,35 +4,11 @@
 $black: #19232f;
 $dark: #19232f;
 $white: #fff;
-$txt: #000;
 $titan: #90f5ca;
 $neptune: #657da2;
 $orbit: #1f2c3c;
 $saturn: #f4f928;
 $grey: #f5f7fa;
-
-:root {
-    --primary: #f4f928;
-    --secondary: #fff;
-    --tertiary: #f4f928;
-    --bg: #19232f;
-}
-.lightmode {
-    --primary: #1f2c3c;
-    --secondary: #1f2c3c;
-    --tertiary: #657da2;
-    --bg: #fff;
-}
-.greymode {
-    --primary: #1f2c3c;
-    --secondary: #1f2c3c;
-    --tertiary: #657da2;
-    --bg: #f5f7fa;
-}
-
-// Fonts ✍
-$space: 'Space Mono', serif;
-$helvetica-neue: 'HelveticaNeueLTStd', sans-serif;
 
 // Texts variables 🖌
 $text-size-mobile: 13;
@@ -59,3 +35,30 @@ $phone-small-v: 600px;
 $desktop-v: 900px;
 $desktop-xxl-v: 1080px;
 $header-height: 120px;
+
+:root {
+    --secondary: #fff;
+    --bg: #FDFDF8;
+    --txt: #1f1f1f;
+    --brand-primary-green: #148668;
+    --brand-primary-blue: #186281;
+    --brand-primary-red: #cd5a49;
+
+    // Fonts
+    --roboto: 'Roboto', sans-serif;
+    --urbanist: 'Urbanist', sans-serif;
+
+    // Grid
+    --gutter: 8px;
+
+    --header-height: 110px;
+}
+
+@media (min-width: $desktop) {
+    :root {
+        // Grid
+        --gutter: 30px;
+
+        --header-height: 130px;
+    }
+}

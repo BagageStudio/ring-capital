@@ -377,7 +377,7 @@ export default {
     display: inline-block;
     padding: 3px 10px;
     margin-right: 10px;
-    font-family: $space;
+    font-family: var(--roboto);
     background-color: #e9eef5;
     line-height: 24px;
     font-size: 1.6rem;
@@ -386,7 +386,7 @@ export default {
 .location {
     display: flex;
     margin-top: 10px;
-    font-family: $space;
+    font-family: var(--roboto);
     font-size: 1.6rem;
     line-height: 24px;
     .city {

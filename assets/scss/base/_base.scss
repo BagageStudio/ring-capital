@@ -1,14 +1,18 @@
 /******* GÉNÉRAL *******/
 
 ::-moz-selection {
-    background: rgba($black, 0.99);
-    color: $white;
+    background: var(--txt);
+    color: var(--bg);
     text-shadow: none;
 }
 ::selection {
-    background: rgba($black, 0.99);
-    color: $white;
+    background: var(--txt);
+    color: var(--bg);
     text-shadow: none;
+}
+
+:root {
+    --scroll-top: 0px;
 }
 
 html {
@@ -16,14 +20,17 @@ html {
     background: var(--bg);
     &.no-scroll {
         position: fixed;
+        overflow: hidden;
+        width: 100%;
         left: 0;
         right: 0;
+        top: var(--scroll-top);
     }
 }
 
 body {
-    font: 1.6em / 1.63 $helvetica-neue;
-    color: $white;
+    font: 1.6em / 1.63 var(--roboto);
+    color: var(--txt);
     font-kerning: normal;
     font-weight: 400;
     overflow-x: hidden;
@@ -31,188 +38,120 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.wysiwyg {
-    color: var(--secondary);
-    h1 {
-        color: var(--primary);
-        // box-shadow: inset 0 -0.175em var(--bg), inset 0 -0.2em $neptune;
-    }
-}
-
-.wysiwyg h1,
-.h1 {
-    font-size: 4.4rem;
-    line-height: 50px;
-    font-weight: 300;
-    margin: 0 0 40px;
-}
-
-.wysiwyg h2,
-.h2 {
-    font-size: 3.4rem;
-    line-height: 30px;
-    font-weight: 300;
-    margin: 100px 0 40px;
-}
-
-.wysiwyg h3,
-.h3 {
-    font-size: 2.2rem;
-    line-height: 28px;
-    font-weight: 400;
-    margin: 40px 0 20px;
-}
-
-.wysiwyg h4,
-.h4 {
-    font-size: 1.8rem;
-    line-height: 26px;
-    font-weight: 400;
-    margin: 20px 0 10px;
-}
-
-.wysiwyg h5,
-.h5,
-.wysiwyg h6,
-.h6 {
-    font-size: 1.5rem;
-    line-height: 21px;
-    font-weight: 500;
-    margin: 20px 0 10px;
+.wysiwyg p {
+    margin-bottom: 2rem;
 }
 
 .wysiwyg ul {
-    margin: 40px 0;
+    margin-bottom: 2rem;
     padding: 0;
     li {
         position: relative;
         margin: 5px 0;
-        padding: 0 0 0 15px;
+        padding: 0 0 0 30px;
         &::before {
             content: '';
             position: absolute;
-            top: 0.5em;
-            left: 0;
-            display: block;
-            width: 5px;
-            height: 5px;
+            top: 0.6em;
+            left: 10px;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 50%;
-            background: $titan;
+            background: var(--txt);
         }
     }
 }
 
 .wysiwyg ol {
-    margin: 40px 0;
+    margin-bottom: 2rem;
     padding: 0;
     li {
         position: relative;
         margin: 5px 0;
-        padding: 0 0 0 25px;
+        padding: 0 0 0 40px;
         &::before {
             position: absolute;
             top: 0;
-            left: 0;
-            color: $titan;
+            left: 10px;
+            display: block;
+            color: var(--txt);
         }
     }
 }
 
-.wysiwyg img {
-    margin: 40px auto;
+.wysiwyg a, .wysiwyg strong {
+    font-weight: 700;
 }
 
-.wysiwyg a {
-    font-weight: 500;
+.wysiwyg {
+    h2, h3, h4 {
+        margin-bottom: 2rem;
+    }
+}
+
+.wysiwyg > *:last-child {
+    margin-bottom: 0;
 }
 
 .basic-h1 {
+    font-family: var(--urbanist);
+    font-weight: 600;
+    font-size: 6rem;
+    line-height: 6rem;
+}
+
+.basic-h2, .wysiwyg h2 {
+    font-family: var(--urbanist);
+    font-weight: 600;
     font-size: 4rem;
-    font-weight: 300;
-    line-height: 50px;
-    margin: 0 0 30px;
-    p {
-        line-height: 1;
-    }
-    strong {
-        font-weight: 300;
-    }
+    line-height: 4rem;
 }
 
-.basic-h2 {
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 40px;
-    margin: 0 0 30px;
-    strong {
-        font-weight: 300;
-    }
+.basic-h3, .wysiwyg h3 {
+    font-family: var(--urbanist);
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 4.2rem;
 }
 
-.basic-h3 {
-    font-size: 3rem;
-    font-weight: 300;
-    line-height: 40px;
-    margin: 0 0 30px;
-    p {
-        line-height: 1;
-    }
-    strong {
-        font-weight: 300;
-    }
+.basic-h4, .wysiwyg h4 {
+    font-family: var(--urbanist);
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
-.basic-h4 {
-    font-size: 2.6rem;
-    font-weight: 400;
-    line-height: 30px;
-    margin: 0 0 35px;
+.basic-small-txt {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
 }
 
 .basic-subtitle {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 400;
-    line-height: 26px;
-    margin: 0 0 20px;
+    line-height: 3.2rem;
+    margin: 0;
+}
+
+.basic-tag {
+    font-family: var(--urbanist);
+    font-size: 1.4rem;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.3px;
 }
 
 .basic-txt {
-    color: $neptune;
-}
-
-.saturn {
-    color: $saturn;
-}
-.neptune {
-    color: $neptune;
-}
-.orbit {
-    color: $orbit;
-}
-.strong-neptune {
-    strong {
-        color: $neptune;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    p {
+        margin: 1em 0;
+        font-size: 2.5rem;
+        line-height: 3.2rem;
     }
-}
-.strong-saturn {
-    strong {
-        color: $saturn;
-    }
-}
-.strong-white {
-    strong {
-        color: $white;
-    }
-}
-.strong-titan {
-    strong {
-        color: $titan;
-    }
-}
-
-p {
-    margin: 10px 0;
-    line-height: 26px;
 }
 
 strong {
@@ -233,7 +172,6 @@ blockquote {
 ol,
 ul {
     padding: 0;
-    margin: 1em 0;
     list-style-type: none;
 }
 ul {
@@ -291,41 +229,25 @@ svg {
     max-width: 100%;
 }
 
-// COMBAK: Remove if not used
-code,
-pre {
-    display: block;
-    padding: 10px 15px;
-    margin: 1em 0;
-    background: grey;
+html.lenis,
+html.lenis body {
+    height: auto;
 }
 
-// COMBAK: Remove if not used
-hr {
-    position: relative;
-    width: 5px;
-    height: 5px;
-    border: 0;
-    margin: 100px auto;
-    border-radius: 50%;
-    background: $neptune;
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        display: block;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: $neptune;
-    }
-    &::before {
-        left: -20px;
-    }
-    &::after {
-        right: -20px;
-    }
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
 }
 
 /******* LIENS / BOUTONS *******/
@@ -364,10 +286,6 @@ a {
     width: 100%;
 }
 
-.main {
-    padding-top: 120px;
-}
-
 .no-transition {
     transition: none !important;
     &::after,
@@ -376,28 +294,6 @@ a {
     }
 }
 
-.underlined,
-.underlined-center {
-    > span,
-    > p {
-        display: inline;
-        background-image: linear-gradient($neptune, $neptune);
-        // Vertical position of the line, magic number working for helvetica 26px to 68px
-        background-position: 0% calc(70% + 0.7px);
-        background-repeat: no-repeat;
-        background-size: 100% 1px;
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-        // 0.6em is the width of an "O"
-        padding: 0 0.6em 0 0;
-    }
-}
-.underlined-center {
-    > span,
-    > p {
-        padding: 0 0.3em;
-    }
-}
 
 .visually-hidden {
     width: 1px !important;
@@ -433,65 +329,40 @@ a {
     body {
         font-size: #{$text-size-desktop * 0.1}rem;
     }
-    .wysiwyg h1,
-    .h1 {
-        font-size: 4rem;
-    }
-    .wysiwyg h2,
-    .h2 {
-        font-size: 3.2rem;
-    }
-    .wysiwyg h3,
-    .h3 {
-        font-size: 2.8rem;
-    }
-    .wysiwyg h4,
-    .h4 {
-        font-size: 2.2rem;
-    }
-    .wysiwyg h5,
-    .h5 {
-        font-size: 2rem;
-    }
-    .wysiwyg h6,
-    .h6 {
-        font-size: 1.8rem;
-    }
 }
 
-@media (min-width: $desktop-small) {
+@media (min-width: $desktop) {
     .wysiwyg img {
-        width: percentage(8/6);
+        width: math.percentage(math.div(8, 6));
         max-width: none;
-        margin-left: -#{percentage(1/6)};
+        margin-left: -#{math.percentage(math.div(1, 6))};
     }
     .basic-h1 {
-        font-size: 6.8rem;
-        line-height: 70px;
-        margin-bottom: 40px;
+        font-size: 8rem;
+        line-height: 8rem;
     }
-    .basic-h2 {
-        font-size: 5.2rem;
-        line-height: 62px;
-        margin-bottom: 40px;
-    }
-    .basic-h3 {
-        font-size: 4.4rem;
-        line-height: 50px;
-        margin-bottom: 50px;
+    .basic-h2, .wysiwyg h2 {
+        font-size: 5rem;
+        line-height: 5rem;
     }
 }
 
 @media (min-width: $desktop) {
     .wysiwyg img {
-        width: percentage(10/8);
-        margin-left: -#{percentage(1/8)};
+        width: math.percentage(math.div(10, 8));
+        margin-left: -#{math.percentage(math.div(1, 8))};
     }
 }
 
 @media (min-width: $desktop-large) {
     .wysiwyg img {
-        width: percentage(8/6);
-        margin-left: -#{percentage(1/6)};
+        width: math.percentage(math.div(8, 6));
+        margin-left: -#{math.percentage(math.div(1, 6))};
+    }
+}
+
+@media (min-width: $desktop-xxl) {
+    html {
+        font-size: 0.6944444vw;
     }
 }

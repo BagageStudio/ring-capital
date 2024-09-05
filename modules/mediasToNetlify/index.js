@@ -167,7 +167,8 @@ export default function () {
             const ext = '.' + url.pathname.split('.').pop();
             const name = slugify(url.pathname.split(ext).join('')) + ext;
             const imgPath = join(baseDir, name);
-            const replacedPath = process.env.URL + WEBSITE_MEDIA_FOLDER + '/' + name;
+            const URL = process.env.NETLIFY_ENV === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL;
+            const replacedPath = URL + WEBSITE_MEDIA_FOLDER + '/' + name;
 
             const img = { url: url.href, path: imgPath, name };
             images.push(img);

@@ -8,9 +8,7 @@ export default function () {
     this.nuxt.hook('ready', async () => {
         const { datoApiUrl } = this.nuxt.options.publicRuntimeConfig;
 
-        const {
-            data: { data }
-        } = await axios.post(
+        const oui = await axios.post(
             datoApiUrl,
             { query },
             {
@@ -19,6 +17,10 @@ export default function () {
                 }
             }
         );
+
+        console.log(oui.data.errors);
+
+        const data = oui.data.data;
 
         const mapping = Object.entries(data).reduce((acc, model) => {
             const pages = model[1];

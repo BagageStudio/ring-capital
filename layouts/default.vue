@@ -1,11 +1,11 @@
 <template>
     <div class="main">
-        <Header />
+        <LayoutNavigation />
         <Nuxt />
-        <Footer />
+        <LayoutFooter />
         <Svgs />
-        <LazyGrid v-if="$config.isDevEnv" />
-        <Overlay class="layout-overlay" />
+        <LayoutGrid v-if="$config.isDevEnv" />
+        <LayoutOverlay class="layout-overlay" />
     </div>
 </template>
 

@@ -1,18 +1,42 @@
 export const routes = {
     // 🚦Routing constants
+    homepage: {
+        i18nFormat: 'index',
+        routerFormat: 'index'
+    },
+    modular: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
+    team: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
+    fund: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
+    mediaList: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
+    portfolioList: {
+        i18nFormat: 'portfolio/index',
+        routerFormat: 'portfolio'
+    },
+    portfolioItem: {
+        i18nFormat: 'portfolio/_slug',
+        routerFormat: 'portfolio-slug'
+    },
+    contact: {
+        i18nFormat: '_slug',
+        routerFormat: 'slug'
+    },
     home: {
         i18nFormat: 'index',
         routerFormat: 'index'
     },
     page: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
-    modularPage: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
-    team: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
@@ -28,15 +52,7 @@ export const routes = {
         i18nFormat: 'portfolio/_slug',
         routerFormat: 'portfolio-slug'
     },
-    fund: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
     investorsPage: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
-    contact: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
@@ -60,10 +76,6 @@ export const routes = {
         i18nFormat: '_slug',
         routerFormat: 'slug'
     },
-    vision: {
-        i18nFormat: '_slug',
-        routerFormat: 'slug'
-    },
     jobsPage: {
         i18nFormat: '_slug',
         routerFormat: 'slug'
@@ -75,24 +87,14 @@ export const routes = {
 };
 
 export const routeByApiModels = {
-    home: routes.home,
-    page: routes.page,
-    modular_page: routes.modularPage,
+    homepage: routes.home,
+    modular: routes.modular,
     team: routes.team,
-    portfolio: routes.portfolio,
-    company: routes.portfolioSingle,
+    media_list: routes.mediaList,
+    portfolio_list: routes.portfolioList,
+    portfolio_item: routes.portfolioItem,
     fund: routes.fund,
-    investors_page: routes.investorsPage,
-    contact: routes.contact,
-    use_cases_page: routes.useCasesPage,
-    podcasts_page: routes.podcastsPage,
-    press_room: routes.pressRoom,
-    sustainable_engagement: routes.sustainableEngagement,
-    ring2success: routes.ring2success,
-    vision: routes.vision,
-    jobs_page: routes.jobsPage,
-    portfolio_tech: routes.portfolioTech,
-    blog: routes.blog
+    contact: routes.contact
 };
 
 // You can pass an array of regular expressions to exclude dynamic routes.

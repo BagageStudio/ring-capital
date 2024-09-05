@@ -1,215 +1,312 @@
 <template>
-    <div class="container">
-        <SchemaHero :links="data.funds" :selected="selected" />
-        <h1 class="basic-h1 content-pad" v-html="$options.filters.nestedTitle(data.title)"></h1>
-        <div class="hero-content">
-            <FundCards :content="data.funds" @slowMo="setSelected" @resetSpeed="selected = ''" />
-
-            <div class="intro content-pad">
-                <span v-if="data.introTitle" class="intro-title basic-h4">{{ data.introTitle }}</span>
-                <div v-if="data.introText" class="intro-text" v-html="data.introText"></div>
-                <nuxt-link
-                    v-if="data.introAnchorLabel"
-                    class="enter-orbit"
-                    :to="{ path: '/', hash: '#collective-intelligence' }"
-                    ><span class="deco"></span>{{ data.introAnchorLabel }}</nuxt-link
-                >
-            </div>
+    <div class="hero">
+        <div class="videos">
+            <video
+                v-for="slide in data.heroSlides"
+                :key="slide.id"
+                ref="videos"
+                class="hero-video"
+                playsinline
+                muted
+                loop
+            >
+                <source :src="slide.video.url" :type="`video/${slide.video.format}`" />
+            </video>
         </div>
-        <div class="wrapper-logos">
-            <LogosList :content="data.companies" />
+        <div class="container-hero container">
+            <div class="wrapper-txt">
+                <h1 class="hero-title" v-html="$options.filters.noPAround(data.title)"></h1>
+                <div class="subtitles-wrapper">
+                    <div class="subtitles">
+                        <div v-for="slide in data.heroSlides" :key="slide.id" ref="subtitles" class="subtitle">
+                            <p class="first-line-subtitle">
+                                <span class="subtitle-part">{{ slide.firstPartTitle }}</span>
+                                <span class="subtitle-part">ring</span>
+                            </p>
+                            <p class="subtitle-part">{{ slide.secondPartTitle }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-arrows">
+                <button class="arrow" type="button" @click="prevSlide">
+                    <Icon name="prev" />
+                </button>
+                <button class="arrow" type="button" @click="nextSlide">
+                    <Icon name="next" />
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import Icon from '../Icon.vue';
 export default {
+    components: { Icon },
     props: {
         data: {
             type: Object,
             required: true
         }
     },
-    data: () => ({
-        selected: ''
-    }),
+    data() {
+        return {
+            currentSlide: -1,
+            timer: null,
+            transitionning: false
+        };
+    },
+    beforeDestroy() {
+        this.killAnim();
+    },
+    mounted() {
+        this.changeSlide(0);
+    },
     methods: {
-        setSelected(selected) {
-            this.selected = selected;
+        formattedSubtitle(subtitle) {
+            const sub = subtitle.replace('<span>', '').replace('</span>', '');
+            console.log(sub);
+            return sub;
+        },
+        prevSlide() {
+            const prevIndex = this.currentSlide === 0 ? this.data.heroSlides.length - 1 : this.currentSlide - 1;
+            this.changeSlide(prevIndex);
+        },
+        nextSlide() {
+            const nextIndex = this.currentSlide === this.data.heroSlides.length - 1 ? 0 : this.currentSlide + 1;
+            this.changeSlide(nextIndex);
+        },
+        triggerAutoTimer() {
+            if (this.timer) this.timer.kill();
+            this.timer = this.$gsap.delayedCall(4, () => {
+                this.nextSlide();
+            });
+        },
+        changeSlide(nextIndex) {
+            if (this.transitionning || nextIndex === this.currentSlide) return;
+
+            this.transitionning = true;
+
+            const currentVideo = this.$refs.videos[this.currentSlide];
+            const nextVideo = this.$refs.videos[nextIndex];
+
+            const currentSubtitle = this.$refs.subtitles[this.currentSlide];
+            const nextSubtitle = this.$refs.subtitles[nextIndex];
+
+            nextVideo.play();
+
+            // Disappear
+            this.$gsap.set(currentVideo, {
+                zIndex: 1
+            });
+            if (currentVideo) {
+                this.$gsap.to(currentVideo, {
+                    duration: 0.7,
+                    scale: 1.4,
+                    ease: 'power2.inOut',
+                    force3D: true,
+                    overwrite: true
+                });
+            }
+            if (currentSubtitle) {
+                this.$gsap.to([...currentSubtitle.getElementsByClassName('subtitle-part')].reverse(), {
+                    duration: 0.3,
+                    stagger: 0.1,
+                    autoAlpha: 0,
+                    y: 30,
+                    ease: 'power2.inOut',
+                    overwrite: true
+                });
+            }
+
+            // Reappear
+            this.$gsap.set(nextVideo, {
+                zIndex: 2
+            });
+            this.$gsap.fromTo(
+                nextVideo,
+                {
+                    autoAlpha: 0,
+                    scale: 1.01
+                },
+                {
+                    duration: 0.7,
+                    autoAlpha: 1,
+                    scale: 1.1,
+                    force3D: true,
+                    ease: 'power2.inOut',
+                    overwrite: true,
+                    onComplete: () => {
+                        if (currentVideo) {
+                            currentVideo.pause();
+                            currentVideo.currentTime = 0;
+                            this.$gsap.set(currentVideo, {
+                                zIndex: 0,
+                                autoAlpha: 0
+                            });
+                        }
+                        this.transitionning = false;
+                        this.triggerAutoTimer(nextIndex);
+                        this.currentSlide = nextIndex;
+                    }
+                }
+            );
+            this.$gsap.fromTo(
+                [...nextSubtitle.getElementsByClassName('subtitle-part')],
+                {
+                    autoAlpha: 0,
+                    y: -30
+                },
+                {
+                    stagger: 0.3,
+                    duration: 0.7,
+                    autoAlpha: 1,
+                    y: 0,
+                    ease: 'power2.inOut',
+                    delay: 0.1,
+                    overwrite: true
+                }
+            );
+        },
+        killAnim() {
+            this.currentSlide = 0;
+            if (this.timer) this.timer.kill();
+            this.timer = null;
+            this.$gsap.set(this.$refs.videos, { clearProps: 'all' });
+            this.$gsap.set(this.$refs.subtitles, { clearProps: 'all' });
         }
     }
 };
 </script>
+
 <style lang="scss" scoped>
-.container {
+.hero {
     position: relative;
-    padding-top: 70px;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.15);
+        z-index: 2;
+    }
 }
-.basic-h1 {
+.videos {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    overflow: hidden;
+    z-index: 1;
+}
+.hero-video {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    will-change: transform;
+    z-index: 0;
+}
+.container-hero {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: -50px;
-        height: 50px;
-        background-color: $dark;
-    }
-    ::v-deep p {
-        position: relative;
-        display: inline;
-        margin: 0;
-        &:nth-child(1) {
-            z-index: 2;
-        }
-        &:nth-child(2) {
-            z-index: 1;
-        }
-    }
-    ::v-deep span {
-        position: relative;
-        padding-top: 5px;
-        box-shadow: 10px 0 0 $dark, -20px 0 0 $dark;
-        background-color: $dark;
-        background-position: 0% calc(74% + 0.7px);
-    }
-    ::v-deep strong {
-        color: $saturn;
-        font-weight: 300;
-    }
+    justify-content: space-between;
+    min-height: 100svh;
+    padding-top: calc(var(--header-height) + 8rem);
+    padding-bottom: 8rem;
+    color: var(--bg);
+    z-index: 2;
 }
-.schema {
-    position: absolute;
+.wrapper-txt {
     width: 100%;
-    min-width: 450px;
-    top: -4vw;
-    right: 0;
-    z-index: -1;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
-.intro {
-    margin-top: 56px;
+.hero-title {
+    font-family: var(--urbanist);
+    font-size: 6rem;
+    line-height: 6rem;
+    font-weight: 600;
+    padding: 0 var(--gutter);
 }
-.intro-title {
-    display: block;
+.subtitles-wrapper {
+    padding: 0 var(--gutter);
+    margin-top: 6rem;
 }
-.intro-text {
-    color: $neptune;
-    margin-bottom: 35px;
+.subtitles {
+    position: relative;
+    height: 100%;
 }
-.enter-orbit {
+.subtitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    > p {
+        margin: 0;
+        font-family: var(--urbanist);
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        font-weight: 600;
+    }
+}
+.subtitle-part {
+    transform: translateY(-30px);
+    opacity: 0;
+}
+.first-line-subtitle {
+    display: flex;
+}
+.wrapper-arrows {
     display: flex;
     align-items: center;
-    font-family: $space;
-    color: $saturn;
-    text-decoration: none;
-    transition: opacity 0.3s ease-in-out;
-
-    .deco {
-        position: relative;
-        display: flex;
-        align-items: center;
-        height: 15px;
-        width: 85px;
-        margin-right: 20px;
-        overflow: hidden;
-        &::before {
-            content: '';
-            height: 1px;
-            width: 85px;
-            background-color: currentColor;
-            transform-origin: 100% 50%;
-            transition: 0.2s ease-in;
-        }
-        &::after {
-            position: absolute;
-            content: '';
-            left: -15px;
-            height: 15px;
-            width: 15px;
-            background-color: $dark;
-            border-radius: 50%;
-        }
-    }
-
-    &:hover,
-    &:focus {
-        opacity: 0.8;
-        .deco::before {
-            transform: scaleX(0.8);
-            transition: transform 0.4s ease-in-out;
-        }
-        .deco::after {
-            transform: translateX(100px);
-            transition: transform 0.6s ease-out 0.1s;
-        }
-    }
+    gap: 4.4rem;
+    margin-top: 6rem;
+    padding: 0 var(--gutter);
 }
-
-.wrapper-logos {
-    padding: 55px 0 35px;
-}
-@media (min-width: 450px) {
-    .container {
-        padding-top: 100px;
-    }
-}
-@media (min-width: $tablet) {
-    .basic-h1 {
-        width: percentage(6/8);
-        &::after {
-            content: none;
-        }
-    }
-    .container {
-        padding-top: 130px;
-    }
-}
-@media (min-width: $desktop-small) {
-    .basic-h1 {
-        width: percentage(8/12);
-    }
-    .wrapper-logos {
-        padding: 100px 0 50px;
+.arrow {
+    display: block;
+    width: 2.4rem;
+    height: 1.2rem;
+    .icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: var(--bg);
     }
 }
 
 @media (min-width: $desktop) {
-    .container {
-        padding-top: 170px;
+    .container-hero {
+        justify-content: center;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
     }
-    .hero-content {
+    .wrapper-txt {
         display: flex;
-        justify-content: space-between;
     }
-    .schema {
-        padding: 0 50px;
-        top: -3vw;
+    .subtitle {
+        top: auto;
+        bottom: 0;
     }
-    .basic-h1 {
-        margin-bottom: 90px;
-        ::v-deep span {
-            box-shadow: 10px 0 0 $dark, -10px 0 0 $dark;
-            &::before {
-                left: -10px;
-            }
-        }
+    .hero-title {
+        flex: 0 0 auto;
+        width: calc(7 / 12 * 100%);
     }
-    .intro {
+    .subtitles-wrapper {
+        flex: 0 0 auto;
+        width: calc(5 / 12 * 100%);
         margin-top: 0;
-        width: percentage(4/12);
     }
-}
-
-@media (min-width: $desktop-xxl) {
-    .schema {
-        top: -45px;
+    .wrapper-arrows {
+        position: absolute;
+        right: var(--gutter);
+        bottom: 10rem;
+        justify-content: flex-end;
     }
 }
 </style>

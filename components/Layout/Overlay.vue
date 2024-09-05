@@ -9,7 +9,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: #19232f;
+    background-color: var(--bg);
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
     z-index: 11;

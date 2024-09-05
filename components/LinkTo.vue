@@ -1,6 +1,5 @@
 <template>
     <nuxt-link v-if="data && data.internalLink" :to="data.url" :aria-label="data.title">
-        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
@@ -10,10 +9,9 @@
         v-else-if="data && data.externalLink"
         :href="data.externalLink"
         :aria-label="data.title"
-        target="_blank"
-        rel="noopener noreferrer"
+        :target="data.openInCurrentTab ? '' : '_blank'"
+        :rel="data.openInCurrentTab ? '' : 'noopener noreferrer'"
     >
-        <div class="deco"></div>
         <span v-if="!hideLabel" class="text">
             <span class="btn-label">{{ data.label }}</span>
         </span>
@@ -43,6 +41,7 @@ export default {
     methods: {
         getInternalUrlDatas() {
             const { internalLink, hash } = this.link;
+            if (!routeByApiModels[internalLink._modelApiKey]) return {};
             const { routerFormat } = routeByApiModels[internalLink._modelApiKey];
             const params = internalLink.slug ? { [routerFormat.split('-').pop()]: internalLink.slug } : {};
 

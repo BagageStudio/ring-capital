@@ -2,102 +2,86 @@ import linkFragment from './fragments/link';
 
 import seo from './fields/seo';
 import img from './fields/img';
+import modules from './fields/modules';
 import locales from './fields/locales';
 
 export const layoutQuery = `
     ${linkFragment}
     query Layout($lang: SiteLocale) {
-        header(locale: $lang) {
-            navigation {
-                ... on MegaRecord {
-                    _modelApiKey
-                    id
-                    megaMenu {
-                        title
-                        links {
-                            ...link
-                        }
-                        social {
-                            socialLinks {
-                            title
-                            iconName
-                            link
-                            }
-                        }
-                        newsTitle
-                        socialTitle
-                        news {
-                            title
-                            cover {
-                                ${img}
-                            }
-                            readingTime
-                            date
-                            linkUrl
-                        }
-                    }
-                }
-                ... on SingleLinkRecord {
-                    _modelApiKey
-                    id
-                    link {
-                        ...link
-                    }
-                }
-                ... on SubmenuGroupRecord {
-                    _modelApiKey
-                    id
-                    title
-                    submenus {
-                        id
-                        title
-                        links {
-                            ...link
-                        }
-                    }
-                }
-            }
-            contact {
+        navigation(locale: $lang){
+            quickMenu {
                 ...link
             }
+            menu {
+                title
+                links {
+                    ...link
+                }
+            }
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
+            }
         }
-        footer(locale: $lang) {
+        footerClassic(locale: $lang) {
+            topTitle
+            topLink {
+                ...link
+            }
             linksColumn {
+                id
+                groupTitle
                 links {
                     label
                     title
                     ...link
                 }
             }
-            smallText
-            smallLinks {
-                __typename
-                ...link
-                ... on LinkFileRecord {
+            ringLogo {
+                ${img}
+            }
+            bCorporationLogo {
+                ${img}
+            }
+            bottomLinks {
+                links {
                     label
                     title
-                    file {
-                        url
-                    }
+                    ...link
                 }
             }
-            newsletter {
-                title
+            copyText
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
+                }
             }
-            newsletterEmailError
-            newsletterEmailInvalid
-            newsletterSuccess
-            newsletterGdpr
-            newsletterTextBeforeLink
-            newsletterLink {
+            backgroundShape {
+                ${img}
+            }
+        }
+        footerReduced(locale: $lang) {
+            leftSideTitle
+            leftSideText
+            podcastTitle
+            youtubeLink
+            spotifyLink
+            applePodcastsLink
+            deezerLink
+            rightSideTitle
+            rightSideText
+            rightSideLink {
                 ...link
             }
-            social {
-                socialLinks {
-                    title
-                    iconName
-                    link
-                }
+            backgroundShape {
+                ${img}
             }
         }
     }
@@ -115,235 +99,160 @@ export const errorQuery = `
         }
     }`;
 
-export const homeQuery = `
+export const homepageQuery = `
     ${linkFragment}
-    query Home($lang: SiteLocale) {
-        home(locale: $lang) {
+    query Homepage($lang: SiteLocale) {
+        homepage(locale: $lang) {
             ${seo}
             title
-            introTitle
-            introText
-            introAnchorLabel
-            funds {
+            heroSlides {
                 id
-                name
-                description
-                logo
-                color {
-                    hex
-                }
-                slug
-                ${seo}
-            }
-            companies {
-                _modelApiKey
-                id
-                name
-                logo {
-                    ${img}
-                }
-                slug
-            }
-            section1Title
-            section1Subtitle
-            section1Content
-            section1Link {
-                ...link
-            }
-            section1MobileImage {
-                ${img}
-            }
-            section1TopLeftImage {
-                ${img}
-            }
-            section1TopLeftLink {
-                ...link
-            }
-            section1TopRightImage {
-                ${img}
-            }
-            section1TopRightLink {
-                ...link
-            }
-            section1BottomLeftImage {
-                ${img}
-            }
-            section1BottomLeftLink {
-                ...link
-            }
-            section1BottomRightImage {
-                ${img}
-            }
-            section1BottomRightLink {
-                ...link
-            }
-            section2LeftTitle
-            section2LeftSubtitle
-            section2RightTitle
-            section2RightSubtitle
-            centeredLink {
-                ...link
-            }
-            ellipse {
-                ${img}
-            }
-            newsTitle
-            news {
                 title
-                cover {
+                firstPartTitle
+                secondPartTitle
+                video {
+                    url
+                    height
+                    width
+                    alt
+                    format
+                }
+            }
+            vitalityTitle
+            vitalitySubtitle
+            vitalityIntro
+            vitalityNumbers {
+                id
+                number
+                content
+            }
+            investmentStrategyTitle
+            investmentStrategyIntro
+            fundsSlides {
+                id
+                slug
+                name
+                title
+                description
+                fullDescription
+                logoImage {
                     ${img}
                 }
-                date
-                readingTime
-                linkUrl
             }
-        }
-    }
-`;
-
-export const pageQuery = `
-    query Page($lang: SiteLocale, $slug: String) {
-        page(locale: $lang, filter: { slug: { eq: $slug } }) {
-            ${seo}
-            ${locales}
-            title
-            content
-            whiteBackground
-        }
-    }`;
-
-export const modularPageQuery = `
-    ${linkFragment}
-    query ModularPage($lang: SiteLocale, $slug: String) {
-        modularPage(locale: $lang, filter: { slug: { eq: $slug } }) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            modules {
-                ... on DoubleOrbitRecord {
+            learnMoreButtonLabel
+            investmentStrategyBackgroundShape {
+                ${img}
+            }
+            ecosystemTitle
+            ecosystemIntro
+            ecosystemMosaic {
+                ... on EcosystemQuoteTileRecord {
                     _modelApiKey
                     id
-                    leftOrbitTitle
-                    leftOrbitContent
-                    rightOrbitTitle
-                    rightOrbitContent
-                    textUnder
-                    ellipse {
-                        ${img}
-                    }
+                    quote
+                    quoteAuthor
                 }
-                ... on TextImageRecord {
+                ... on EcosystemLogoTileRecord {
                     _modelApiKey
                     id
                     title
-                    text
-                    images {
+                    logos {
                         id
                         ${img}
                     }
                 }
-                ... on AccordionsModuleRecord {
+                ... on EcosystemImageTileRecord {
                     _modelApiKey
                     id
                     title
                     image {
                         ${img}
                     }
-                    accordions {
-                        id
-                        title
-                        content
-                        picto {
-                            ${img}
-                        }
-                        link {
-                            __typename
-                            ...link
-                            ... on LinkFileRecord {
-                                label
-                                title
-                                file {
-                                    url
-                                }
-                            }
-                        }
-                    }
                 }
-                ... on MosaicRecord {
-                    _modelApiKey
-                    id
-                    title
-                    subtitle
-                    text
-                    link {
-                        ...link
-                    }
-                    topLeftImage {
-                        ${img}
-                    }
-                    bottomLeftImage {
-                        ${img}
-                    }
-                    rightMobileImage {
-                        ${img}
-                    }
+            }
+            podcastTitle
+            podcastIntro
+            podcastAllEpisodesLink {
+                ...link
+            }
+            podcastSelection {
+                id
+                title
+                infos
+                link {
+                    ...link
                 }
-                ... on TextModuleRecord {
-                    _modelApiKey
-                    id
-                    text
+            }
+            podcastLinkLabel
+            podcastPlatforms {
+                id
+                logo {
+                    ${img}
                 }
-                ... on UseCasesModuleRecord {
-                    _modelApiKey
-                    id
-                    title
-                    subtitle
-                    useCases {
-                        id
-                        name
-                        image {
-                            ${img}
-                        }
-                        description
-                        date
-                        readingTime
-                        author {
-                            name
-                            image {
-                                ${img}
-                            }
-                        }
-                        link {
-                            ...link
-                        }
-                    }
+                link {
+                    ...link
                 }
+            }
+            podcastBackgroundShape {
+                ${img}
+            }
+            newsletterTitle
+            newsletterIntro
+            newsletterSubscribeLink {
+                ...link
+            }
+            articleSelection {
+                id
+                title
+                image {
+                    ${img}
+                }
+                infos
+                link {
+                    ...link
+                }
+            }
+            modules {
+                ${modules}
+            }
+        }
+    }
+`;
+
+export const modularPageQuery = `
+    ${linkFragment}
+    query ModularPage($lang: SiteLocale, $slug: String) {
+        modular(locale: $lang, filter: { slug: { eq: $slug } }) {
+            ${seo}
+            ${locales}
+            title
+            subtitle
+            modules {
+                ${modules}
             }
         }
     }`;
 
 export const contactQuery = `
+    ${linkFragment}
     query Contact($lang: SiteLocale) {
         contact(locale: $lang) {
             ${seo}
             ${locales}
             title
-            mailTitle
-            mail
             socialTitle
-            social {
-                socialLinks {
-                title
-                iconName
-                link
+            socials {
+                image {
+                    ${img}
+                }
+                link {
+                    ...link
                 }
             }
             locationTitle
             location
-            locationLink
-            image {
-                ${img}
+            contactButton {
+                ...link
             }
         }
     }`;
@@ -368,6 +277,7 @@ export const teamQuery = `
                 image {
                     ${img}
                 }
+                ringColor
             }
             investorsTitle
             investorsSubtitle
@@ -399,227 +309,90 @@ export const teamQuery = `
                     ${img}
                 }
             }
-        }
-    }`;
-
-export const portfolioQuery = `
-    ${linkFragment}
-    query Portfolio($lang: SiteLocale) {
-        portfolio(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            companies {
-                _modelApiKey
-                id
-                name
-                description
-                tags
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
-                slug
-            }
-            tableTitle
-            col2Title
-            col3Title
-            col4Title
-            tableEntries {
-                id
-                companyName
-                industrySector
-                soldTo
-                soldYear
-                company {
-                    _modelApiKey
-                    id
-                    slug
-                }
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-			seeOtherPortfolioCompanies {
-				...link
-			}
-		}
-    }`;
-
-export const portfolioTechQuery = `
-    ${linkFragment}
-    query PortfolioTech($lang: SiteLocale) {
-        portfolioTech(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            companies {
-                _modelApiKey
-                id
-                name
-                description
-                tags
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
-                slug
-            }
-            tableTitle
-            col2Title
-            col3Title
-            col4Title
-            tableEntries {
-                id
-                companyName
-                industrySector
-                soldTo
-                soldYear
-                company {
-                    _modelApiKey
-                    id
-                    slug
-                }
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
+            modules {
+                ${modules}
             }
         }
     }`;
 
-export const investorsPageQuery = `
-    query InvestorsPage($lang: SiteLocale) {
-        investorsPage(locale: $lang) {
+export const portfolioListQuery = `
+    ${linkFragment}
+    query PortfolioList($lang: SiteLocale) {
+        portfolioList(locale: $lang) {
             ${seo}
-            ${locales}
             title
-            subtitle
-            investors {
+            description
+            filterText
+            seeMoreText
+            companiesSoldText
+            modules {
+                ${modules}
+            }
+        }
+        allPortfolioItems(locale: $lang, first: 100) {
+            _modelApiKey
+            slug
+            id
+            name
+            title
+            description
+            logo {
+                ${img}
+            }
+            fund {
                 id
                 name
-                logo {
-                    ${img}
-                }
-                link
-                smallText
             }
-            moduleText {
-                title
-                text
-            }
+            sector
+            sold
+            soldTo
+            soldYear
         }
     }`;
 
-export const companyQuery = `
-    ${linkFragment}
-    query Company($lang: SiteLocale, $slug: String) {
-        company(locale: $lang, filter: { slug: { eq: $slug } }) {
+export const portfolioItemQuery = `
+    query PortfolioItem($lang: SiteLocale, $slug: String) {
+        portfolioItem(locale: $lang, filter: { slug: { eq: $slug } }) {
             ${seo}
             ${locales}
             name
-            charity
+            title
             description
-            tags
             logo {
                 ${img}
+            }
+            founders
+            location
+            websiteLink
+            websiteLinkLabel
+            fund {
+                id
+                name
+                slug
+            }
+            social {
+                socialLinks {
+                    title
+                    iconName
+                    link
+                }
             }
             image {
                 ${img}
             }
-            founders
-            largeDescription
-            quote
-            keyFigures {
-                id
-                title
-                number
-            }
-            recruitmentPageLink
-            locations {
-                id
-                city
-                address
-                mapLink
-            }
-            social {
-                socialLinks {
-                title
-                iconName
-                link
-                }
-            }
-            websiteLink
-            websiteLinkLabel
+            challenge
+            impact
+            way
             otherCompanies {
                 _modelApiKey
                 id
                 name
-                description
-                tags
+                title
+                slug
+                sector
                 logo {
                     ${img}
                 }
-                image {
-                    ${img}
-                }
-                slug
-            }
-			believeTitle
-            believeAccordions {
-                id
-                title
-                content
-                picto {
-                    ${img}
-                }
-                link {
-                    __typename
-                    ...link
-                    ... on LinkFileRecord {
-                        label
-                        title
-                        file {
-                           url
-                        }
-                    }
-                }
-            }
-            believeImage {
-                ${img}
             }
         }
     }`;
@@ -633,17 +406,16 @@ export const fundQuery = `
             name
             title
             fullDescription
-            logo
-            color {
-                hex
+            description
+            theme
+            logoImage {
+                ${img}
             }
             keyFigures {
                 id
                 title
                 number
             }
-            targetsTitle
-            targetsDescription
             targetsFirstColumnTitle
             targetsFirstColumnItems {
                 id
@@ -654,523 +426,74 @@ export const fundQuery = `
                 id
                 text
             }
-            video {
-                title
-                text
-                videoUrl {
-                    providerUid
-                }
-            }
             companiesTitle
-            companies {
+            portfolioItems {
                 _modelApiKey
                 id
                 name
-                description
-                tags
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
+                title
                 slug
+                sector
+                logo {
+                    ${img}
+                }
             }
-            crewTitle
-            crewSections {
+            modules {
+                ${modules}
+            }
+        }
+    }`;
+
+export const mediaListQuery = `
+    ${linkFragment}
+    query MediaList($lang: SiteLocale) {
+        mediaList(locale: $lang) {
+            ${seo}
+            ${locales}
+            title
+            filterText
+            mediaTypes {
+                mediaType
                 title
-                crewMembers {
-                    name
-                    description
-                    hasLinkedin
+                description
+                extraTitle
+                extraLinks {
+                    image {
+                        ${img}
+                    }
                     link {
                         ...link
                     }
-                    image {
-                        ${img}
-                    }
                 }
             }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-
-        }
-    }`;
-
-export const useCasesPageQuery = `
-    ${linkFragment}
-    query UseCasesPage($lang: SiteLocale) {
-        useCasesPage(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            text
-            useCases {
-                id
-                name
-                image {
-                    ${img}
-                }
-                description
-                date
-                readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
-                link {
-                    ...link
-                }
-            }
-            seeAllLink
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
+            moreTitle
+            seeMoreText
+            modules {
+                ${modules}
             }
         }
-    }`;
-
-export const podcastsPageQuery = `
-    ${linkFragment}
-    query PodcastsPage($lang: SiteLocale) {
-        podcastsPage(locale: $lang) {
-            ${seo}
-            ${locales}
+        allMediaContentsFirst: allMediaContents(first: 100) {
+            id
             title
-            subtitle
-            text
-            podcasts {
-                id
-                name
-                image {
-                    ${img}
-                }
-                description
-                date
-                readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
-                link {
-                    ...link
-                }
+            mediaType
+            infos
+            image {
+                ${img}
             }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-        }
-    }`;
-
-export const blogQuery = `
-    ${linkFragment}
-    query Blog($lang: SiteLocale) {
-        blog(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            text
-            podcasts {
-                id
-                name
-                image {
-                    ${img}
-                }
-                description
-                date
-                readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
-                link {
-                    ...link
-                }
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-        }
-    }`;
-
-export const pressRoomQuery = `
-    ${linkFragment}
-    query PressRoom($lang: SiteLocale) {
-        pressRoom(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            text
-            publications {
-                id
-                name
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
-                description
-                link {
-                    ...link
-                }
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-        }
-    }`;
-
-export const sustainableEngagementQuery = `
-    ${linkFragment}
-    query SustainableEngagement($lang: SiteLocale) {
-        sustainableEngagement(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            section1LeftTitle
-            section1LeftContent
-            section1RightTitle
-            section1RightContent
-            partnersTitle
-            partnersText
-            partners {
-                name
-                logo {
-                    ${img}
-                }
-                link
-            }
-            section2LeftTitle
-            section2LeftSubtitle
-            section2LeftAccordions {
-                id
-                title
-                content
-                picto {
-                    ${img}
-                }
-                link {
-                    __typename
-                    ...link
-                    ... on LinkFileRecord {
-                        label
-                        title
-                        file {
-                            url
-                        }
-                    }
-                }
-            }
-            section2RightTitle
-            section2RightSubtitle
-            section2RightAccordions {
-                id
-                title
-                content
-                picto {
-                    ${img}
-                }
-                link {
-                    __typename
-                    ...link
-                    ... on LinkFileRecord {
-                        label
-                        title
-                        file {
-                            url
-                        }
-                    }
-                }
-            }
-            endowmentFundTitle
-            endowmentFundText
-            endowmentFundLineLink {
+            link {
                 ...link
             }
-            endowmentFundBlockLink {
-                ...link
-            }
-            endowmentFundMobileImage {
-                ${img}
-            }
-            endowmentFundDesktopImage {
-                ${img}
-            }
-			bcorpTitle
-            bcorpText
-            bcorpLineLink {
-                ...link
-            }
-            bcorpBlockLink {
-                ...link
-            }
-            bcorpMobileImage {
-                ${img}
-            }
-            bcorpDesktopImage {
-                ${img}
-            }
         }
-    }`;
-
-export const ring2successQuery = `
-    ${linkFragment}
-    query Ring2success($lang: SiteLocale) {
-        ring2success(locale: $lang) {
-            ${seo}
-            ${locales}
+        allMediaContentsSecond: allMediaContents(first: 100, skip: 100) {
+            id
             title
-            subtitle
-            fiftyFiftyBlocks {
-                id
-                title
-                text
-                accordions {
-                    id
-                    title
-                    content
-                    picto {
-                        ${img}
-                    }
-                    link {
-                        __typename
-                        ...link
-                        ... on LinkFileRecord {
-                            label
-                            title
-                            file {
-                                url
-                            }
-                        }
-                    }
-                }
-            }
-            journeyTitle
-            journey {
-                title
-                text
-            }
-            ecosystemTitle
-            ecosystemSubtitle
-            ecosystemText
-            ecosystemTags
-            ecosystemImage {
+            mediaType
+            infos
+            image {
                 ${img}
             }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
-            }
-            crewTitle
-            crewSections {
-                title
-                crewMembers {
-                    name
-                    description
-                    hasLinkedin
-                    link {
-                        ...link
-                    }
-                    image {
-                        ${img}
-                    }
-                    bio
-                }
-            }
-            partnersTitle
-            partners {
-                name
-                logo {
-                    ${img}
-                }
-                link
-            }
-            storiesTitle
-            storiesSubtitle
-            useCases {
-                id
-                name
-                image {
-                    ${img}
-                }
-                description
-                date
-                readingTime
-                author {
-                    name
-                    image {
-                        ${img}
-                    }
-                }
-                link {
-                    ...link
-                }
-            }
-        }
-    }`;
-
-export const visionQuery = `
-    ${linkFragment}
-    query Vision($lang: SiteLocale) {
-        vision(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            believeTitle
-            believeAccordions {
-                id
-                title
-                content
-                picto {
-                    ${img}
-                }
-                link {
-                    __typename
-                    ...link
-                    ... on LinkFileRecord {
-                        label
-                        title
-                        file {
-                            url
-                        }
-                    }
-                }
-            }
-            believeImage {
-                ${img}
-            }
-            manifesto {
-                id
-                blockTitleTitle
-                blockTitleSubtitle
-                blockTitleText
-                blockContentTitle
-                blockContentText
-                blockContentImage {
-                    ${img}
-                }
-            }
-            video {
-                title
-                text
-                videoUrl {
-                    providerUid
-                }
-            }
-        }
-    }`;
-
-export const jobsPageQuery = `
-    query JobsPage($lang: SiteLocale) {
-        jobsPage(locale: $lang) {
-            ${seo}
-            ${locales}
-            title
-            subtitle
-            companies {
-                id
-                logo {
-                    ${img}
-                }
-                image {
-                    ${img}
-                }
-                wttjId
+            link {
+                ...link
             }
         }
     }`;
@@ -1179,22 +502,12 @@ export const jobsPageQuery = `
 // When adding a new model, we need to link its query and its _modelApiKey
 export const getQuery = _modelApiKey => {
     const mapping = {
-        page: pageQuery,
-        modular_page: modularPageQuery,
+        modular: modularPageQuery,
         contact: contactQuery,
         team: teamQuery,
-        portfolio: portfolioQuery,
-        investors_page: investorsPageQuery,
+        portfolio_list: portfolioListQuery,
         fund: fundQuery,
-        use_cases_page: useCasesPageQuery,
-        podcasts_page: podcastsPageQuery,
-        press_room: pressRoomQuery,
-        sustainable_engagement: sustainableEngagementQuery,
-        ring2success: ring2successQuery,
-        vision: visionQuery,
-        jobs_page: jobsPageQuery,
-        portfolio_tech: portfolioTechQuery,
-        blog: blogQuery
+        media_list: mediaListQuery
     };
     return mapping[_modelApiKey];
 };

@@ -72,21 +72,21 @@
                         <FastImage class="company-image" :image="data.image" cover />
                     </div>
                     <div class="wrapper-key-infos">
-                        <div class="key-info">
+                        <div v-if="data.challenge" class="key-info">
                             <h3 class="key-info-title">
                                 <span>{{ $t('portfolio.challengeFirstLine') }}</span>
                                 <span>{{ $t('portfolio.challengeSecondLine') }}</span>
                             </h3>
                             <div class="key-info-content" v-html="data.challenge"></div>
                         </div>
-                        <div class="key-info">
+                        <div v-if="data.impact" class="key-info">
                             <h3 class="key-info-title">
                                 <span>{{ $t('portfolio.impactFirstLine') }}</span>
                                 <span>{{ $t('portfolio.impactSecondLine') }}</span>
                             </h3>
                             <div class="key-info-content" v-html="data.impact"></div>
                         </div>
-                        <div class="key-info">
+                        <div v-if="data.way" class="key-info">
                             <h3 class="key-info-title">
                                 <span>{{ $t('portfolio.wayFirstLine') }}</span>
                                 <span>{{ $t('portfolio.waySecondLine') }}</span>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <LayoutLinkedCompanies :companies="data.otherCompanies" />
+                <LayoutLinkedCompanies :title="$t('portfolio.otherCompaniesTitle')" :companies="data.otherCompanies" />
             </div>
         </div>
         <LayoutOverlay />

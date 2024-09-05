@@ -35,8 +35,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <LayoutLinkedCompanies :companies="data.portfolioItems" />
+        <div v-if="data.portfolioItems.length" class="container">
+            <LayoutLinkedCompanies :title="data.companiesTitle" :companies="data.portfolioItems" />
         </div>
         <Mods v-for="m in data.modules" :key="m.id" :data="m" />
     </div>

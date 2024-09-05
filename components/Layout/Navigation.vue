@@ -193,7 +193,7 @@ export default {
 .burger {
     .white-color & {
         border: none;
-        background-color: rgba(#fffcf0, 0.2);
+        background-color: rgba(#fdfdf8, 0.2);
     }
 }
 

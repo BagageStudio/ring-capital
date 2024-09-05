@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper-other-companies">
         <div class="wrapper-title-portfolio">
-            <h2 class="other-companies-title">{{ $t('portfolio.otherCompaniesTitle') }}</h2>
+            <h2 class="other-companies-title">{{ title }}</h2>
             <div class="wrapper-portfolio-link content-pad">
                 <nuxt-link :to="portfolioListLink" class="btn-underlined">
                     {{ $t('portfolio.seeAllLabel') }}
@@ -21,6 +21,10 @@ export default {
     props: {
         companies: {
             type: Array,
+            required: true
+        },
+        title: {
+            type: String,
             required: true
         }
     },

@@ -388,12 +388,6 @@ export default {};
 
 <style lang="scss" scoped>
 path {
-    stroke-miterlimit: 10;
-    opacity: 0;
-    transform-box: fill-box;
-    transform: scale(0.95);
-    transform-origin: center;
-    transition: 0.2s ease-out;
-    transition-property: opacity, transform;
+    backface-visibility: hidden;
 }
 </style>

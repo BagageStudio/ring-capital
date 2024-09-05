@@ -2,7 +2,7 @@
     <div v-if="content" class="team-card content-pad">
         <LinkTo hide-label :link="content.link" class="card-link">
             <div class="card-image-wrapper">
-                <!-- <component :is="rings[content.ringColor]" /> -->
+                <component :is="rings[content.ringColor]" />
                 <FastImage v-if="content.image" class="card-image" :image="content.image" cover />
             </div>
             <div v-if="content.tags" class="tags">
@@ -39,14 +39,9 @@ export default {
     text-decoration: none;
     width: 100%;
     &:hover {
-        ::v-deep path {
+        .impact-ring {
             opacity: 1;
-            transform: scale(1);
-        }
-        @for $i from 0 to 24 {
-            ::v-deep path:nth-child(#{$i + 1}) {
-                transition-delay: $i * 0.005s;
-            }
+            transform: scale(2.5);
         }
     }
 }
@@ -66,12 +61,17 @@ export default {
     top: 50%;
     left: 20%;
     width: 100%;
-    transform: scale(2.5);
+    opacity: 0;
+    transition: 0.3s ease-out;
+    transition-property: opacity, transform;
+    backface-visibility: hidden;
+    transform: scale(3.5);
 }
 
 .card-image {
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
 }
 
 .infos {

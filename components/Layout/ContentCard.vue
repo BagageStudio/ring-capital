@@ -3,7 +3,7 @@
         <LinkTo hide-label :link="content.link" class="card-link">
             <div v-if="content.image" class="card-image-wrapper">
                 <FastImage class="card-image" :image="content.image" :cover="!isPressRoom" :contains="isPressRoom" />
-                <!-- <LayoutImpactRingsGrey /> -->
+                <LayoutImpactRingsGrey />
             </div>
             <div v-if="content.tags" class="tags">
                 <div v-for="tag in content.tags" :key="tag" class="tag basic-tag">{{ tag }}</div>
@@ -41,14 +41,9 @@ export default {
     text-decoration: none;
     width: 100%;
     &:hover {
-        ::v-deep path {
+        .impact-ring {
             opacity: 1;
-            transform: scale(1);
-        }
-        @for $i from 0 to 21 {
-            ::v-deep path:nth-child(#{$i + 1}) {
-                transition-delay: $i * 0.01s;
-            }
+            transform: scale(4);
         }
     }
 }
@@ -68,7 +63,10 @@ export default {
     bottom: 100%;
     left: 100%;
     width: 100%;
-    transform: scale(4);
+    opacity: 0;
+    transition: 0.3s ease-out;
+    transition-property: opacity, transform;
+    transform: scale(3);
     pointer-events: none;
     backface-visibility: hidden;
 }
@@ -76,6 +74,7 @@ export default {
 .card-image {
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
 }
 
 .infos {

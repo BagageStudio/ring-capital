@@ -3,7 +3,7 @@
         <div class="wrapper-newsletter-cover">
             <div class="newsletter-cover-inner">
                 <FastImage class="newsletter-cover" :image="data.image" cover />
-                <!-- <LayoutImpactRingsGrey /> -->
+                <LayoutImpactRingsGrey />
             </div>
         </div>
         <div class="wrapper-txt">
@@ -29,14 +29,9 @@ export default {
     gap: 2rem;
     text-decoration: none;
     &:hover {
-        ::v-deep path {
+        .impact-ring {
             opacity: 1;
-            transform: scale(1);
-        }
-        @for $i from 0 to 21 {
-            ::v-deep path:nth-child(#{$i + 1}) {
-                transition-delay: $i * 0.01s;
-            }
+            transform: scale(4);
         }
     }
 }
@@ -52,6 +47,7 @@ export default {
     width: 100%;
     aspect-ratio: 1 / 0.7;
     border: 1px solid currentColor;
+    backface-visibility: hidden;
 }
 
 .impact-ring {
@@ -59,7 +55,10 @@ export default {
     bottom: 100%;
     left: 100%;
     width: 100%;
-    transform: scale(4);
+    opacity: 0;
+    transition: 0.3s ease-out;
+    transition-property: opacity, transform;
+    transform: scale(3);
     pointer-events: none;
     backface-visibility: hidden;
 }

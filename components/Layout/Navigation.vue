@@ -228,6 +228,7 @@ export default {
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--txt);
     opacity: 0;
     transform: scale(0.9);
     transition: 0.2s ease-in-out;
@@ -315,6 +316,7 @@ export default {
     line-height: 1;
     text-decoration: none;
     padding-bottom: 10px;
+    color: var(--txt);
 }
 
 .submenu {

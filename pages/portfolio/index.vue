@@ -142,6 +142,7 @@ export default {
 .wrapper-portfolio {
     position: relative;
     padding-top: 14rem;
+    overflow: hidden;
 }
 .bg-img {
     position: absolute;

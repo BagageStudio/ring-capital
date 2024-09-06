@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="menu container" :class="{ show: showMenu }">
-            <div class="menu-inner">
+            <div class="menu-inner" data-lenis-prevent>
                 <div
                     v-for="(item, index) in data.menu"
                     :key="item.title"
@@ -91,6 +91,8 @@ export default {
     },
     watch: {
         $route(r) {
+            console.log('route change');
+
             if (this.showMenu) this.toggleMenu();
         },
         isMobile() {
@@ -101,7 +103,10 @@ export default {
             this.headerVisible = false;
             this.showMenu = false;
             document.documentElement.classList.remove('no-scroll');
+            this.$lenis.scrollTo(0, { immediate: true });
             window.scrollTo(0, this.scrollOffset);
+            this.$lenis.start();
+            this.$lenis.resize();
         }
     },
     mounted() {
@@ -123,15 +128,21 @@ export default {
             this.$set(this.itemsState, index, false);
         },
         toggleMenu() {
+            console.log('toggling menu');
+
             this.showMenu = !this.showMenu;
             if (!this.isMobile) return;
             if (this.showMenu) {
                 this.scrollOffset = this.$store.state.scroll.scrollTop;
+                this.$lenis.stop();
                 document.documentElement.classList.add('no-scroll');
                 document.documentElement.style.setProperty('--scroll-top', this.scrollOffset * -1 + 'px');
             } else {
                 document.documentElement.classList.remove('no-scroll');
+                this.$lenis.scrollTo(0, { immediate: true });
                 window.scrollTo(0, this.scrollOffset);
+                this.$lenis.start();
+                this.$lenis.resize();
             }
         }
     }

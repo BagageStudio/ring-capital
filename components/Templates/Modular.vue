@@ -24,6 +24,7 @@ export default {
 .wrapper-page {
     position: relative;
     padding-top: 9rem;
+    overflow: hidden;
 }
 .bg-img {
     position: absolute;

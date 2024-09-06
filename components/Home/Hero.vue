@@ -237,8 +237,8 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100svh;
-    padding-top: calc(var(--header-height) + 8rem);
-    padding-bottom: 8rem;
+    padding-top: calc(var(--header-height) + 5rem);
+    padding-bottom: 5rem;
     color: var(--bg);
     z-index: 2;
 }
@@ -254,7 +254,7 @@ export default {
 }
 .subtitles-wrapper {
     padding: 0 var(--gutter);
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 .subtitles {
     position: relative;
@@ -284,7 +284,7 @@ export default {
     display: flex;
     align-items: center;
     gap: 4.4rem;
-    margin-top: 6rem;
+    margin-top: 4rem;
     padding: 0 var(--gutter);
 }
 .arrow {
@@ -299,6 +299,18 @@ export default {
     }
 }
 
+@media (min-width: $phone) {
+    .container-hero {
+        padding-top: calc(var(--header-height) + 8rem);
+        padding-bottom: 8rem;
+    }
+    .subtitles-wrapper {
+        margin-top: 6rem;
+    }
+    .wrapper-arrows {
+        margin-top: 6rem;
+    }
+}
 @media (min-width: $desktop) {
     .container-hero {
         justify-content: center;

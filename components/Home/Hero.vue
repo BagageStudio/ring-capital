@@ -319,6 +319,7 @@ export default {
     }
     .wrapper-txt {
         display: flex;
+        align-items: flex-end;
     }
     .subtitle {
         top: auto;
@@ -329,6 +330,8 @@ export default {
         width: calc(7 / 12 * 100%);
     }
     .subtitles-wrapper {
+        position: relative;
+        bottom: 0.2em;
         flex: 0 0 auto;
         width: calc(5 / 12 * 100%);
         margin-top: 0;

@@ -33,7 +33,7 @@
                             <div class="fund-logo"><FastImage :image="fund.logoImage" contain /></div>
                             <div class="fund-name">{{ fund.name }}</div>
                             <div class="fund-description">{{ fund.description }}</div>
-                            <div class="fund-full-description" v-html="fund.fullDescription"></div>
+                            <div class="fund-full-description basic-subtitle" v-html="fund.fullDescription"></div>
                             <nuxt-link :to="fund.slug" :aria-label="fund.name" class="fund-btn btn-rounded">
                                 {{ data.learnMoreButtonLabel }}
                             </nuxt-link>
@@ -324,11 +324,6 @@ export default {
     .fund-full-description {
         display: block;
         margin-top: 2rem;
-        ::v-deep p {
-            font-size: 2.5rem;
-            line-height: 3.2rem;
-            margin: 0;
-        }
         ::v-deep p + p {
             margin-top: 1em;
         }

@@ -3,7 +3,7 @@
         <img src="/img/ring-blue.png" class="bg-img" />
         <div class="container content-pad">
             <h1 class="basic-h1">{{ data.title }}</h1>
-            <p class="portfolio-description">{{ data.description }}</p>
+            <p class="portfolio-description basic-subtitle">{{ data.description }}</p>
             <div class="filters">
                 <div class="filters-title basic-tag">{{ data.filterText }} :</div>
                 <div class="filters-mobile">
@@ -156,8 +156,6 @@ export default {
 }
 
 .portfolio-description {
-    font-size: 2.5rem;
-    line-height: 3.2rem;
     margin-bottom: 2rem;
 }
 

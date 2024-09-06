@@ -178,6 +178,7 @@ export default {
     width: 100%;
     padding: 2rem 0;
     border: 0;
+    color: var(--txt);
 }
 
 .filters-desktop {

@@ -102,6 +102,7 @@ export default {
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-top: 1px solid #9d9d9d;
+    color: var(--txt);
     &:last-child {
         border-bottom: 1px solid #9d9d9d;
     }

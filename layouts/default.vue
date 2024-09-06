@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <LayoutNavigation />
+        <LayoutNavigation :class="{ 'white-color': isHome }" />
         <Nuxt />
         <LayoutFooter />
         <Svgs />
@@ -13,6 +13,11 @@
 import { spotFF } from '@stereorepo/sac';
 
 export default {
+    computed: {
+        isHome() {
+            return this.$route.path === '/';
+        }
+    },
     beforeMount() {
         spotFF();
     },

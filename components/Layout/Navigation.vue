@@ -103,9 +103,9 @@ export default {
             this.headerVisible = false;
             this.showMenu = false;
             document.documentElement.classList.remove('no-scroll');
-            this.$lenis.scrollTo(0, { immediate: true });
             window.scrollTo(0, this.scrollOffset);
             this.$lenis.start();
+            this.$lenis.scrollTo(0, { immediate: true });
             this.$lenis.resize();
         }
     },
@@ -139,9 +139,9 @@ export default {
                 document.documentElement.style.setProperty('--scroll-top', this.scrollOffset * -1 + 'px');
             } else {
                 document.documentElement.classList.remove('no-scroll');
-                this.$lenis.scrollTo(0, { immediate: true });
                 window.scrollTo(0, this.scrollOffset);
                 this.$lenis.start();
+                this.$lenis.scrollTo(0, { immediate: true });
                 this.$lenis.resize();
             }
         }

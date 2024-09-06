@@ -16,7 +16,7 @@
         <div class="container-hero container">
             <div class="wrapper-txt">
                 <h1 class="hero-title" v-html="$options.filters.noPAround(data.title)"></h1>
-                <div class="subtitles-wrapper">
+                <div class="subtitles-wrapper" :style="{ height: `${biggerHeight}px` }">
                     <div class="subtitles">
                         <div v-for="slide in data.heroSlides" :key="slide.id" ref="subtitles" class="subtitle">
                             <p class="first-line-subtitle">
@@ -54,14 +54,28 @@ export default {
         return {
             currentSlide: -1,
             timer: null,
-            transitionning: false
+            transitionning: false,
+            biggerHeight: 105
         };
+    },
+    computed: {
+        ww() {
+            return this.$store.state.superWindow ? this.$store.state.superWindow.width : 320;
+        }
+    },
+    watch: {
+        ww(w) {
+            this.computeBiggerHeight();
+        }
     },
     beforeDestroy() {
         this.killAnim();
     },
     mounted() {
         this.changeSlide(0);
+        this.$nextTick(() => {
+            this.computeBiggerHeight();
+        });
     },
     methods: {
         formattedSubtitle(subtitle) {
@@ -175,6 +189,11 @@ export default {
             this.timer = null;
             this.$gsap.set(this.$refs.videos, { clearProps: 'all' });
             this.$gsap.set(this.$refs.subtitles, { clearProps: 'all' });
+        },
+        computeBiggerHeight() {
+            let height = 0;
+            [...this.$refs.subtitles].forEach(f => (height = Math.max(f.clientHeight, height)));
+            this.biggerHeight = height;
         }
     }
 };

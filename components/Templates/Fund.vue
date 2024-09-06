@@ -21,14 +21,14 @@
                 </div>
             </div>
         </div>
-        <div class="targets-cols container">
-            <div class="target-col content-pad">
+        <div v-if="hasTargetsFirstColumn || hasTargetsSecondColumn" class="targets-cols container">
+            <div v-if="hasTargetsFirstColumn" class="target-col content-pad">
                 <div class="target-title basic-h4">{{ data.targetsFirstColumnTitle }}</div>
                 <div v-for="item in data.targetsFirstColumnItems" :key="item.id" class="target-item">
                     <span>{{ item.text }}</span>
                 </div>
             </div>
-            <div class="target-col content-pad">
+            <div v-if="hasTargetsSecondColumn" class="target-col content-pad">
                 <div class="target-title basic-h4">{{ data.targetsSecondColumnTitle }}</div>
                 <div v-for="item in data.targetsSecondColumnItems" :key="item.id" class="target-item">
                     <span>{{ item.text }}</span>
@@ -46,6 +46,14 @@
 export default {
     props: {
         data: { type: Object, required: true }
+    },
+    computed: {
+        hasTargetsFirstColumn() {
+            return this.data.targetsFirstColumnTitle || this.data.targetsFirstColumnItems.length;
+        },
+        hasTargetsSecondColumn() {
+            return this.data.targetsSecondColumnTitle || this.data.targetsSecondColumnItems.length;
+        }
     }
 };
 </script>

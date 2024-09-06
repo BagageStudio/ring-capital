@@ -270,7 +270,6 @@ export const teamQuery = `
                 name
                 description
                 tags
-                hasLinkedin
                 link {
                     ...link
                 }
@@ -278,36 +277,6 @@ export const teamQuery = `
                     ${img}
                 }
                 ringColor
-            }
-            investorsTitle
-            investorsSubtitle
-            investorsLink {
-                ...link
-            }
-            investors {
-                id
-                name
-                logo {
-                    ${img}
-                }
-                link
-            }
-            mosaic {
-                title
-                subtitle
-                text
-                link {
-                    ...link
-                }
-                topLeftImage {
-                    ${img}
-                }
-                bottomLeftImage {
-                    ${img}
-                }
-                rightMobileImage {
-                    ${img}
-                }
             }
             modules {
                 ${modules}

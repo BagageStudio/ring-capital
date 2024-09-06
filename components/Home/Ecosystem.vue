@@ -47,6 +47,7 @@ export default {
 }
 .ecosystem-title {
     text-align: center;
+    margin-bottom: 4rem;
 }
 .ecosystem {
     display: grid;
@@ -113,6 +114,9 @@ export default {
 @media (min-width: $desktop-small) {
     .intro-desktop {
         display: block;
+    }
+    .ecosystem-title {
+        margin-bottom: 0;
     }
     .intro-mobile {
         display: none;

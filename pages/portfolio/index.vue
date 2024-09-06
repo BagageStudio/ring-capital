@@ -3,7 +3,7 @@
         <img src="/img/ring-blue.png" class="bg-img" />
         <div class="container content-pad">
             <h1 class="basic-h1">{{ data.title }}</h1>
-            <p class="portfolio-description">{{ data.description }}</p>
+            <p class="portfolio-description basic-subtitle">{{ data.description }}</p>
             <div class="filters">
                 <div class="filters-title basic-tag">{{ data.filterText }} :</div>
                 <div class="filters-mobile">
@@ -142,6 +142,7 @@ export default {
 .wrapper-portfolio {
     position: relative;
     padding-top: 14rem;
+    overflow: hidden;
 }
 .bg-img {
     position: absolute;
@@ -156,8 +157,6 @@ export default {
 }
 
 .portfolio-description {
-    font-size: 2.5rem;
-    line-height: 3.2rem;
     margin-bottom: 2rem;
 }
 
@@ -180,6 +179,7 @@ export default {
     width: 100%;
     padding: 2rem 0;
     border: 0;
+    color: var(--txt);
 }
 
 .filters-desktop {

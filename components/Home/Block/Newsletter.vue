@@ -72,6 +72,7 @@ export default {
     letter-spacing: 0.03rem;
     text-transform: uppercase;
     color: #9d9d9d;
+    margin-top: 2rem;
 }
 
 @media (min-width: $desktop-large) {
@@ -89,9 +90,6 @@ export default {
         flex: 0 0 auto;
         width: calc(2 / 5 * 100%);
         padding-right: var(--gutter);
-    }
-    .newsletter-date {
-        margin-top: 2rem;
     }
     .newsletter-cover {
         aspect-ratio: 1 / 1.3333;

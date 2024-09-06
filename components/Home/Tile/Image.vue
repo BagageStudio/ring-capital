@@ -46,5 +46,6 @@ export default {
     line-height: 1.7rem;
     letter-spacing: 0.03rem;
     text-transform: uppercase;
+    text-shadow: 0px 0px 10px var(--bg);
 }
 </style>

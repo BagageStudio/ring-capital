@@ -46,6 +46,8 @@ export default {
     line-height: 1.7rem;
     letter-spacing: 0.03rem;
     text-transform: uppercase;
-    text-shadow: 0px 0px 10px var(--bg);
+    color: var(--bg);
+    text-shadow: 0px 0px 10px var(--txt), 1px 1px 0px rgba(31, 31, 31, 0.3), -1px 1px 0px rgba(31, 31, 31, 0.3),
+        -1px -1px 0px rgba(31, 31, 31, 0.3), 1px -1px 0px rgba(31, 31, 31, 0.3);
 }
 </style>

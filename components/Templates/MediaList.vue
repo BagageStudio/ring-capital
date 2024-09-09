@@ -113,7 +113,7 @@ export default {
             }
         }
     },
-    created() {
+    mounted() {
         this.checkFilterInUrl();
         if (!this.selectedFilter) this.selectedFilter = this.availableFilters[0].mediaType;
     },

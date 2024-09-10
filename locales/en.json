@@ -31,7 +31,9 @@
         "wayFirstLine": "The way",
         "waySecondLine": "we measure it",
         "otherCompaniesTitle": "More companies",
-        "sectorTitle": "Sector"
+        "sectorTitle": "Sector",
+        "soldTo": "Sold to",
+        "soldYear": "Exit date"
     },
     "portfolio-tech": {
         "backLabel": "Back to portfolio",

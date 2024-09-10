@@ -8,12 +8,12 @@
             <span class="infos-title">{{ $t('portfolio.sectorTitle') }}</span>
             <span class="infos-content">{{ company.sector }}</span>
         </div>
-        <div class="company-infos">
-            <span class="infos-title">{{ $t('portfolio.sectorTitle') }}</span>
+        <div v-if="company.soldTo" class="company-infos">
+            <span class="infos-title">{{ $t('portfolio.soldTo') }}</span>
             <span class="infos-content">{{ company.soldTo }}</span>
         </div>
-        <div class="company-infos">
-            <span class="infos-title">{{ $t('portfolio.sectorTitle') }}</span>
+        <div v-if="company.soldYear" class="company-infos">
+            <span class="infos-title">{{ $t('portfolio.soldYear') }}</span>
             <span class="infos-content">{{ company.soldYear }}</span>
         </div>
     </nuxt-link>
@@ -122,6 +122,7 @@ export default {
         width: calc(3 / 12 * 100%);
         height: 13rem;
         padding: 3rem calc(var(--gutter) + 5rem);
+        margin-right: auto;
         .wrapper-logo,
         .logo {
             width: 100%;

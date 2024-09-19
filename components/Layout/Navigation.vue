@@ -491,7 +491,7 @@ export default {
 
 @media (min-width: $desktop-xxl) {
     .quick-link {
-        font-size: 18px;
+        font-size: 20px;
     }
     .burger {
         font-size: 16px;

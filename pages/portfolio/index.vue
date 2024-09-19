@@ -91,7 +91,9 @@ export default {
             return currentCompanies.filter(c => c.fund.find(f => f.name === this.selectedFilter));
         },
         soldCompanies() {
-            return this.portfolioItems.filter(c => c.sold);
+            if (this.selectedFilter === 'All') return [];
+            const currentCompanies = this.portfolioItems.filter(c => c.sold);
+            return currentCompanies.filter(c => c.fund.find(f => f.name === this.selectedFilter));
         },
         availableFilters() {
             const filters = [{ name: 'All', id: 'all' }];

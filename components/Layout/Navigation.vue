@@ -488,4 +488,13 @@ export default {
         height: 20px;
     }
 }
+
+@media (min-width: $desktop-xxl) {
+    .quick-link {
+        font-size: 18px;
+    }
+    .burger {
+        font-size: 16px;
+    }
+}
 </style>

@@ -22,7 +22,7 @@
                         </span>
                         <Icon name="chevron" />
                     </div>
-                    <div class="acc-text-wrapper">
+                    <div class="acc-text-wrapper basic-subtitle">
                         <div class="acc-text wysiwyg" v-html="acc.text"></div>
                     </div>
                 </button>
